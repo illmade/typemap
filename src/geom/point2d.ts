@@ -1,3 +1,4 @@
+
 export class Point2D {
     static readonly zero = new Point2D(0, 0);
     static readonly one = new Point2D(1, 1);
