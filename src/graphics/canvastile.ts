@@ -3,7 +3,7 @@ import { Point2D } from "../geom/point2d";
 
 export abstract class CanvasTile extends Tile {
 
-	abstract draw(canvasX: number, canvasY: number, canvas: CanvasRenderingContext2D): void;
+	abstract draw(canvas: CanvasRenderingContext2D, canvasX: number, canvasY: number): void;
 
 }
 
@@ -12,6 +12,7 @@ export class ImageStruct {
 	prefix: string;
 	suffix: string;
 	tileDir: string;
+	visible: boolean;
 
 }
 
@@ -19,14 +20,21 @@ export class ImageTile extends CanvasTile {
 
 	private img: HTMLImageElement;
 
-	constructor(xIndex: number, yIndex: number, imageSrc: string) {
+	constructor(readonly xIndex: number, readonly yIndex: number, imageSrc: string) {
 		super(xIndex, yIndex);
-		var img = new Image();
-		img.src = imageSrc;
+		this.img = new Image();
+		this.img.src = imageSrc;
 	};
 
-	draw(canvasX: number, canvasY: number, canvas: CanvasRenderingContext2D) {
-		canvas.drawImage(this.img, canvasX, canvasY);
+	draw(canvas: CanvasRenderingContext2D, canvasX: number, canvasY: number) {
+		if (this.img.complete) {
+			canvas.drawImage(this.img, canvasX, canvasY);
+		}
+		else {
+			this.img.onload = (event) => {
+				canvas.drawImage(this.img, canvasX, canvasY);
+			};
+		}
 	};
 
 }
@@ -41,10 +49,11 @@ export class ImageTileLayer extends TileLayer {
 	}
 
 	/**
-	leave caching up to the browser
+	  leave caching up to the browser
 	**/
 	getTile(xUnits: number, yUnits: number): Tile {
-		let imageSrc = this.imageProperties.prefix + xUnits + "_" + yUnits + this.imageProperties.suffix;
+		let imageSrc = this.imageProperties.tileDir + 
+			this.imageProperties.prefix + xUnits + "_" + yUnits + this.imageProperties.suffix;
 		return new ImageTile(xUnits, yUnits, imageSrc);
 	}
 
@@ -58,8 +67,8 @@ export class ImageTileLayer extends TileLayer {
 
 		let tiles = new Array<Tile>();
 
-		for (var x=firstX; x<=lastX; x++){
-			for (var y=firstY; y<=lastY; y++){
+		for (var x=firstX; x<lastX; x++){
+			for (var y=firstY; y<lastY; y++){
 				tiles.push(this.getTile(x, y))
 			}
 		}

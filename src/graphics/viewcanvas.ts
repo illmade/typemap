@@ -1,35 +1,43 @@
 import { Viewport } from "../geom/viewport";
 import { World2D } from "../geom/world2d";
 import { Point2D } from "../geom/point2d";
-import { TileDisplayProperties } from "../geom/tile";
-import { ImageTileLayer } from "./canvastile";
+import { ImageTile, ImageTileLayer } from "./canvastile";
 
 export class ViewCanvas extends Viewport {
-    static scale: number = 1;
 
-    private imageTileLayers = {};
-    private imageTileProperties = {};
-    //private props = new Map<string><string>();
+    private imageTileLayers = [];
 
-    constructor(world: World2D, topLeft: Point2D, xWidth: number, yWidth: number, 
-    	canvasRenderContext: CanvasRenderingContext2D) {
+    constructor(world: World2D, topLeft: Point2D, readonly xWidth: number, readonly yWidth: number, 
+    	readonly canvasRenderContext: CanvasRenderingContext2D) {
 
-    	super(world, topLeft, xWidth, yWidth)
+    	super(world, topLeft, xWidth, yWidth);
+
+    	this.canvasRenderContext.canvas.width = this.canvasRenderContext.canvas.clientWidth;
+    	this.canvasRenderContext.canvas.height = this.canvasRenderContext.canvas.clientHeight;
     }
 
-    addTileLayer(properties: TileDisplayProperties, imageTileLayer: ImageTileLayer): void {
-    	this.imageTileLayers[properties.name] = imageTileLayer;
-    	this.imageTileProperties[properties.name] = properties;
+    addTileLayer(imageTileLayer: ImageTileLayer): void {
+    	this.imageTileLayers.push(imageTileLayer);
     }
 
     draw(): void {
-    	for (let key in this.imageTileLayers){
-    		let properties = this.imageTileProperties[key];
-    		if (properties.visible) {
-    			let imageTileLayer = this.imageTileLayers[key];
-    			let tiles = imageTileLayer.getTiles(this.topLeft, this.xWidth, this.yWidth);
 
-    			
+    	var scalingX = this.canvasRenderContext.canvas.clientWidth / this.xWidth;
+    	var scalingY = this.canvasRenderContext.canvas.clientHeight / this.yWidth;
+    	console.log("scaling ", scalingX, scalingY);
+
+    	for (let value of this.imageTileLayers){
+    		if (value.imageProperties.visible) {
+    			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, this.xWidth, this.yWidth);
+
+    			for (let tile of tiles){
+    				console.log("drawing " + tile.xIndex + ", " + this.topLeft.x)
+    				var tileX = (tile.xIndex - this.topLeft.x) * scalingX;
+    				var tileY = (tile.yIndex - this.topLeft.y) * scalingY;
+
+    				tile.draw(this.canvasRenderContext, tileX, tileY);
+    			}
+    			console.log("got tiles ", tiles);
     		}
     	}
     }

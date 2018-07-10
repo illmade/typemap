@@ -15,13 +15,14 @@ var source = require('vinyl-source-stream');
 var gutil = require("gulp-util");
 var tsify = require("tsify");
 var paths = {
-    pages: ['src/*.html']
+    pages: ['src/*.html'],
+    css: ['src/css/*.css']
 };
 
 var watchedBrowserify = watchify(browserify({
     basedir: '.',
     debug: true,
-    entries: ['src/main.ts'],
+    entries: ['src/simpleWorld.ts'],
     cache: {},
     packageCache: {}
 }).plugin(tsify));
@@ -31,6 +32,12 @@ gulp.task("copy-html", function () {
         .pipe(gulp.dest("dist"));
 });
 
+// Gulp task to concatenate our css files
+gulp.task('copy-css', function () {
+   return gulp.src(paths.css)
+       .pipe(gulp.dest('dist/css'))
+});
+
 function bundle() {
     return watchedBrowserify
         .bundle()
@@ -38,6 +45,6 @@ function bundle() {
         .pipe(gulp.dest("dist"));
 }
 
-gulp.task("default", ["copy-html"], bundle);
+gulp.task("default", ["copy-html", "copy-css"], bundle);
 watchedBrowserify.on("update", bundle);
 watchedBrowserify.on("log", gutil.log);

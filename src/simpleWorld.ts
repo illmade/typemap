@@ -9,15 +9,48 @@ let simpleWorld = new World2D(2, 2, true, false);
 let layerProperties = new ImageStruct();
 layerProperties.prefix = "";
 layerProperties.suffix = ".png";
-layerProperties.tileDir = "images/tiles/test/1/";
-.
-let baseLayer = new ImageTileLayer(1, 1, layerProperties);
+layerProperties.tileDir = "images/";
+layerProperties.visible = true;
 
+
+let roadLayerProperties = new ImageStruct();
+roadLayerProperties.prefix = "";
+roadLayerProperties.suffix = "b.png";
+roadLayerProperties.tileDir = "images/";
+roadLayerProperties.visible = true;
+
+let sentinelLayerProperties = new ImageStruct();
+sentinelLayerProperties.prefix = "";
+sentinelLayerProperties.suffix = "l.jpeg";
+sentinelLayerProperties.tileDir = "images/";
+sentinelLayerProperties.visible = true;
+
+let baseLayer = new ImageTileLayer(1, 1, layerProperties);
+let sentinelLayer = new ImageTileLayer(1, 1, sentinelLayerProperties);
+let roadLayer = new ImageTileLayer(1, 1, roadLayerProperties);
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
     var ctx = canvas.getContext('2d');
-	let canvasView = new ViewCanvas(simpleWorld, new Point2D(.5, .5), 1, 1, ctx);
+
+	let canvasView = new ViewCanvas(simpleWorld, new Point2D(0, 0), 2, 2, ctx);
+	canvasView.addTileLayer(baseLayer);
+	canvasView.addTileLayer(sentinelLayer);
+	canvasView.addTileLayer(roadLayer);
+
+	canvasView.draw();
 }
 
-showMap("canvas", "TypeScript");
+function show(){
+	showMap("canvas", "TypeScript");
+}
+
+if (
+    document.readyState === "complete" ||
+    (document.readyState !== "loading" && !document.documentElement.doScroll)
+) {
+  show();
+} else {
+  document.addEventListener("DOMContentLoaded", show);
+}
+

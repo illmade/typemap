@@ -11,18 +11,6 @@ export abstract class TileLayer {
 
 }
 
-export class TileDisplayProperties {
-
-	isVisible: boolean; 
-	name: string;
-
-	constructor(name: string, isVisible: boolean) {
-		this.name = name;
-		this.isVisible = isVisible;
-	}
-
-}
-
 export class Tile {
 	
 	static emptyTile: Tile = new Tile(-1,-1);
