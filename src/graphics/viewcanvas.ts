@@ -7,10 +7,11 @@ export class ViewCanvas extends Viewport {
 
     private imageTileLayers = [];
 
-    constructor(world: World2D, topLeft: Point2D, readonly xWidth: number, readonly yWidth: number, 
+    constructor(world: World2D, topLeft: Point2D, 
+    	readonly widthMapUnits: number, readonly heightMapUnits: number, 
     	readonly canvasRenderContext: CanvasRenderingContext2D) {
 
-    	super(world, topLeft, xWidth, yWidth);
+    	super(world, topLeft, widthMapUnits, heightMapUnits);
 
     	this.canvasRenderContext.canvas.width = this.canvasRenderContext.canvas.clientWidth;
     	this.canvasRenderContext.canvas.height = this.canvasRenderContext.canvas.clientHeight;
@@ -22,22 +23,30 @@ export class ViewCanvas extends Viewport {
 
     draw(): void {
 
-    	var scalingX = this.canvasRenderContext.canvas.clientWidth / this.xWidth;
-    	var scalingY = this.canvasRenderContext.canvas.clientHeight / this.yWidth;
-    	console.log("scaling ", scalingX, scalingY);
+    	var viewScalingX = this.canvasRenderContext.canvas.clientWidth / this.widthMapUnits;
+    	var viewScalingY = this.canvasRenderContext.canvas.clientHeight / this.heightMapUnits;
 
     	for (let value of this.imageTileLayers){
     		if (value.imageProperties.visible) {
-    			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, this.xWidth, this.yWidth);
+
+    			let tileScalingX = value.imageProperties.tileWidthPx / value.widthMapUnits;
+    			let tileScalingY = value.imageProperties.tileHeightPx / value.heightMapUnits;
+
+    			let canvasScalingX = viewScalingX / tileScalingX;
+    			let canvasScalingY = viewScalingY / tileScalingY;
+
+    			console.log("scaling ", canvasScalingX, canvasScalingY);
+
+    			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, 
+    				this.widthMapUnits, this.heightMapUnits);
 
     			for (let tile of tiles){
-    				console.log("drawing " + tile.xIndex + ", " + this.topLeft.x)
-    				var tileX = (tile.xIndex - this.topLeft.x) * scalingX;
-    				var tileY = (tile.yIndex - this.topLeft.y) * scalingY;
+    				console.log("drawing " + tile.xIndex + ", " + this.topLeft.x);
+    				var tileX = (tile.xIndex - this.topLeft.x) * viewScalingX / canvasScalingX;
+    				var tileY = (tile.yIndex - this.topLeft.y) * viewScalingY / canvasScalingY;
 
-    				tile.draw(this.canvasRenderContext, tileX, tileY);
+    				tile.draw(this.canvasRenderContext, canvasScalingX, canvasScalingY, tileX, tileY);
     			}
-    			console.log("got tiles ", tiles);
     		}
     	}
     }

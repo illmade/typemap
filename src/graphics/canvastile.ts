@@ -3,16 +3,19 @@ import { Point2D } from "../geom/point2d";
 
 export abstract class CanvasTile extends Tile {
 
-	abstract draw(canvas: CanvasRenderingContext2D, canvasX: number, canvasY: number): void;
+	abstract draw(canvas: CanvasRenderingContext2D, scalingX: number, scalingY: number, 
+		canvasX: number, canvasY: number): void;
 
 }
 
 export class ImageStruct {
 
-	prefix: string;
-	suffix: string;
-	tileDir: string;
-	visible: boolean;
+	prefix: string = "";
+	suffix: string = "";
+	tileDir: string = "images/";
+	visible: boolean = true;
+	tileWidthPx: number = 256;
+	tileHeightPx: number = 256;
 
 }
 
@@ -26,13 +29,23 @@ export class ImageTile extends CanvasTile {
 		this.img.src = imageSrc;
 	};
 
-	draw(canvas: CanvasRenderingContext2D, canvasX: number, canvasY: number) {
+	private drawImage(ctx: CanvasRenderingContext2D, scalingX: number,  scalingY: number, 
+			canvasX: number, canvasY: number){
+		console.log("scaling " + scalingX + " " + scalingY);
+		ctx.save();
+		ctx.scale(scalingX, scalingY);
+		ctx.drawImage(this.img, canvasX, canvasY);
+		ctx.restore();
+	}
+
+	draw(ctx: CanvasRenderingContext2D, scalingX: number,  scalingY: number, 
+			canvasX: number, canvasY: number){
 		if (this.img.complete) {
-			canvas.drawImage(this.img, canvasX, canvasY);
+			this.drawImage(ctx, scalingX, scalingY, canvasX, canvasY);
 		}
 		else {
 			this.img.onload = (event) => {
-				canvas.drawImage(this.img, canvasX, canvasY);
+				this.drawImage(ctx, scalingX, scalingY, canvasX, canvasY);
 			};
 		}
 	};
@@ -43,8 +56,8 @@ export class ImageTileLayer extends TileLayer {
 
 	readonly imageProperties: ImageStruct;
 
-	constructor(tileWidth: number, tileHeight: number, imageProperties: ImageStruct) {
-		super(tileWidth, tileHeight);
+	constructor(widthMapUnits: number, heightMapUnits: number, imageProperties: ImageStruct) {
+		super(widthMapUnits, heightMapUnits);
 		this.imageProperties = imageProperties;
 	}
 
@@ -57,13 +70,13 @@ export class ImageTileLayer extends TileLayer {
 		return new ImageTile(xUnits, yUnits, imageSrc);
 	}
 
-	getTiles(position: Point2D, xWidth: number, yWidth: number): Array<Tile> {
+	getTiles(position: Point2D, xMapUnits: number, yMapUnits: number): Array<Tile> {
 
-		let firstX = Math.floor(position.x / this.tileWidth);
-		let lastX = Math.ceil((position.x + xWidth)/ this.tileWidth);
+		let firstX = Math.floor(position.x / this.widthMapUnits);
+		let lastX = Math.ceil((position.x + xMapUnits)/ this.widthMapUnits);
 
-		let firstY = Math.floor(position.y / this.tileHeight);
-		let lastY = Math.ceil((position.y + yWidth)/ this.tileHeight);
+		let firstY = Math.floor(position.y / this.heightMapUnits);
+		let lastY = Math.ceil((position.y + yMapUnits)/ this.heightMapUnits);
 
 		let tiles = new Array<Tile>();
 

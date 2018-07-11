@@ -3,11 +3,11 @@ import { Point2D } from "./point2d";
 
 export abstract class TileLayer {
 	
-	constructor(public tileWidth: number, public tileHeight: number){}
+	constructor(public widthMapUnits: number, public heightMapUnits: number){}
 
-	abstract getTile(xUnits: number, yUnits: number): Tile;
+	abstract getTile(xIndex: number, yIndex: number): Tile;
 
-	abstract getTiles(position: Point2D, xWidth: number, yWidth: number): Array<Tile>;
+	abstract getTiles(position: Point2D, xUnits: number, yUnits: number): Array<Tile>;
 
 }
 
