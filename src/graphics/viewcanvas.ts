@@ -8,7 +8,7 @@ export class ViewCanvas extends Viewport {
     private imageTileLayers = [];
 
     constructor(world: World2D, topLeft: Point2D, 
-    	readonly widthMapUnits: number, readonly heightMapUnits: number, 
+    	widthMapUnits: number, heightMapUnits: number, 
     	readonly canvasRenderContext: CanvasRenderingContext2D) {
 
     	super(world, topLeft, widthMapUnits, heightMapUnits);
@@ -42,8 +42,8 @@ export class ViewCanvas extends Viewport {
 
     			for (let tile of tiles){
     				console.log("drawing " + tile.xIndex + ", " + this.topLeft.x);
-    				var tileX = (tile.xIndex - this.topLeft.x) * viewScalingX / canvasScalingX;
-    				var tileY = (tile.yIndex - this.topLeft.y) * viewScalingY / canvasScalingY;
+    				var tileX = (tile.xIndex - this.topLeft.x) * tileScalingX;
+    				var tileY = (tile.yIndex - this.topLeft.y) * tileScalingY;
 
     				tile.draw(this.canvasRenderContext, canvasScalingX, canvasScalingY, tileX, tileY);
     			}

@@ -4,8 +4,13 @@ import { World2D, Units } from "./world2d";
 
 export class Viewport {
 	
-	constructor(world: World2D, public topLeft: Point2D, public xWidth: number, public yWidth: number){}
+	constructor(world: World2D, public topLeft: Point2D, 
+		public widthMapUnits: number, public heightMapUnits: number){}
 
-	setView(xWidth: Units, yWidth: Units){};
+	setView(topLeft: Point2D, width: number, height: number){
+		this.topLeft = topLeft;
+		this.widthMapUnits = width;
+		this.heightMapUnits = height;
+	};
 
 }
