@@ -29,23 +29,67 @@ export class ImageTile extends CanvasTile {
 		this.img.src = imageSrc;
 	};
 
-	private drawImage(ctx: CanvasRenderingContext2D, scalingX: number,  scalingY: number, 
-			canvasX: number, canvasY: number){
-		console.log("scaling " + scalingX + " " + scalingY);
-		ctx.save();
-		ctx.scale(scalingX, scalingY);
+	private drawImage(ctx: CanvasRenderingContext2D, canvasX: number, canvasY: number){
 		ctx.drawImage(this.img, canvasX, canvasY);
-		ctx.restore();
 	}
 
 	draw(ctx: CanvasRenderingContext2D, scalingX: number,  scalingY: number, 
 			canvasX: number, canvasY: number){
 		if (this.img.complete) {
-			this.drawImage(ctx, scalingX, scalingY, canvasX, canvasY);
+			this.drawImage(ctx, canvasX, canvasY);
 		}
 		else {
 			this.img.onload = (event) => {
-				this.drawImage(ctx, scalingX, scalingY, canvasX, canvasY);
+				this.drawImage(ctx, canvasX, canvasY);
+			};
+		}
+	};
+
+}
+
+export class StaticImage {
+
+	private img: HTMLImageElement;
+
+	constructor(public xIndex: number, public yIndex: number, 
+		public scalingX: number, public scalingY: number, public rotation: number, 
+		imageSrc: string, readonly alpha: number) {
+		
+		this.img = new Image();
+		this.img.src = imageSrc;
+	};
+
+	private drawImage(ctx: CanvasRenderingContext2D, canvasX: number, canvasY: number){
+
+		//scalingX = scalingX * this.scaling;
+		//scalingY = scalingY * this.scaling;
+
+		let cosX = Math.cos(this.rotation);
+		let sinX = Math.sin(this.rotation);
+
+		ctx.translate(canvasX, canvasY);
+		ctx.rotate(this.rotation);
+		ctx.scale(this.scalingX, this.scalingY);
+		ctx.globalAlpha = this.alpha;
+
+		// ctx.transform(cosX * scalingX, sinX * scalingY, -sinX * scalingX, cosX * scalingY, 
+		// 	canvasX / this.scaling, canvasY / this.scaling);
+
+		ctx.drawImage(this.img, -(this.img.width/2), -(this.img.height/2));
+		
+		ctx.scale(1/this.scalingX, 1/this.scalingY);
+		ctx.rotate(-this.rotation);
+		ctx.translate(-canvasX, -canvasY);
+
+	}
+
+	draw(ctx: CanvasRenderingContext2D, canvasX: number, canvasY: number){
+		if (this.img.complete) {
+			this.drawImage(ctx, canvasX, canvasY);
+		}
+		else {
+			this.img.onload = (event) => {
+				this.drawImage(ctx, canvasX, canvasY);
 			};
 		}
 	};
