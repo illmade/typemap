@@ -4,13 +4,23 @@ import { World2D, Units } from "./world2d";
 
 export class Viewport {
 	
-	constructor(world: World2D, public topLeft: Point2D, 
-		public widthMapUnits: number, public heightMapUnits: number){}
+	constructor(public topLeft: Point2D, 
+		private widthMapUnits: number, private heightMapUnits: number){
 
-	setView(topLeft: Point2D, width: number, height: number){
+		console.log("w h" + widthMapUnits + ", " + heightMapUnits);
+	}
+
+	moveView(topLeft: Point2D){
 		this.topLeft = topLeft;
-		this.widthMapUnits = width;
-		this.heightMapUnits = height;
-	};
+	}
+
+	zoomView(zoom: number){
+		this.widthMapUnits = this.widthMapUnits * zoom;
+		this.heightMapUnits = this.heightMapUnits * zoom;
+	}
+
+	getDimensions(){
+		return new Point2D(this.widthMapUnits, this.heightMapUnits);
+	}
 
 }

@@ -4,14 +4,17 @@ import { Point2D } from "../geom/point2d";
 export class ZoomController {
 
     constructor(viewCanvas: ViewCanvas, readonly zoomIn: HTMLElement, readonly zoomOut: HTMLElement) {
-    	zoomIn.addEventListener("click", (e:Event) => this.clicked(e, viewCanvas, -0.1));
-    	zoomOut.addEventListener("click", (e:Event) => this.clicked(e, viewCanvas, +0.1));
+    	zoomIn.addEventListener("click", (e:Event) => this.clicked(e, viewCanvas, .95));
+    	zoomOut.addEventListener("click", (e:Event) => this.clicked(e, viewCanvas, 1.05));
+    	viewCanvas.ctx.canvas.addEventListener("dblclick", (e:Event) => 
+    		this.clicked(e, viewCanvas, .75));
     }
 
     clicked(event: Event, viewCanvas: ViewCanvas, zoom: number) {
     	console.log("clicked" + event.target + ", " + event.type);
-    	viewCanvas.setView(viewCanvas.topLeft, 
-    		viewCanvas.widthMapUnits + zoom, viewCanvas.heightMapUnits + zoom);
+
+    	viewCanvas.zoomView(zoom);
+
     	viewCanvas.draw();
     };
 
@@ -46,11 +49,10 @@ export class PanController {
     				let xDelta = (event.clientX - this.xPrevious) / 512;
 	    			let yDelta = (event.clientY - this.yPrevious) / 512;
 
-	    			let newTopLeft = new Point2D((viewCanvas.topLeft.x - xDelta), 
-	    				(viewCanvas.topLeft.y - yDelta))
+	    			let newTopLeft = new Point2D(viewCanvas.topLeft.x - xDelta, 
+	    				viewCanvas.topLeft.y - yDelta);
 
-	    			viewCanvas.setView(newTopLeft, 
-	    				viewCanvas.widthMapUnits, viewCanvas.heightMapUnits);
+	    			viewCanvas.moveView(newTopLeft);
 	    			viewCanvas.draw();
     			}
     			

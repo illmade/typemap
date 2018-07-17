@@ -1,4 +1,4 @@
-import { TileLayer2D } from "./tile2d";
+import { TileLayer } from "./tile";
 
 export class Units {
 
@@ -12,11 +12,11 @@ export class Units {
 **/
 export class World2D {
 
-	private tileLayers: Array<TileLayer2D> = [];
+	private tileLayers: Array<TileLayer> = [];
 	
-	constructor(number, yUnits: number, wrapX: boolean, wrapY: boolean){}
+	constructor(){}
 
-    addTileLayer(tileLayer: TileLayer2D): number {
+    addTileLayer(tileLayer: TileLayer): number {
     	return this.tileLayers.push(tileLayer);
     }
 

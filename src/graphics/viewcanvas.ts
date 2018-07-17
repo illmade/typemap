@@ -8,14 +8,11 @@ export class ViewCanvas extends Viewport {
     private staticElements: Array<StaticImage> = [];
     private imageTileLayers = [];
 
-    constructor(world: World2D, topLeft: Point2D, 
+    constructor(topLeft: Point2D, 
     	widthMapUnits: number, heightMapUnits: number, 
-    	readonly canvasRenderContext: CanvasRenderingContext2D) {
+    	readonly ctx: CanvasRenderingContext2D) {
 
-    	super(world, topLeft, widthMapUnits, heightMapUnits);
-
-    	this.canvasRenderContext.canvas.width = this.canvasRenderContext.canvas.clientWidth;
-    	this.canvasRenderContext.canvas.height = this.canvasRenderContext.canvas.clientHeight;
+    	super(topLeft, widthMapUnits, heightMapUnits);
     }
 
     addTileLayer(imageTileLayer: ImageTileLayer): void {
@@ -26,48 +23,69 @@ export class ViewCanvas extends Viewport {
     	this.staticElements.push(staticImage);
     }
 
+    private scale(pixelsPerUnit: number, dimension: Point2D, reverse: boolean): void {
+
+    	let viewScalingX = this.ctx.canvas.clientWidth / dimension.x / pixelsPerUnit;
+    	let viewScalingY = this.ctx.canvas.clientHeight / dimension.y / pixelsPerUnit;
+
+    	console.log("view scaling " +  viewScalingX, ", " + viewScalingY);
+    	console.log("dimensions: " + dimension);
+
+    	if (reverse){
+    		this.ctx.scale(1/viewScalingX, 1/viewScalingY);
+    	} else {
+    		this.ctx.scale(viewScalingX, viewScalingY);
+    	}
+    	
+    }
+
     draw(): void {
+    	let dimension = this.getDimensions();
 
-    	let viewScalingX = this.canvasRenderContext.canvas.clientWidth / this.widthMapUnits / 256;
-    	let viewScalingY = this.canvasRenderContext.canvas.clientHeight / this.heightMapUnits / 256;
+    	let width = this.ctx.canvas.clientWidth;
+    	let height = this.ctx.canvas.clientHeight;
 
-    	this.canvasRenderContext.save();
-    	this.canvasRenderContext.scale(viewScalingX, viewScalingY);
-    	console.log("view scaling ", viewScalingX);
+    	this.ctx.clearRect(0, 0, width, height);
 
     	for (let value of this.imageTileLayers){
     		if (value.imageProperties.visible) {
 
-    			let tileScalingX = value.widthMapUnits / value.imageProperties.tileWidthPx;
-    			let tileScalingY = value.heightMapUnits / value.imageProperties.tileHeightPx;
+    			this.scale(value.imageProperties.tileWidthPx, dimension, false);
+
+    			let tileScalingX = value.imageProperties.tileWidthPx / value.widthMapUnits;
+    			let tileScalingY = value.imageProperties.tileHeightPx / value.heightMapUnits;
+
+    			console.log("layer scaling is " + tileScalingX + ", " + tileScalingY);
 
     			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, 
-    				this.widthMapUnits, this.heightMapUnits);
+    				dimension.x, dimension.y);
 
     			for (let tile of tiles){
-    				var tileX = (tile.xIndex - this.topLeft.x) / tileScalingX;
-    				var tileY = (tile.yIndex - this.topLeft.y) / tileScalingY;
+    				var tileX = (tile.xIndex - this.topLeft.x) * tileScalingX;
+    				var tileY = (tile.yIndex - this.topLeft.y) * tileScalingY;
 
-    				tile.draw(this.canvasRenderContext, tileScalingX, tileScalingY, 
-    					tileX, tileY);
+    				tile.draw(this.ctx, tileX, tileY);
     			}
+
+    			this.scale(256, dimension, true);
     		}
     	}
 
     	for (let value of this.staticElements){
-
     		//256 px is 1 map unit
 			let tileScalingX = 256;
 			let tileScalingY = 256;
 
+    		this.scale(256, dimension, false);
+
     		let imageX = (value.xIndex - this.topLeft.x) * tileScalingX;
     		let imageY = (value.yIndex - this.topLeft.y) * tileScalingY;
 
-    		console.log("image x y " + value.xIndex + ", " + this.topLeft.x);
+    		value.draw(this.ctx, imageX, imageY);
+    		this.scale(256, dimension, true);
 
-    		value.draw(this.canvasRenderContext, imageX, imageY);
     	}
-    	this.canvasRenderContext.restore();
+
     }
 
 }

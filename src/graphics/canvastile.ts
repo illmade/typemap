@@ -16,6 +16,8 @@ export class ImageStruct {
 	visible: boolean = true;
 	tileWidthPx: number = 256;
 	tileHeightPx: number = 256;
+	widthMapUnits: number = 1;
+	heightMapUnits: number = 1; 
 
 }
 
@@ -33,8 +35,7 @@ export class ImageTile extends CanvasTile {
 		ctx.drawImage(this.img, canvasX, canvasY);
 	}
 
-	draw(ctx: CanvasRenderingContext2D, scalingX: number,  scalingY: number, 
-			canvasX: number, canvasY: number){
+	draw(ctx: CanvasRenderingContext2D, canvasX: number, canvasY: number){
 		if (this.img.complete) {
 			this.drawImage(ctx, canvasX, canvasY);
 		}
@@ -64,12 +65,13 @@ export class StaticImage {
 		//scalingX = scalingX * this.scaling;
 		//scalingY = scalingY * this.scaling;
 
-		let cosX = Math.cos(this.rotation);
-		let sinX = Math.sin(this.rotation);
+		// let cosX = Math.cos(this.rotation);
+		// let sinX = Math.sin(this.rotation);
 
 		ctx.translate(canvasX, canvasY);
 		ctx.rotate(this.rotation);
 		ctx.scale(this.scalingX, this.scalingY);
+		console.log("xyScaling " + this.scalingX + ", " + this.scalingY);
 		ctx.globalAlpha = this.alpha;
 
 		// ctx.transform(cosX * scalingX, sinX * scalingY, -sinX * scalingX, cosX * scalingY, 
@@ -80,7 +82,7 @@ export class StaticImage {
 		ctx.scale(1/this.scalingX, 1/this.scalingY);
 		ctx.rotate(-this.rotation);
 		ctx.translate(-canvasX, -canvasY);
-
+		ctx.globalAlpha = 1;
 	}
 
 	draw(ctx: CanvasRenderingContext2D, canvasX: number, canvasY: number){
@@ -100,8 +102,8 @@ export class ImageTileLayer extends TileLayer {
 
 	readonly imageProperties: ImageStruct;
 
-	constructor(widthMapUnits: number, heightMapUnits: number, imageProperties: ImageStruct) {
-		super(widthMapUnits, heightMapUnits);
+	constructor(imageProperties: ImageStruct) {
+		super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
 		this.imageProperties = imageProperties;
 	}
 
@@ -130,6 +132,7 @@ export class ImageTileLayer extends TileLayer {
 			}
 		}
 
+		console.log("tiles " + tiles);
 		return tiles;
 	}
 }

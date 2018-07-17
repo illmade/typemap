@@ -11,4 +11,8 @@ export class Point2D {
         this.y = y;
 	}
 
+    toString(): string {
+        return "Point2D(" + this.x + ", " + this.y + ")";
+    }
+
 }
