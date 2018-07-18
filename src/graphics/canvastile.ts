@@ -3,7 +3,7 @@ import { Point2D } from "../geom/point2d";
 
 export abstract class CanvasTile extends Tile {
 
-	abstract draw(canvas: CanvasRenderingContext2D, scalingX: number, scalingY: number, 
+	abstract draw(ctx: CanvasRenderingContext2D, scalingX: number, scalingY: number, 
 		canvasX: number, canvasY: number): void;
 
 }
@@ -71,7 +71,7 @@ export class StaticImage {
 		ctx.translate(canvasX, canvasY);
 		ctx.rotate(this.rotation);
 		ctx.scale(this.scalingX, this.scalingY);
-		console.log("xyScaling " + this.scalingX + ", " + this.scalingY);
+		//console.log("xyScaling " + this.scalingX + ", " + this.scalingY);
 		ctx.globalAlpha = this.alpha;
 
 		// ctx.transform(cosX * scalingX, sinX * scalingY, -sinX * scalingX, cosX * scalingY, 
@@ -116,23 +116,4 @@ export class ImageTileLayer extends TileLayer {
 		return new ImageTile(xUnits, yUnits, imageSrc);
 	}
 
-	getTiles(position: Point2D, xMapUnits: number, yMapUnits: number): Array<Tile> {
-
-		let firstX = Math.floor(position.x / this.widthMapUnits);
-		let lastX = Math.ceil((position.x + xMapUnits)/ this.widthMapUnits);
-
-		let firstY = Math.floor(position.y / this.heightMapUnits);
-		let lastY = Math.ceil((position.y + yMapUnits)/ this.heightMapUnits);
-
-		let tiles = new Array<Tile>();
-
-		for (var x=firstX; x<lastX; x++){
-			for (var y=firstY; y<lastY; y++){
-				tiles.push(this.getTile(x, y))
-			}
-		}
-
-		console.log("tiles " + tiles);
-		return tiles;
-	}
 }

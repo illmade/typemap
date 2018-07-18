@@ -28,6 +28,7 @@ liffeyLayerProperties.tileDir = "images/liffey/";
 let liffeyLabelLayerProperties = new ImageStruct();
 liffeyLabelLayerProperties.suffix = "liffey.png";
 liffeyLabelLayerProperties.tileDir = "images/liffey/";
+liffeyLabelLayerProperties.visible = true;
 
 // let baseLayer = new ImageTileLayer(layerProperties);
 // let sentinelLayer = new ImageTileLayer(sentinelLayerProperties);
@@ -52,8 +53,24 @@ let abbeyImage = new StaticImage(2.39, 0.035, .415, .435, -.25,
 let busarasImage = new StaticImage(3.49, -0.24, .41, .425, -.26, 
 	"images/maps_145_b_4_(2)_f009r[SVC2].jpg", .7);
 
+let lowerabbeyImage = new StaticImage(1.295, 0.3776, .425, .435, -.23, 
+	"images/maps_145_b_4_(2)_f007r[SVC2].jpg", 0.7);
+
+let dameImage = new StaticImage(0.98, 2.315, .41, .428, -0.095, 
+	"images/maps_145_b_4_(2)_f016r_2[SVC2].jpg", 0.7);
+
+let customImage = new StaticImage(5.21, -.245, .42, .44, 0.03, 
+	"images/maps_145_b_4_(2)_f010r_2[SVC2].jpg", 0.7);
+
+let manorImage = new StaticImage(6.36, 0.025, .415, .435, 0.11, 
+	"images/maps_145_b_4_(2)_f011r[SVC2].jpg", 0.7);
+
+let sackvilleImage = new StaticImage(1.29, -1.28, .46, .42, -0.265, 
+	"images/maps_145_b_4_(2)_f004r[SVC2].jpg", 0.7);
+
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
-	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .7);
+	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .4);
+
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
@@ -62,7 +79,7 @@ function showMap(divName: string, name: string) {
     ctx.canvas.width = ctx.canvas.clientWidth;
     ctx.canvas.height = ctx.canvas.clientHeight;
 
-	let viewCanvas = new ViewCanvas(new Point2D(-1, -1), 12, 8, ctx);
+	let viewCanvas = new ViewCanvas(new Point2D(2, -2), 6, 4, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
 	// viewCanvas.addTileLayer(sentinelLayer);
 	viewCanvas.addTileLayer(liffeySentinelLayer);
@@ -73,9 +90,14 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(trinityImage);
 	viewCanvas.addStaticElement(poolbegImage);
 	viewCanvas.addStaticElement(abbeyImage);
+	viewCanvas.addStaticElement(lowerabbeyImage);
 	viewCanvas.addStaticElement(busarasImage);
+	viewCanvas.addStaticElement(dameImage);
+	viewCanvas.addStaticElement(customImage);
+	viewCanvas.addStaticElement(manorImage);
+	viewCanvas.addStaticElement(sackvilleImage);
 
-	let imageController = new ImageController(viewCanvas, busarasImage);
+	let imageController = new ImageController(viewCanvas, sackvilleImage);
 
 	viewCanvas.draw();
 
@@ -84,6 +106,8 @@ function showMap(divName: string, name: string) {
 
 	let panControl = new PanController(viewCanvas, canvas);
 	let canvasControl = new ZoomController(viewCanvas, plus, minus);
+
+	canvasControl.addZoomListener(panControl);
 }
 
 function show(){

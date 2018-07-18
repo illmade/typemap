@@ -2,17 +2,22 @@ import { Viewport } from "../geom/viewport";
 import { World2D } from "../geom/world2d";
 import { Point2D } from "../geom/point2d";
 import { StaticImage, ImageTile, ImageTileLayer } from "./canvastile";
+import { GridLayer } from "./grid";
 
 export class ViewCanvas extends Viewport {
 
     private staticElements: Array<StaticImage> = [];
     private imageTileLayers = [];
 
+    private gridLayer: GridLayer;
+
     constructor(topLeft: Point2D, 
     	widthMapUnits: number, heightMapUnits: number, 
     	readonly ctx: CanvasRenderingContext2D) {
 
     	super(topLeft, widthMapUnits, heightMapUnits);
+
+    	this.gridLayer = new GridLayer(ctx, 1);
     }
 
     addTileLayer(imageTileLayer: ImageTileLayer): void {
@@ -23,18 +28,21 @@ export class ViewCanvas extends Viewport {
     	this.staticElements.push(staticImage);
     }
 
-    private scale(pixelsPerUnit: number, dimension: Point2D, reverse: boolean): void {
-
+    getViewScaling(pixelsPerUnit: number): Point2D {
+    	let dimension = this.getDimensions();
     	let viewScalingX = this.ctx.canvas.clientWidth / dimension.x / pixelsPerUnit;
     	let viewScalingY = this.ctx.canvas.clientHeight / dimension.y / pixelsPerUnit;
+    	return new Point2D(viewScalingX, viewScalingY);
+    }
 
-    	console.log("view scaling " +  viewScalingX, ", " + viewScalingY);
-    	console.log("dimensions: " + dimension);
+    private scale(pixelsPerUnit: number, dimension: Point2D, reverse: boolean): void {
+
+    	let viewScaling = this.getViewScaling(pixelsPerUnit);
 
     	if (reverse){
-    		this.ctx.scale(1/viewScalingX, 1/viewScalingY);
+    		this.ctx.scale(1/viewScaling.x, 1/viewScaling.y);
     	} else {
-    		this.ctx.scale(viewScalingX, viewScalingY);
+    		this.ctx.scale(viewScaling.x, viewScaling.y);
     	}
     	
     }
@@ -55,8 +63,6 @@ export class ViewCanvas extends Viewport {
     			let tileScalingX = value.imageProperties.tileWidthPx / value.widthMapUnits;
     			let tileScalingY = value.imageProperties.tileHeightPx / value.heightMapUnits;
 
-    			console.log("layer scaling is " + tileScalingX + ", " + tileScalingY);
-
     			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, 
     				dimension.x, dimension.y);
 
@@ -67,7 +73,7 @@ export class ViewCanvas extends Viewport {
     				tile.draw(this.ctx, tileX, tileY);
     			}
 
-    			this.scale(256, dimension, true);
+    			this.scale(value.imageProperties.tileWidthPx, dimension, true);
     		}
     	}
 
@@ -86,6 +92,9 @@ export class ViewCanvas extends Viewport {
 
     	}
 
+    	this.scale(256, dimension, false);
+    	this.gridLayer.draw(this.topLeft, dimension.x, dimension.y);
+    	this.scale(256, dimension, true);
     }
 
 }
