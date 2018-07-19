@@ -68,6 +68,18 @@ let manorImage = new StaticImage(6.36, 0.025, .415, .435, 0.11,
 let sackvilleImage = new StaticImage(1.29, -1.28, .46, .42, -0.265, 
 	"images/maps_145_b_4_(2)_f004r[SVC2].jpg", 0.7);
 
+let greatImage = new StaticImage(.19, -0.705, .4, .42, -.51, 
+	"images/maps_145_b_4_(2)_f003r[SVC2].jpg", 0.7);
+
+let lowerormondImage = new StaticImage(0.16, 0.71, .405, .44, -0.205, 
+	"images/maps_145_b_4_(2)_f006r[SVC2].jpg", 0.7);
+
+let stephensImage = new StaticImage(1.73, 4.935, .415, .42, 0.205, 
+	"images/maps_145_b_4_(2)_f020R[SVC2].jpg", 0.7);
+
+let marysImage = new StaticImage(-2, 0, .4, .4, 0, 
+	"images/maps_145_b_4_(2)_f005r[SVC2].jpg", 0.7);
+
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
 	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .4);
 
@@ -79,7 +91,7 @@ function showMap(divName: string, name: string) {
     ctx.canvas.width = ctx.canvas.clientWidth;
     ctx.canvas.height = ctx.canvas.clientHeight;
 
-	let viewCanvas = new ViewCanvas(new Point2D(2, -2), 6, 4, ctx);
+	let viewCanvas = new ViewCanvas(new Point2D(-2,-3), 6, 4, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
 	// viewCanvas.addTileLayer(sentinelLayer);
 	viewCanvas.addTileLayer(liffeySentinelLayer);
@@ -96,8 +108,12 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(customImage);
 	viewCanvas.addStaticElement(manorImage);
 	viewCanvas.addStaticElement(sackvilleImage);
+	viewCanvas.addStaticElement(greatImage);
+	viewCanvas.addStaticElement(lowerormondImage);
+	viewCanvas.addStaticElement(stephensImage);
+	viewCanvas.addStaticElement(marysImage);
 
-	let imageController = new ImageController(viewCanvas, sackvilleImage);
+	let imageController = new ImageController(viewCanvas, marysImage);
 
 	viewCanvas.draw();
 
