@@ -11,21 +11,33 @@ export class ZoomController {
 	private zoom = 1;
 
     constructor(viewCanvas: ViewCanvas, readonly zoomIn: HTMLElement, readonly zoomOut: HTMLElement) {
-    	zoomIn.addEventListener("click", (e:Event) => this.clicked(e, viewCanvas, .95));
-    	zoomOut.addEventListener("click", (e:Event) => this.clicked(e, viewCanvas, 1.05));
+    	zoomIn.addEventListener("click", (e:Event) => this.clicked(e as MouseEvent, viewCanvas, .95));
+    	zoomOut.addEventListener("click", (e:Event) => this.clicked(e as MouseEvent, viewCanvas, 1.05));
     	viewCanvas.ctx.canvas.addEventListener("dblclick", (e:Event) => 
-    		this.clicked(e, viewCanvas, .75));
+    		this.clicked(e as MouseEvent, viewCanvas, .75));
     }
 
     addZoomListener(zoomListener: ZoomListener){
     	this.listeners.push(zoomListener);
     }
 
-    clicked(event: Event, viewCanvas: ViewCanvas, by: number) {
+    clicked(event: MouseEvent, viewCanvas: ViewCanvas, by: number) {
     	console.log("clicked" + event.target + ", " + event.type);
 
-    	viewCanvas.zoomView(by);
     	console.log("listeners " + this.listeners.length);
+
+        switch(event.type){
+            case "dblclick":
+                let canvas = viewCanvas.ctx.canvas;
+                //TODO how to find relative points?
+                let xRel = event.clientX / (canvas.clientWidth - canvas.clientLeft);
+                let yRel = (event.clientY - canvas.clientTop) / canvas.clientHeight;
+                console.log("centring " + xRel + ", " + yRel);
+                viewCanvas.zoomAbout(xRel, yRel, by);
+                break;
+            default:
+                viewCanvas.zoomView(by);
+        }
 
     	this.zoom = this.zoom * by;
     	for (let value of this.listeners){

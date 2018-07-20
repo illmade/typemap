@@ -77,7 +77,7 @@ let lowerormondImage = new StaticImage(0.16, 0.71, .405, .44, -0.205,
 let stephensImage = new StaticImage(1.73, 4.935, .415, .42, 0.205, 
 	"images/maps_145_b_4_(2)_f020R[SVC2].jpg", 0.7);
 
-let marysImage = new StaticImage(-2, 0, .4, .4, 0, 
+let marysImage = new StaticImage(-1.055, 0.985, .43, .435, -0.21, 
 	"images/maps_145_b_4_(2)_f005r[SVC2].jpg", 0.7);
 
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
@@ -88,8 +88,6 @@ function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
 
     var ctx = canvas.getContext('2d');
-    ctx.canvas.width = ctx.canvas.clientWidth;
-    ctx.canvas.height = ctx.canvas.clientHeight;
 
 	let viewCanvas = new ViewCanvas(new Point2D(-2,-3), 6, 4, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
@@ -115,8 +113,6 @@ function showMap(divName: string, name: string) {
 
 	let imageController = new ImageController(viewCanvas, marysImage);
 
-	viewCanvas.draw();
-
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");
 
@@ -124,6 +120,8 @@ function showMap(divName: string, name: string) {
 	let canvasControl = new ZoomController(viewCanvas, plus, minus);
 
 	canvasControl.addZoomListener(panControl);
+
+	viewCanvas.draw();
 }
 
 function show(){

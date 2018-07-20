@@ -41,6 +41,7 @@ export class ImageTile extends CanvasTile {
 		}
 		else {
 			this.img.onload = (event) => {
+				this.img.crossOrigin = "Anonymous";
 				this.drawImage(ctx, canvasX, canvasY);
 			};
 		}
@@ -91,6 +92,7 @@ export class StaticImage {
 		}
 		else {
 			this.img.onload = (event) => {
+				this.img.crossOrigin = "Anonymous";
 				this.drawImage(ctx, canvasX, canvasY);
 			};
 		}

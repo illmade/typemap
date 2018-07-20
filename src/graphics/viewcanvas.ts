@@ -11,13 +11,34 @@ export class ViewCanvas extends Viewport {
 
     private gridLayer: GridLayer;
 
+    private offscreen: CanvasRenderingContext2D;
+    private width: number;
+    private height: number;
+
     constructor(topLeft: Point2D, 
     	widthMapUnits: number, heightMapUnits: number, 
-    	readonly ctx: CanvasRenderingContext2D) {
+    	private ctx: CanvasRenderingContext2D) {
 
     	super(topLeft, widthMapUnits, heightMapUnits);
 
-    	this.gridLayer = new GridLayer(ctx, 1);
+        this.width = ctx.canvas.clientWidth;
+        this.height = ctx.canvas.clientHeight;
+
+        this.ctx.canvas.width = this.width;
+        this.ctx.canvas.height = this.height;
+
+        console.log("onscreen " + this.ctx.canvas.width + ", " + this.ctx.canvas.height);
+
+        //const c = document.createElement("canvas");
+        const c = <HTMLCanvasElement>document.getElementById("offscreen");
+        c.width = this.width;
+        c.height = this.height;
+
+        this.offscreen = <CanvasRenderingContext2D>c.getContext("2d");
+
+        console.log("offscreen " + this.ctx.canvas.clientWidth);
+
+    	this.gridLayer = new GridLayer(this.ctx, 1);
     }
 
     addTileLayer(imageTileLayer: ImageTileLayer): void {
@@ -50,10 +71,9 @@ export class ViewCanvas extends Viewport {
     draw(): void {
     	let dimension = this.getDimensions();
 
-    	let width = this.ctx.canvas.clientWidth;
-    	let height = this.ctx.canvas.clientHeight;
+        let localContext = this.ctx;
 
-    	this.ctx.clearRect(0, 0, width, height);
+    	localContext.clearRect(0, 0, this.width, this.height);
 
     	for (let value of this.imageTileLayers){
     		if (value.imageProperties.visible) {
@@ -70,7 +90,7 @@ export class ViewCanvas extends Viewport {
     				var tileX = (tile.xIndex - this.topLeft.x) * tileScalingX;
     				var tileY = (tile.yIndex - this.topLeft.y) * tileScalingY;
 
-    				tile.draw(this.ctx, tileX, tileY);
+    				tile.draw(localContext, tileX, tileY);
     			}
 
     			this.scale(value.imageProperties.tileWidthPx, dimension, true);
@@ -87,7 +107,7 @@ export class ViewCanvas extends Viewport {
     		let imageX = (value.xIndex - this.topLeft.x) * tileScalingX;
     		let imageY = (value.yIndex - this.topLeft.y) * tileScalingY;
 
-    		value.draw(this.ctx, imageX, imageY);
+    		value.draw(localContext, imageX, imageY);
     		this.scale(256, dimension, true);
 
     	}
@@ -95,6 +115,25 @@ export class ViewCanvas extends Viewport {
     	this.scale(256, dimension, false);
     	this.gridLayer.draw(this.topLeft, dimension.x, dimension.y);
     	this.scale(256, dimension, true);
+
+        // let imageData: ImageData = localContext.getImageData(0, 0, this.width, this.height);
+
+        // this.ctx.clearRect(0, 0, this.width, this.height);
+        // console.log("image data ", imageData);
+        // this.ctx.putImageData(imageData, 0, 0);
+
+        this.drawCentre(this.ctx);
+
+    }
+
+    drawCentre(context: CanvasRenderingContext2D){
+        context.beginPath();
+        context.strokeStyle = "red";
+        context.moveTo(this.width/2, 0);
+        context.lineTo(this.width/2, this.height);
+        context.moveTo(0, this.height/2);
+        context.lineTo(this.width, this.height/2);
+        context.stroke();
     }
 
 }
