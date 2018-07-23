@@ -80,8 +80,32 @@ let stephensImage = new StaticImage(1.73, 4.935, .415, .42, 0.205,
 let marysImage = new StaticImage(-1.055, 0.985, .43, .435, -0.21, 
 	"images/maps_145_b_4_(2)_f005r[SVC2].jpg", 0.7);
 
+let crossPoddle = new StaticImage(-2.846, 6.125, .199, .205, -0.025, 
+	"images/wsc-maps-433-2.jpg", 0.7);
+
+let patricksImage = new StaticImage(-2.27, 5.95, .4, .4, 0.035, 
+	"images/wsc-maps-184-1-front.jpg", 0.6);
+
+let clonmelImage = new StaticImage(1.845, 8.12, .83, .83, -2.725, 
+	"images/wsc-maps-467-02.png", 0.7);
+
+let broadstoneImage = new StaticImage(-2.61, -0.055, 1.455, 1.455, 1.565, 
+	"images/wsc-maps-072.png", 0.7);
+
+let parliamentImage = new StaticImage(-0.9, 2.67, .5, .5, -3.32, 
+	"images/wsc-maps-088-1.png", 0.7);
+
+let cutpurseImage = new StaticImage(-3.85, 3.425, .55, .59, -0.059, 
+	"images/wsc-maps-106-1.jpg", 0.7);
+
+let cutpatrickImage = new StaticImage(-2.98, 4.32, 1.53, 1.53, -0.025, 
+	"images/WSC-Maps-757.png", 0.7);
+
+let thingImage = new StaticImage(-2.5, 3.6, 1.22, 1.16, 0, 
+	"images/IMG_0646.png", 0.4);
+
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
-	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .4);
+	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .5);
 
 
 function showMap(divName: string, name: string) {
@@ -89,13 +113,17 @@ function showMap(divName: string, name: string) {
 
     var ctx = canvas.getContext('2d');
 
-	let viewCanvas = new ViewCanvas(new Point2D(-2,-3), 6, 4, ctx);
+	let viewCanvas = new ViewCanvas(new Point2D(-4,4), 9, 6, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
 	// viewCanvas.addTileLayer(sentinelLayer);
 	viewCanvas.addTileLayer(liffeySentinelLayer);
 	viewCanvas.addTileLayer(liffeyLabelLayer);
 
 	viewCanvas.addStaticElement(totalImage);
+	viewCanvas.addStaticElement(broadstoneImage);
+	viewCanvas.addStaticElement(parliamentImage);
+	viewCanvas.addStaticElement(cutpurseImage);
+	viewCanvas.addStaticElement(cutpatrickImage);
 	viewCanvas.addStaticElement(dolierImage);
 	viewCanvas.addStaticElement(trinityImage);
 	viewCanvas.addStaticElement(poolbegImage);
@@ -110,8 +138,12 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(lowerormondImage);
 	viewCanvas.addStaticElement(stephensImage);
 	viewCanvas.addStaticElement(marysImage);
+	viewCanvas.addStaticElement(patricksImage);
+	viewCanvas.addStaticElement(crossPoddle);
+	viewCanvas.addStaticElement(clonmelImage);
+	viewCanvas.addStaticElement(thingImage);
 
-	let imageController = new ImageController(viewCanvas, marysImage);
+	let imageController = new ImageController(viewCanvas, thingImage);
 
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");

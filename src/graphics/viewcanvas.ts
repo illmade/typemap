@@ -17,7 +17,7 @@ export class ViewCanvas extends Viewport {
 
     constructor(topLeft: Point2D, 
     	widthMapUnits: number, heightMapUnits: number, 
-    	private ctx: CanvasRenderingContext2D) {
+    	public ctx: CanvasRenderingContext2D) {
 
     	super(topLeft, widthMapUnits, heightMapUnits);
 
