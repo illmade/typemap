@@ -27,6 +27,7 @@ liffeyLayerProperties.tileDir = "images/liffey/";
 
 let liffeyLabelLayerProperties = new ImageStruct();
 liffeyLabelLayerProperties.suffix = "liffey.png";
+liffeyLabelLayerProperties.opacity = 1;
 liffeyLabelLayerProperties.tileDir = "images/liffey/";
 liffeyLabelLayerProperties.visible = true;
 
@@ -57,7 +58,7 @@ let lowerabbeyImage = new StaticImage(1.295, 0.3776, .425, .435, -.23,
 	"images/maps_145_b_4_(2)_f007r[SVC2].jpg", 0.7);
 
 let dameImage = new StaticImage(0.98, 2.315, .41, .428, -0.095, 
-	"images/maps_145_b_4_(2)_f016r_2[SVC2].jpg", 0.7);
+	"images/maps_145_b_4_(2)_f016r_2[SVC2].png", 0.7);
 
 let customImage = new StaticImage(5.21, -.245, .42, .44, 0.03, 
 	"images/maps_145_b_4_(2)_f010r_2[SVC2].jpg", 0.7);
@@ -80,6 +81,9 @@ let stephensImage = new StaticImage(1.73, 4.935, .415, .42, 0.205,
 let marysImage = new StaticImage(-1.055, 0.985, .43, .435, -0.21, 
 	"images/maps_145_b_4_(2)_f005r[SVC2].jpg", 0.7);
 
+let steamImage = new StaticImage(8.145, 0.265, .815, .92, 0.12, 
+	"images/maps_145_b_4_(2)_f012r_1[SVC2].jpg", 0.7);
+
 let crossPoddle = new StaticImage(-2.846, 6.125, .199, .205, -0.025, 
 	"images/wsc-maps-433-2.jpg", 0.7);
 
@@ -95,41 +99,52 @@ let broadstoneImage = new StaticImage(-2.61, -0.055, 1.455, 1.455, 1.565,
 let parliamentImage = new StaticImage(-0.9, 2.67, .5, .5, -3.32, 
 	"images/wsc-maps-088-1.png", 0.7);
 
-let cutpurseImage = new StaticImage(-3.85, 3.425, .55, .59, -0.059, 
+let cutpurseImage = new StaticImage(-3.885, 3.43, .535, .545, -0.074, 
 	"images/wsc-maps-106-1.jpg", 0.7);
 
 let cutpatrickImage = new StaticImage(-2.98, 4.32, 1.53, 1.53, -0.025, 
 	"images/WSC-Maps-757.png", 0.7);
 
+let cutpatrickOverlayImage = new StaticImage(-2.98, 4.32, 1.53, 1.53, -0.025, 
+	"images/WSC-Maps-757_overlay.png", 0.7);
+
 let thingImage = new StaticImage(-2.5, 3.6, 1.22, 1.16, 0, 
 	"images/IMG_0646.png", 0.4);
+
+let grandImage = new StaticImage(0.755, 3.2, .6, .6, 1.235, "images/wsc-maps-334.png", 0.4);
 
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
 	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .5);
 
+let totalOverlayImage = new StaticImage(4.45, -1.84, 3.893, 3.829, 0, 
+	"images/maps_145_b_4_(2)_f001r[SVC2].png", .5);
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
 
     var ctx = canvas.getContext('2d');
 
-	let viewCanvas = new ViewCanvas(new Point2D(-4,4), 9, 6, ctx);
+	let viewCanvas = new ViewCanvas(new Point2D(0,0), 9, 6, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
 	// viewCanvas.addTileLayer(sentinelLayer);
-	viewCanvas.addTileLayer(liffeySentinelLayer);
+	//viewCanvas.addTileLayer(liffeySentinelLayer);
 	viewCanvas.addTileLayer(liffeyLabelLayer);
 
 	viewCanvas.addStaticElement(totalImage);
+	viewCanvas.addStaticElement(totalOverlayImage);
 	viewCanvas.addStaticElement(broadstoneImage);
 	viewCanvas.addStaticElement(parliamentImage);
 	viewCanvas.addStaticElement(cutpurseImage);
-	viewCanvas.addStaticElement(cutpatrickImage);
+	viewCanvas.addStaticElement(grandImage);
+	//viewCanvas.addStaticElement(cutpatrickImage);
+	viewCanvas.addStaticElement(cutpatrickOverlayImage);
 	viewCanvas.addStaticElement(dolierImage);
 	viewCanvas.addStaticElement(trinityImage);
 	viewCanvas.addStaticElement(poolbegImage);
 	viewCanvas.addStaticElement(abbeyImage);
 	viewCanvas.addStaticElement(lowerabbeyImage);
 	viewCanvas.addStaticElement(busarasImage);
+	viewCanvas.addStaticElement(steamImage);
 	viewCanvas.addStaticElement(dameImage);
 	viewCanvas.addStaticElement(customImage);
 	viewCanvas.addStaticElement(manorImage);
@@ -139,11 +154,11 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(stephensImage);
 	viewCanvas.addStaticElement(marysImage);
 	viewCanvas.addStaticElement(patricksImage);
-	viewCanvas.addStaticElement(crossPoddle);
+	//viewCanvas.addStaticElement(crossPoddle);
 	viewCanvas.addStaticElement(clonmelImage);
 	viewCanvas.addStaticElement(thingImage);
 
-	let imageController = new ImageController(viewCanvas, thingImage);
+	let imageController = new ImageController(viewCanvas, totalOverlayImage);
 
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");

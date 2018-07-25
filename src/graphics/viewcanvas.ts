@@ -56,14 +56,15 @@ export class ViewCanvas extends Viewport {
     	return new Point2D(viewScalingX, viewScalingY);
     }
 
-    private scale(pixelsPerUnit: number, dimension: Point2D, reverse: boolean): void {
+    private scale(ctx: CanvasRenderingContext2D, 
+        pixelsPerUnit: number, dimension: Point2D, reverse: boolean): void {
 
     	let viewScaling = this.getViewScaling(pixelsPerUnit);
 
     	if (reverse){
-    		this.ctx.scale(1/viewScaling.x, 1/viewScaling.y);
+    		ctx.scale(1/viewScaling.x, 1/viewScaling.y);
     	} else {
-    		this.ctx.scale(viewScaling.x, viewScaling.y);
+    		ctx.scale(viewScaling.x, viewScaling.y);
     	}
     	
     }
@@ -71,14 +72,16 @@ export class ViewCanvas extends Viewport {
     draw(): void {
     	let dimension = this.getDimensions();
 
-        let localContext = this.ctx;
+        let localContext = this.offscreen;
 
     	localContext.clearRect(0, 0, this.width, this.height);
 
     	for (let value of this.imageTileLayers){
     		if (value.imageProperties.visible) {
 
-    			this.scale(value.imageProperties.tileWidthPx, dimension, false);
+                localContext.globalAlpha = value.imageProperties.opacity;
+
+    			this.scale(localContext, value.imageProperties.tileWidthPx, dimension, false);
 
     			let tileScalingX = value.imageProperties.tileWidthPx / value.widthMapUnits;
     			let tileScalingY = value.imageProperties.tileHeightPx / value.heightMapUnits;
@@ -93,7 +96,8 @@ export class ViewCanvas extends Viewport {
     				tile.draw(localContext, tileX, tileY);
     			}
 
-    			this.scale(value.imageProperties.tileWidthPx, dimension, true);
+    			this.scale(localContext, value.imageProperties.tileWidthPx, dimension, true);
+                localContext.globalAlpha = 1;
     		}
     	}
 
@@ -102,25 +106,25 @@ export class ViewCanvas extends Viewport {
 			let tileScalingX = 256;
 			let tileScalingY = 256;
 
-    		this.scale(256, dimension, false);
+    		this.scale(localContext, 256, dimension, false);
 
     		let imageX = (value.xIndex - this.topLeft.x) * tileScalingX;
     		let imageY = (value.yIndex - this.topLeft.y) * tileScalingY;
 
     		value.draw(localContext, imageX, imageY);
-    		this.scale(256, dimension, true);
+    		this.scale(localContext, 256, dimension, true);
 
     	}
 
-    	this.scale(256, dimension, false);
+    	this.scale(localContext, 256, dimension, false);
     	this.gridLayer.draw(this.topLeft, dimension.x, dimension.y);
-    	this.scale(256, dimension, true);
+    	this.scale(localContext, 256, dimension, true);
 
-        // let imageData: ImageData = localContext.getImageData(0, 0, this.width, this.height);
+        let imageData: ImageData = localContext.getImageData(0, 0, this.width, this.height);
 
-        // this.ctx.clearRect(0, 0, this.width, this.height);
+        this.ctx.clearRect(0, 0, this.width, this.height);
         // console.log("image data ", imageData);
-        // this.ctx.putImageData(imageData, 0, 0);
+        this.ctx.putImageData(imageData, 0, 0);
 
         this.drawCentre(this.ctx);
 

@@ -18,6 +18,7 @@ export class GridLayer {
 		let minX = Math.floor(topLeft.x);
 		let minY = Math.floor(topLeft.y);
 
+		this.ctx.globalAlpha = 0.5;
 		this.ctx.translate(-256 * topLeft.x, -256 * topLeft.y);
 		//console.log("mins " + width + ", " + height);
 
@@ -59,6 +60,7 @@ export class GridLayer {
 		}
 		this.ctx.stroke();
 		this.ctx.translate(256 * topLeft.x, 256 * topLeft.y);
+		this.ctx.globalAlpha = 1;
 	}
 
 

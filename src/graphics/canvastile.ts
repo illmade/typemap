@@ -14,6 +14,7 @@ export class ImageStruct {
 	suffix: string = "";
 	tileDir: string = "images/";
 	visible: boolean = true;
+	opacity: number = 0.7;
 	tileWidthPx: number = 256;
 	tileHeightPx: number = 256;
 	widthMapUnits: number = 1;
