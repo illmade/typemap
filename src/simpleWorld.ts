@@ -42,6 +42,9 @@ let liffeyLabelLayer = new ImageTileLayer(liffeyLabelLayerProperties);
 let dolierImage = new StaticImage(2.24, 1.87, .43, .43, -0.06, 
 	"images/maps_145_b_4_(2)_f017R[SVC2].jpg", .7);
 
+let maryImage = new StaticImage(-.96, -.59, .41, .42, -0.325, 
+	"images/maps_145_b_4_(2)_f002r_2[SVC2] (1).png", 0.7);
+
 let trinityImage = new StaticImage(1.99, 3.59, .43, .43, 0.15, 
 	"images/maps_145_b_4_(2)_f019R[SVC2].jpg", .7);
 
@@ -78,11 +81,20 @@ let lowerormondImage = new StaticImage(0.16, 0.71, .405, .44, -0.205,
 let stephensImage = new StaticImage(1.73, 4.935, .415, .42, 0.205, 
 	"images/maps_145_b_4_(2)_f020R[SVC2].jpg", 0.7);
 
-let marysImage = new StaticImage(-1.055, 0.985, .43, .435, -0.21, 
+let stmarysImage = new StaticImage(-1.055, 1.02, .43, .415, -0.21, 
 	"images/maps_145_b_4_(2)_f005r[SVC2].jpg", 0.7);
 
 let steamImage = new StaticImage(8.145, 0.265, .815, .92, 0.12, 
 	"images/maps_145_b_4_(2)_f012r_1[SVC2].jpg", 0.7);
+
+let fifteenImage = new StaticImage(-4, 2.7, 0.4, .4, -1.4, 
+	"images/maps_145_b_4_(2)_f015r_2[SVC2].png", 0.7);
+
+let henriettaImage = new StaticImage(-2.355, -2.43, 0.61, 0.61, 0.05, 
+	"images/henrietta.png", 0.7);
+
+let fourcourtsImage = new StaticImage(-3.28, 1.77, 0.55, 0.55, -0.03, 
+	"images/fourcourts.png", 1);
 
 let crossPoddle = new StaticImage(-2.846, 6.125, .199, .205, -0.025, 
 	"images/wsc-maps-433-2.jpg", 0.7);
@@ -111,6 +123,12 @@ let cutpatrickOverlayImage = new StaticImage(-2.98, 4.32, 1.53, 1.53, -0.025,
 let thingImage = new StaticImage(-2.5, 3.6, 1.22, 1.16, 0, 
 	"images/IMG_0646.png", 0.4);
 
+let bluecoatImage = new StaticImage(-3.435, -1.995, 2.39, 2.355, 0, 
+	"images/bluecoat.png", 0.4);
+
+let castleImage = new StaticImage(-3.51, 2.375, 1.985, 1.995, 0, 
+	"images/castle.png", 0.4);
+
 let grandImage = new StaticImage(0.755, 3.2, .6, .6, 1.235, "images/wsc-maps-334.png", 0.4);
 
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
@@ -124,20 +142,22 @@ function showMap(divName: string, name: string) {
 
     var ctx = canvas.getContext('2d');
 
-	let viewCanvas = new ViewCanvas(new Point2D(0,0), 9, 6, ctx);
+	let viewCanvas = new ViewCanvas(new Point2D(-8,-6), 9, 6, false, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
 	// viewCanvas.addTileLayer(sentinelLayer);
 	//viewCanvas.addTileLayer(liffeySentinelLayer);
-	viewCanvas.addTileLayer(liffeyLabelLayer);
+	//viewCanvas.addTileLayer(liffeyLabelLayer);
 
-	viewCanvas.addStaticElement(totalImage);
-	viewCanvas.addStaticElement(totalOverlayImage);
-	viewCanvas.addStaticElement(broadstoneImage);
+	//viewCanvas.addStaticElement(totalImage);
+	//viewCanvas.addStaticElement(totalOverlayImage);
+	//viewCanvas.addStaticElement(broadstoneImage);
 	viewCanvas.addStaticElement(parliamentImage);
 	viewCanvas.addStaticElement(cutpurseImage);
 	viewCanvas.addStaticElement(grandImage);
 	//viewCanvas.addStaticElement(cutpatrickImage);
 	viewCanvas.addStaticElement(cutpatrickOverlayImage);
+
+	viewCanvas.addStaticElement(maryImage);
 	viewCanvas.addStaticElement(dolierImage);
 	viewCanvas.addStaticElement(trinityImage);
 	viewCanvas.addStaticElement(poolbegImage);
@@ -152,13 +172,18 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(greatImage);
 	viewCanvas.addStaticElement(lowerormondImage);
 	viewCanvas.addStaticElement(stephensImage);
-	viewCanvas.addStaticElement(marysImage);
+	viewCanvas.addStaticElement(stmarysImage);
 	viewCanvas.addStaticElement(patricksImage);
 	//viewCanvas.addStaticElement(crossPoddle);
 	viewCanvas.addStaticElement(clonmelImage);
 	viewCanvas.addStaticElement(thingImage);
+	viewCanvas.addStaticElement(bluecoatImage);
+	viewCanvas.addStaticElement(castleImage);
+	viewCanvas.addStaticElement(fifteenImage);
+	viewCanvas.addStaticElement(henriettaImage);
+	viewCanvas.addStaticElement(fourcourtsImage);
 
-	let imageController = new ImageController(viewCanvas, totalOverlayImage);
+	let imageController = new ImageController(viewCanvas, fourcourtsImage);
 
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");

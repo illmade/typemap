@@ -16,7 +16,7 @@ export class ViewCanvas extends Viewport {
     private height: number;
 
     constructor(topLeft: Point2D, 
-    	widthMapUnits: number, heightMapUnits: number, 
+    	widthMapUnits: number, heightMapUnits: number, private grid: boolean,
     	public ctx: CanvasRenderingContext2D) {
 
     	super(topLeft, widthMapUnits, heightMapUnits);
@@ -36,9 +36,8 @@ export class ViewCanvas extends Viewport {
 
         this.offscreen = <CanvasRenderingContext2D>c.getContext("2d");
 
-        console.log("offscreen " + this.ctx.canvas.clientWidth);
-
-    	this.gridLayer = new GridLayer(this.ctx, 1);
+        if (grid)
+    	    this.gridLayer = new GridLayer(this.offscreen, 1);
     }
 
     addTileLayer(imageTileLayer: ImageTileLayer): void {
@@ -116,10 +115,12 @@ export class ViewCanvas extends Viewport {
 
     	}
 
-    	this.scale(localContext, 256, dimension, false);
-    	this.gridLayer.draw(this.topLeft, dimension.x, dimension.y);
-    	this.scale(localContext, 256, dimension, true);
-
+        if (this.grid){
+            this.scale(localContext, 256, dimension, false);
+            this.gridLayer.draw(this.topLeft, dimension.x, dimension.y);
+            this.scale(localContext, 256, dimension, true);
+        }
+    	
         let imageData: ImageData = localContext.getImageData(0, 0, this.width, this.height);
 
         this.ctx.clearRect(0, 0, this.width, this.height);
@@ -132,12 +133,14 @@ export class ViewCanvas extends Viewport {
 
     drawCentre(context: CanvasRenderingContext2D){
         context.beginPath();
+        context.globalAlpha = 0.3;
         context.strokeStyle = "red";
-        context.moveTo(this.width/2, 0);
-        context.lineTo(this.width/2, this.height);
-        context.moveTo(0, this.height/2);
-        context.lineTo(this.width, this.height/2);
+        context.moveTo(this.width/2, 6/16*this.height);
+        context.lineTo(this.width/2, 10/16*this.height);
+        context.moveTo(7/16*this.width, this.height/2);
+        context.lineTo(9/16*this.width, this.height/2);
         context.stroke();
+        context.globalAlpha = 1;
     }
 
 }

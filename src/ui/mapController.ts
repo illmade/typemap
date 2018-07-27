@@ -46,6 +46,7 @@ export class ZoomController extends MouseController {
     }
 
     clicked(event: MouseEvent, viewCanvas: ViewCanvas, by: number) {
+
     	console.log("clicked" + event.target + ", " + event.type);
 
     	console.log("listeners " + this.listeners.length);
@@ -53,6 +54,10 @@ export class ZoomController extends MouseController {
         switch(event.type){
             case "dblclick":
                 let canvas = viewCanvas.ctx.canvas;
+
+                if  (event.ctrlKey) {
+                    by = 1 / by;
+                }
                 
                 let mXY = this.mousePosition(event, viewCanvas.ctx.canvas);
                 
