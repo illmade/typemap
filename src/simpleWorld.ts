@@ -78,7 +78,7 @@ let greatImage = new StaticImage(.19, -0.705, .4, .42, -.51,
 let lowerormondImage = new StaticImage(0.16, 0.71, .405, .44, -0.205, 
 	"images/maps_145_b_4_(2)_f006r[SVC2].jpg", 0.7);
 
-let stephensImage = new StaticImage(1.73, 4.935, .415, .42, 0.205, 
+let stephensImage = new StaticImage(1.725, 4.945, .205, .215, 0.205, 
 	"images/maps_145_b_4_(2)_f020R[SVC2].jpg", 0.7);
 
 let stmarysImage = new StaticImage(-1.055, 1.02, .43, .415, -0.21, 
@@ -95,6 +95,24 @@ let henriettaImage = new StaticImage(-2.355, -2.43, 0.61, 0.61, 0.05,
 
 let fourcourtsImage = new StaticImage(-3.28, 1.77, 0.55, 0.55, -0.03, 
 	"images/fourcourts.png", 1);
+
+let michansImage = new StaticImage(-3.88, 0.7, 0.32, 0.32, -0.03, 
+	"images/michans.png", 1);
+
+let bluecoatsImage = new StaticImage(-6.619, -0.165, 0.4, 0.4, -0.05, 
+	"images/bluecoats.png", 0.7);
+
+let hughlaneImage = new StaticImage(0.11, -3.27, 0.4, 0.4, -0.225, 
+	"images/hughlane.png", 0.7);
+
+let mountjoyImage = new StaticImage(3.335, -5.135, 0.4, 0.4, 0.17, 
+	"images/mountjoy.png", 0.7);
+
+let customsImage = new StaticImage(4.39, 0.32, 0.43, 0.43, -0.05, 
+	"images/customshouse.png", 0.7);
+
+let libertyImage = new StaticImage(3.43, 0.009, 0.43, 0.43, -0.05, 
+	"images/liberty.png", 0.7);
 
 let crossPoddle = new StaticImage(-2.846, 6.125, .199, .205, -0.025, 
 	"images/wsc-maps-433-2.jpg", 0.7);
@@ -126,6 +144,15 @@ let thingImage = new StaticImage(-2.5, 3.6, 1.22, 1.16, 0,
 let bluecoatImage = new StaticImage(-3.435, -1.995, 2.39, 2.355, 0, 
 	"images/bluecoat.png", 0.4);
 
+let rutlandImage = new StaticImage(2.32, -0.77, 2.015, 2.015, 0, 
+	"images/rutland.png", 0.7);
+
+let materImage = new StaticImage(2.16, -5.42, 2.015, 2.015, 0, 
+	"images/mater.png", 0.7);
+
+let townsendImage = new StaticImage(4.575, 3.995, 2.035, 2.035, 0, 
+	"images/townsend.png", 0.7);
+
 let castleImage = new StaticImage(-3.51, 2.375, 1.985, 1.995, 0, 
 	"images/castle.png", 0.4);
 
@@ -154,10 +181,14 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(parliamentImage);
 	viewCanvas.addStaticElement(cutpurseImage);
 	viewCanvas.addStaticElement(grandImage);
+	viewCanvas.addStaticElement(rutlandImage);
+	viewCanvas.addStaticElement(materImage);
+	viewCanvas.addStaticElement(townsendImage);
 	//viewCanvas.addStaticElement(cutpatrickImage);
 	viewCanvas.addStaticElement(cutpatrickOverlayImage);
 
-	viewCanvas.addStaticElement(maryImage);
+	viewCanvas.addStaticElement(maryImage);	
+	viewCanvas.addStaticElement(stephensImage);
 	viewCanvas.addStaticElement(dolierImage);
 	viewCanvas.addStaticElement(trinityImage);
 	viewCanvas.addStaticElement(poolbegImage);
@@ -171,7 +202,6 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(sackvilleImage);
 	viewCanvas.addStaticElement(greatImage);
 	viewCanvas.addStaticElement(lowerormondImage);
-	viewCanvas.addStaticElement(stephensImage);
 	viewCanvas.addStaticElement(stmarysImage);
 	viewCanvas.addStaticElement(patricksImage);
 	//viewCanvas.addStaticElement(crossPoddle);
@@ -180,10 +210,17 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(bluecoatImage);
 	viewCanvas.addStaticElement(castleImage);
 	viewCanvas.addStaticElement(fifteenImage);
+
 	viewCanvas.addStaticElement(henriettaImage);
 	viewCanvas.addStaticElement(fourcourtsImage);
+	viewCanvas.addStaticElement(bluecoatsImage);
+	viewCanvas.addStaticElement(hughlaneImage);
+	viewCanvas.addStaticElement(mountjoyImage);
+	viewCanvas.addStaticElement(customsImage);
+	viewCanvas.addStaticElement(libertyImage);
+	viewCanvas.addStaticElement(michansImage);
 
-	let imageController = new ImageController(viewCanvas, fourcourtsImage);
+	let imageController = new ImageController(viewCanvas, michansImage);
 
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");

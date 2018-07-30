@@ -95,12 +95,32 @@ export class PanController extends ZoomListener {
             this.dragged(e as MouseEvent, viewCanvas));
         dragElement.addEventListener("mouseleave", (e:Event) => 
             this.record = false);
+        viewCanvas.ctx.canvas.addEventListener("wheel", (e: Event) => 
+            this.wheel(e as WheelEvent, viewCanvas));
     }
 
     zoom(by: number){
     	console.log("zoom by " + by);
     	this.move = this.baseMove / by;
     }
+
+
+    wheel(event: WheelEvent, viewCanvas: ViewCanvas) {
+
+        console.log("wheel" + event.target + ", " + event.type);
+
+        let xDelta = event.deltaX / this.move;
+        let yDelta = event.deltaY / this.move;
+
+        let newTopLeft = new Point2D(viewCanvas.topLeft.x - xDelta, 
+            viewCanvas.topLeft.y - yDelta);
+
+        console.log("topleft " + newTopLeft);
+
+        viewCanvas.moveView(newTopLeft);
+        viewCanvas.draw();
+    }
+
 
     dragged(event: MouseEvent, viewCanvas: ViewCanvas) {
 
