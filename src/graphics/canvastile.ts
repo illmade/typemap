@@ -42,7 +42,6 @@ export class ImageTile extends CanvasTile {
 		}
 		else {
 			this.img.onload = (event) => {
-				this.img.crossOrigin = "Anonymous";
 				this.drawImage(ctx, canvasX, canvasY);
 			};
 		}
@@ -116,6 +115,37 @@ export class ImageTileLayer extends TileLayer {
 	getTile(xUnits: number, yUnits: number): Tile {
 		let imageSrc = this.imageProperties.tileDir + 
 			this.imageProperties.prefix + xUnits + "_" + yUnits + this.imageProperties.suffix;
+		return new ImageTile(xUnits, yUnits, imageSrc);
+	}
+
+}
+
+export class SlippyTileLayer extends TileLayer {
+
+	readonly imageProperties: ImageStruct;
+	private baseX = 0;
+	private baseY = 0;
+
+	constructor(imageProperties: ImageStruct, private zoom: number,
+		private xOffset: number, private yOffset: number) {
+
+		super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
+		this.imageProperties = imageProperties;
+	}
+
+	private offsets(){
+		let zoomExp = Math.pow(2, this.zoom);
+		this.baseX = xOffset / zoomExp;
+		this.baseY = yOffset / zoomExp;
+	}
+
+	/**
+	  leave caching up to the browser
+	**/
+	getTile(xUnits: number, yUnits: number): Tile {
+		
+		let imageSrc = this.imageProperties.tileDir + this.zoom + "/" + (this.xOffset+xUnits) + "/" + 
+			 + (this.yOffset+yUnits) + this.imageProperties.suffix;
 		return new ImageTile(xUnits, yUnits, imageSrc);
 	}
 

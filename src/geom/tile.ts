@@ -9,11 +9,17 @@ export abstract class TileLayer {
 
 	getTiles(position: Point2D, xMapUnits: number, yMapUnits: number): Array<Tile> {
 
-		let firstX = Math.floor(position.x / this.widthMapUnits);
-		let lastX = Math.ceil((position.x + xMapUnits)/ this.widthMapUnits);
+		let x = position.x / this.widthMapUnits;
+		let y = position.y / this.heightMapUnits;
 
-		let firstY = Math.floor(position.y / this.heightMapUnits);
-		let lastY = Math.ceil((position.y + yMapUnits)/ this.heightMapUnits);
+		let width = xMapUnits / this.widthMapUnits;
+		let height = yMapUnits / this.heightMapUnits;
+
+		let firstX = Math.floor(x);
+		let lastX = Math.ceil(x) + width;
+
+		let firstY = Math.floor(y);
+		let lastY = Math.ceil(y) + height;
 
 		let tiles = new Array<Tile>();
 

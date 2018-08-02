@@ -1,3 +1,5 @@
 *.class
 *.log
+*.xcf
+/dist/images/qtile/
 /node_modules

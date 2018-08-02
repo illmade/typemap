@@ -107,7 +107,7 @@ export class PanController extends ZoomListener {
 
     wheel(event: WheelEvent, viewCanvas: ViewCanvas) {
 
-        console.log("wheel" + event.target + ", " + event.type);
+        //console.log("wheel" + event.target + ", " + event.type);
 
         let xDelta = event.deltaX / this.move;
         let yDelta = event.deltaY / this.move;
@@ -115,7 +115,7 @@ export class PanController extends ZoomListener {
         let newTopLeft = new Point2D(viewCanvas.topLeft.x - xDelta, 
             viewCanvas.topLeft.y - yDelta);
 
-        console.log("topleft " + newTopLeft);
+        //console.log("topleft " + newTopLeft);
 
         viewCanvas.moveView(newTopLeft);
         viewCanvas.draw();

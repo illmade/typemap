@@ -80,22 +80,32 @@ export class ViewCanvas extends Viewport {
 
                 localContext.globalAlpha = value.imageProperties.opacity;
 
-    			this.scale(localContext, value.imageProperties.tileWidthPx, dimension, false);
+                let scaledTileWidth = value.imageProperties.tileWidthPx / 
+                    value.imageProperties.widthMapUnits;
 
-    			let tileScalingX = value.imageProperties.tileWidthPx / value.widthMapUnits;
-    			let tileScalingY = value.imageProperties.tileHeightPx / value.heightMapUnits;
+                let scaledTileHeight = value.imageProperties.tileHeightPx / 
+                    value.imageProperties.heightMapUnits;
 
+    			this.scale(localContext, scaledTileWidth, dimension, false);
+
+                let x = this.topLeft.x / 2;
+                let y = this.topLeft.y / 2;
+                
     			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, 
-    				dimension.x, dimension.y);
+    				dimension.x, 
+                    dimension.y);
 
     			for (let tile of tiles){
-    				var tileX = (tile.xIndex - this.topLeft.x) * tileScalingX;
-    				var tileY = (tile.yIndex - this.topLeft.y) * tileScalingY;
+    				var tileX = 128 + (tile.xIndex - x) * 
+                        value.imageProperties.tileWidthPx;
+    				var tileY = -128 + (tile.yIndex - y) * 
+                        value.imageProperties.tileHeightPx;
 
+                    //console.log("tile draw " + tileX + ", " + tileY);
     				tile.draw(localContext, tileX, tileY);
     			}
 
-    			this.scale(localContext, value.imageProperties.tileWidthPx, dimension, true);
+    			this.scale(localContext, scaledTileWidth, dimension, true);
                 localContext.globalAlpha = 1;
     		}
     	}

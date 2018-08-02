@@ -1,7 +1,7 @@
 import { World2D } from "./geom/world2d";
 import { Viewport } from "./geom/viewport";
 import { Point2D } from "./geom/point2d";
-import { StaticImage, ImageTileLayer, ImageStruct } from "./graphics/canvastile";
+import { StaticImage, ImageTileLayer, ImageStruct, SlippyTileLayer } from "./graphics/canvastile";
 import { ViewCanvas } from "./graphics/viewcanvas";
 import { ZoomController, PanController } from "./ui/mapController";
 import { ImageController } from "./ui/imageController";
@@ -31,6 +31,14 @@ liffeyLabelLayerProperties.opacity = 1;
 liffeyLabelLayerProperties.tileDir = "images/liffey/";
 liffeyLabelLayerProperties.visible = true;
 
+let slippyLayerProperties = new ImageStruct();
+slippyLayerProperties.tileDir = "images/qtile/dublin/";
+slippyLayerProperties.suffix = ".png";
+liffeyLabelLayerProperties.opacity = .4;
+slippyLayerProperties.widthMapUnits = 2;
+slippyLayerProperties.heightMapUnits = 2;
+
+
 // let baseLayer = new ImageTileLayer(layerProperties);
 // let sentinelLayer = new ImageTileLayer(sentinelLayerProperties);
 // let roadLayer = new ImageTileLayer(roadLayerProperties);
@@ -38,6 +46,8 @@ liffeyLabelLayerProperties.visible = true;
 
 let liffeySentinelLayer = new ImageTileLayer(liffeyLayerProperties);
 let liffeyLabelLayer = new ImageTileLayer(liffeyLabelLayerProperties);
+
+let slippyTileLayer = new SlippyTileLayer(slippyLayerProperties, 16, 31628, 21242);
 
 let dolierImage = new StaticImage(2.24, 1.87, .43, .43, -0.06, 
 	"images/maps_145_b_4_(2)_f017R[SVC2].jpg", .7);
@@ -98,6 +108,14 @@ let fourcourtsImage = new StaticImage(-3.28, 1.77, 0.55, 0.55, -0.03,
 
 let michansImage = new StaticImage(-3.88, 0.7, 0.32, 0.32, -0.03, 
 	"images/michans.png", 1);
+
+let thecastleImage = new StaticImage(-0.87, 3.48, 0.48, 0.56, -0.115, 
+	"images/thecastle.png", 1);
+
+let ngirelandImage = new StaticImage(4.58, 4.92, 0.36, 0.46, -0.085, 
+	"images/ngireland.png", 1);
+
+
 
 let bluecoatsImage = new StaticImage(-6.619, -0.165, 0.4, 0.4, -0.05, 
 	"images/bluecoats.png", 0.7);
@@ -172,6 +190,7 @@ function showMap(divName: string, name: string) {
 	let viewCanvas = new ViewCanvas(new Point2D(-8,-6), 9, 6, false, ctx);
 	// viewCanvas.addTileLayer(baseLayer);
 	// viewCanvas.addTileLayer(sentinelLayer);
+	viewCanvas.addTileLayer(slippyTileLayer);
 	//viewCanvas.addTileLayer(liffeySentinelLayer);
 	//viewCanvas.addTileLayer(liffeyLabelLayer);
 
@@ -219,8 +238,10 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(customsImage);
 	viewCanvas.addStaticElement(libertyImage);
 	viewCanvas.addStaticElement(michansImage);
+	viewCanvas.addStaticElement(thecastleImage);
+	viewCanvas.addStaticElement(ngirelandImage);
 
-	let imageController = new ImageController(viewCanvas, michansImage);
+	let imageController = new ImageController(viewCanvas, materImage);
 
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");
