@@ -86,22 +86,23 @@ export class ViewCanvas extends Viewport {
                 let scaledTileHeight = value.imageProperties.tileHeightPx / 
                     value.imageProperties.heightMapUnits;
 
+                console.log("stwh: " + scaledTileWidth + ", " + scaledTileHeight);
     			this.scale(localContext, scaledTileWidth, dimension, false);
 
-                let x = this.topLeft.x / 2;
-                let y = this.topLeft.y / 2;
+                let x = this.topLeft.x / value.imageProperties.widthMapUnits;
+                let y = this.topLeft.y / value.imageProperties.heightMapUnits;
                 
     			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, 
     				dimension.x, 
                     dimension.y);
 
     			for (let tile of tiles){
-    				var tileX = 128 + (tile.xIndex - x) * 
+
+    				var tileX = scaledTileWidth + (tile.xIndex - x) * 
                         value.imageProperties.tileWidthPx;
-    				var tileY = -128 + (tile.yIndex - y) * 
+    				var tileY = -scaledTileHeight + (tile.yIndex - y) * 
                         value.imageProperties.tileHeightPx;
 
-                    //console.log("tile draw " + tileX + ", " + tileY);
     				tile.draw(localContext, tileX, tileY);
     			}
 

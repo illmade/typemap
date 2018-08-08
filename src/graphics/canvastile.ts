@@ -55,7 +55,7 @@ export class StaticImage {
 
 	constructor(public xIndex: number, public yIndex: number, 
 		public scalingX: number, public scalingY: number, public rotation: number, 
-		imageSrc: string, readonly alpha: number) {
+		imageSrc: string, public alpha: number) {
 		
 		this.img = new Image();
 		this.img.src = imageSrc;
@@ -100,13 +100,23 @@ export class StaticImage {
 
 }
 
-export class ImageTileLayer extends TileLayer {
+
+export abstract class ShowTileLayer extends TileLayer {
+	
+	constructor(public imageProperties: ImageStruct){
+		super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
+	}
+
+}
+
+export class ImageTileLayer extends ShowTileLayer {
 
 	readonly imageProperties: ImageStruct;
 
 	constructor(imageProperties: ImageStruct) {
-		super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
-		this.imageProperties = imageProperties;
+		//super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
+		super(imageProperties);
+		//this.imageProperties = imageProperties;
 	}
 
 	/**
@@ -115,12 +125,12 @@ export class ImageTileLayer extends TileLayer {
 	getTile(xUnits: number, yUnits: number): Tile {
 		let imageSrc = this.imageProperties.tileDir + 
 			this.imageProperties.prefix + xUnits + "_" + yUnits + this.imageProperties.suffix;
-		return new ImageTile(xUnits, yUnits, imageSrc);
+		return new ImageTile(xUnits-1, yUnits+1, imageSrc);
 	}
 
 }
 
-export class SlippyTileLayer extends TileLayer {
+export class SlippyTileLayer extends ShowTileLayer {
 
 	readonly imageProperties: ImageStruct;
 	private baseX = 0;
@@ -128,15 +138,15 @@ export class SlippyTileLayer extends TileLayer {
 
 	constructor(imageProperties: ImageStruct, private zoom: number,
 		private xOffset: number, private yOffset: number) {
-
-		super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
-		this.imageProperties = imageProperties;
+		//super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
+		super(imageProperties);
+		//this.imageProperties = imageProperties;
 	}
 
 	private offsets(){
 		let zoomExp = Math.pow(2, this.zoom);
-		this.baseX = xOffset / zoomExp;
-		this.baseY = yOffset / zoomExp;
+		this.baseX = this.xOffset / zoomExp;
+		this.baseY = this.yOffset / zoomExp;
 	}
 
 	/**
