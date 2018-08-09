@@ -116,6 +116,11 @@ let fourcourtsImage = new StaticImage(-3.28, 1.77, 0.55, 0.55, -0.03,
 let michansImage = new StaticImage(-3.88, 0.7, 0.32, 0.32, -0.03, 
 	"images/michans.png", 1);
 
+
+let marketImage = new StaticImage(-3.365, 3.79, 0.3, 0.3, 0.04, 
+	"images/market.png", 0.7);
+
+
 let thecastleImage = new StaticImage(-0.87, 3.48, 0.48, 0.56, -0.115, 
 	"images/thecastle.png", 1);
 
@@ -146,29 +151,35 @@ let patricksImage = new StaticImage(-2.27, 5.95, .4, .4, 0.035,
 let clonmelImage = new StaticImage(1.845, 8.12, .83, .83, -2.725, 
 	"images/wsc-maps-467-02.png", 0.7);
 
-let broadstoneImage = new StaticImage(-2.61, -0.055, .62, .62, 1.565, 
-	"images/wsc-maps-072-m.png", 0.9);
-
-let broadstoneUpImage = new StaticImage(-2.675, -6.23, 1.58, 1.58, 1.615, 
-	"images/wsc-maps-075-m2.png", 0.9);
-
 let parliamentImage = new StaticImage(-0.9, 2.67, .5, .5, -3.32, 
 	"images/wsc-maps-088-1.png", 0.7);
 
 let cutpurseImage = new StaticImage(-3.885, 3.43, .535, .545, -0.074, 
 	"images/wsc-maps-106-1.jpg", 0.7);
 
-let cutpatrickImage = new StaticImage(-2.96, 4.375, .71499, .71499, -0.025, 
-	"images/wsc-maps-757-l.png", 0.7);
 
 let cutpatrickOverlayImage = new StaticImage(-2.98, 4.32, 1.53, 1.53, -0.025, 
 	"images/WSC-Maps-757_overlay.png", 0.7);
 
+let broadstoneImage = new StaticImage(-2.61, -0.055, .62, .62, 1.565, 
+	"images/wsc-maps-072-m.png", 0.9);
+
+let broadstoneUpImage = new StaticImage(-2.675, -6.23, 1.58, 1.58, 1.615, 
+	"images/wsc-maps-075-m2.png", 0.9);
+
+let cutpatrickImage = new StaticImage(-2.96, 4.375, .71499, .71499, -0.025, 
+	"images/wsc-maps-757-l.png", 0.7);
+
 let barracksImage = new StaticImage(-2.11, 2.87, 2.04, 1.945, -0.025, 
-	"images/wsc-maps-155-m.png", 0.7);
+	"images/wsc-maps-155-m.png", 0.4);
 
 let jamesImage = new StaticImage(-9.55, 3.95, .355, .355, -3.46, 
 	"images/wsc-maps-729-m.png", 0.5);
+
+let belloImage = new StaticImage(.995, 11.885, 1.2, 1.2, -2, 
+	"images/wsc-maps-142_m.png", 0.7);
+
+
 
 let thingImage = new StaticImage(-2.5, 3.6, 1.22, 1.16, 0, 
 	"images/IMG_0646.png", 0.4);
@@ -182,11 +193,9 @@ let portoImage = new StaticImage(-1.7, 12.5, 1.52, 1.63, .54,
 let donnyImage = new StaticImage(6, 13.01, 1.345, 1.73, .29, 
 	"images/donny.png", 0.2);
 
-let belloImage = new StaticImage(.995, 11.885, 1.2, 1.2, -2, 
-	"images/wsc-maps-142_m.png", 0.7);
 
-let sixteentenImage = new StaticImage(-2.11, 2.87, 2.04, 1.945, -0.025, 
-	"images/dublin1610.png", 0.7);
+let sixteentenImage = new StaticImage(-1.8, 2.795, .98, 1, .115, 
+	"images/dublin1610.png", 0.2);
 
 let bluecoatImage = new StaticImage(-3.435, -1.995, 2.39, 2.355, 0, 
 	"images/bluecoat.png", 0.4);
@@ -206,7 +215,8 @@ let castleImage = new StaticImage(-3.51, 2.375, 1.985, 1.995, 0,
 let innerDockImage = new StaticImage(9.215, -0.8, 3.455, 3.42, 0, 
 	"images/innerDock.png", 0.4);
 
-let grandImage = new StaticImage(0.755, 3.2, .6, .6, 1.235, "images/wsc-maps-334.png", 0.4);
+let grandImage = new StaticImage(0.755, 3.2, .6, .6, 1.235, 
+	"images/wsc-maps-334.png", 0.4);
 
 let totalImage = new StaticImage(4.485, -1.875, 7.465, 7.35, 0, 
 	"images/maps_145_b_4_(2)_f001r[SVC2].jpg", .3);
@@ -278,13 +288,14 @@ function showMap(divName: string, name: string) {
 	viewCanvas.addStaticElement(thecastleImage);
 	viewCanvas.addStaticElement(ngirelandImage);
 	viewCanvas.addStaticElement(oconnellImage);
+	viewCanvas.addStaticElement(marketImage);
 
 	//viewCanvas.addStaticElement(portoImage);
 	viewCanvas.addStaticElement(donnyImage);
 	viewCanvas.addStaticElement(belloImage);
 	viewCanvas.addStaticElement(sixteentenImage);
 
-	let imageController = new ImageController(viewCanvas, sixteentenImage);
+	let imageController = new ImageController(viewCanvas, marketImage);
 
 	const plus = <HTMLCanvasElement>document.getElementById("plus");
 	const minus = <HTMLCanvasElement>document.getElementById("minus");
