@@ -8,7 +8,12 @@ export abstract class CanvasTile extends Tile {
 
 }
 
-export class ImageStruct {
+export interface DisplayElement {
+	visible: boolean;
+	opacity: number;
+}
+
+export class ImageStruct implements DisplayElement {
 
 	prefix: string = "";
 	suffix: string = "";
@@ -49,13 +54,15 @@ export class ImageTile extends CanvasTile {
 
 }
 
-export class StaticImage {
+export class StaticImage implements DisplayElement {
 
 	private img: HTMLImageElement;
 
+	public visible = true;
+
 	constructor(public xIndex: number, public yIndex: number, 
 		public scalingX: number, public scalingY: number, public rotation: number, 
-		imageSrc: string, public alpha: number) {
+		imageSrc: string, public opacity: number) {
 		
 		this.img = new Image();
 		this.img.src = imageSrc;
@@ -73,7 +80,7 @@ export class StaticImage {
 		ctx.rotate(this.rotation);
 		ctx.scale(this.scalingX, this.scalingY);
 		//console.log("xyScaling " + this.scalingX + ", " + this.scalingY);
-		ctx.globalAlpha = this.alpha;
+		ctx.globalAlpha = this.opacity;
 
 		// ctx.transform(cosX * scalingX, sinX * scalingY, -sinX * scalingX, cosX * scalingY, 
 		// 	canvasX / this.scaling, canvasY / this.scaling);
@@ -101,10 +108,10 @@ export class StaticImage {
 }
 
 
-export abstract class ShowTileLayer extends TileLayer {
+export abstract class ShowTileLayer extends TileLayer implements DisplayElement {
 	
-	constructor(public imageProperties: ImageStruct){
-		super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
+	constructor(widthMapUnits: number, heightMapUnits: number, public visible, public opacity){
+		super(widthMapUnits, heightMapUnits);
 	}
 
 }
@@ -115,8 +122,9 @@ export class ImageTileLayer extends ShowTileLayer {
 
 	constructor(imageProperties: ImageStruct) {
 		//super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
-		super(imageProperties);
-		//this.imageProperties = imageProperties;
+		super(imageProperties.heightMapUnits, imageProperties.heightMapUnits, 
+			imageProperties.visible, imageProperties.opacity);	
+		this.imageProperties = imageProperties;
 	}
 
 	/**
@@ -139,8 +147,9 @@ export class SlippyTileLayer extends ShowTileLayer {
 	constructor(imageProperties: ImageStruct, private zoom: number,
 		private xOffset: number, private yOffset: number) {
 		//super(imageProperties.widthMapUnits, imageProperties.heightMapUnits);
-		super(imageProperties);
-		//this.imageProperties = imageProperties;
+		super(imageProperties.heightMapUnits, imageProperties.heightMapUnits, 
+			imageProperties.visible, imageProperties.opacity);
+		this.imageProperties = imageProperties;
 	}
 
 	private offsets(){

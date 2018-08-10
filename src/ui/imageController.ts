@@ -1,21 +1,23 @@
-import { StaticImage, ShowTileLayer } from "../graphics/canvastile";
+import { StaticImage, DisplayElement } from "../graphics/canvastile";
 import { ViewCanvas } from "../graphics/viewcanvas";
 import { Point2D } from "../geom/point2d";
 
 
 export class LayerController {
 
-    constructor(viewCanvas: ViewCanvas, readonly tileLayer: ShowTileLayer) {
+    public mod: string = "v";
+
+    constructor(viewCanvas: ViewCanvas, readonly layer: DisplayElement) {
         document.addEventListener("keypress", (e:Event) => 
             this.pressed(viewCanvas, e  as KeyboardEvent));
     }
 
     pressed(viewCanvas: ViewCanvas, event: KeyboardEvent) {
-        console.log("pressed layer" + event.target + ", " + event.key);
+        //console.log("pressed layer" + event.target + ", " + event.key);
 
         switch (event.key) {
-            case "v":
-                this.tileLayer.imageProperties.visible = !this.tileLayer.imageProperties.visible;
+            case this.mod:
+                this.layer.visible = !this.layer.visible;
                 viewCanvas.draw();
                 break;
         }
@@ -74,11 +76,11 @@ export class ImageController {
     			viewCanvas.draw();
     			break;
             case "T":
-                this.staticImage.alpha = Math.min(1.0, this.staticImage.alpha + 0.1);
+                this.staticImage.opacity = Math.min(1.0, this.staticImage.opacity + 0.1);
                 viewCanvas.draw();
                 break;
             case "t":
-                this.staticImage.alpha = Math.max(0, this.staticImage.alpha - 0.1);
+                this.staticImage.opacity = Math.max(0, this.staticImage.opacity - 0.1);
                 viewCanvas.draw();
                 break;
     		default:

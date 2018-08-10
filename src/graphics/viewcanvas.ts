@@ -3,10 +3,12 @@ import { World2D } from "../geom/world2d";
 import { Point2D } from "../geom/point2d";
 import { StaticImage, ImageTile, ImageTileLayer } from "./canvastile";
 import { GridLayer } from "./grid";
+import { LayerManager } from "./layerloader";
 
 export class ViewCanvas extends Viewport {
 
-    private staticElements: Array<StaticImage> = [];
+    public layerManager: LayerManager = new LayerManager();
+
     private imageTileLayers = [];
 
     private gridLayer: GridLayer;
@@ -41,11 +43,12 @@ export class ViewCanvas extends Viewport {
     }
 
     addTileLayer(imageTileLayer: ImageTileLayer): void {
+        console.log("adding: " + imageTileLayer);
     	this.imageTileLayers.push(imageTileLayer);
     }
 
     addStaticElement(staticImage: StaticImage): void {
-    	this.staticElements.push(staticImage);
+    	this.layerManager.addImage(staticImage, "hi");
     }
 
     getViewScaling(pixelsPerUnit: number): Point2D {
@@ -76,9 +79,9 @@ export class ViewCanvas extends Viewport {
     	localContext.clearRect(0, 0, this.width, this.height);
 
     	for (let value of this.imageTileLayers){
-    		if (value.imageProperties.visible) {
+    		if (value.visible) {
 
-                localContext.globalAlpha = value.imageProperties.opacity;
+                localContext.globalAlpha = value.opacity;
 
                 let scaledTileWidth = value.imageProperties.tileWidthPx / 
                     value.imageProperties.widthMapUnits;
@@ -111,20 +114,31 @@ export class ViewCanvas extends Viewport {
     		}
     	}
 
-    	for (let value of this.staticElements){
-    		//256 px is 1 map unit
-			let tileScalingX = 256;
-			let tileScalingY = 256;
+        let staticLayers = this.layerManager.getLayers();
+        let keys = staticLayers.keys();
+        let entries = staticLayers.entries();
 
-    		this.scale(localContext, 256, dimension, false);
+        for (let layerName of Array.from(keys)) {
+            let layer = staticLayers.get(layerName);
 
-    		let imageX = (value.xIndex - this.topLeft.x) * tileScalingX;
-    		let imageY = (value.yIndex - this.topLeft.y) * tileScalingY;
+            if (layer.visible){
+                for (let value of layer.images){
+                    //256 px is 1 map unit
+                    let tileScalingX = 256;
+                    let tileScalingY = 256;
 
-    		value.draw(localContext, imageX, imageY);
-    		this.scale(localContext, 256, dimension, true);
+                    this.scale(localContext, 256, dimension, false);
 
-    	}
+                    let imageX = (value.xIndex - this.topLeft.x) * tileScalingX;
+                    let imageY = (value.yIndex - this.topLeft.y) * tileScalingY;
+
+                    value.draw(localContext, imageX, imageY);
+                    this.scale(localContext, 256, dimension, true);
+
+                }
+            }
+            
+        }
 
         if (this.grid){
             this.scale(localContext, 256, dimension, false);

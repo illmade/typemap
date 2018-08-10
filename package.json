@@ -26,8 +26,11 @@
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-util": "^3.0.8",
     "tsify": "^4.0.0",
-    "typescript": "^2.9.2",
+    "typescript": "^3.0.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.11.0"
+  },
+  "dependencies": {
+    "tsc": "^1.20150623.0"
   }
 }

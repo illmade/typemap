@@ -1,55 +1,54 @@
 [
-
-// let henriettaImage = new StaticImage(-2.355, -2.43, 0.61, 0.61, 0.05, 
-// 	"images/henrietta.png", 0.7);
-
-// let matermisImage = new StaticImage(-1.18, -6.4, 0.25, 0.32, 0.145, 
-// 	"images/matermis.png", 0.7);
-
-// let oconnellImage = new StaticImage(-4.54, -13.55, 0.25, 0.32, 0, 
-// 	"images/oconnell.png", 0.7);
-
-
-
 	{
-	"name": "fourcourts", "x": -3.28, "y": 1.77, "sx": 0.55, "sy": 0.55, "rot": -0.03, 
-	"src": "images/fourcourts.png", "opacity": 1
+		"name": "henrietta", "x": -2.355, "y": -2.44, "sx": 0.61, "sy": 0.61, "rot": 0.05, 
+		"src": "images/landmarks/henrietta.png", "opacity": 1
 	},
 	{
-	"name": "michans", "x": -3.88, "y": 0.7, "sx": 0.32, "sy": 0.32, "rot": -0.03, 
-	"src": "images/michans.png", "opacity": 0.5
-	},
-
-	{
-	"name": "thecastle", "x": -0.87, "y": 3.48, "sx": 0.48, "sy": 0.56, "rot": -0.115, 
-	"src": "images/thecastle.png", "opacity": 1
+		"name": "mater", "x": -1.18, "y": -6.4, "sx": 0.25, "sy": 0.32, "rot": 0.145, 
+		"src": "images/landmarks/matermis.png", "opacity": 1
 	},
 	{
-	"name": "market", "x": -3.365, "y": 3.79, "sx": 0.3, "sy": 0.3, "rot": 0.04, 
-	"src": "images/market.png", "opacity": 0.5
+		"name": "oconnell", "x": -4.54, "y": -13.55, "sx": 0.25, "sy": 0.32, "rot": 0, 
+		"src": "images/landmarks/oconnell.png", "opacity": 0.5
 	},
 	{
-	"name": "ngireland", "x": 4.58, "y": 4.92, "sx": 0.36, "sy": 0.46, "rot": -0.085, 
-	"src": "images/ngireland.png", "opacity": 0.5
+		"name": "fourcourts", "x": -3.28, "y": 1.77, "sx": 0.55, "sy": 0.55, "rot": -0.03, 
+		"src": "images/landmarks/fourcourts.png", "opacity": 1
 	},
 	{
-	"name": "bluecoats", "x": -6.619, "y": -0.165, "sx": 0.4, "sy": 0.4, "rot": -0.05, 
-	"src": "images/bluecoats.png", "opacity": 0.5
+		"name": "michans", "x": -3.88, "y": 0.7, "sx": 0.32, "sy": 0.32, "rot": -0.03, 
+		"src": "images/landmarks/michans.png", "opacity": 0.5
 	},
 	{
-	"name": "hughlane", "x": 0.11, "y": -3.27, "sx": 0.4, "sy": 0.4, "rot": -0.225, 
-	"src": "images/hughlane.png", "opacity": 0.5
+		"name": "thecastle", "x": -0.87, "y": 3.48, "sx": 0.48, "sy": 0.56, "rot": -0.115, 
+		"src": "images/landmarks/thecastle.png", "opacity": 1
 	},
 	{
-	"name": "mountjoy", "x": 3.335, "y": -5.135, "sx": 0.4, "sy": 0.4, "rot": 0.17, 
-	"src": "images/mountjoy.png", "opacity": 0.5
+		"name": "market", "x": -3.365, "y": 3.79, "sx": 0.3, "sy": 0.3, "rot": 0.04, 
+		"src": "images/landmarks/market.png", "opacity": 0.5
 	},
 	{
-	"name": "liberty", "x": 3.43, "y": 0.009, "sx": 0.43, "sy": 0.43, "rot": -0.05, 
-	"src": "images/liberty.png", "opacity": 0.5
+		"name": "ngireland", "x": 4.58, "y": 4.92, "sx": 0.36, "sy": 0.46, "rot": -0.085, 
+		"src": "images/landmarks/ngireland.png", "opacity": 0.5
 	},
 	{
-	"name": "customshouse", "x": 4.39, "y": 0.32, "sx": 0.43, "sy": 0.43, "rot": -0.05, 
-	"src": "images/customshouse.png", "opacity": 0.5
+		"name": "bluecoats", "x": -6.619, "y": -0.165, "sx": 0.4, "sy": 0.4, "rot": -0.05, 
+		"src": "images/landmarks/bluecoats.png", "opacity": 0.5
+	},
+	{
+		"name": "hughlane", "x": 0.11, "y": -3.27, "sx": 0.4, "sy": 0.4, "rot": -0.225, 
+		"src": "images/landmarks/hughlane.png", "opacity": 0.5
+	},
+	{
+		"name": "mountjoy", "x": 3.335, "y": -5.135, "sx": 0.4, "sy": 0.4, "rot": 0.17, 
+		"src": "images/landmarks/mountjoy.png", "opacity": 0.5
+	},
+	{
+		"name": "liberty", "x": 3.43, "y": 0.009, "sx": 0.43, "sy": 0.43, "rot": -0.05, 
+		"src": "images/landmarks/liberty.png", "opacity": 0.5
+	},
+	{
+		"name": "customshouse", "x": 4.39, "y": 0.32, "sx": 0.43, "sy": 0.43, "rot": -0.05, 
+		"src": "images/landmarks/customshouse.png", "opacity": 0.5
 	}
-}
+]
