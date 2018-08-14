@@ -29,6 +29,11 @@
 		"src": "images/wsc/wsc-maps-155-m.png", "opacity": 0.5
 	},
 	{
+		"name": "wsc-157-3", "x": 3.115, "y": 3.65, "sx": 0.525, "sy": 0.59, "rot": 0.54, 
+		"src": "images/wsc/wsc-maps-157-3-m.png", "opacity": 0.5, 
+		"description": "showing the improvements proposed by the Commissioners of Wide Streets in Nassau Street, Leinster Street and Clare Street"
+	},
+	{
 		"name": "wsc-184-1", "x": -2.27, "y": 5.95, "sx": 0.4, "sy": 0.4, "rot": 0.035, 
 		"src": "images/wsc/wsc-maps-184-1-front.jpg", "opacity": 0.5
 	},

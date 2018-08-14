@@ -1,6 +1,5 @@
 import { Point2D } from "./point2d";
 import { Vector2D } from "./vector2d";
-import { World2D, Units } from "./world2d";
 
 export class Viewport {
 	

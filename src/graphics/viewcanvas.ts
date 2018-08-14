@@ -1,15 +1,16 @@
 import { Viewport } from "../geom/viewport";
-import { World2D } from "../geom/world2d";
 import { Point2D } from "../geom/point2d";
-import { StaticImage, ImageTile, ImageTileLayer } from "./canvastile";
+import { Tile } from "../geom/tile";
+import { ImageTile, ImageTileLayer } from "./imagetile";
+import { CanvasTileLayer } from "./canvastile";
+import { StaticImage } from "./static";
 import { GridLayer } from "./grid";
 import { LayerManager } from "./layerloader";
 
 export class ViewCanvas extends Viewport {
 
     public layerManager: LayerManager = new LayerManager();
-
-    private imageTileLayers = [];
+    private canvasTileLayers: Array<CanvasTileLayer> = [];
 
     private gridLayer: GridLayer;
 
@@ -42,9 +43,9 @@ export class ViewCanvas extends Viewport {
     	    this.gridLayer = new GridLayer(this.offscreen, 1);
     }
 
-    addTileLayer(imageTileLayer: ImageTileLayer): void {
+    addTileLayer(imageTileLayer: CanvasTileLayer): void {
         console.log("adding: " + imageTileLayer);
-    	this.imageTileLayers.push(imageTileLayer);
+    	this.canvasTileLayers.push(imageTileLayer);
     }
 
     addStaticElement(staticImage: StaticImage): void {
@@ -78,35 +79,37 @@ export class ViewCanvas extends Viewport {
 
     	localContext.clearRect(0, 0, this.width, this.height);
 
-    	for (let value of this.imageTileLayers){
-    		if (value.visible) {
+    	for (let value of this.canvasTileLayers){
+    		if (value.isVisible()) {
 
-                localContext.globalAlpha = value.opacity;
+                localContext.globalAlpha = value.getOpacity();
 
-                let scaledTileWidth = value.imageProperties.tileWidthPx / 
-                    value.imageProperties.widthMapUnits;
+                let scaledTileWidth = value.viewProperties.tileWidthPx / 
+                    value.viewProperties.widthMapUnits;
 
-                let scaledTileHeight = value.imageProperties.tileHeightPx / 
-                    value.imageProperties.heightMapUnits;
+                let scaledTileHeight = value.viewProperties.tileHeightPx / 
+                    value.viewProperties.heightMapUnits;
 
                 console.log("stwh: " + scaledTileWidth + ", " + scaledTileHeight);
     			this.scale(localContext, scaledTileWidth, dimension, false);
 
-                let x = this.topLeft.x / value.imageProperties.widthMapUnits;
-                let y = this.topLeft.y / value.imageProperties.heightMapUnits;
+                let x = this.topLeft.x / value.viewProperties.widthMapUnits;
+                let y = this.topLeft.y / value.viewProperties.heightMapUnits;
                 
-    			let tiles: Array<ImageTile> = value.getTiles(this.topLeft, 
+    			let tiles: Array<Tile> = value.getTiles(this.topLeft, 
     				dimension.x, 
                     dimension.y);
 
     			for (let tile of tiles){
 
-    				var tileX = scaledTileWidth + (tile.xIndex - x) * 
-                        value.imageProperties.tileWidthPx;
-    				var tileY = -scaledTileHeight + (tile.yIndex - y) * 
-                        value.imageProperties.tileHeightPx;
+                    let viewTile = tile as ImageTile;
 
-    				tile.draw(localContext, tileX, tileY);
+    				var tileX = scaledTileWidth + (viewTile.xIndex - x) * 
+                        value.viewProperties.tileWidthPx;
+    				var tileY = -scaledTileHeight + (viewTile.yIndex - y) * 
+                        value.viewProperties.tileHeightPx;
+
+    				viewTile.draw(localContext, tileX, tileY);
     			}
 
     			this.scale(localContext, scaledTileWidth, dimension, true);
@@ -121,7 +124,7 @@ export class ViewCanvas extends Viewport {
         for (let layerName of Array.from(keys)) {
             let layer = staticLayers.get(layerName);
 
-            if (layer.visible){
+            if (layer.isVisible()){
                 for (let value of layer.images){
                     //256 px is 1 map unit
                     let tileScalingX = 256;

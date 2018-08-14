@@ -28,16 +28,28 @@
 		"src": "images/landmarks/market.png", "opacity": 0.5
 	},
 	{
+		"name": "patricks", "x": -2.4, "y": 5.625, "sx": 0.2, "sy": 0.2, "rot": 0.04, 
+		"src": "images/landmarks/patricks.png", "opacity": 0.8
+	},
+	{
 		"name": "ngireland", "x": 4.58, "y": 4.92, "sx": 0.36, "sy": 0.46, "rot": -0.085, 
 		"src": "images/landmarks/ngireland.png", "opacity": 0.5
 	},
 	{
-		"name": "bluecoats", "x": -6.619, "y": -0.165, "sx": 0.4, "sy": 0.4, "rot": -0.05, 
+		"name": "bluecoats", "x": -6.5, "y": -0.165, "sx": 0.3, "sy": 0.3, "rot": -0.05, 
 		"src": "images/landmarks/bluecoats.png", "opacity": 0.5
+	},
+	{
+		"name": "collinsbarracks", "x": -7.7, "y": 0.36, "sx": 0.4, "sy": 0.4, "rot": 0.015, 
+		"src": "images/landmarks/collinsbarracks.png", "opacity": 0.8
 	},
 	{
 		"name": "hughlane", "x": 0.11, "y": -3.27, "sx": 0.4, "sy": 0.4, "rot": -0.225, 
 		"src": "images/landmarks/hughlane.png", "opacity": 0.5
+	},
+	{
+		"name": "gpo", "x": 1.53, "y": -0.285, "sx": 0.25, "sy": 0.31, "rot": -0.055, 
+		"src": "images/landmarks/gpo.png", "opacity": 0.5
 	},
 	{
 		"name": "mountjoy", "x": 3.335, "y": -5.135, "sx": 0.4, "sy": 0.4, "rot": 0.17, 

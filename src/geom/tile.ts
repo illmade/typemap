@@ -1,7 +1,13 @@
-import { Units } from "./world2d";
 import { Point2D } from "./point2d";
 
-export abstract class TileLayer {
+export interface TileLayer {
+
+	getTile(xIndex: number, yIndex: number): Tile;
+	getTiles(position: Point2D, xMapUnits: number, yMapUnits: number): Array<Tile>;
+
+}
+
+export abstract class AbstractTileLayer implements TileLayer {
 	
 	constructor(public widthMapUnits: number, public heightMapUnits: number){}
 
@@ -34,10 +40,7 @@ export abstract class TileLayer {
 
 }
 
-export class Tile {
-	
-	static emptyTile: Tile = new Tile(-1,-1);
-
-	constructor(xIndex: number, yIndex: number){}
-
+export interface Tile {
+	xIndex: number;
+	yIndex: number;
 }

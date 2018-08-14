@@ -1,20 +1,10 @@
-import {StaticImage, DisplayElement} from "./canvastile";
-
-interface ImageStruct {
-	name: string;
-	x: number;
-	y: number;
-	sx: number;
-	sy: number;
-	rot: number;
-	src: string;
-	opacity: number;
-}
+import { StaticImage } from "./static";
+import { DisplayElement } from "./display";
 
 export class ImageLayer implements DisplayElement {
 
-	public visible: boolean = true;
-	public opacity: number = 0.7;
+	visible: boolean = true;
+	opacity: number = 0.7;
 
 	public images: Array<StaticImage> = [];
 	private imageMap: Map<string, StaticImage>;
@@ -32,6 +22,13 @@ export class ImageLayer implements DisplayElement {
 		return this.imageMap.get(name);
 	}
 
+	getOpacity(): number {
+		return this.opacity;
+	}
+
+	isVisible(): boolean {
+		return this.visible;
+	}
 
 }
 

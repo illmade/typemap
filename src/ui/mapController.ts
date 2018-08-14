@@ -27,29 +27,52 @@ abstract class ZoomListener {
     abstract zoom(by: number);
 }
 
+export class Zoomer {
+    private zoom = 1;
+    private listeners: Array<ZoomListener> = [];
+
+    constructor(){}
+
+    zoomBy(by: number){
+
+        this.zoom = this.zoom * by;
+
+        for (let value of this.listeners){
+            value.zoom(this.zoom);
+        }
+
+    }
+
+    addZoomListener(zoomListener: ZoomListener){
+        this.listeners.push(zoomListener);
+    }
+
+    getZoom(): number {
+        return this.zoom;
+    }
+}
+
 export class ZoomController extends MouseController {
 
-	private listeners: Array<ZoomListener> = [];
-	private zoom = 1;
+    constructor(viewCanvas: ViewCanvas, 
+        readonly zoomIn: HTMLElement, 
+        readonly zoomOut: HTMLElement,
+        private zoomer: Zoomer) {
 
-    constructor(viewCanvas: ViewCanvas, readonly zoomIn: HTMLElement, readonly zoomOut: HTMLElement) {
         super();
 
-    	zoomIn.addEventListener("click", (e:Event) => this.clicked(e as MouseEvent, viewCanvas, .95));
-    	zoomOut.addEventListener("click", (e:Event) => this.clicked(e as MouseEvent, viewCanvas, 1.05));
+    	zoomIn.addEventListener("click", (e:Event) => 
+            this.clicked(e as MouseEvent, viewCanvas, .95));
+    	zoomOut.addEventListener("click", (e:Event) => 
+            this.clicked(e as MouseEvent, viewCanvas, 1.05));
     	viewCanvas.ctx.canvas.addEventListener("dblclick", (e:Event) => 
     		this.clicked(e as MouseEvent, viewCanvas, .75));
     }
 
-    addZoomListener(zoomListener: ZoomListener){
-    	this.listeners.push(zoomListener);
-    }
 
     clicked(event: MouseEvent, viewCanvas: ViewCanvas, by: number) {
 
     	console.log("clicked" + event.target + ", " + event.type);
-
-    	console.log("listeners " + this.listeners.length);
 
         switch(event.type){
             case "dblclick":
@@ -67,10 +90,7 @@ export class ZoomController extends MouseController {
                 viewCanvas.zoomView(by);
         }
 
-    	this.zoom = this.zoom * by;
-    	for (let value of this.listeners){
-    		value.zoom(this.zoom);
-    	}
+    	this.zoomer.zoomBy(by);
 
     	viewCanvas.draw();
     };
@@ -85,7 +105,10 @@ export class PanController extends ZoomListener {
 	private baseMove: number = 256;
 	private move: number = 256;
 
-    constructor(viewCanvas: ViewCanvas, readonly dragElement: HTMLElement) {
+    constructor(viewCanvas: ViewCanvas, 
+        readonly dragElement: HTMLElement,
+        private zoomer: Zoomer) {
+
     	super();
     	dragElement.addEventListener("mousemove", (e:Event) => 
     		this.dragged(e as MouseEvent, viewCanvas));
@@ -99,25 +122,38 @@ export class PanController extends ZoomListener {
             this.wheel(e as WheelEvent, viewCanvas));
     }
 
-    zoom(by: number){
-    	console.log("zoom by " + by);
-    	this.move = this.baseMove / by;
+    zoom(zoomLevel: number){
+    	this.move = this.baseMove / zoomLevel;
     }
-
 
     wheel(event: WheelEvent, viewCanvas: ViewCanvas) {
 
+        let canvas = viewCanvas.ctx.canvas;
         //console.log("wheel" + event.target + ", " + event.type);
 
         let xDelta = event.deltaX / this.move;
         let yDelta = event.deltaY / this.move;
 
-        let newTopLeft = new Point2D(viewCanvas.topLeft.x - xDelta, 
+        if  (event.ctrlKey) {
+            let mXY = this.mousePosition(event, viewCanvas.ctx.canvas);
+                
+            var by = 1.05;
+            if (yDelta < 0){
+                by = 0.95;
+            }
+            this.zoomer.zoomBy(by);
+            viewCanvas.zoomAbout(mXY.x / canvas.clientWidth, mXY.y / canvas.clientHeight, by);
+        }
+        else {
+            this.zoom(this.zoomer.getZoom());
+            let newTopLeft = new Point2D(viewCanvas.topLeft.x - xDelta, 
             viewCanvas.topLeft.y - yDelta);
 
-        //console.log("topleft " + newTopLeft);
+            //console.log("topleft " + newTopLeft);
 
-        viewCanvas.moveView(newTopLeft);
+            viewCanvas.moveView(newTopLeft);
+        }
+        
         viewCanvas.draw();
     }
 

@@ -1,13 +1,14 @@
-import { StaticImage, DisplayElement } from "../graphics/canvastile";
+import { DisplayElement } from "../graphics/display";
+import { StaticImage } from "../graphics/static";
 import { ViewCanvas } from "../graphics/viewcanvas";
 import { Point2D } from "../geom/point2d";
 
 
-export class LayerController {
+export class DisplayElementController {
 
     public mod: string = "v";
 
-    constructor(viewCanvas: ViewCanvas, readonly layer: DisplayElement) {
+    constructor(viewCanvas: ViewCanvas, readonly displayElement: DisplayElement) {
         document.addEventListener("keypress", (e:Event) => 
             this.pressed(viewCanvas, e  as KeyboardEvent));
     }
@@ -17,7 +18,7 @@ export class LayerController {
 
         switch (event.key) {
             case this.mod:
-                this.layer.visible = !this.layer.visible;
+                this.displayElement.setVisible(!this.displayElement.isVisible);
                 viewCanvas.draw();
                 break;
         }
