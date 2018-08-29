@@ -1,17 +1,50 @@
-import { Transform, WorldState } from "./view";
-import { CanvasLayer } from "./canvasview";
-import { DisplayElement } from "./display";
+import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
+import { DisplayElement } from "./canvasview";
 
-export class ImageLayer extends CanvasLayer implements DisplayElement {
+export abstract class CanvasLayer extends BasicTransform {
+
+	constructor(public localTransform: Transform, public opacity: number){
+		super(localTransform.x, localTransform.y, localTransform.zoomX, localTransform.zoomY, localTransform.rotation);
+	}
+
+	abstract draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean;
+
+}
+
+export abstract class DrawLayer extends CanvasLayer {
+
+    protected prepareCtx(ctx: CanvasRenderingContext2D, transform: Transform, view: Transform): void {
+		ctx.translate((transform.x - view.x) * view.zoomX, (transform.y - view.y) * view.zoomY);
+		ctx.scale(transform.zoomX * view.zoomX, transform.zoomY * view.zoomY);
+		ctx.rotate(transform.rotation);
+    }
+
+    protected cleanCtx(ctx: CanvasRenderingContext2D, transform: Transform, view: Transform): void {	
+		ctx.rotate(-transform.rotation);
+		ctx.scale(1/transform.zoomX/view.zoomX, 1/transform.zoomY/view.zoomY);
+		ctx.translate(-(transform.x -view.x) *view.zoomX, -(transform.y - view.y) * view.zoomY);
+    }
+
+}
+
+export class ContainerLayer extends CanvasLayer implements DisplayElement {
 
 	private visible = true;
-	private opacity = 1.0;
-	public layers: Array<CanvasLayer> = [];
 
-	constructor(worldState: WorldState, opacity: number) {
-		super(worldState);
-		this.opacity = opacity;
-	};
+	layerMap: Map<string, CanvasLayer>;
+
+	constructor(localTransform: Transform, opacity: number) {
+		super(localTransform, opacity);
+		this.layerMap = new Map<string, CanvasLayer>();
+	}
+
+	set(name: string, layer: CanvasLayer){
+		this.layerMap.set(name, layer);
+	}
+
+	get(name: string): CanvasLayer {
+		return this.layerMap.get(name);
+	}
 
 	isVisible(): boolean {
 		return this.visible;
@@ -29,11 +62,17 @@ export class ImageLayer extends CanvasLayer implements DisplayElement {
 		this.opacity = opacity;
 	}
 
-	draw(ctx: CanvasRenderingContext2D, transform: Transform){
-		let layerTransform = transform.modify(this.worldState);
-		for (let layer of this.layers){
-			layer.draw(ctx, layerTransform);
+	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean {
+
+		let layerTransform = combineTransform(this.localTransform, parentTransform);
+
+		var drawingComplete = true;
+
+		for (let layer of this.layerMap) {
+			drawingComplete = drawingComplete && layer[1].draw(ctx, layerTransform, view);
 		}
+
+		return drawingComplete;
 	}
 
 }

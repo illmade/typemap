@@ -1,58 +1,58 @@
 [
 	{
-		"name": "wsc-032", "x": -2.61, "y": -0.055, "sx": 0.62, "sy": 0.62, "rot": 1.565, 
-		"src": "images/wsc/wsc-maps-032-m.png", "opacity": 0.5, 
+		"name": "wsc-032", "x": -2.61, "y": -0.055, "zoomX": 0.62, "zoomY": 0.62, "rotation": 1.565, 
+		"src": "images/wsc/wsc-maps-032-m.png", "visibile": false, "opacity": 0.0, 
 		"description": "Constitution Hill - Turnpike, Glasnevin Road; showing proposed road to Botanic Gardens"
 	},
 	{
-		"name": "wsc-072", "x": -2.61, "y": -0.055, "sx": 0.62, "sy": 0.62, "rot": 1.565, 
-		"src": "images/wsc/wsc-maps-072-m.png", "opacity": 0.5
+		"name": "wsc-072", "x": -2.61, "y": -0.055, "zoomX": 0.62, "zoomY": 0.62, "rotation": 1.565, 
+		"src": "images/wsc/wsc-maps-072-m.png", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-075", "x": -2.675, "y": -6.23, "sx": 1.58, "sy": 1.58, "rot": 1.615, 
-		"src": "images/wsc/wsc-maps-075-m2.png", "opacity": 0.5
+		"name": "wsc-075", "x": -2.675, "y": -6.23, "zoomX": 1.58, "zoomY": 1.58, "rotation": 1.615, 
+		"src": "images/wsc/wsc-maps-075-m2.png", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-088-1", "x": -0.9, "y": 2.67, "sx": 0.5, "sy": 0.5, "rot": -3.32, 
-		"src": "images/wsc/wsc-maps-088-1.jpg", "opacity": 0.5
+		"name": "wsc-088-1", "x": -0.9, "y": 2.67, "zoomX": 0.5, "zoomY": 0.5, "rotation": -3.32, 
+		"src": "images/wsc/wsc-maps-088-1.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-106-1", "x": -3.885, "y": 3.43, "sx": 0.535, "sy": 0.545, "rot": -0.074, 
-		"src": "images/wsc/wsc-maps-106-1.jpg", "opacity": 0.5
+		"name": "wsc-106-1", "x": -3.885, "y": 3.43, "zoomX": 0.535, "zoomY": 0.545, "rotation": -0.074, 
+		"src": "images/wsc/wsc-maps-106-1.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-142", "x": 0.995, "y": 11.885, "sx": 1.2, "sy": 1.2, "rot": -2, 
-		"src": "images/wsc/wsc-maps-142_m.png", "opacity": 0.5
+		"name": "wsc-142", "x": 0.995, "y": 11.885, "zoomX": 1.2, "zoomY": 1.2, "rotation": -2, 
+		"src": "images/wsc/wsc-maps-142_m.png", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-155", "x": -2.11, "y": 2.87, "sx": 2.04, "sy": 1.945, "rot": -0.025, 
-		"src": "images/wsc/wsc-maps-155-m.png", "opacity": 0.5
+		"name": "wsc-155", "x": -2.11, "y": 2.87, "zoomX": 2.04, "zoomY": 1.945, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-155-m.png", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-157-3", "x": 3.115, "y": 3.65, "sx": 0.525, "sy": 0.59, "rot": 0.54, 
-		"src": "images/wsc/wsc-maps-157-3-m.png", "opacity": 0.5, 
+		"name": "wsc-157-3", "x": 3.115, "y": 3.65, "zoomX": 0.525, "zoomY": 0.59, "rotation": 0.54, 
+		"src": "images/wsc/wsc-maps-157-3-m.png", "visibile": false, "opacity": 0.0, 
 		"description": "showing the improvements proposed by the Commissioners of Wide Streets in Nassau Street, Leinster Street and Clare Street"
 	},
 	{
-		"name": "wsc-184-1", "x": -2.27, "y": 5.95, "sx": 0.4, "sy": 0.4, "rot": 0.035, 
-		"src": "images/wsc/wsc-maps-184-1-front.jpg", "opacity": 0.5
+		"name": "wsc-184-1", "x": -2.27, "y": 5.95, "zoomX": 0.4, "zoomY": 0.4, "rotation": 0.035, 
+		"src": "images/wsc/wsc-maps-184-1-front.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-433-2", "x": -2.846, "y": 6.125, "sx": 0.199, "sy": 0.205, "rot": -0.025, 
-		"src": "images/wsc/wsc-maps-433-2.jpg", "opacity": 0.5
+		"name": "wsc-433-2", "x": -2.846, "y": 6.125, "zoomX": 0.199, "zoomY": 0.205, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-433-2.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-467-02", "x": 1.845, "y": 8.12, "sx": 0.83, "sy": 0.83, "rot": -2.725, 
-		"src": "images/wsc/wsc-maps-467-02.jpg", "opacity": 0.1
+		"name": "wsc-467-02", "x": 1.845, "y": 8.12, "zoomX": 0.83, "zoomY": 0.83, "rotation": -2.725, 
+		"src": "images/wsc/wsc-maps-467-02.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-469-02", "x": 1.82, "y": 8.02, "sx": 0.465, "sy": 0.465, "rot": -2.75, 
-		"src": "images/wsc/wsc-maps-469-2-m.png", "opacity": 0.5, 
+		"name": "wsc-469-02", "x": 1.82, "y": 8.02, "zoomX": 0.465, "zoomY": 0.465, "rotation": -2.75, 
+		"src": "images/wsc/wsc-maps-469-2-m.png", "visibile": false, "opacity": 0.0, 
 		"description": "Earlsfort Terrace, Stephen’s Green South and Harcourt Street showing plan of proposed new street"
 	},
 	{
-		"name": "wsc-757", "x": -2.96, "y": 4.375, "sx": 0.715, "sy": 0.715, "rot": -0.025, 
-		"src": "images/wsc/wsc-maps-757-l.png", "opacity": 0.5, 
-		"description": "four courts to st patrics, the castle to thomas street"
+		"name": "wsc-757", "x": -881, "y": 261.5, "zoomX": 0.355, "zoomY": 0.355, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-757-l.png", "visibile": true, "opacity": 0.5, 
+		"description": "four courts to st patricks, the castle to thomas street"
 	}
 ]

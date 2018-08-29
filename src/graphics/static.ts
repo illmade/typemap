@@ -8,6 +8,10 @@ export class StaticImage implements DisplayElement {
 		return true;
 	}
 
+	setVisible(visible: boolean){
+		
+	}
+
 	getOpacity(): number {
 		return this.opacity;
 	}

@@ -1,7 +1,7 @@
 /**
 * A world is 0,0 based but any element can be positioned relative to this.
 */
-export interface WorldState {
+export interface Transform {
 	x: number;
 	y: number;
 	zoomX: number;
@@ -9,47 +9,51 @@ export interface WorldState {
 	rotation: number;
 }
 
-export class BasicState implements WorldState{
+export class BasicTransform implements Transform {
+
+    static readonly unitTransform = new BasicTransform(0, 0, 1, 1, 0);
+
 	constructor(public x: number, public y: number, 
 		public zoomX: number, public zoomY: number, 
 		public rotation: number){}
 }
 
-export class Transform extends BasicState {
-
-	copy(){
-		return new BasicState(this.x, this.y, this.zoomX, this.zoomY, this.rotation);
-	}
-
-	modify(worldState: WorldState): Transform {
-		let zoomX = this.zoomX * worldState.zoomX;
-		console.log("modified " + this.zoomX + " to " + zoomX);
-		let zoomY = this.zoomY * worldState.zoomY;
-		console.log("modified " + this.zoomY + " by " + worldState.zoomY + " to " + zoomY);
-		let x = (this.x * this.zoomX) + worldState.x;
-		let y = (this.y * this.zoomY) + worldState.y;
-		let rotation = this.rotation + worldState.rotation;
-		return new Transform(x, y, zoomX, zoomY, rotation);
-	}
-
+export function combineTransform(child: Transform, container: Transform): Transform {
+	let zoomX = child.zoomX * container.zoomX;
+	//console.log("modified " + child.zoomX + " to " + zoomX);
+	let zoomY = child.zoomY * container.zoomY;
+	//console.log("modified " + child.zoomY + " by " + container.zoomY + " to " + zoomY);
+	let x = (child.x * container.zoomX) + container.x;
+	let y = (child.y * container.zoomY) + container.y;
+	//console.log("modified x " + child.x + " by " + container.zoomX + " and " + container.x + " to " + x);
+	let rotation = child.rotation + container.rotation;
+	return new BasicTransform(x, y, zoomX, zoomY, rotation);
 }
 
-export function toTransform(worldState: WorldState): Transform {
-	return new Transform(worldState.x, worldState.y, 
-		worldState.zoomX, worldState.zoomY, worldState.rotation);
+export function clone(transform: Transform): Transform {
+	return new BasicTransform(transform.x, transform.y, 
+		transform.zoomX, transform.zoomY, transform.rotation);
 }
 
-export interface ViewElement extends WorldState {
+export function invertTransform(worldState: Transform): Transform {
+	return new BasicTransform(-worldState.x, -worldState.y, 
+		1/worldState.zoomX, 1/worldState.zoomY, -worldState.rotation);
+}
+
+export interface ViewTransform extends Transform {
 	width: number;
 	height: number;
 }
 
-export class BasicViewElement implements ViewElement {
+export class BasicViewTransform extends BasicTransform implements ViewTransform {
 
-	constructor(public x: number, public y: number, 
+	constructor(x: number, y: number, 
 		readonly width: number, readonly height: number,
-		public zoomX: number, public zoomY: number, 
-		public rotation: number){}
+		zoomX: number, zoomY: number, 
+	    rotation: number){
+
+		super(x, y, zoomX, zoomY, rotation);
+	}
 
 }
 

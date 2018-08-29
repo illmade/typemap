@@ -25,17 +25,17 @@ import * as landmarks from "./imagegroups/landmarks.json";
 // let sentinelTerrainLayerProperties = new ImageStruct();
 // sentinelTerrainLayerProperties.suffix = "t.jpeg";
 
-let liffeyLayerProperties = new ImageStruct();
-let liffeyLayerTileProperties = new TileStruct();
-liffeyLayerTileProperties.suffix = "liffey.jpeg";
-liffeyLayerTileProperties.tileDirectory = "images/liffey/";
+// let liffeyLayerProperties = new ImageStruct();
+// let liffeyLayerTileProperties = new TileStruct();
+// liffeyLayerTileProperties.suffix = "liffey.jpeg";
+// liffeyLayerTileProperties.tileDirectory = "images/liffey/";
 
-let liffeyLabelLayerProperties = new ImageStruct();
-liffeyLabelLayerProperties.opacity = 1;
+// let liffeyLabelLayerProperties = new ImageStruct();
+// liffeyLabelLayerProperties.opacity = 1;
 
-let liffeyLabelTileProperties = new TileStruct();
-liffeyLabelTileProperties.suffix = "liffey.png";
-liffeyLabelTileProperties.tileDirectory = "images/liffey/";
+// let liffeyLabelTileProperties = new TileStruct();
+// liffeyLabelTileProperties.suffix = "liffey.png";
+// liffeyLabelTileProperties.tileDirectory = "images/liffey/";
 
 let slippyDisplayProperties = new ImageStruct();
 slippyDisplayProperties.opacity = .4;
@@ -95,13 +95,13 @@ function showMap(divName: string, name: string) {
 
 	//canvasControl.addZoomListener(panControl);
 
-	let layerController = new LayerController(viewCanvas, slippyTileLayer);
+	let layerController = new DisplayElementController(viewCanvas, slippyTileLayer);
 	layerController.mod = "v";
-	let layerControllerb = new LayerController(viewCanvas, wscImages);
+	let layerControllerb = new DisplayElementController(viewCanvas, wscImages);
 	layerControllerb.mod = "b";
-	let layerControllerc = new LayerController(viewCanvas, fireImages);
+	let layerControllerc = new DisplayElementController(viewCanvas, fireImages);
 	layerControllerc.mod = "n";
-	let layerControllerd = new LayerController(viewCanvas, landmarkImages);
+	let layerControllerd = new DisplayElementController(viewCanvas, landmarkImages);
 	layerControllerd.mod = "m";
 
 	viewCanvas.draw();

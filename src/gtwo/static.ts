@@ -1,6 +1,6 @@
-import { Transform, WorldState } from "./view";
-import { DrawLayer, CanvasLayer } from "./canvasview";
-import { DisplayElement } from "./display";
+import { Transform, combineTransform } from "./view";
+import { DrawLayer, CanvasLayer } from "./layer";
+import { DisplayElement } from "./canvasview";
 
 export class StaticImage extends DrawLayer implements DisplayElement {
 
@@ -8,15 +8,15 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 
 	private visible = true;
 
-	constructor(worldState: WorldState, 
+	constructor(localTransform: Transform, 
 		imageSrc: string, 
-		public opacity: number) {
+		opacity: number) {
 
-		super(worldState);
+		super(localTransform, opacity);
 		
 		this.img = new Image();
 		this.img.src = imageSrc;
-	};
+	}
 
 	isVisible(): boolean {
 		return this.visible;
@@ -34,36 +34,27 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 		this.opacity = opacity;
 	}
 
-	private drawImage(ctx: CanvasRenderingContext2D, transform: Transform){
+	private drawImage(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform){
 
-		let ctxTransform = transform.modify(this.worldState);
-		let width = this.img.width * ctxTransform.zoomX;
-		let height = this.img.height * ctxTransform.zoomY;
+		let ctxTransform = combineTransform(this, parentTransform);
 
-		this.prepareCtx(ctx, ctxTransform, width, height);
+		console.log("ctx x " + ctxTransform.x);
+
+		this.prepareCtx(ctx, ctxTransform, view);
 		
 		ctx.globalAlpha = this.opacity;
-
 		ctx.drawImage(this.img, 0, 0);
-		
 		ctx.globalAlpha = 1;
 
-		this.cleanCtx(ctx, ctxTransform);
-
+		this.cleanCtx(ctx, ctxTransform, view);
 	}
 
-	draw(ctx: CanvasRenderingContext2D, transform: Transform){
-		if (this.visible){
-			if (this.img.complete) {
-				this.drawImage(ctx, transform);
-			}
-			else {
-				this.img.onload = (event) => {
-					this.img.crossOrigin = "Anonymous";
-					this.drawImage(ctx, transform);
-				};
-			}
+	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform): boolean {
+		if (this.visible && this.img.complete) {
+			this.drawImage(ctx, parentTransform, view);
+			console.log("drew image " + this.img.src);
+			return true;
 		}
-	};
-
+		return false;
+	}
 }

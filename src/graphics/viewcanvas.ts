@@ -5,7 +5,7 @@ import { ImageTile, ImageTileLayer } from "./imagetile";
 import { CanvasTileLayer } from "./canvastile";
 import { StaticImage } from "./static";
 import { GridLayer } from "./grid";
-import { LayerManager } from "./layerloader";
+import { LayerManager, ImageLayer } from "./layerloader";
 
 export class ViewCanvas extends Viewport {
 
@@ -117,11 +117,11 @@ export class ViewCanvas extends Viewport {
     		}
     	}
 
-        let staticLayers = this.layerManager.getLayers();
+        let staticLayers: Map<string, ImageLayer> = this.layerManager.getLayers();
         let keys = staticLayers.keys();
         let entries = staticLayers.entries();
 
-        for (let layerName of Array.from(keys)) {
+        for (let layerName of keys) {
             let layer = staticLayers.get(layerName);
 
             if (layer.isVisible()){

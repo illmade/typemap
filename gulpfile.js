@@ -12,7 +12,7 @@ var gulp = require("gulp");
 var browserify = require("browserify");
 var watchify = require("watchify");
 var source = require('vinyl-source-stream');
-var gutil = require("gulp-util");
+var log = require('fancy-log');
 var tsify = require("tsify");
 var paths = {
     pages: ['src/*.html'],
@@ -41,10 +41,11 @@ gulp.task('copy-css', function () {
 function bundle() {
     return watchedBrowserify
         .bundle()
+        .on('error', console.error)
         .pipe(source('bundle.js'))
         .pipe(gulp.dest("dist"));
 }
 
 gulp.task("default", ["copy-html", "copy-css"], bundle);
 watchedBrowserify.on("update", bundle);
-watchedBrowserify.on("log", gutil.log);
+watchedBrowserify.on("log", log);

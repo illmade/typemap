@@ -6,7 +6,7 @@ export class ImageTile extends CanvasTile {
 
 	private img: HTMLImageElement;
 
-	constructor(readonly xIndex: number, readonly yIndex: number, imageSrc: string) {
+	constructor(xIndex: number, yIndex: number, imageSrc: string) {
 		super(xIndex, yIndex);
 		this.img = new Image();
 		this.img.src = imageSrc;
@@ -41,6 +41,10 @@ export class ImageTileLayer extends AbstractTileLayer implements CanvasTileLayer
 
 	isVisible(): boolean {
 		return this.viewProperties.isVisible();
+	}
+
+	setVisible(visible: boolean) {
+		this.viewProperties.setVisible(visible);
 	}
 
 	/**

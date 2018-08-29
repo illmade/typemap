@@ -1,5 +1,5 @@
 import { StaticImage } from "./static";
-import { DisplayElement } from "./display";
+import { DisplayElement, ImageStruct } from "./display";
 
 export class ImageLayer implements DisplayElement {
 
@@ -28,6 +28,10 @@ export class ImageLayer implements DisplayElement {
 
 	isVisible(): boolean {
 		return this.visible;
+	}
+
+	setVisible(visible: boolean){
+		this.visible = visible;
 	}
 
 }
@@ -62,7 +66,7 @@ export class LayerManager {
 		return imageLayer;
 	}
 
-	getLayers() {
+	getLayers(): Map<string, ImageLayer> {
 		return this.layerMap;
 	}
 
