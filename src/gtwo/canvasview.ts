@@ -48,10 +48,16 @@ export class CanvasView extends BasicViewTransform {
 	draw(): boolean {
 		let transform = invertTransform(this);
 
+		this.ctx.fillStyle = "grey";
+		this.ctx.fillRect(0, 0, this.width, this.height);
+
 		var drawingComplete = true;
 
 		for (let layer of this.layers){
-			drawingComplete = drawingComplete && layer.draw(this.ctx, BasicTransform.unitTransform, this);
+			if (layer.isVisible()){
+				drawingComplete = drawingComplete && layer.draw(this.ctx, BasicTransform.unitTransform, this);
+			}
+			
 		}
 
 		this.drawCentre(this.ctx);

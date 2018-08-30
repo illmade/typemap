@@ -6,39 +6,22 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 
 	private img: HTMLImageElement;
 
-	private visible = true;
-
 	constructor(localTransform: Transform, 
 		imageSrc: string, 
-		opacity: number) {
+		opacity: number,
+		visible: boolean = true) {
 
-		super(localTransform, opacity);
+		super(localTransform, opacity, visible);
 		
 		this.img = new Image();
 		this.img.src = imageSrc;
-	}
-
-	isVisible(): boolean {
-		return this.visible;
-	}
-
-	setVisible(visible: boolean): void {
-		this.visible = visible;
-	}
-
-	getOpacity(): number {
-		return this.opacity;
-	}
-
-	setOpacity(opacity: number): void {
-		this.opacity = opacity;
 	}
 
 	private drawImage(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform){
 
 		let ctxTransform = combineTransform(this, parentTransform);
 
-		console.log("ctx x " + ctxTransform.x);
+		//console.log("ctx x " + ctxTransform.x);
 
 		this.prepareCtx(ctx, ctxTransform, view);
 		
@@ -52,7 +35,7 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform): boolean {
 		if (this.visible && this.img.complete) {
 			this.drawImage(ctx, parentTransform, view);
-			console.log("drew image " + this.img.src);
+		//	console.log("drew image " + this.img.src);
 			return true;
 		}
 		return false;

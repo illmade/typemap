@@ -25,9 +25,10 @@ export class TileLayer extends DrawLayer {
 		public zoom: number = 1,
 		readonly gridWidth: number = 256, 
 		readonly gridHeight: number = 256,
-		opacity: number = 1){
+		opacity: number = 1,
+		visbile: boolean = true){
 
-		super(localTransform, opacity);
+		super(localTransform, opacity, visbile);
 
 		this.tileManager = new TileManager();
 	}
@@ -97,7 +98,7 @@ export class TileLayer extends DrawLayer {
 
 		ctx.scale(1 / fullZoomX, 1 / fullZoomY);
 
-		console.log("drew tiles " + drawingComplete);
+		//console.log("drew tiles " + drawingComplete);
 		return drawingComplete;
 	}
 }

@@ -1,13 +1,30 @@
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
 import { DisplayElement } from "./canvasview";
 
-export abstract class CanvasLayer extends BasicTransform {
+export abstract class CanvasLayer extends BasicTransform implements DisplayElement {
 
-	constructor(public localTransform: Transform, public opacity: number){
+	constructor(public localTransform: Transform, public opacity: number, public visible){
 		super(localTransform.x, localTransform.y, localTransform.zoomX, localTransform.zoomY, localTransform.rotation);
 	}
 
 	abstract draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean;
+
+	isVisible(): boolean {
+		return this.visible;
+	}
+
+	setVisible(visible: boolean): void {
+		console.log("setting visibility: " + visible);
+		this.visible = visible;
+	}
+
+	getOpacity(): number {
+		return this.opacity;
+	}
+
+	setOpacity(opacity: number): void {
+		this.opacity = opacity;
+	}
 
 }
 
@@ -27,14 +44,12 @@ export abstract class DrawLayer extends CanvasLayer {
 
 }
 
-export class ContainerLayer extends CanvasLayer implements DisplayElement {
-
-	private visible = true;
+export class ContainerLayer extends CanvasLayer {
 
 	layerMap: Map<string, CanvasLayer>;
 
-	constructor(localTransform: Transform, opacity: number) {
-		super(localTransform, opacity);
+	constructor(localTransform: Transform, opacity: number = 1, visible: boolean = true) {
+		super(localTransform, opacity, visible);
 		this.layerMap = new Map<string, CanvasLayer>();
 	}
 
@@ -46,22 +61,6 @@ export class ContainerLayer extends CanvasLayer implements DisplayElement {
 		return this.layerMap.get(name);
 	}
 
-	isVisible(): boolean {
-		return this.visible;
-	}
-
-	setVisible(visible: boolean): void {
-		this.visible = visible;
-	}
-
-	getOpacity(): number {
-		return this.opacity;
-	}
-
-	setOpacity(opacity: number): void {
-		this.opacity = opacity;
-	}
-
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean {
 
 		let layerTransform = combineTransform(this.localTransform, parentTransform);
@@ -69,7 +68,10 @@ export class ContainerLayer extends CanvasLayer implements DisplayElement {
 		var drawingComplete = true;
 
 		for (let layer of this.layerMap) {
-			drawingComplete = drawingComplete && layer[1].draw(ctx, layerTransform, view);
+			if (layer[1].isVisible()){
+				drawingComplete = drawingComplete && layer[1].draw(ctx, layerTransform, view);
+			}
+			
 		}
 
 		return drawingComplete;

@@ -1,16 +1,18 @@
 [
 	{
-		"name": "wsc-032", "x": -2.61, "y": -0.055, "zoomX": 0.62, "zoomY": 0.62, "rotation": 1.565, 
-		"src": "images/wsc/wsc-maps-032-m.png", "visibile": false, "opacity": 0.0, 
+		"name": "wsc-032", "x": -776, "y": 32.55, "zoomX": 0.29, "zoomY": 0.28, "rotation": -1.47, 
+		"src": "images/wsc/wsc-maps-032-m.png", "visibile": true, "opacity": 0.7, 
 		"description": "Constitution Hill - Turnpike, Glasnevin Road; showing proposed road to Botanic Gardens"
 	},
 	{
-		"name": "wsc-072", "x": -2.61, "y": -0.055, "zoomX": 0.62, "zoomY": 0.62, "rotation": 1.565, 
-		"src": "images/wsc/wsc-maps-072-m.png", "visibile": false, "opacity": 0.0
+		"name": "wsc-072", "x": -252, "y": -247, "zoomX": 0.318, "zoomY": 0.314, "rotation": 1.585, 
+		"src": "images/wsc/wsc-maps-072-m.png", "visibile": false, "opacity": 0.7,
+		"description": "Plan of improving the streets between Richmond Bridge (Four Courts) and Constitution Hill (King’s Inns) Date: 1837"
 	},
 	{
-		"name": "wsc-075", "x": -2.675, "y": -6.23, "zoomX": 1.58, "zoomY": 1.58, "rotation": 1.615, 
-		"src": "images/wsc/wsc-maps-075-m2.png", "visibile": false, "opacity": 0.0
+		"name": "wsc-075", "x": -217.5, "y": -1414.5, "zoomX": 0.87, "zoomY": 0.772, "rotation": 1.615, 
+		"src": "images/wsc/wsc-maps-075-m2.png", "visibile": false, "opacity": 0.7,
+		"description": "Survey of a line of road, leading from Linen Hall to Glasnevin Road, showing the Royal Canal Date: 1800"
 	},
 	{
 		"name": "wsc-088-1", "x": -0.9, "y": 2.67, "zoomX": 0.5, "zoomY": 0.5, "rotation": -3.32, 
@@ -18,15 +20,16 @@
 	},
 	{
 		"name": "wsc-106-1", "x": -3.885, "y": 3.43, "zoomX": 0.535, "zoomY": 0.545, "rotation": -0.074, 
-		"src": "images/wsc/wsc-maps-106-1.jpg", "visibile": false, "opacity": 0.0
+		"src": "images/wsc/wsc-maps-106-1.jpg", "visibile": true, "opacity": 1.0
 	},
 	{
 		"name": "wsc-142", "x": 0.995, "y": 11.885, "zoomX": 1.2, "zoomY": 1.2, "rotation": -2, 
 		"src": "images/wsc/wsc-maps-142_m.png", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-155", "x": -2.11, "y": 2.87, "zoomX": 2.04, "zoomY": 1.945, "rotation": -0.025, 
-		"src": "images/wsc/wsc-maps-155-m.png", "visibile": false, "opacity": 0.0
+		"name": "wsc-155", "x": -1506, "y": -50.5, "zoomX": 1.01, "zoomY": 0.972, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-155-m.png", "visibile": false, "opacity": 0.6,
+		"description": "New approach from Military Road to King’s Bridge, and along the Quays to Aston’s Quay Date: 1841"
 	},
 	{
 		"name": "wsc-157-3", "x": 3.115, "y": 3.65, "zoomX": 0.525, "zoomY": 0.59, "rotation": 0.54, 
@@ -49,6 +52,11 @@
 		"name": "wsc-469-02", "x": 1.82, "y": 8.02, "zoomX": 0.465, "zoomY": 0.465, "rotation": -2.75, 
 		"src": "images/wsc/wsc-maps-469-2-m.png", "visibile": false, "opacity": 0.0, 
 		"description": "Earlsfort Terrace, Stephen’s Green South and Harcourt Street showing plan of proposed new street"
+	},
+	{
+		"name": "wsc-729", "x": -1088.5, "y": 652, "zoomX": 0.184, "zoomY": 0.184, "rotation": -3.425, 
+		"src": "images/wsc/wsc-maps-729.png", "visibile": true, "opacity": 0.5, 
+		"description": "Map - James’s Street, Bason Lane, Echlin’s Lane, Grand Canal Place, City Bason and Grand Canal Harbour"
 	},
 	{
 		"name": "wsc-757", "x": -881, "y": 261.5, "zoomX": 0.355, "zoomY": 0.355, "rotation": -0.025, 

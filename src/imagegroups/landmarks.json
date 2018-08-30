@@ -1,66 +1,70 @@
 [
 	{
 		"name": "henrietta", "x": -486.5, "y": -252.5, "zoomX": 0.29, "zoomY": 0.5, "rotation": 0.05, 
-		"src": "images/landmarks/henrietta.png", "opacity": 1
+		"src": "images/landmarks/henrietta.png", "visible": true, "opacity": 1
 	},
 	{
 		"name": "mater", "x": -342, "y": -747, "zoomX": 0.08, "zoomY": 0.18, "rotation": -0.05, 
-		"src": "images/landmarks/matermis.png", "opacity": 1
+		"src": "images/landmarks/matermis.png", "visible": true, "opacity": 1
+	},
+	{
+		"name": "peters", "x": -719, "y": -836, "zoomX": 0.07, "zoomY": 0.14, "rotation": -0.15, 
+		"src": "images/landmarks/peters.png", "visible": true, "opacity": 1
 	},
 	{
 		"name": "oconnell", "x": -821, "y": -1835, "zoomX": 0.25, "zoomY": 0.25, "rotation": 0, 
-		"src": "images/landmarks/oconnell.png", "opacity": 0.9
+		"src": "images/landmarks/oconnell.png", "visible": true, "opacity": 0.9
 	},
 	{
 		"name": "fourcourts", "x": -606, "y": 302, "zoomX": 0.23, "zoomY": 0.43, "rotation": -0.085, 
-		"src": "images/landmarks/fourcourts.png", "opacity": 1
+		"src": "images/landmarks/fourcourts.png", "visible": true, "opacity": 1
 	},
 	{
 		"name": "michans", "x": -639, "y": 160, "zoomX": 0.14, "zoomY": 0.24, "rotation": 0.02, 
-		"src": "images/landmarks/michans.png", "opacity": 0.8
+		"src": "images/landmarks/michans.png", "visible": true, "opacity": 0.8
 	},
 	{
 		"name": "thecastle", "x": -290, "y": 520, "zoomX": 0.22, "zoomY": 0.42, "rotation": -0.015, 
-		"src": "images/landmarks/thecastle.png", "opacity": 1
+		"src": "images/landmarks/thecastle.png", "visible": true, "opacity": 1
 	},
 	{
-		"name": "market", "x": -637, "y": 535, "zoomX": 0.2, "zoomY": 0.3, "rotation": 0.04, 
-		"src": "images/landmarks/market.png", "opacity": 0.5
+		"name": "market", "x": -617, "y": 565, "zoomX": 0.15, "zoomY": 0.26, "rotation": 0.04, 
+		"src": "images/landmarks/market.png", "visible": true, "opacity": 0.5
 	},
 	{
 		"name": "patricks", "x": -462, "y": 795, "zoomX": 0.1, "zoomY": 0.12, "rotation": 0.04, 
-		"src": "images/landmarks/patricks.png", "opacity": 0.8
+		"src": "images/landmarks/patricks.png", "visible": true, "opacity": 0.8
 	},
 	{
 		"name": "ngireland", "x": 406, "y": 684, "zoomX": 0.19, "zoomY": 0.42, "rotation": -0.105, 
-		"src": "images/landmarks/ngireland.png", "opacity": 0.5
+		"src": "images/landmarks/ngireland.png", "visible": true, "opacity": 0.8
 	},
 	{
-		"name": "bluecoats", "x": -997, "y": 86, "zoomX": 0.13, "zoomY": 0.3, "rotation": -0.05, 
-		"src": "images/landmarks/bluecoats.png", "opacity": 0.5
+		"name": "bluecoats", "x": -997, "y": 86, "zoomX": 0.1, "zoomY": 0.2, "rotation": -0.05, 
+		"src": "images/landmarks/bluecoats.png", "visible": true, "opacity": 0.6
 	},
 	{
-		"name": "collinsbarracks", "x": -1400, "y": 0.36, "zoomX": 0.4, "zoomY": 0.4, "rotation": 0.015, 
-		"src": "images/landmarks/collinsbarracks.png", "opacity": 0.8
+		"name": "collinsbarracks", "x": -1130, "y": 90, "zoomX": 0.13, "zoomY": 0.37, "rotation": 0.015, 
+		"src": "images/landmarks/collinsbarracks.png", "visible": true, "opacity": 0.8
 	},
 	{
 		"name": "hughlane", "x": -172, "y": -335, "zoomX": 0.2, "zoomY": 0.33, "rotation": -0.06, 
-		"src": "images/landmarks/hughlane.png", "opacity": 0.7
+		"src": "images/landmarks/hughlane.png", "visible": true, "opacity": 0.7
 	},
 	{
 		"name": "gpo", "x": 52, "y": 50, "zoomX": 0.086, "zoomY": 0.25, "rotation": -0.035, 
-		"src": "images/landmarks/gpo.png", "opacity": 0.7
+		"src": "images/landmarks/gpo.png", "visible": true, "opacity": 0.7
 	},
 	{
 		"name": "mountjoy", "x": 263, "y": -560, "zoomX": 0.15, "zoomY": 0.285, "rotation": 0.17, 
-		"src": "images/landmarks/mountjoy.png", "opacity": 0.7
+		"src": "images/landmarks/mountjoy.png", "visible": true, "opacity": 0.7
 	},
 	{
 		"name": "libertyhall", "x": 270, "y": -14, "zoomX": 0.43, "zoomY": 0.43, "rotation": -0.05, 
-		"src": "images/landmarks/liberty.png", "opacity": 0.7
+		"src": "images/landmarks/liberty.png", "visible": true, "opacity": 0.7
 	},
 	{
 		"name": "customshouse", "x": 382, "y": 107, "zoomX": 0.15, "zoomY": 0.30, "rotation": -0.05, 
-		"src": "images/landmarks/customshouse.png", "opacity": 0.7
+		"src": "images/landmarks/customshouse.png", "visible": true, "opacity": 0.7
 	}
 ]

@@ -1,6 +1,26 @@
 
-import {CanvasView} from "./canvasview";
+import {CanvasView, DisplayElement} from "./canvasview";
 import {CanvasLayer} from "./layer";
+
+export class DisplayElementController {
+
+    constructor(canvasView: CanvasView, readonly displayElement: DisplayElement,  public mod: string = "v") {
+        document.addEventListener("keypress", (e:Event) => 
+            this.pressed(canvasView, e  as KeyboardEvent));
+    }
+
+    pressed(canvasView: CanvasView, event: KeyboardEvent) {
+        //console.log("pressed layer" + event.target + ", " + event.key);
+
+        switch (event.key) {
+            case this.mod:
+                console.log("toggle visible");
+                this.displayElement.setVisible(!this.displayElement.isVisible());
+                canvasView.draw();
+                break;
+        }
+    }
+}
 
 export class ImageController {
 

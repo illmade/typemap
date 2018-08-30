@@ -5,6 +5,7 @@ import { Transform , BasicTransform } from "./view";
 export interface ImageStruct extends Transform {
 	
 	opacity: number;
+	visible: boolean;
 	src: string;
 	name: string;
 
@@ -19,7 +20,7 @@ export class LayerManager {
 	constructor(){
 		this.layerMap = new Map<string, ContainerLayer>();
 
-		let imageLayer = new ContainerLayer(BasicTransform.unitTransform, 1);	
+		let imageLayer = new ContainerLayer(BasicTransform.unitTransform, 1, true);	
 
 		this.layerMap.set(this.defaultLayer, imageLayer);
 	}
@@ -29,10 +30,10 @@ export class LayerManager {
 	}
 
 	addLayer(imageDetails: Array<ImageStruct>, layerName: string): ContainerLayer {
-		let imageLayer = new ContainerLayer(BasicTransform.unitTransform, 1);	
+		let imageLayer = new ContainerLayer(BasicTransform.unitTransform, 1, true);	
 
 		for (var image of imageDetails){
-			let staticImage = new StaticImage(image, image.src, image.opacity);
+			let staticImage = new StaticImage(image, image.src, image.opacity, image.visible);
 			imageLayer.set(image.name, staticImage);
 		}
 
