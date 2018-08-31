@@ -52,19 +52,19 @@
 	"src": "images/firemap/maps_145_b_4_(2)_f015r_2[SVC2].png", "visible": true, "opacity": 0.7
 	},
 	{
-	"name": "16-2", "x": -84.5, "y": 338, "zoomX": 0.205, "zoomY": 0.216, "rotation": -0.095, 
+	"name": "16-2", "x": -92, "y": 336, "zoomX": 0.215, "zoomY": 0.204, "rotation": -0.095, 
 	"src": "images/firemap/maps_145_b_4_(2)_f016r_2[SVC2].png", "visible": true, "opacity": 0.7
 	},
 	{
-	"name": "17", "x": 76, "y": 276.5, "zoomX": 0.215, "zoomY": 0.215, "rotation": -0.06, 
+	"name": "17", "x": 78, "y": 279, "zoomX": 0.2, "zoomY": 0.2, "rotation": -0.035, 
 	"src": "images/firemap/maps_145_b_4_(2)_f017R[SVC2].jpg", "visible": true, "opacity": 0.7
 	},
 	{
-	"name": "18", "x": 225, "y": 237.5, "zoomX": 0.19, "zoomY": 0.215, "rotation": 0.05, 
+	"name": "18", "x": 223.5, "y": 244.5, "zoomX": 0.214, "zoomY": 0.2, "rotation": 0.075, 
 	"src": "images/firemap/maps_145_b_4_(2)_f018R[SVC2].jpg", "visible": true, "opacity": 0.7
 	},
 	{
-	"name": "19", "x": 62.5, "y": 474.5, "zoomX": 0.215, "zoomY": 0.215, "rotation": 0.15, 
+	"name": "19", "x": 64.5, "y": 471.5, "zoomX": 0.209, "zoomY": 0.214, "rotation": 0.16, 
 	"src": "images/firemap/maps_145_b_4_(2)_f019R[SVC2].jpg", "visible": true, "opacity": 0.7
 	},
 	{

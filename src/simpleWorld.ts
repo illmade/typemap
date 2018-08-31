@@ -18,7 +18,7 @@ let imageLayer = new ContainerLayer(layerState);
 let imageState = new BasicTransform(-1440,-1440, 0.222, 0.222, 0);
 let helloImage = new StaticImage(imageState, "images/bluecoat.png", .5);
 
-let countyState = new BasicTransform(-2621, -2078, 1.716, 1.674, 0);
+let countyState = new BasicTransform(-2631, -2051.5, 1.716, 1.674, 0);
 let countyImage = new StaticImage(countyState, "images/County_of_the_City_of_Dublin_1837_map.jpg", 0.5);
 
 let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
@@ -42,7 +42,7 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = landmarksLayer.get("peters");
+let edit = wscLayer.get("wsc-469-02");
 
 imageLayer.set("firemaps", firemapLayer);
 imageLayer.set("wsc", wscLayer);

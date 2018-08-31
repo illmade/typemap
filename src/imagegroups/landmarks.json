@@ -60,6 +60,14 @@
 		"src": "images/landmarks/mountjoy.png", "visible": true, "opacity": 0.7
 	},
 	{
+		"name": "royalhospital", "x": -1851, "y": 487.5, "zoomX": 0.21, "zoomY": 0.3, "rotation": -0.05, 
+		"src": "images/landmarks/royalhospital.png", "visible": true, "opacity": 0.9
+	},
+	{
+		"name": "pepper", "x": 834, "y": 990, "zoomX": 0.06, "zoomY": 0.145, "rotation": -0.05, 
+		"src": "images/landmarks/pepper.png", "visible": true, "opacity": 0.9
+	},
+	{
 		"name": "libertyhall", "x": 270, "y": -14, "zoomX": 0.43, "zoomY": 0.43, "rotation": -0.05, 
 		"src": "images/landmarks/liberty.png", "visible": true, "opacity": 0.7
 	},

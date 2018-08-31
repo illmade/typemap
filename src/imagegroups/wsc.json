@@ -19,12 +19,19 @@
 		"src": "images/wsc/wsc-maps-088-1.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-106-1", "x": -3.885, "y": 3.43, "zoomX": 0.535, "zoomY": 0.545, "rotation": -0.074, 
-		"src": "images/wsc/wsc-maps-106-1.jpg", "visibile": true, "opacity": 1.0
+		"name": "wsc-106-1", "x": -757, "y": 495.5, "zoomX": 0.265, "zoomY": 0.265, "rotation": -0.074, 
+		"src": "images/wsc/wsc-maps-106-1.jpg", "visibile": true, "opacity": 1.0, 
+		"description": "Map showing proposed improvements to be made in Cornmarket, Cutpurse Row, Lamb Alley - Francis Street - and an improved entrance from Kevin Street to Saint Patrick’s Cathedral, through Mitre Alley and at James’s Gate. Date: 1845-46 "
 	},
 	{
-		"name": "wsc-142", "x": 0.995, "y": 11.885, "zoomX": 1.2, "zoomY": 1.2, "rotation": -2, 
-		"src": "images/wsc/wsc-maps-142_m.png", "visibile": false, "opacity": 0.0
+		"name": "wsc-138", "x": 215.5, "y": 154, "zoomX": 0.19, "zoomY": 0.172, "rotation": 0, 
+		"src": "images/wsc/wsc-maps-138-l.png", "visibile": true, "opacity": 1.0,
+		"description": "Map of premises, George’s Quay, City Quay, Townsend Street and neighbourhood, showing property lost to the City, in a suit by 'The Corporation - with Trinity College'"
+	},
+	{
+		"name": "wsc-142", "x": 94.995, "y": 2377.5, "zoomX": 0.482, "zoomY": 0.476, "rotation": -2.015, 
+		"src": "images/wsc/wsc-maps-142-l.png", "visibile": true, "opacity": 1.0,
+		"description": "Map of the New Streets, and other improvements intended to be immediately executed. Situate on the South Side of the City of Dublin, submitted for the approbation of the Commissioners of Wide Streets, particularly of those parts belonging to Wm. Cope and John Locker, Esq., Harcourt Street, Charlemount Street, Portobello, etc. Date: 1792"
 	},
 	{
 		"name": "wsc-155", "x": -1506, "y": -50.5, "zoomX": 1.01, "zoomY": 0.972, "rotation": -0.025, 
@@ -35,6 +42,11 @@
 		"name": "wsc-157-3", "x": 3.115, "y": 3.65, "zoomX": 0.525, "zoomY": 0.59, "rotation": 0.54, 
 		"src": "images/wsc/wsc-maps-157-3-m.png", "visibile": false, "opacity": 0.0, 
 		"description": "showing the improvements proposed by the Commissioners of Wide Streets in Nassau Street, Leinster Street and Clare Street"
+	},
+	{
+		"name": "wsc-164", "x": -472, "y":805, "zoomX": 0.056, "zoomY": 0.056, "rotation": 0.09, 
+		"src": "images/wsc/wsc-maps-164-l.png", "visibile": true, "opacity": 1.0, 
+		"description": "Plan of Saint Patrick’s, etc. Date: 1824"
 	},
 	{
 		"name": "wsc-184-1", "x": -2.27, "y": 5.95, "zoomX": 0.4, "zoomY": 0.4, "rotation": 0.035, 
@@ -49,9 +61,14 @@
 		"src": "images/wsc/wsc-maps-467-02.jpg", "visibile": false, "opacity": 0.0
 	},
 	{
-		"name": "wsc-469-02", "x": 1.82, "y": 8.02, "zoomX": 0.465, "zoomY": 0.465, "rotation": -2.75, 
-		"src": "images/wsc/wsc-maps-469-2-m.png", "visibile": false, "opacity": 0.0, 
+		"name": "wsc-469-02", "x": 255, "y": 1389.5, "zoomX": 0.245, "zoomY": 0.245, "rotation": -2.75, 
+		"src": "images/wsc/wsc-maps-469-2-m.png", "visibile": true, "opacity": 0.8, 
 		"description": "Earlsfort Terrace, Stephen’s Green South and Harcourt Street showing plan of proposed new street"
+	},
+	{
+		"name": "wsc-355-1", "x": 696, "y": 713.5, "zoomX": 0.323, "zoomY": 0.289, "rotation": 1.14, 
+		"src": "images/wsc/wsc-355-1.png", "visibile": true, "opacity": 0.8, 
+		"description": "Plan of Baggot Street and Fitzwilliam Street, showing avenues thereof No. 1 Date: 1790"
 	},
 	{
 		"name": "wsc-729", "x": -1088.5, "y": 652, "zoomX": 0.184, "zoomY": 0.184, "rotation": -3.425, 
@@ -62,5 +79,10 @@
 		"name": "wsc-757", "x": -881, "y": 261.5, "zoomX": 0.355, "zoomY": 0.355, "rotation": -0.025, 
 		"src": "images/wsc/wsc-maps-757-l.png", "visibile": true, "opacity": 0.5, 
 		"description": "four courts to st patricks, the castle to thomas street"
+	},
+	{
+		"name": "wsc-098", "x": -475, "y": 524, "zoomX": 0.063, "zoomY": 0.063, "rotation": -0.16, 
+		"src": "images/wsc/wsc-maps-098.png", "visibile": true, "opacity": 0.7,
+		"description": "Map of Christchurch, Skinners Row etc. Thomas Sherrard, 5 January 1821 Date: 1821"
 	}
 ]
