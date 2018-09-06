@@ -60,6 +60,10 @@
 		"src": "images/landmarks/mountjoy.png", "visible": true, "opacity": 0.7
 	},
 	{
+		"name": "mountjoyb", "x": 152, "y": -570, "zoomX": 0.2, "zoomY": 0.305, "rotation": 0.04, 
+		"src": "images/landmarks/mountjoyb.png", "visible": true, "opacity": 0.7
+	},
+	{
 		"name": "royalhospital", "x": -1851, "y": 487.5, "zoomX": 0.21, "zoomY": 0.3, "rotation": -0.05, 
 		"src": "images/landmarks/royalhospital.png", "visible": true, "opacity": 0.9
 	},

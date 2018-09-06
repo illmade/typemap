@@ -16,10 +16,9 @@ let layerState = new BasicTransform(0, 0, 1, 1, 0);
 let imageLayer = new ContainerLayer(layerState);
 
 let imageState = new BasicTransform(-1440,-1440, 0.222, 0.222, 0);
-let helloImage = new StaticImage(imageState, "images/bluecoat.png", .5);
 
 let countyState = new BasicTransform(-2631, -2051.5, 1.716, 1.674, 0);
-let countyImage = new StaticImage(countyState, "images/County_of_the_City_of_Dublin_1837_map.jpg", 0.5);
+let countyImage = new StaticImage(countyState, "images/County_of_the_City_of_Dublin_1837_map.png", 0.5);
 
 let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
 let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .7);
@@ -42,10 +41,10 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = wscLayer.get("wsc-469-02");
+let edit = wscLayer.get("wsc-329");
 
-imageLayer.set("firemaps", firemapLayer);
 imageLayer.set("wsc", wscLayer);
+imageLayer.set("firemaps", firemapLayer);
 imageLayer.set("landmarks", landmarksLayer);
 
 function showMap(divName: string, name: string) {
@@ -58,6 +57,7 @@ function showMap(divName: string, name: string) {
     canvasView.layers.push(staticGrid);
 
     let tileController = new DisplayElementController(canvasView, sentinelLayer, "v");
+    let baseController = new DisplayElementController(canvasView, bgImage, "B");
     let countyController = new DisplayElementController(canvasView, countyImage, "V");
     let firemapController = new DisplayElementController(canvasView, firemapLayer, "b");
     let wscController = new DisplayElementController(canvasView, wscLayer, "n");

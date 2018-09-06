@@ -32,23 +32,41 @@ export class ImageController {
     pressed(viewCanvas: CanvasView, event: KeyboardEvent) {
     	console.log("pressed" + event.target + ", " + event.key);
 
+        let multiplier = 1;
+
     	switch (event.key) {
     		case "a":
-    			this.canvasLayer.x = this.canvasLayer.x - 0.5;
+    			this.canvasLayer.x = this.canvasLayer.x - 0.5 * multiplier;
     			viewCanvas.draw();
     			break;
+            case "A":
+                this.canvasLayer.x = this.canvasLayer.x - 5 * multiplier;
+                viewCanvas.draw();
+                break;
     		case "d":
-    			this.canvasLayer.x = this.canvasLayer.x + 0.5;
+    			this.canvasLayer.x = this.canvasLayer.x + 0.5 * multiplier;
     			viewCanvas.draw();
     			break;
+            case "D":
+                this.canvasLayer.x = this.canvasLayer.x + 5 * multiplier;
+                viewCanvas.draw();
+                break;
     		case "w":
-    			this.canvasLayer.y = this.canvasLayer.y - 0.5;
+    			this.canvasLayer.y = this.canvasLayer.y - 0.5 * multiplier;
     			viewCanvas.draw();
     			break;
+            case "W":
+                this.canvasLayer.y = this.canvasLayer.y - 5 * multiplier;
+                viewCanvas.draw();
+                break;    
     		case "s":
-    			this.canvasLayer.y = this.canvasLayer.y + 0.5;
+    			this.canvasLayer.y = this.canvasLayer.y + 0.5 * multiplier;
     			viewCanvas.draw();
     			break;
+            case "S":
+                this.canvasLayer.y = this.canvasLayer.y + 5 * multiplier;
+                viewCanvas.draw();
+                break;
     		case "e":
     			this.canvasLayer.rotation = this.canvasLayer.rotation - 0.005;
     			viewCanvas.draw();
@@ -58,19 +76,19 @@ export class ImageController {
     			viewCanvas.draw();
     			break;
     		case "x":
-    			this.canvasLayer.zoomX = this.canvasLayer.zoomX - 0.002;
+    			this.canvasLayer.zoomX = this.canvasLayer.zoomX - 0.002 * multiplier;
     			viewCanvas.draw();
     			break;
     		case "X":
-    			this.canvasLayer.zoomX = this.canvasLayer.zoomX + 0.002;
+    			this.canvasLayer.zoomX = this.canvasLayer.zoomX + 0.002 * multiplier;
     			viewCanvas.draw();
     			break;
     		case "z":
-    			this.canvasLayer.zoomY = this.canvasLayer.zoomY - 0.002;
+    			this.canvasLayer.zoomY = this.canvasLayer.zoomY - 0.002 * multiplier;
     			viewCanvas.draw();
     			break;
     		case "Z":
-    			this.canvasLayer.zoomY = this.canvasLayer.zoomY + 0.002;
+    			this.canvasLayer.zoomY = this.canvasLayer.zoomY + 0.002 * multiplier;
     			viewCanvas.draw();
     			break;
             case "T":

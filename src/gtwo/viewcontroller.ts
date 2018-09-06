@@ -2,7 +2,7 @@ import { ViewTransform } from "./view";
 import { CanvasView } from "./canvasview";
 
 
-abstract class MouseController {
+export abstract class MouseController {
 
     mousePosition(event: MouseEvent, within: HTMLElement): Array<number> {
         let m_posx = event.clientX + document.body.scrollLeft

@@ -1,7 +1,10 @@
 import { CanvasLayer } from "./layer";
 import { 
 	invertTransform, 
-	ViewTransform, BasicViewTransform, Transform, BasicTransform } from "./view";
+	ViewTransform, 
+	BasicViewTransform, 
+	Transform, 
+	BasicTransform } from "./view";
 
 export interface DisplayElement extends Transform {
 	isVisible(): boolean;
