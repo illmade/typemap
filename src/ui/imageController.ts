@@ -52,14 +52,22 @@ export class ImageController {
     			this.staticImage.yIndex = this.staticImage.yIndex + 0.005;
     			viewCanvas.draw();
     			break;
-    		case "e":
-    			this.staticImage.rotation = this.staticImage.rotation - 0.005;
-    			viewCanvas.draw();
-    			break;
+            case "e":
+                this.staticImage.rotation = this.staticImage.rotation - 0.005;
+                viewCanvas.draw();
+                break;
+            case "E":
+                this.staticImage.rotation = this.staticImage.rotation - 0.05;
+                viewCanvas.draw();
+                break;
     		case "q":
     			this.staticImage.rotation = this.staticImage.rotation + 0.005;
     			viewCanvas.draw();
     			break;
+            case "Q":
+                this.staticImage.rotation = this.staticImage.rotation + 0.05;
+                viewCanvas.draw();
+                break;
     		case "x":
     			this.staticImage.scalingX = this.staticImage.scalingX - 0.005;
     			viewCanvas.draw();

@@ -41,7 +41,7 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = wscLayer.get("wsc-329");
+let edit = wscLayer.get("wsc-423-2");
 
 imageLayer.set("wsc", wscLayer);
 imageLayer.set("firemaps", firemapLayer);

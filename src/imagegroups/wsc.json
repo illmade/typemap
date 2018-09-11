@@ -15,6 +15,11 @@
 		"description": "Survey of a line of road, leading from Linen Hall to Glasnevin Road, showing the Royal Canal Date: 1800"
 	},
 	{
+		"name": "wsc-361", "x": 464, "y": 2131, "zoomX": 0.436, "zoomY": 0.436, "rotation": -2.04, 
+		"src": "images/wsc/wsc-361.png", "visibile": true, "opacity": 0.7,
+		"description": "Leeson Street, Portland Street (now Upper Leeson Street), Eustace Place, Eustace Bridge (now Leeson Street), Hatch Street, Circular Road - signed by Commissioners of Wide Streets Date: 1792"
+	},
+	{
 		"name": "wsc-088-1", "x": -0.9, "y": 2.67, "zoomX": 0.5, "zoomY": 0.5, "rotation": -3.32, 
 		"src": "images/wsc/wsc-maps-088-1.jpg", "visibile": false, "opacity": 0.0
 	},
@@ -107,7 +112,7 @@
 	},
 	{
 		"name": "wsc-329", "x": -678, "y": 345.5, "zoomX": 0.336, "zoomY": 0.336, "rotation": -0.215, 
-		"src": "images/wsc/wsc-329.png", "visibile": true, "opacity": 0.5,
+		"src": "images/wsc/wsc-329.png", "visibile": true, "opacity": 0.3,
 		"description": "Plan for opening and widening a principal Avenue to the Castle, now (1900) Parliament Street - showing Dame Street, Castle Street, and all the Avenues thereof Date: 1757"
 	},
 	{
@@ -209,5 +214,80 @@
 		"name": "wsc-326-2", "x": -1257.5, "y": 143.5, "zoomX": 0.1, "zoomY": 0.1, "rotation": 0.075, 
 		"src": "images/wsc/wsc-326-2.png", "visibile": true, "opacity": 0.7,
 		"description": "Barrack Street, Park Street, Parkgate Street and Temple Street, with reference to names of tenants and premises"
+	},
+	{
+		"name": "wsc-334", "x": 90.5, "y": 357, "zoomX": 0.128, "zoomY": 0.128, "rotation": 1.265, 
+		"src": "images/wsc/wsc-334.png", "visibile": true, "opacity": 0.5,
+		"description": "Dame Street, College Green, George’s Lane, George’s Street, Chequer Street and avenues thereof"
+	},
+	{
+		"name": "wsc-355-2", "x": 185, "y": 1029, "zoomX": 0.302, "zoomY": 0.302, "rotation": -0.45, 
+		"src": "images/wsc/wsc-355-2.png", "visibile": true, "opacity": 0.7,
+		"description": "Plan of Baggot Street and Fitzwilliam Street, showing avenues thereof No. 2 Date: 1792"
+	},
+	{
+		"name": "wsc-368", "x": -687.5, "y": 277.5, "zoomX": 0.156, "zoomY": 0.15, "rotation": 0.12, 
+		"src": "images/wsc/wsc-368.png", "visibile": true, "opacity": 0.7,
+		"description": "Map of King’s Inn Quay and Merchants Quay, showing site of Ormond Bridge - below Charles Street - afterwards removed and re-erected opposite Winetavern Street Date: 1797"
+	},
+	{
+		"name": "wsc-372", "x": 341.5, "y": 296.5, "zoomX": 0.036, "zoomY": 0.0339, "rotation": 2.955, 
+		"src": "images/wsc/wsc-372.png", "visibile": true, "opacity": 0.7,
+		"description": "George's Quay, Whites Lane, and Hawkins Street, showing site of Sweetman's Brewery which ran down to River Liffey Date: 1799"
+	},
+	{
+		"name": "wsc-390-1", "x": -804.5, "y": 420, "zoomX": 0.204, "zoomY": 0.202, "rotation": -0.07, 
+		"src": "images/wsc/wsc-390-1.png", "visibile": true, "opacity": 0.5,
+		"description": "Plan of proposed Market House, adjoining Thomas Street, Vicar Street, Market Street and Francis Street Date: 1801"
+	},
+	{
+		"name": "wsc-395-3", "x": -588, "y": 578, "zoomX": 0.036, "zoomY": 0.036, "rotation": -3.65, 
+		"src": "images/wsc/wsc-395-3.png", "visibile": true, "opacity": 0.5,
+		"description": "New Row and Cutpurse Row Date: 1800"
+	},
+	{
+		"name": "wsc-404", "x": -15, "y": 379, "zoomX": 0.064, "zoomY": 0.064, "rotation": -0.32, 
+		"src": "images/wsc/wsc-404.png", "visibile": true, "opacity": 0.5,
+		"description": "Anglesea Street and Parliament House Date: 1802"
+	},
+	{
+		"name": "wsc-411", "x": 343.5, "y": 657, "zoomX": 0.086, "zoomY": 0.086, "rotation": 0.325,
+		"src": "images/wsc/wsc-411.png", "visibile": true, "opacity": 0.5,
+		"description": "Leinster House and part of the estate of Viscount Fitzwilliam (formerly Leinster Lawn), laid out in lots for building - showing Kildare Street, Upper Merrion Street and Leinster Place (Street), Merrion Place, and the Old Boundary between Leinster and Lord Fitzwilliam - taken from a map signed Robert Gibson, May 18, 1754 Date: 1812"
+	},
+	{
+		"name": "wsc-251", "x": 220, "y": 64, "zoomX": 0.236, "zoomY": 0.236, "rotation": -1.49,
+		"src": "images/wsc/wsc-251.png", "visibile": true, "opacity": 0.5,
+		"description": "Map of portion of City, showing Montgomery Street, Mecklinburgh Street, Lower Gloucester Street and portion of Mabbot Street"
+	},
+	{
+		"name": "wsc-413", "x": -373, "y": 806.5, "zoomX": 0.078, "zoomY": 0.076, "rotation": -0.15,
+		"src": "images/wsc/wsc-413.png", "visibile": true, "opacity": 0.5,
+		"description": "Peter Street, Peter’s Row, Whitefriar Street, Wood Street and Bride Street - showing site of the Amphitheatre in Bride Street, where the Moleyneux Church now (1900) stands Date: 1812"
+	},
+	{
+		"name": "wsc-414", "x": -200, "y": 362.5, "zoomX": 0.076, "zoomY": 0.076, "rotation": -0.24,
+		"src": "images/wsc/wsc-414.png", "visibile": true, "opacity": 0.5,
+		"description": "Temple Bar, Wellington Quay, Old Custom House, Bagnio Slip etc. Date: 1813"
+	},
+	{
+		"name": "wsc-421", "x": -474.5, "y": 527, "zoomX": 0.062, "zoomY": 0.06, "rotation": -0.185,
+		"src": "images/wsc/wsc-421.png", "visibile": true, "opacity": 0.6,
+		"description": "Map of the precincts of Christ Church Dublin, showing Skinners Row, to which is attached a Memorandum denominating the premises, taken by the Commissioners of Wide Streets for the purpose of widening said Skinners Row, now (1900) known as Christ Church Place Date: 1817"
+	},
+	{ 
+		"name": "wsc-408-2", "x": -397.5, "y": 545.5, "zoomX": 0.044, "zoomY": 0.044, "rotation": -0.12, 
+		"src": "images/wsc/wsc-408-2.png", "visibile": true, "opacity": 0.5,
+		"description": "Werburgh Street, Skinners Row, Fishamble Street and Castle Street Date: c. 1810"
+	},
+	{
+		"name": "wsc-423-2", "x": 34.5, "y": 471, "zoomX": 0.076, "zoomY": 0.076, "rotation": -3.2, 
+		"src": "images/wsc/wsc-423-2.png", "visibile": true, "opacity": 0.5,
+		"description": "Crown Alley, Cope Street, Ardill’s Row, Temple Bar, Aston’s Quay and Wellington Quay No. 2 Date: 1820-5"
+	},
+	{
+		"name": "wsc-425-1", "x": -1134.5, "y": 271, "zoomX": 0.076, "zoomY": 0.076, "rotation": 0, 
+		"src": "images/wsc/wsc-425-1.png", "visibile": true, "opacity": 0.5,
+		"description": "Meath Row, Mark’s Alley and Dirty Lane - showing Bridgefoot Street, Mass Lane, Thomas Street and St. Catherine’s Church Date: 1820-24"
 	}
 ]

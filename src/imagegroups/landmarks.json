@@ -16,8 +16,8 @@
 		"src": "images/landmarks/oconnell.png", "visible": true, "opacity": 0.9
 	},
 	{
-		"name": "fourcourts", "x": -606, "y": 302, "zoomX": 0.23, "zoomY": 0.43, "rotation": -0.085, 
-		"src": "images/landmarks/fourcourts.png", "visible": true, "opacity": 1
+		"name": "fourcourts", "x": -567.5, "y": 323.5, "zoomX": 0.16, "zoomY": 0.328, "rotation": -0.12, 
+		"src": "images/landmarks/fourcourts.png", "visible": true, "opacity": 0.8
 	},
 	{
 		"name": "michans", "x": -639, "y": 160, "zoomX": 0.14, "zoomY": 0.24, "rotation": 0.02, 
@@ -36,7 +36,7 @@
 		"src": "images/landmarks/patricks.png", "visible": true, "opacity": 0.8
 	},
 	{
-		"name": "ngireland", "x": 406, "y": 684, "zoomX": 0.19, "zoomY": 0.42, "rotation": -0.105, 
+		"name": "ngireland", "x": 431, "y": 694, "zoomX": 0.14, "zoomY": 0.375, "rotation": -0.135, 
 		"src": "images/landmarks/ngireland.png", "visible": true, "opacity": 0.8
 	},
 	{
