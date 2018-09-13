@@ -24,7 +24,7 @@ function showMap(divName: string, name: string) {
     //let nextImage = new StaticImage(rotateState, "images/bluecoat.png", 0.8);
 
     let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
-    let staticGrid = new StaticGrid(gridTransform, 0);
+    let staticGrid = new StaticGrid(gridTransform, 0, true);
 
     let tileStruct = new TileStruct("test/", ".png", "images/test/");
     let zoom = zoomByLevel(0);

@@ -47,18 +47,32 @@ export abstract class DrawLayer extends CanvasLayer {
 export class ContainerLayer extends CanvasLayer {
 
 	layerMap: Map<string, CanvasLayer>;
+	displayLayers: Array<CanvasLayer>;
 
 	constructor(localTransform: Transform, opacity: number = 1, visible: boolean = true) {
 		super(localTransform, opacity, visible);
 		this.layerMap = new Map<string, CanvasLayer>();
+		this.displayLayers = [];
 	}
 
 	set(name: string, layer: CanvasLayer){
 		this.layerMap.set(name, layer);
+		this.displayLayers.push(layer);
 	}
 
 	get(name: string): CanvasLayer {
 		return this.layerMap.get(name);
+	}
+
+	setTop(name: string) {
+		let topLayer = this.get(name);
+		this.displayLayers = this.displayLayers.filter(function(element: CanvasLayer){ 
+			if (element == topLayer){
+				return false;
+			} else {
+				return true;
+			}});
+		this.displayLayers.push(topLayer);
 	}
 
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean {
@@ -67,9 +81,9 @@ export class ContainerLayer extends CanvasLayer {
 
 		var drawingComplete = true;
 
-		for (let layer of this.layerMap) {
-			if (layer[1].isVisible()){
-				drawingComplete = drawingComplete && layer[1].draw(ctx, layerTransform, view);
+		for (let layer of this.displayLayers) {
+			if (layer.isVisible()){
+				drawingComplete = drawingComplete && layer.draw(ctx, layerTransform, view);
 			}
 			
 		}

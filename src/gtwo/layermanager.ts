@@ -1,6 +1,7 @@
 import { CanvasLayer, ContainerLayer } from "./layer";
 import { StaticImage } from "./static";
 import { Transform , BasicTransform } from "./view";
+import {CanvasView, DisplayElement} from "./canvasview";
 
 export interface ImageStruct extends Transform {
 	
@@ -44,6 +45,53 @@ export class LayerManager {
 
 	getLayers(): Map<string, ContainerLayer> {
 		return this.layerMap;
+	}
+
+	getLayer(name: string): ContainerLayer {
+		return this.layerMap.get(name);
+	}
+
+}
+
+export class ContainerLayerManager {
+
+	private layerContainer: ContainerLayer;
+	private selected: string;
+	
+	constructor(layerContainer: ContainerLayer) {
+		this.layerContainer = layerContainer;
+	}
+
+	setLayerContainer(layerContainer: ContainerLayer) {
+		this.layerContainer = layerContainer;
+	}
+
+	setSelected(name: string){
+		this.selected = name;
+	}
+
+	toggleVisibility(selected: boolean = true){
+		let toggleGroup: Array<DisplayElement> = [];
+		if (selected){
+			if (this.selected != ""){
+				toggleGroup.push(this.layerContainer.layerMap.get(this.selected));
+			}
+		} else {
+			for (let pair of this.layerContainer.layerMap){
+
+				//console.log("layerName: " + pair[0]);
+				if (pair[0] != this.selected){
+					toggleGroup.push(pair[1]);
+				}
+				else {
+					console.log("layerName: " + this.selected);
+				}
+			}
+		}
+
+		for (let element of toggleGroup){
+			element.setVisible(!element.isVisible())
+		}
 	}
 
 }

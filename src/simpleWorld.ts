@@ -6,7 +6,8 @@ import { StaticGrid } from "./gtwo/grid";
 import { ViewController } from "./gtwo/viewcontroller";
 import { ImageController, DisplayElementController } from "./gtwo/imagecontroller";
 import { TileLayer, TileStruct, zoomByLevel} from "./gtwo/tilelayer";
-import { LayerManager } from "./gtwo/layermanager";
+import { LayerManager, ContainerLayerManager } from "./gtwo/layermanager";
+import { LayerController } from "./gtwo/layercontroller";
 
 import * as firemaps from "./imagegroups/firemaps.json";
 import * as landmarks from "./imagegroups/landmarks.json";
@@ -24,7 +25,7 @@ let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
 let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .7);
 
 let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
-let staticGrid = new StaticGrid(gridTransform, 0, 512, 512);
+let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
 
 let sentinelStruct = new TileStruct("qtile/dublin/", ".png", "images/qtile/dublin/");
 
@@ -41,11 +42,16 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = wscLayer.get("wsc-423-2");
+let edit = firemapLayer.get("17");
 
-imageLayer.set("wsc", wscLayer);
+let containerLayerManager = new ContainerLayerManager(firemapLayer);
+containerLayerManager.setSelected("17");
+
 imageLayer.set("firemaps", firemapLayer);
+imageLayer.set("wsc", wscLayer);
 imageLayer.set("landmarks", landmarksLayer);
+
+wscLayer.setTop("17");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
@@ -62,10 +68,13 @@ function showMap(divName: string, name: string) {
     let firemapController = new DisplayElementController(canvasView, firemapLayer, "b");
     let wscController = new DisplayElementController(canvasView, wscLayer, "n");
     let landmarkController = new DisplayElementController(canvasView, landmarksLayer, "m");
+    let gridController = new DisplayElementController(canvasView, staticGrid, "g");
 
     let controller = new ViewController(canvasView, canvas, canvasView);
 
     let imageController = new ImageController(canvasView, edit);
+
+    let layerController = new LayerController(canvasView, containerLayerManager);
 
     drawMap(canvasView);
 

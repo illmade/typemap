@@ -10,10 +10,10 @@ export class StaticGrid extends DrawLayer {
 	zoomWidth: number;
 	zoomHeight: number;
 
-	constructor(localTransform: Transform, zoomLevel: number, 
+	constructor(localTransform: Transform, zoomLevel: number, visible: boolean,
 		readonly gridWidth: number = 256, readonly gridHeight: number = 256){
 
-		super(localTransform, 1);
+		super(localTransform, 1, visible);
 
 		let zoom = Math.pow(2, zoomLevel);
 		this.zoomWidth = gridWidth / zoom;

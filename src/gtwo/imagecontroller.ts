@@ -24,12 +24,19 @@ export class DisplayElementController {
 
 export class ImageController {
 
-    constructor(canvasView: CanvasView, readonly canvasLayer: CanvasLayer) {
+    private canvasLayer: CanvasLayer;
+
+    constructor(canvasView: CanvasView, canvasLayer: CanvasLayer) {
     	document.addEventListener("keypress", (e:Event) => 
     		this.pressed(canvasView, e  as KeyboardEvent));
+        this.canvasLayer = canvasLayer;
     }
 
-    pressed(viewCanvas: CanvasView, event: KeyboardEvent) {
+    setCanvasLayer(canvasLayer: CanvasLayer){
+        this.canvasLayer = canvasLayer;
+    }
+
+    pressed(canvasView: CanvasView, event: KeyboardEvent) {
     	console.log("pressed" + event.target + ", " + event.key);
 
         let multiplier = 1;
@@ -37,67 +44,79 @@ export class ImageController {
     	switch (event.key) {
     		case "a":
     			this.canvasLayer.x = this.canvasLayer.x - 0.5 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
             case "A":
                 this.canvasLayer.x = this.canvasLayer.x - 5 * multiplier;
-                viewCanvas.draw();
+                canvasView.draw();
                 break;
     		case "d":
     			this.canvasLayer.x = this.canvasLayer.x + 0.5 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
             case "D":
                 this.canvasLayer.x = this.canvasLayer.x + 5 * multiplier;
-                viewCanvas.draw();
+                canvasView.draw();
                 break;
     		case "w":
     			this.canvasLayer.y = this.canvasLayer.y - 0.5 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
             case "W":
                 this.canvasLayer.y = this.canvasLayer.y - 5 * multiplier;
-                viewCanvas.draw();
+                canvasView.draw();
                 break;    
     		case "s":
     			this.canvasLayer.y = this.canvasLayer.y + 0.5 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
             case "S":
                 this.canvasLayer.y = this.canvasLayer.y + 5 * multiplier;
-                viewCanvas.draw();
+                canvasView.draw();
                 break;
-    		case "e":
-    			this.canvasLayer.rotation = this.canvasLayer.rotation - 0.005;
-    			viewCanvas.draw();
-    			break;
-    		case "q":
-    			this.canvasLayer.rotation = this.canvasLayer.rotation + 0.005;
-    			viewCanvas.draw();
-    			break;
+            case "e":
+                this.canvasLayer.rotation = this.canvasLayer.rotation - 0.005;
+                canvasView.draw();
+                break;
+            case "E":
+                this.canvasLayer.rotation = this.canvasLayer.rotation - 0.05;
+                canvasView.draw();
+                break;
+            case "q":
+                this.canvasLayer.rotation = this.canvasLayer.rotation + 0.005;
+                canvasView.draw();
+                break;
+            case "Q":
+                this.canvasLayer.rotation = this.canvasLayer.rotation + 0.05;
+                canvasView.draw();
+                break;
     		case "x":
     			this.canvasLayer.zoomX = this.canvasLayer.zoomX - 0.002 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
     		case "X":
     			this.canvasLayer.zoomX = this.canvasLayer.zoomX + 0.002 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
     		case "z":
     			this.canvasLayer.zoomY = this.canvasLayer.zoomY - 0.002 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
     		case "Z":
     			this.canvasLayer.zoomY = this.canvasLayer.zoomY + 0.002 * multiplier;
-    			viewCanvas.draw();
+    			canvasView.draw();
     			break;
+            case "c":
+                this.canvasLayer.setVisible(!this.canvasLayer.visible);
+                canvasView.draw();
+                break;
             case "T":
                 this.canvasLayer.opacity = Math.min(1.0, this.canvasLayer.opacity + 0.1);
-                viewCanvas.draw();
+                canvasView.draw();
                 break;
             case "t":
                 this.canvasLayer.opacity = Math.max(0, this.canvasLayer.opacity - 0.1);
-                viewCanvas.draw();
+                canvasView.draw();
                 break;
     		default:
     			// code...

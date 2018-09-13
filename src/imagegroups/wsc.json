@@ -96,11 +96,6 @@
 		"description": "Map of Christchurch, Skinners Row etc. Thomas Sherrard, 5 January 1821 Date: 1821"
 	},
 	{
-		"name": "wsc-112", "x": -298, "y": 339.5, "zoomX": 0.185, "zoomY": 0.185, "rotation": -0.255, 
-		"src": "images/wsc/wsc-112.png", "visibile": true, "opacity": 0.4,
-		"description": "Dame Street, from the corner of Palace Street to the corner of George’s Street - laid out in lots for building North and South and vicinity Date: 1782"
-	},
-	{
 		"name": "wsc-202", "x": 16, "y": 81, "zoomX": 0.289, "zoomY": 0.263, "rotation": -0.105, 
 		"src": "images/wsc/wsc-202-c.png", "visibile": true, "opacity": 0.4,
 		"description": "area immediately north of River Liffey from Sackville St, Lower Abbey St, Beresford Place, as far as end of North Wall. Also south of Liffey from Westmorland Street to end of John Rogerson's Quay"
@@ -122,7 +117,7 @@
 	},
 	{
 		"name": "wsc-124", "x": -279, "y": 366, "zoomX": 0.057, "zoomY": 0.051, "rotation": -0.16, 
-		"src": "images/wsc/wsc-124.jpeg", "visibile": true, "opacity": 0.4,
+		"src": "images/wsc/wsc-124.png", "visibile": true, "opacity": 0.4,
 		"description": "Map of premises in Essex Street and Parliament Street, showing Essex Bridge and Old Custom House. T. and D.H. Sherrard Date: 1813"
 	},
 	{
@@ -136,19 +131,9 @@
 		"description": "Maps - College Green, College Street, Westmoreland Street and avenues thereof, showing the site of Parliament House and Trinity College No. 1 Date: 1793"
 	},
 	{
-		"name": "wsc-380", "x": 241.5, "y": 286, "zoomX": 0.033, "zoomY": 0.033, "rotation": 0.05, 
-		"src": "images/wsc/wsc-380-1.png", "visibile": true, "opacity": 0.4,
-		"description": "Map - Fleet Market, Poolbeg Street, Hawkins Street, Townsend Street, Fleet Street, Dublin Society Stores Date: 1800"
-	},
-	{
 		"name": "wsc-387", "x": 280, "y": 423.5, "zoomX": 0.083, "zoomY": 0.077, "rotation": 3.035, 
 		"src": "images/wsc/wsc-387.png", "visibile": true, "opacity": 0.4,
 		"description": "Survey of holdings in Fleet Street and College Street, showing site of Old Watch House Date: 1801"
-	},
-	{
-		"name": "wsc-199", "x": 878.5, "y": 1217.5, "zoomX": 0.241, "zoomY": 0.241, "rotation": 2.115, 
-		"src": "images/wsc/wsc-199-1.png", "visibile": true, "opacity": 0.6,
-		"description": "Map of part of the estate of the Hon. Sidney Herbert, called Wilton Parade, showing the proposed appropriation thereof in sites for building. Also showing Baggot Street, Grand Canal and Fitzwilliam Place."
 	},
 	{
 		"name": "wsc-218", "x": -2455, "y": -284.5, "zoomX": 0.453, "zoomY": 0.451, "rotation": -0.04, 
@@ -186,6 +171,11 @@
 		"description": "Map of Lower Abbey Street, to corner of Eden Quay (Sackville Street) Date: 1813"
 	},
 	{
+		"name": "wsc-380", "x": 241.5, "y": 286, "zoomX": 0.033, "zoomY": 0.033, "rotation": 0.05, 
+		"src": "images/wsc/wsc-380-1.png", "visibile": true, "opacity": 0.4,
+		"description": "Map - Fleet Market, Poolbeg Street, Hawkins Street, Townsend Street, Fleet Street, Dublin Society Stores Date: 1800"
+	},
+	{
 		"name": "wsc-309", "x": 36.0, "y": -297, "zoomX": 0.219, "zoomY": 0.219, "rotation": -0.435, 
 		"src": "images/wsc/wsc-309.png", "visibile": true, "opacity": 0.8,
 		"description": "Part of Gardiner Street and part of Gloucester Street, land out in lots for building - showing Gloucester Street, Gloucester Place, the Diamond, Summer Hill, Great Britain Street, Cumberland Street, Marlboro’ Street, Mabbot Street, Mecklinburgh etc.Date: 1791"
@@ -219,6 +209,11 @@
 		"name": "wsc-334", "x": 90.5, "y": 357, "zoomX": 0.128, "zoomY": 0.128, "rotation": 1.265, 
 		"src": "images/wsc/wsc-334.png", "visibile": true, "opacity": 0.5,
 		"description": "Dame Street, College Green, George’s Lane, George’s Street, Chequer Street and avenues thereof"
+	},
+	{
+		"name": "wsc-112", "x": -298, "y": 339.5, "zoomX": 0.185, "zoomY": 0.185, "rotation": -0.255, 
+		"src": "images/wsc/wsc-112.png", "visibile": true, "opacity": 0.1,
+		"description": "Dame Street, from the corner of Palace Street to the corner of George’s Street - laid out in lots for building North and South and vicinity Date: 1782"
 	},
 	{
 		"name": "wsc-355-2", "x": 185, "y": 1029, "zoomX": 0.302, "zoomY": 0.302, "rotation": -0.45, 
@@ -266,7 +261,7 @@
 		"description": "Peter Street, Peter’s Row, Whitefriar Street, Wood Street and Bride Street - showing site of the Amphitheatre in Bride Street, where the Moleyneux Church now (1900) stands Date: 1812"
 	},
 	{
-		"name": "wsc-414", "x": -200, "y": 362.5, "zoomX": 0.076, "zoomY": 0.076, "rotation": -0.24,
+		"name": "wsc-414", "x": -194.5, "y": 364.5, "zoomX": 0.072, "zoomY": 0.074, "rotation": -0.24,
 		"src": "images/wsc/wsc-414.png", "visibile": true, "opacity": 0.5,
 		"description": "Temple Bar, Wellington Quay, Old Custom House, Bagnio Slip etc. Date: 1813"
 	},
@@ -281,13 +276,58 @@
 		"description": "Werburgh Street, Skinners Row, Fishamble Street and Castle Street Date: c. 1810"
 	},
 	{
-		"name": "wsc-423-2", "x": 34.5, "y": 471, "zoomX": 0.076, "zoomY": 0.076, "rotation": -3.2, 
-		"src": "images/wsc/wsc-423-2.png", "visibile": true, "opacity": 0.5,
-		"description": "Crown Alley, Cope Street, Ardill’s Row, Temple Bar, Aston’s Quay and Wellington Quay No. 2 Date: 1820-5"
-	},
-	{
-		"name": "wsc-425-1", "x": -1134.5, "y": 271, "zoomX": 0.076, "zoomY": 0.076, "rotation": 0, 
+		"name": "wsc-425-1", "x": -917.5, "y": 577.5, "zoomX": 0.045, "zoomY": 0.046, "rotation": -1.425, 
 		"src": "images/wsc/wsc-425-1.png", "visibile": true, "opacity": 0.5,
 		"description": "Meath Row, Mark’s Alley and Dirty Lane - showing Bridgefoot Street, Mass Lane, Thomas Street and St. Catherine’s Church Date: 1820-24"
+	},
+	{
+		"name": "wsc-426", "x": -735.5, "y": 578.5, "zoomX": 0.034, "zoomY": 0.034, "rotation": 1.565, 
+		"src": "images/wsc/wsc-426.png", "visibile": true, "opacity": 0.5,
+		"description": "Map of several houses and premises on the East side of Meath Row, the property of Mr. John Walsh - showing the situation of Thomas Street, Hanbury Lane and site of Chapel Date: 1821"
+	},
+	{
+		"name": "wsc-112-1", "x": -303, "y": 332.5, "zoomX": 0.188, "zoomY": 0.188, "rotation": -0.24, 
+		"src": "images/wsc/wsc-112-1.png", "visibile": false, "opacity": 0.1,
+		"description": "Dame Street, from the corner of Palace Street to the corner of George’s Street - laid out in lots for building North and South and vicinity Date: 1782"
+	},
+	{
+		"name": "wsc-455", "x": 635.5, "y": 1258, "zoomX": 0.263, "zoomY": 0.263, "rotation": -0.9, 
+		"src": "images/wsc/wsc-455.png", "visibile": true, "opacity": 0.6,
+		"description": "Herbert Place and Avenues adjacent to Upper Mount Street, showing Upper Baggot Street - Herbert Street, Warrington Place and Percy Place, Northumberland Road and Lower Mount Street Date: 1833"
+	},
+	{
+		"name": "wsc-199", "x": 878.5, "y": 1217.5, "zoomX": 0.241, "zoomY": 0.241, "rotation": 2.115, 
+		"src": "images/wsc/wsc-199-1.png", "visibile": true, "opacity": 0.6,
+		"description": "Map of part of the estate of the Hon. Sidney Herbert, called Wilton Parade, showing the proposed appropriation thereof in sites for building. Also showing Baggot Street, Grand Canal and Fitzwilliam Place."
+	},
+	{
+		"name": "wsc-465", "x": 301.5, "y": 711.5, "zoomX": 0.207, "zoomY": 0.207, "rotation": 3.3, 
+		"src": "images/wsc/wsc-465.png", "visibile": true, "opacity": 0.6,
+		"description": "Grafton Street, Nassau Street (South side) and Dawson Street Date: 1837"
+	},
+	{
+		"name": "wsc-480-2", "x": -65, "y": 377, "zoomX": 0.07, "zoomY": 0.07, "rotation": -0.045, 
+		"src": "images/wsc/wsc-480-2.png", "visibile": true, "opacity": 0.6,
+		"description": "North side of College Green showing Avenues thereof, and ground plan of Parliament House, Anglesea Street, Blackmoor Yard etc. - with reference giving tenants, names of premises required or purpose of improvement. Date: 1786"
+	},
+	{
+		"name": "wsc-491", "x": -21.5, "y": 938, "zoomX": 0.164, "zoomY": 0.164, "rotation": -3.08, 
+		"src": "images/wsc/wsc-491.png", "visibile": true, "opacity": 0.8,
+		"description": "Aungier Street, Mercer Street, York Street and Avenues thereof, viz: - French Street (Mercer Street), Bow Lane, Digges Lane, Stephen Street, Drury Lane, Great and Little Longford Streets"
+	},
+	{
+		"name": "wsc-496", "x": -278, "y": 456, "zoomX": 0.018, "zoomY": 0.018, "rotation": -3.26, 
+		"src": "images/wsc/wsc-496.png", "visibile": true, "opacity": 0.7,
+		"description": "Essex Quay, Change Alley, Smock Alley and ground plan of Smock Alley Theatre"
+	},
+	{
+		"name": "wsc-507", "x": -273.5, "y": 350.4, "zoomX": 0.087, "zoomY": 0.0859, "rotation": -0.215, 
+		"src": "images/wsc/wsc-507.png", "visibile": true, "opacity": 0.7,
+		"description": "Essex Street, Parliament Street, showing Old Custom House Quay, Lower Ormond Quay and Dame Street"
+	},
+	{
+		"name": "wsc-423-2", "x": 34.5, "y": 478.5, "zoomX": 0.078, "zoomY": 0.082, "rotation": -3.215, 
+		"src": "images/wsc/wsc-423-2.png", "visibile": true, "opacity": 0.5,
+		"description": "Crown Alley, Cope Street, Ardill’s Row, Temple Bar, Aston’s Quay and Wellington Quay No. 2 Date: 1820-5"
 	}
 ]

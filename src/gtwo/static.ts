@@ -19,17 +19,20 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 
 	private drawImage(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform){
 
-		let ctxTransform = combineTransform(this, parentTransform);
+		if (this.isVisible()){
+			let ctxTransform = combineTransform(this, parentTransform);
 
-		//console.log("ctx x " + ctxTransform.x);
+			//console.log("ctx x " + ctxTransform.x);
 
-		this.prepareCtx(ctx, ctxTransform, view);
+			this.prepareCtx(ctx, ctxTransform, view);
+			
+			ctx.globalAlpha = this.opacity;
+			ctx.drawImage(this.img, 0, 0);
+			ctx.globalAlpha = 1;
+
+			this.cleanCtx(ctx, ctxTransform, view);
+		}
 		
-		ctx.globalAlpha = this.opacity;
-		ctx.drawImage(this.img, 0, 0);
-		ctx.globalAlpha = 1;
-
-		this.cleanCtx(ctx, ctxTransform, view);
 	}
 
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform): boolean {
