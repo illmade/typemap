@@ -19,10 +19,11 @@ let imageLayer = new ContainerLayer(layerState);
 let imageState = new BasicTransform(-1440,-1440, 0.222, 0.222, 0);
 
 let countyState = new BasicTransform(-2631, -2051.5, 1.716, 1.674, 0);
-let countyImage = new StaticImage(countyState, "images/County_of_the_City_of_Dublin_1837_map.png", 0.5);
+let countyImage = new StaticImage(countyState, 
+    "images/County_of_the_City_of_Dublin_1837_map.png", 0.5, true);
 
 let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
-let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .7);
+let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .6, true);
 
 let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
 let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
@@ -30,7 +31,7 @@ let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
 let sentinelStruct = new TileStruct("qtile/dublin/", ".png", "images/qtile/dublin/");
 
 let sentinelTransform = new BasicTransform(0, 0, 2, 2, 0);
-let sentinelLayer = new TileLayer(sentinelTransform, sentinelStruct, 15814, 10621, 15);
+let sentinelLayer = new TileLayer(sentinelTransform, sentinelStruct, true, 15814, 10621, 15);
 //let sentinelLayer = new TileLayer(BasicTransform.unitTransform, sentinelStruct, 31628, 21242, 16);
 
 imageLayer.set("county", countyImage);
@@ -42,16 +43,16 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = firemapLayer.get("17");
+let edit = firemapLayer.get("7");
 
 let containerLayerManager = new ContainerLayerManager(firemapLayer);
-containerLayerManager.setSelected("17");
+containerLayerManager.setSelected("7");
 
-imageLayer.set("firemaps", firemapLayer);
 imageLayer.set("wsc", wscLayer);
+imageLayer.set("firemaps", firemapLayer);
 imageLayer.set("landmarks", landmarksLayer);
 
-wscLayer.setTop("17");
+firemapLayer.setTop("7");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);

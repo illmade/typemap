@@ -20,13 +20,13 @@ export class TileLayer extends DrawLayer {
 	constructor(
 		localTransform: Transform, 
 		readonly tileStruct: TileStruct,
+		visbile: boolean,
 		public xOffset: number = 0,
 		public yOffset: number = 0,
 		public zoom: number = 1,
 		readonly gridWidth: number = 256, 
 		readonly gridHeight: number = 256,
-		opacity: number = 1,
-		visbile: boolean = true){
+		opacity: number = 1){
 
 		super(localTransform, opacity, visbile);
 

@@ -9,7 +9,7 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 	constructor(localTransform: Transform, 
 		imageSrc: string, 
 		opacity: number,
-		visible: boolean = true) {
+		visible: boolean) {
 
 		super(localTransform, opacity, visible);
 		

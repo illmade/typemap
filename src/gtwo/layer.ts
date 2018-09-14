@@ -66,13 +66,17 @@ export class ContainerLayer extends CanvasLayer {
 
 	setTop(name: string) {
 		let topLayer = this.get(name);
-		this.displayLayers = this.displayLayers.filter(function(element: CanvasLayer){ 
-			if (element == topLayer){
-				return false;
-			} else {
-				return true;
-			}});
-		this.displayLayers.push(topLayer);
+		if (topLayer != undefined){
+			this.displayLayers = this.displayLayers.filter(function(element: CanvasLayer){ 
+				if (element == topLayer){
+					return false;
+				} else {
+					return true;
+				}});
+			this.displayLayers.push(topLayer);
+		} else {
+			console.log("top layer undefined " + name);
+		}
 	}
 
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean {
