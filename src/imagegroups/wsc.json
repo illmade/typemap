@@ -189,6 +189,11 @@
 		"description": "Barrack Street, Park Street, Parkgate Street and Temple Street, with reference to names of tenants and premises No. 1"
 	},
 	{
+		"name": "wsc-632", "x": 125, "y": 347.5, "zoomX": 0.172, "zoomY": 0.164, "rotation": 0.53, 
+		"src": "images/wsc/wsc-632.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Nassau Street, leading from Grafton Street to Merrion Square - showing the off streets and portion of Grafton Street and Suffolk Street Date: 1833"
+	},
+	{
 		"name": "wsc-326-2", "x": -1257.5, "y": 143.5, "zoomX": 0.1, "zoomY": 0.1, "rotation": 0.075, 
 		"src": "images/wsc/wsc-326-2.png", "visible": true, "opacity": 0.7,
 		"description": "Barrack Street, Park Street, Parkgate Street and Temple Street, with reference to names of tenants and premises"
@@ -314,11 +319,6 @@
 		"description": "Essex Street, Parliament Street, showing Old Custom House Quay, Lower Ormond Quay and Dame Street"
 	},
 	{
-		"name": "wsc-423-2", "x": 34.5, "y": 478.5, "zoomX": 0.078, "zoomY": 0.082, "rotation": -3.215, 
-		"src": "images/wsc/wsc-423-2.png", "visible": true, "opacity": 0.5,
-		"description": "Crown Alley, Cope Street, Ardill’s Row, Temple Bar, Aston’s Quay and Wellington Quay No. 2 Date: 1820-5"
-	},
-	{
 		"name": "wsc-206-1", "x": -44.5, "y": -221, "zoomX": 0.05, "zoomY": 0.05, "rotation": -0.65, 
 		"src": "images/wsc/wsc-206-1.png", "visible": true, "opacity": 0.5,
 		"description": "Map of angle of Cavendish Row, Rutland Square and Great Britain Street - showing unsigned elevations and ground plan of Rotunda by Frederick Trench. Date: 1787"
@@ -327,5 +327,60 @@
 		"name": "wsc-203", "x": -392, "y": 272.5, "zoomX": 0.078, "zoomY": 0.076, "rotation": -0.25, 
 		"src": "images/wsc/wsc-203.png", "visible": true, "opacity": 0.5,
 		"description": "City Survey - showing Ormond Quay, Arran Street, Mary’s Abbey, Little Strand Street, Capel Street and Essex Bridge Date: 1811"
+	},
+	{
+		"name": "wsc-515", "x": -75, "y": 550, "zoomX": 0.088, "zoomY": 0.088, "rotation": 2.935, 
+		"src": "images/wsc/wsc-515.png", "visible": true, "opacity": 0.5,
+		"description": "showing Dame Street, Essex Street etc. - also site for proposed National Bank, on or about where the 'Empire' (formerly the 'Star') Theatre of Varieties now (1900) stands No.1"
+	},
+	{
+		"name": "wsc-523-1", "x": -297.5, "y": 368.5, "zoomX": 0.088, "zoomY": 0.088, "rotation": -0.185, 
+		"src": "images/wsc/wsc-523-1.png", "visible": true, "opacity": 0.5,
+		"description": "Essex Street, Temple Bar and vicinity to Essex Bridge, showing proposed new quay wall (Wellington Quay)"
+	},
+	{
+		"name": "wsc-423-2", "x": 34.5, "y": 478.5, "zoomX": 0.078, "zoomY": 0.082, "rotation": -3.215, 
+		"src": "images/wsc/wsc-423-2.png", "visible": true, "opacity": 0.5,
+		"description": "Crown Alley, Cope Street, Ardill’s Row, Temple Bar, Aston’s Quay and Wellington Quay No. 2 Date: 1820-5"
+	},
+	{
+		"name": "wsc-535", "x": -209.5, "y": 325, "zoomX": 0.134, "zoomY": 0.134, "rotation": -0.07, 
+		"src": "images/wsc/wsc-535.png", "visible": true, "opacity": 0.5,
+		"description": "Wellington Quay - continuation of Eustace Street Date"
+	},
+	{
+		"name": "wsc-567-3", "x": 194.5, "y": 450, "zoomX": 0.126, "zoomY": 0.126, "rotation": 1.48, 
+		"src": "images/wsc/wsc-567-3.png", "visible": true, "opacity": 0.5,
+		"description": "Map of a parcel of ground bounded by Grafton Street, College Green, and Chequer Lane - leased to Mr. Pooley (3 copies) No. 3 Date: 1682"
+	},
+	{
+		"name": "wsc-594-1", "x": -564.5, "y": 572.5, "zoomX": 0.044, "zoomY": 0.044, "rotation": 2.535, 
+		"src": "images/wsc/wsc-594-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of New Hall Market - part of the City Estate Date: 1780"
+	},
+	{
+		"name": "wsc-625-1", "x": -320.5, "y": 609.5, "zoomX": 0.058, "zoomY": 0.058, "rotation": 2.61, 
+		"src": "images/wsc/wsc-625-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of the Old Tholsell ground, formerly called Souther’s Lane, belonging to the City of Dublin - laid out for building, Nicholas Street, Skinners Row and Werburgh Street By A. R. Neville, C. S. Date: 1812"
+	},
+	{
+		"name": "wsc-654", "x": -397.5, "y": 409, "zoomX": 0.122, "zoomY": 0.122, "rotation": -0.135, 
+		"src": "images/wsc/wsc-654.png", "visible": true, "opacity": 0.5,
+		"description": "Map of the ground plots of several holdings belonging to the City of Dublin, Madam O’Hara, Colonel Berry and others, on Back Quay - (Essex Quay) Blind Quay - Exchange Street, Essex Bridge, Crane Lane and Dame Street, Sycamore Alley - showing portion of the City Wall, Essex Gate, Dame Gate, Dames Mill and branch of the River Dodder"
+	},
+	{
+		"name": "wsc-705", "x": -187.5, "y": 392, "zoomX": 0.04, "zoomY": 0.042, "rotation": -0.38, 
+		"src": "images/wsc/wsc-705.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Essex Street and vicinity Date: 1806"
+	},
+	{
+		"name": "wsc-725", "x": -654, "y": 226, "zoomX": 0.094, "zoomY": 0.094, "rotation": 0.07, 
+		"src": "images/wsc/wsc-725.png", "visible": true, "opacity": 0.5,
+		"description": "Church Street, Charles Street, Inn’s Quay - 'White Cross Inn' - rere of Four Courts - Ushers’ Quay, Merchant’s Quay, Wood Quay - with reference Date: 1833"
+	},
+	{
+		"name": "wsc-198-1", "x": -459.5, "y": 469, "zoomX": 0.026, "zoomY": 0.026, "rotation": -0.305, 
+		"src": "images/wsc/wsc-198-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Whitehorse Yard (Winetavern Street) Surveyor: Arthur Neville Date: 1847"
 	}
 ]

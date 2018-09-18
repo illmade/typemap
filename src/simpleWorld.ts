@@ -23,7 +23,14 @@ let countyImage = new StaticImage(countyState,
     "images/County_of_the_City_of_Dublin_1837_map.png", 0.5, true);
 
 let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
+
 let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .6, true);
+
+let tmState = new BasicTransform(-1033.5,149, 0.59, 0.59, 0);
+let tmImage = new StaticImage(tmState, "images/thingmot.png", .3, true);
+
+let duState = new BasicTransform(-929,-105.5, 0.464, 0.506, 0);
+let duImage = new StaticImage(duState, "images/dublin1610.jpg", .3, false);
 
 let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
 let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
@@ -43,16 +50,19 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = firemapLayer.get("7");
+let edit = wscLayer.get("wsc-198-1");
 
-let containerLayerManager = new ContainerLayerManager(firemapLayer);
-containerLayerManager.setSelected("7");
+let containerLayerManager = new ContainerLayerManager(wscLayer);
+containerLayerManager.setSelected("wsc-198-1");
 
 imageLayer.set("wsc", wscLayer);
 imageLayer.set("firemaps", firemapLayer);
+
+imageLayer.set("dublin1610", duImage);
+imageLayer.set("thingmot", tmImage);
 imageLayer.set("landmarks", landmarksLayer);
 
-firemapLayer.setTop("7");
+wscLayer.setTop("wsc-535");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
@@ -69,6 +79,8 @@ function showMap(divName: string, name: string) {
     let firemapController = new DisplayElementController(canvasView, firemapLayer, "b");
     let wscController = new DisplayElementController(canvasView, wscLayer, "n");
     let landmarkController = new DisplayElementController(canvasView, landmarksLayer, "m");
+    let tmController = new DisplayElementController(canvasView, tmImage, "N");
+    let duController = new DisplayElementController(canvasView, duImage, "M");
     let gridController = new DisplayElementController(canvasView, staticGrid, "g");
 
     let controller = new ViewController(canvasView, canvas, canvasView);
