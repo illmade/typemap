@@ -1,5 +1,6 @@
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
 import { DisplayElement } from "./canvasview";
+import { Dimension } from "../geom/point2d"
 
 export abstract class CanvasLayer extends BasicTransform implements DisplayElement {
 
@@ -8,6 +9,8 @@ export abstract class CanvasLayer extends BasicTransform implements DisplayEleme
 	}
 
 	abstract draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean;
+
+	abstract getDimension(): Dimension;
 
 	isVisible(): boolean {
 		return this.visible;
@@ -94,5 +97,23 @@ export class ContainerLayer extends CanvasLayer {
 
 		return drawingComplete;
 	}
+
+	getDimension(): Dimension {
+		var xMin = this.x;
+		var yMin = this.y;
+		var xMax = this.x;
+		var yMax = this.y;
+
+		for (let layer of this.displayLayers) {
+			let layerDimension = layer.getDimension();
+			xMin = Math.min(xMin, this.x + layerDimension.x);
+			yMin = Math.min(yMin, this.y + layerDimension.y);
+			xMax = Math.max(xMax, this.x + layerDimension.x + this.zoomX * layerDimension.w);
+			yMax = Math.max(yMax, this.y + layerDimension.y + this.zoomY * layerDimension.h);
+		}
+
+		return new Dimension(xMin, yMin, xMax - xMin, yMax - yMin);
+	}
+
 
 }

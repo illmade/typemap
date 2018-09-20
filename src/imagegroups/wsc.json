@@ -382,5 +382,85 @@
 		"name": "wsc-198-1", "x": -459.5, "y": 469, "zoomX": 0.026, "zoomY": 0.026, "rotation": -0.305, 
 		"src": "images/wsc/wsc-198-1.png", "visible": true, "opacity": 0.5,
 		"description": "Map of Whitehorse Yard (Winetavern Street) Surveyor: Arthur Neville Date: 1847"
+	},
+	{
+		"name": "wsc-055", "x": -1775, "y": -1446, "zoomX": 1.11, "zoomY": 1.162, "rotation": 0.015, 
+		"src": "images/wsc/wsc-055.png", "visible": true, "opacity": 0.5,
+		"description": "Plan of Mail Coach Road, through Blessington Street to Cabra, of New Line Road, being part of the Navan Turnpike Road and connecting an improvement lately made upon that Line with the City of Dublin - showing the most direct line and also a Circuitons line whereby the expense of a Bridge across the Royal Canal may be avoided. Done by His Majesty's Post Masters of Ireland by Mr. Larkin Date: 1818"
+	},
+	{
+		"name": "wsc-060", "x": -104.5, "y": -1, "zoomX": 0.674, "zoomY": 0.702, "rotation": 3.165, 
+		"src": "images/wsc/wsc-60.png", "visible": true, "opacity": 0.5,
+		"description": "Map showing the alterations proposed in the new line of road, leading from Dublin to Navan, commencing at Blessington Street; passing along the Circular Road to Prussia Street, and hence along the Turnpike Road to Ratoath, and terminating at the Turnpike"
+	},
+	{
+		"name": "wsc-065", "x": -545.5, "y": -275, "zoomX": 0.298, "zoomY": 0.292, "rotation": -1.05, 
+		"src": "images/wsc/wsc-065.png", "visible": true, "opacity": 0.5,
+		"description": "Map showing Mountjoy Street, Dorset Street, Dominick Street and vicinity - plan of Saint Mary’s Chapel of Ease, and proposed opening leading thereunto from Granby Row - Thomas Sherrard 30 Nov 1827"
+	},
+	{
+		"name": "wsc-012", "x": -125.5, "y": 149.5, "zoomX": 0.044, "zoomY": 0.044, "rotation": -0.22, 
+		"src": "images/wsc/wsc-012.png", "visible": true, "opacity": 0.5,
+		"description": "Map of premises Lower Abbey Street, Lower Sackville Street and Eden Quay"
+	},
+	{
+		"name": "wsc-014", "x": -1555.5, "y": 27, "zoomX": 0.14, "zoomY": 0.14, "rotation": 0.055, 
+		"src": "images/wsc/wsc-014.png", "visible": true, "opacity": 0.5,
+		"description": "A survey of ground contiguous to the Horse Barracks, Dublin - showing Montpelier Hill, Barrack Street, Parkgate Street and environs (Thomas Sherrard) Date: 1790"
+	},
+	{
+		"name": "wsc-015", "x": -1414.5, "y": 29, "zoomX": 0.116, "zoomY": 0.112, "rotation": 0.075, 
+		"src": "images/wsc/wsc-015.png", "visible": true, "opacity": 0.5,
+		"description": "Arbour Hill, Royal Barracks and vicinity. With reference. Date: 1790"
+	},
+	{
+		"name": "wsc-016", "x": -847, "y": 231.5, "zoomX": 0.038, "zoomY": 0.038, "rotation": 0.095, 
+		"src": "images/wsc/wsc-016.png", "visible": true, "opacity": 0.5,
+		"description": "Map - Arran Quay, Queen Street Date:1790"
+	},
+	{
+		"name": "wsc-017", "x": -564, "y": 440, "zoomX": 0.068, "zoomY": 0.06, "rotation": 3.39, 
+		"src": "images/wsc/wsc-017.png", "visible": true, "opacity": 0.5,
+		"description": "Arran Quay, Church Street"
+	},
+	{
+		"name": "wsc-018", "x": -194, "y": -395.5, "zoomX": 0.12, "zoomY": 0.12, "rotation": -0.63, 
+		"src": "images/wsc/wsc-018.png", "visible": true, "opacity": 0.5,
+		"description": "Survey of Barley fields etc. (Dorset Street). Plan of opening a street from Rutland Square to Dorset Street - (Palace Row and Gardiners Row) - Thomas Sherrard Date: 1789"
+	},
+	{
+		"name": "wsc-025", "x": -1010, "y": 105, "zoomX": 0.12, "zoomY": 0.12, "rotation": 0.16, 
+		"src": "images/wsc/wsc-025.png", "visible": true, "opacity": 0.5,
+		"description": "Blackhall Place - New Street to the Quay"
+	},
+	{
+		"name": "wsc-057", "x": -224, "y": 330.5, "zoomX": 0.084, "zoomY": 0.084, "rotation": 2.865, 
+		"src": "images/wsc/wsc-057.png", "visible": true, "opacity": 0.5,
+		"description": "Plan of streets about Mary’s Abbey and Boot Lane - (Old Bank) Date: 1811"
+	},
+	{
+		"name": "wsc-063", "x": -88.5, "y": 26.5, "zoomX": 0.3, "zoomY": 0.3, "rotation": -2.145, 
+		"src": "images/wsc/wsc-063.png", "visible": true, "opacity": 0.5,
+		"description": "Elevation of the west front and plan of Mountjoy Square laid out on the rising ground, near George’s Church - the estate of the Right Hon. Luke Gardiner, and now (1787), to be let for building - Lord Mountjoy’s plan. Date: 1787"
+	},
+	{
+		"name": "wsc-087-2", "x": -172.5, "y": 1419, "zoomX": 0.086, "zoomY": 0.086, "rotation": -1.695, 
+		"src": "images/wsc/wsc-087-2.png", "visible": true, "opacity": 0.5,
+		"description": "Camden Street Upper and Charlotte Street Date: 1841"
+	},
+	{
+		"name": "wsc-090", "x": -261, "y": 505, "zoomX": 0.074, "zoomY": 0.066, "rotation": -0.23, 
+		"src": "images/wsc/wsc-090.png", "visible": true, "opacity": 0.5,
+		"description": "Castle Yard, Castle Street, Dame Street, Parliament Street and vicinity Date: 1764"
+	},
+	{
+		"name": "wsc-100-2", "x": -528, "y": 464, "zoomX": 0.078, "zoomY": 0.078, "rotation": -0.27, 
+		"src": "images/wsc/wsc-100-2.png", "visible": true, "opacity": 0.5,
+		"description": "Map of premises to be valued by Jury; Cock Hill, Michael’s Lane, Winetavern Street, John’s Lane, Christchurch, Patrick Street and Patrick’s Close Date: 1813"
+	},
+	{
+		"name": "wsc-103", "x": 99.5, "y": 566, "zoomX": 0.062, "zoomY": 0.06, "rotation": -3.155, 
+		"src": "images/wsc/wsc-103.png", "visible": true, "opacity": 0.5,
+		"description": "Map of South Side of College Green and vicinity Date: 1808"
 	}
 ]

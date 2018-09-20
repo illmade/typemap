@@ -1,5 +1,6 @@
 import { DrawLayer } from "./layer";
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
+import { Dimension } from "../geom/point2d";
 
 export class TileStruct {
 	
@@ -100,6 +101,10 @@ export class TileLayer extends DrawLayer {
 
 		//console.log("drew tiles " + drawingComplete);
 		return drawingComplete;
+	}
+
+	getDimension(): Dimension {
+		return new Dimension(0, 0, 0, 0);
 	}
 }
 

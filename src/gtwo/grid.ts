@@ -1,5 +1,6 @@
 import { DrawLayer } from "./layer";
 import { Transform, ViewTransform, combineTransform } from "./view";
+import { Dimension } from "../geom/point2d";
 
 /**
 * We don't want to draw a grid into a transformed canvas as this gives us grid lines that are too
@@ -73,4 +74,7 @@ export class StaticGrid extends DrawLayer {
 		return true;
 	}
 
+	getDimension(): Dimension {
+		return new Dimension(0, 0, 0, 0);
+	}
 }

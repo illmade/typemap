@@ -1,5 +1,5 @@
 import { CanvasLayer, ContainerLayer } from "./layer";
-import { StaticImage } from "./static";
+import { StaticImage, RectLayer } from "./static";
 import { Transform , BasicTransform } from "./view";
 import {CanvasView, DisplayElement} from "./canvasview";
 
@@ -55,31 +55,38 @@ export class LayerManager {
 
 export class ContainerLayerManager {
 
-	private layerContainer: ContainerLayer;
+	private containerLayer: ContainerLayer;
 	private selected: string;
 	
-	constructor(layerContainer: ContainerLayer) {
-		this.layerContainer = layerContainer;
+	constructor(containerLayer: ContainerLayer) {
+		this.containerLayer = containerLayer;
 	}
 
-	setLayerContainer(layerContainer: ContainerLayer) {
-		this.layerContainer = layerContainer;
+	setLayerContainer(containerLayer: ContainerLayer) {
+		this.containerLayer = containerLayer;
 	}
 
 	setSelected(name: string){
 		this.selected = name;
+
+		let layer: CanvasLayer = this.containerLayer.get(this.selected);
+
+		let layerRect = new RectLayer(
+			new BasicTransform(0, 0, 1, 1, 0), layer.getDimension(), 1, true);
+
+		this.containerLayer.set("outline", layerRect);
+
 	}
 
 	toggleVisibility(selected: boolean = true){
 		let toggleGroup: Array<DisplayElement> = [];
 		if (selected){
 			if (this.selected != ""){
-				toggleGroup.push(this.layerContainer.layerMap.get(this.selected));
+				toggleGroup.push(this.containerLayer.get(this.selected));
 			}
 		} else {
-			for (let pair of this.layerContainer.layerMap){
+			for (let pair of this.containerLayer.layerMap){
 
-				//console.log("layerName: " + pair[0]);
 				if (pair[0] != this.selected){
 					toggleGroup.push(pair[1]);
 				}

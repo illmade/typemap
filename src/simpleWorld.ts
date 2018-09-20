@@ -11,7 +11,7 @@ import { LayerController } from "./gtwo/layercontroller";
 
 import * as firemaps from "./imagegroups/firemaps.json";
 import * as landmarks from "./imagegroups/landmarks.json";
-import * as wsc from "./imagegroups/wsc.json";
+import * as wsc from "./imagegroups/wsct.json";
 
 let layerState = new BasicTransform(0, 0, 1, 1, 0);
 let imageLayer = new ContainerLayer(layerState);
@@ -50,19 +50,19 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = wscLayer.get("wsc-198-1");
+let edit = wscLayer.get("wsc-018");
 
 let containerLayerManager = new ContainerLayerManager(wscLayer);
-containerLayerManager.setSelected("wsc-198-1");
+containerLayerManager.setSelected("wsc-018");
 
 imageLayer.set("wsc", wscLayer);
-imageLayer.set("firemaps", firemapLayer);
+//imageLayer.set("firemaps", firemapLayer);
 
-imageLayer.set("dublin1610", duImage);
-imageLayer.set("thingmot", tmImage);
-imageLayer.set("landmarks", landmarksLayer);
+//imageLayer.set("dublin1610", duImage);
+//imageLayer.set("thingmot", tmImage);
+//imageLayer.set("landmarks", landmarksLayer);
 
-wscLayer.setTop("wsc-535");
+wscLayer.setTop("wsc-103");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
