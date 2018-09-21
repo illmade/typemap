@@ -66,16 +66,18 @@ export class ContainerLayerManager {
 		this.containerLayer = containerLayer;
 	}
 
-	setSelected(name: string){
+	setSelected(name: string): RectLayer {
 		this.selected = name;
 
 		let layer: CanvasLayer = this.containerLayer.get(this.selected);
 
-		let layerRect = new RectLayer(
-			new BasicTransform(0, 0, 1, 1, 0), layer.getDimension(), 1, true);
+		let layerRect = new RectLayer(layer.getDimension(), 1, true);
 
-		this.containerLayer.set("outline", layerRect);
+		let layerName = "outline";//name + "_o"
 
+		this.containerLayer.set(layerName, layerRect);
+
+		return layerRect;
 	}
 
 	toggleVisibility(selected: boolean = true){

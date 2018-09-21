@@ -17,15 +17,20 @@ export class Point2D {
 
 }
 
-export function rotate(point: Point2D, angle: number, about: Point2D = new Point2D(0,0)): Point2D {
+export function rotate(
+  point: Point2D, 
+  angle: number, 
+  about: Point2D = new Point2D(0,0)
+): Point2D {
+
     let s = Math.sin(angle);
     let c = Math.cos(angle);
 
     let px = point.x - about.x;
     let py = point.y - about.y;
 
-    let xnew = px * c - py * s;
-    let ynew = px * s + py * c;
+    let xnew = px * c + py * s;
+    let ynew = py * c - px * s;
 
     return new Point2D(xnew + about.x, ynew + about.y);
 }
@@ -33,5 +38,9 @@ export function rotate(point: Point2D, angle: number, about: Point2D = new Point
 export class Dimension {
 
     constructor(public x: number, public y: number, public w: number, public h: number){}
+
+    toString(): string {
+        return "Dimension(" + this.x + ", " + this.y + ", " + this.w + ", " + this.h + ")";
+    }
 
 }

@@ -1,4 +1,4 @@
-import { Transform, combineTransform } from "./view";
+import { Transform, BasicTransform, combineTransform } from "./view";
 import { DrawLayer, CanvasLayer } from "./layer";
 import { DisplayElement } from "./canvasview";
 import { Dimension, rotate, Point2D } from "../geom/point2d";
@@ -51,24 +51,19 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 			var width = this.img.width * this.zoomX;
 			var height = this.img.height * this.zoomY;
 
-			//console.log("img width " + width + " height " + height);
-
 			let p1 = rotate(new Point2D(width, 0), this.rotation);
-			//console.log("p1 " + p1);
-			let p2 = rotate(new Point2D(width, height), this.rotation);
-			//console.log("p2 " + p2);
-			let p3 = rotate(new Point2D(0, height), this.rotation);
-			//console.log("p3 " + p3);
+			let p2 = rotate(new Point2D(width, -height), this.rotation);
+			let p3 = rotate(new Point2D(0, -height), this.rotation);
 
 			let minX = Math.min(0, p1.x, p2.x, p3.x);
 			let minY = Math.min(0, p1.y, p2.y, p3.y);
 			let maxX = Math.max(0, p1.x, p2.x, p3.x);
 			let maxY = Math.max(0, p1.y, p2.y, p3.y);
 
-			//console.log("xy " + this.x, this.y);
-			console.log("minX " + minX + " minY " + minY + " maxX " + maxX + "maxY " + maxY);
-
-			return new Dimension(this.x + minX * this.zoomX, this.y + minY, maxX-minX, maxY-minY);
+			console.log("minx: " + minX);
+			console.log("height: " + (maxY - minY));
+			
+			return new Dimension(this.x + minX, this.y - maxY, maxX-minX, maxY-minY);
 		}
 
 		return new Dimension(this.x, this.y, 0, 0);
@@ -77,12 +72,15 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 
 export class RectLayer extends DrawLayer implements DisplayElement {
 
-	constructor(localTransform: Transform, 
-		readonly dimension: Dimension, 
+	constructor(private dimension: Dimension, 
 		opacity: number,
 		visible: boolean) {
 
-		super(localTransform, opacity, visible);
+		super(new BasicTransform(dimension.x, dimension.y, 1, 1, 0), opacity, visible);
+	}
+
+	updateDimension(dimension: Dimension){
+		this.dimension = dimension;
 	}
 
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform): boolean {

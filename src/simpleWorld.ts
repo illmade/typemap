@@ -11,7 +11,7 @@ import { LayerController } from "./gtwo/layercontroller";
 
 import * as firemaps from "./imagegroups/firemaps.json";
 import * as landmarks from "./imagegroups/landmarks.json";
-import * as wsc from "./imagegroups/wsct.json";
+import * as wsc from "./imagegroups/wsc.json";
 
 let layerState = new BasicTransform(0, 0, 1, 1, 0);
 let imageLayer = new ContainerLayer(layerState);
@@ -50,10 +50,10 @@ let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscLayer = layerManager.addLayer(wsc, "wsc");
 
-let edit = wscLayer.get("wsc-018");
+let edit = wscLayer.get("wsc-254");
 
 let containerLayerManager = new ContainerLayerManager(wscLayer);
-containerLayerManager.setSelected("wsc-018");
+let outlineLayer = containerLayerManager.setSelected("wsc-254");
 
 imageLayer.set("wsc", wscLayer);
 //imageLayer.set("firemaps", firemapLayer);
@@ -62,11 +62,15 @@ imageLayer.set("wsc", wscLayer);
 //imageLayer.set("thingmot", tmImage);
 //imageLayer.set("landmarks", landmarksLayer);
 
-wscLayer.setTop("wsc-103");
+wscLayer.setTop("wsc-254");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
-    let canvasTransform = new BasicTransform(-512, -512, 0.5, 0.5, 0);
+
+    let x = outlineLayer.x;
+    let y = outlineLayer.y;
+
+    let canvasTransform = new BasicTransform(x - 100, y - 100, 0.5, 0.5, 0);
     let canvasView = new CanvasView(canvasTransform, canvas.clientWidth, canvas.clientHeight, canvas);
 
     canvasView.layers.push(sentinelLayer);
@@ -86,6 +90,8 @@ function showMap(divName: string, name: string) {
     let controller = new ViewController(canvasView, canvas, canvasView);
 
     let imageController = new ImageController(canvasView, edit);
+
+    imageController.setLayerOutline(outlineLayer);
 
     let layerController = new LayerController(canvasView, containerLayerManager);
 

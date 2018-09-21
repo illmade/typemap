@@ -11,7 +11,7 @@
 	},
 	{
 		"name": "wsc-075", "x": -217.5, "y": -1414.5, "zoomX": 0.87, "zoomY": 0.772, "rotation": 1.615, 
-		"src": "images/wsc/wsc-maps-075-m2.png", "visible": true, "opacity": 0.7,
+		"src": "images/wsc/wsc-maps-075-m.png", "visible": true, "opacity": 0.7,
 		"description": "Survey of a line of road, leading from Linen Hall to Glasnevin Road, showing the Royal Canal Date: 1800"
 	},
 	{
@@ -462,5 +462,20 @@
 		"name": "wsc-103", "x": 99.5, "y": 566, "zoomX": 0.062, "zoomY": 0.06, "rotation": -3.155, 
 		"src": "images/wsc/wsc-103.png", "visible": true, "opacity": 0.5,
 		"description": "Map of South Side of College Green and vicinity Date: 1808"
+	},
+	{
+		"name": "wsc-149-1", "x": -1091, "y": 515.5, "zoomX": 0.062, "zoomY": 0.06, "rotation": 0, 
+		"src": "images/wsc/wsc-149-1.png", "visible": true, "opacity": 0.8,
+		"description": "Map - James’s Gate, James Street, Thomas Street and Watling Street. Mr. Guinness’s Place Date: 1845"
+	},
+	{
+		"name": "wsc-149-2", "x": -1074.5, "y": 488, "zoomX": 0.044, "zoomY": 0.048, "rotation": 0, 
+		"src": "images/wsc/wsc-149-2.png", "visible": true, "opacity": 0.5,
+		"description": "Map - James’s Gate, James Street, Thomas Street and Watling Street. Mr. Guinness’s Place Date: 1845"
+	},
+	{
+		"name": "wsc-254", "x": -438, "y": -142, "zoomX": 0.118, "zoomY": 0.12, "rotation": -0.415, 
+		"src": "images/wsc/wsc-254.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Mabbot Street, Montgomery Street, Dominick Street, Cherry Lane, Cross Lane and Turn-again-Lane Date: 1801"
 	}
 ]

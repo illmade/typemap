@@ -1,6 +1,6 @@
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
 import { DisplayElement } from "./canvasview";
-import { Dimension } from "../geom/point2d"
+import { Dimension } from "../geom/point2d";
 
 export abstract class CanvasLayer extends BasicTransform implements DisplayElement {
 
