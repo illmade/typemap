@@ -11,6 +11,19 @@ export interface DisplayElement extends Transform {
 	setVisible(visible: boolean): void;
 	getOpacity(): number;
 	setOpacity(opacity: number): void;
+	getZoomDisplayRange(): ZoomDisplayRange;
+}
+
+export class ZoomDisplayRange {
+
+    static readonly AllZoomRange = new ZoomDisplayRange(-1, -1);
+
+	constructor(public minZoom: number, public maxZoom: number){}
+
+	withinRange(zoom: number): Boolean {
+		return ((zoom >= this.minZoom || this.minZoom == -1) && 
+			(zoom <= this.maxZoom || this.maxZoom == -1));
+	}
 }
 
 export class CanvasView extends BasicViewTransform {
@@ -64,6 +77,7 @@ export class CanvasView extends BasicViewTransform {
 		}
 
 		this.drawCentre(this.ctx);
+		this.showInfo(this.ctx);
 
 		return drawingComplete;
 	}
@@ -79,6 +93,12 @@ export class CanvasView extends BasicViewTransform {
         context.stroke();
         context.strokeStyle = "black";
         context.globalAlpha = 1;
+    }
+
+    showInfo(context: CanvasRenderingContext2D){
+    	context.strokeStyle = "red";
+    	context.fillText("zoom: " + this.zoomX, 10, 10);
+    	context.fill();
     }
 
 	private initCanvas(){

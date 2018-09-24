@@ -4,12 +4,35 @@ import { Transform , BasicTransform } from "./view";
 import {CanvasView, DisplayElement} from "./canvasview";
 
 export interface ImageStruct extends Transform {
-	
 	opacity: number;
 	visible: boolean;
 	src: string;
 	name: string;
+	date: number;
+}
 
+export function dateFilter(
+  imageStruct: Array<ImageStruct>, 
+  from: number, 
+  to: number): Array<ImageStruct>{
+	return imageStruct.filter(function(imageStruct){ 
+		if (imageStruct.date == undefined)
+			return false;
+		if (imageStruct.date >= from && imageStruct.date <= to) {
+			return true;
+		} else {
+			return false}
+		});
+}
+
+export function datelessFilter(
+  imageStruct: Array<ImageStruct>): Array<ImageStruct>{
+	return imageStruct.filter(function(imageStruct){ 
+		if (imageStruct.date == undefined)
+			return true;
+		else {
+			return false}
+		});
 }
 
 export class LayerManager {
@@ -30,8 +53,12 @@ export class LayerManager {
 		this.layerMap.get(this.defaultLayer).set(name, image);
 	}
 
-	addLayer(imageDetails: Array<ImageStruct>, layerName: string): ContainerLayer {
-		let imageLayer = new ContainerLayer(BasicTransform.unitTransform, 1, true);	
+	addLayer(
+	  imageDetails: Array<ImageStruct>, 
+	  layerName: string, 
+	  layerTransform: Transform = BasicTransform.unitTransform): ContainerLayer {
+
+		let imageLayer = new ContainerLayer(layerTransform, 1, true);	
 
 		for (var image of imageDetails){
 			let staticImage = new StaticImage(image, image.src, image.opacity, image.visible);
@@ -58,7 +85,8 @@ export class ContainerLayerManager {
 	private containerLayer: ContainerLayer;
 	private selected: string;
 	
-	constructor(containerLayer: ContainerLayer) {
+	constructor(containerLayer: ContainerLayer, 
+	  readonly displayLayer: ContainerLayer = containerLayer) {
 		this.containerLayer = containerLayer;
 	}
 
@@ -75,7 +103,7 @@ export class ContainerLayerManager {
 
 		let layerName = "outline";//name + "_o"
 
-		this.containerLayer.set(layerName, layerRect);
+		this.displayLayer.set(layerName, layerRect);
 
 		return layerRect;
 	}

@@ -1,0 +1,544 @@
+[
+	{
+		"name": "wsc-032", "x": -776, "y": 32.55, "zoomX": 0.29, "zoomY": 0.28, "rotation": -1.47, 
+		"src": "images/wsc/wsc-maps-032-m.png", "visible": true, "opacity": 0.7, 
+		"description": "Constitution Hill - Turnpike, Glasnevin Road; showing proposed road to Botanic Gardens"
+	},
+	{
+		"name": "wsc-072", "x": -252, "y": -247, "zoomX": 0.318, "zoomY": 0.314, "rotation": 1.585, 
+		"src": "images/wsc/wsc-maps-072-m.png", "visible": true, "opacity": 0.7,
+		"description": "Plan of improving the streets between Richmond Bridge (Four Courts) and Constitution Hill (King’s Inns) Date: 1837",
+		"date": 1837
+	},
+	{
+		"name": "wsc-075", "x": -217.5, "y": -1414.5, "zoomX": 0.87, "zoomY": 0.772, "rotation": 1.615, 
+		"src": "images/wsc/wsc-maps-075-m.png", "visible": true, "opacity": 0.7,
+		"description": "Survey of a line of road, leading from Linen Hall to Glasnevin Road, showing the Royal Canal Date: 1800",
+		"date": 1800
+	},
+	{
+		"name": "wsc-361", "x": 464, "y": 2131, "zoomX": 0.436, "zoomY": 0.436, "rotation": -2.04, 
+		"src": "images/wsc/wsc-361.png", "visible": true, "opacity": 0.7,
+		"description": "Leeson Street, Portland Street (now Upper Leeson Street), Eustace Place, Eustace Bridge (now Leeson Street), Hatch Street, Circular Road - signed by Commissioners of Wide Streets Date: 1792",
+		"date": 1792
+	},
+	{
+		"name": "wsc-106-1", "x": -757, "y": 495.5, "zoomX": 0.265, "zoomY": 0.265, "rotation": -0.074, 
+		"src": "images/wsc/wsc-maps-106-1.jpg", "visible": true, "opacity": 1.0, 
+		"description": "Map showing proposed improvements to be made in Cornmarket, Cutpurse Row, Lamb Alley - Francis Street - and an improved entrance from Kevin Street to Saint Patrick’s Cathedral, through Mitre Alley and at James’s Gate. Date: 1845-46 ",
+		"date": 1845
+	},
+	{
+		"name": "wsc-142", "x": 94.995, "y": 2377.5, "zoomX": 0.482, "zoomY": 0.476, "rotation": -2.015, 
+		"src": "images/wsc/wsc-maps-142-l.png", "visible": true, "opacity": 1.0,
+		"description": "Map of the New Streets, and other improvements intended to be immediately executed. Situate on the South Side of the City of Dublin, submitted for the approbation of the Commissioners of Wide Streets, particularly of those parts belonging to Wm. Cope and John Locker, Esq., Harcourt Street, Charlemount Street, Portobello, etc. Date: 1792",
+		"date": 1792
+	},
+	{
+		"name": "wsc-155", "x": -1506, "y": -50.5, "zoomX": 1.01, "zoomY": 0.972, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-155-m.png", "visible": true, "opacity": 0.6,
+		"description": "New approach from Military Road to King’s Bridge, and along the Quays to Aston’s Quay Date: 1841",
+		"date": 1841
+	},
+	{
+		"name": "wsc-157-3", "x": 3.115, "y": 3.65, "zoomX": 0.525, "zoomY": 0.59, "rotation": 0.54, 
+		"src": "images/wsc/wsc-maps-157-3-m.png", "visible": true, "opacity": 0.0, 
+		"description": "showing the improvements proposed by the Commissioners of Wide Streets in Nassau Street, Leinster Street and Clare Street"
+	},
+	{
+		"name": "wsc-164", "x": -472, "y":805, "zoomX": 0.056, "zoomY": 0.056, "rotation": 0.09, 
+		"src": "images/wsc/wsc-maps-164-l.png", "visible": true, "opacity": 1.0, 
+		"description": "Plan of Saint Patrick’s, etc. Date: 1824",
+		"date": 1824
+	},
+	{
+		"name": "wsc-469-02", "x": 255, "y": 1389.5, "zoomX": 0.245, "zoomY": 0.245, "rotation": -2.75, 
+		"src": "images/wsc/wsc-maps-469-2-m.png", "visible": true, "opacity": 0.8, 
+		"description": "Earlsfort Terrace, Stephen’s Green South and Harcourt Street showing plan of proposed new street"
+	},
+	{
+		"name": "wsc-355-1", "x": 696, "y": 713.5, "zoomX": 0.323, "zoomY": 0.289, "rotation": 1.14, 
+		"src": "images/wsc/wsc-355-1.png", "visible": true, "opacity": 0.8, 
+		"description": "Plan of Baggot Street and Fitzwilliam Street, showing avenues thereof No. 1 Date: 1790",
+		"date": 1790
+	},
+	{
+		"name": "wsc-729", "x": -1088.5, "y": 652, "zoomX": 0.184, "zoomY": 0.184, "rotation": -3.425, 
+		"src": "images/wsc/wsc-maps-729.png", "visible": true, "opacity": 0.5, 
+		"description": "Map - James’s Street, Bason Lane, Echlin’s Lane, Grand Canal Place, City Bason and Grand Canal Harbour"
+	},
+	{
+		"name": "wsc-757", "x": -881, "y": 261.5, "zoomX": 0.355, "zoomY": 0.355, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-757-l.png", "visible": true, "opacity": 0.5, 
+		"description": "four courts to st patricks, the castle to thomas street"
+	},
+	{
+		"name": "wsc-138", "x": 212.5, "y": 147, "zoomX": 0.19, "zoomY": 0.176, "rotation": 0, 
+		"src": "images/wsc/wsc-maps-138-l.png", "visible": true, "opacity": 0.4,
+		"description": "Map of premises, George’s Quay, City Quay, Townsend Street and neighbourhood, showing property lost to the City, in a suit by 'The Corporation - with Trinity College'"
+	},
+	{
+		"name": "wsc-189", "x": -792.5, "y": 262.5, "zoomX": 0.26, "zoomY": 0.258, "rotation": 0.003, 
+		"src": "images/wsc/wsc-189.png", "visible": true, "opacity": 0.8,
+		"description": "Copy of map of proposed New Street from Essex Street to Cornmarket, with the environs and streets branching off"
+	},
+	{
+		"name": "wsc-098", "x": -475, "y": 524, "zoomX": 0.063, "zoomY": 0.063, "rotation": -0.16, 
+		"src": "images/wsc/wsc-maps-098.png", "visible": true, "opacity": 0.7,
+		"description": "Map of Christchurch, Skinners Row etc. Thomas Sherrard, 5 January 1821 Date: 1821",
+		"date": 1821
+	},
+	{
+		"name": "wsc-202", "x": 16, "y": 81, "zoomX": 0.289, "zoomY": 0.263, "rotation": -0.105, 
+		"src": "images/wsc/wsc-202-c.png", "visible": true, "opacity": 0.4,
+		"description": "area immediately north of River Liffey from Sackville St, Lower Abbey St, Beresford Place, as far as end of North Wall. Also south of Liffey from Westmorland Street to end of John Rogerson's Quay"
+	},
+	{
+		"name": "wsc-179", "x": -537.5, "y": 730, "zoomX": 0.168, "zoomY": 0.164, "rotation": 0.02, 
+		"src": "images/wsc/wsc-179.png", "visible": true, "opacity": 1.0,
+		"description": "Saint Patrick’s Cathedral, North Close and vicinity"
+	},
+	{
+		"name": "wsc-329", "x": -678, "y": 345.5, "zoomX": 0.336, "zoomY": 0.336, "rotation": -0.215, 
+		"src": "images/wsc/wsc-329.png", "visible": true, "opacity": 0.3,
+		"description": "Plan for opening and widening a principal Avenue to the Castle, now (1900) Parliament Street - showing Dame Street, Castle Street, and all the Avenues thereof Date: 1757",
+		"date": 1757
+	},
+	{
+		"name": "wsc-187", "x": -226, "y": 494.5, "zoomX": 0.066, "zoomY": 0.064, "rotation": 0.0, 
+		"src": "images/wsc/wsc-187.png", "visible": true, "opacity": 1.0,
+		"description": "A survey of several holdings in South Great George's Street - total purchase £11528.16.3 Date:1801",
+		"date": 1801
+	},
+	{
+		"name": "wsc-124", "x": -279, "y": 366, "zoomX": 0.057, "zoomY": 0.051, "rotation": -0.16, 
+		"src": "images/wsc/wsc-124.png", "visible": true, "opacity": 0.4,
+		"description": "Map of premises in Essex Street and Parliament Street, showing Essex Bridge and Old Custom House. T. and D.H. Sherrard Date: 1813",
+		"date": 1813
+	},
+	{
+		"name": "wsc-360", "x": -144, "y": 421.5, "zoomX": 0.121, "zoomY": 0.107, "rotation": -0.05, 
+		"src": "images/wsc/wsc-360.png", "visible": true, "opacity": 0.5,
+		"description": "Map - Dame Street and avenues thereof - Eustace Street, Cecilia Street, and site of Old Theatre, Fownes Street, Crown Alley and Cope Street Date: 1792", 
+		"date": 1792
+	},
+	{
+		"name": "wsc-362", "x": 35.5, "y": 84.5, "zoomX": 0.229, "zoomY": 0.235, "rotation": 0.125, 
+		"src": "images/wsc/wsc-362-1.png", "visible": true, "opacity": 0.4,
+		"description": "Maps - College Green, College Street, Westmoreland Street and avenues thereof, showing the site of Parliament House and Trinity College No. 1 Date: 1793", 
+		"date": 1793
+	},
+	{
+		"name": "wsc-387", "x": 272.5, "y": 423.5, "zoomX": 0.081, "zoomY": 0.077, "rotation": 3.035, 
+		"src": "images/wsc/wsc-387.png", "visible": true, "opacity": 0.7,
+		"description": "Survey of holdings in Fleet Street and College Street, showing site of Old Watch House Date: 1801", 
+		"date": 1801
+	},
+	{
+		"name": "wsc-218", "x": -2455, "y": -284.5, "zoomX": 0.453, "zoomY": 0.451, "rotation": -0.04, 
+		"src": "images/wsc/wsc-218.png", "visible": true, "opacity": 0.8,
+		"description": "Survey of the Long Meadows and part of the Phoenix Park and Parkgate Street Date: 1786", 
+		"date": 1786
+	},
+	{
+		"name": "wsc-229", "x": -2384, "y": 55.5, "zoomX": 0.379, "zoomY": 0.379, "rotation": 0.015, 
+		"src": "images/wsc/wsc-229.png", "visible": true, "opacity": 0.6,
+		"description": "Section across the proposed Road from the Park Gate to Island Bridge Gate - now (1900) Conyngham Road Date: 1789", 
+		"date": 1789
+	},
+	{
+		"name": "wsc-242", "x": -405.5, "y": 21, "zoomX": 0.084, "zoomY": 0.084, "rotation": 1.085, 
+		"src": "images/wsc/wsc-242-2.png", "visible": true, "opacity": 0.8,
+		"description": "Survey of a holding in Mary’s Lane, the estate of the Right Honourable Lord Mountjoy Date: 1793", 
+		"date": 1793
+	},
+	{
+		"name": "wsc-245", "x": -210.0, "y":-397.5, "zoomX": 0.084, "zoomY": 0.084, "rotation": -0.62, 
+		"src": "images/wsc/wsc-245-2.png", "visible": true, "opacity": 0.8,
+		"description": "Map of the Barley Fields etc., and a plan for opening a street from Rutland Square, Dorset Street, being now (1899) known as South Frederick Street - with reference Date: 1789",
+		 "date": 1789
+	},
+	{
+		"name": "wsc-257", "x": 681.0, "y":-1223.5, "zoomX": 0.346, "zoomY": 0.388, "rotation": 0.25, 
+		"src": "images/wsc/wsc-257.png", "visible": true, "opacity": 0.8,
+		"description": "Map of Clonliffe Road and the Old Turnpike House at Ballybough Bridge - North Strand Date: 1823", 
+		"date": 1823
+	},
+	{
+		"name": "wsc-268", "x": -1528.0, "y": 105.5, "zoomX": 0.086, "zoomY": 0.086, "rotation": 0.07, 
+		"src": "images/wsc/wsc-268-3.png", "visible": true, "opacity": 0.8,
+		"description": "Map - Parkgate Street, Conyngham Road, with reference to names of tenants endorsed No. 3"
+	},
+	{
+		"name": "wsc-171", "x": 112.0, "y": 181.5, "zoomX": 0.021, "zoomY": 0.021, "rotation": -0.265, 
+		"src": "images/wsc/wsc-171-2.jpeg", "visible": true, "opacity": 0.8,
+		"description": "Map of Lower Abbey Street, to corner of Eden Quay (Sackville Street) Date: 1813", 
+		"date": 1813
+	},
+	{
+		"name": "wsc-380", "x": 241.5, "y": 286, "zoomX": 0.033, "zoomY": 0.033, "rotation": 0.05, 
+		"src": "images/wsc/wsc-380-1.png", "visible": true, "opacity": 0.4,
+		"description": "Map - Fleet Market, Poolbeg Street, Hawkins Street, Townsend Street, Fleet Street, Dublin Society Stores Date: 1800", 
+		"date": 1800
+	},
+	{
+		"name": "wsc-309", "x": 36.0, "y": -297, "zoomX": 0.219, "zoomY": 0.219, "rotation": -0.435, 
+		"src": "images/wsc/wsc-309.png", "visible": true, "opacity": 0.8,
+		"description": "Part of Gardiner Street and part of Gloucester Street, land out in lots for building - showing Gloucester Street, Gloucester Place, the Diamond, Summer Hill, Great Britain Street, Cumberland Street, Marlboro’ Street, Mabbot Street, Mecklinburgh etc.Date: 1791", 
+		"date": 1791
+	},
+	{
+		"name": "wsc-294", "x": 125.0, "y": -118, "zoomX": 0.129, "zoomY": 0.129, "rotation": -0.195, 
+		"src": "images/wsc/wsc-maps-294-2.png", "visible": true, "opacity": 0.8,
+		"description": "Survey of part of the Lordship of Saint Mary’s Abbey - part of the estate of the Right Honorable Luke Viscount Mountjoy, sold to Richard French Esq., pursuant to a Decree of His Majesty’s High Court of Chancery, 17 Feb 1794", 
+		"date": 1794
+	},
+	{
+		"name": "wsc-310", "x": 474.0, "y": -821.5, "zoomX": 0.576, "zoomY": 0.576, "rotation": 0.145, 
+		"src": "images/wsc/wsc-310.png", "visible": true, "opacity": 0.8,
+		"description": "North Lots - from the North Strand Road, to the North and East Walls Date: 1793", 
+		"date": 1793
+	},
+	{
+		"name": "wsc-325", "x": -893.0, "y": 41, "zoomX": 0.286, "zoomY": 0.286, "rotation": 0.03, 
+		"src": "images/wsc/wsc-325.png", "visible": true, "opacity": 0.5,
+		"description": "Smithfield, Arran Quay, Haymarket, West Arran Street, New Church Street, Bow Lane, Bow Street, May Lane"
+	},
+	{
+		"name": "wsc-326-1", "x": -1415.5, "y": 112.5, "zoomX": 0.114, "zoomY": 0.112, "rotation": 0.17, 
+		"src": "images/wsc/wsc-326-1.png", "visible": true, "opacity": 0.8,
+		"description": "Barrack Street, Park Street, Parkgate Street and Temple Street, with reference to names of tenants and premises No. 1"
+	},
+	{
+		"name": "wsc-632", "x": 125, "y": 347.5, "zoomX": 0.172, "zoomY": 0.164, "rotation": 0.53, 
+		"src": "images/wsc/wsc-632.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Nassau Street, leading from Grafton Street to Merrion Square - showing the off streets and portion of Grafton Street and Suffolk Street Date: 1833", 
+		"date": 1833
+	},
+	{
+		"name": "wsc-326-2", "x": -1257.5, "y": 143.5, "zoomX": 0.1, "zoomY": 0.1, "rotation": 0.075, 
+		"src": "images/wsc/wsc-326-2.png", "visible": true, "opacity": 0.7,
+		"description": "Barrack Street, Park Street, Parkgate Street and Temple Street, with reference to names of tenants and premises"
+	},
+	{
+		"name": "wsc-334", "x": 90.5, "y": 357, "zoomX": 0.128, "zoomY": 0.128, "rotation": 1.265, 
+		"src": "images/wsc/wsc-334.png", "visible": true, "opacity": 0.1,
+		"description": "Dame Street, College Green, George’s Lane, George’s Street, Chequer Street and avenues thereof"
+	},
+	{
+		"name": "wsc-355-2", "x": 185, "y": 1029, "zoomX": 0.302, "zoomY": 0.302, "rotation": -0.45, 
+		"src": "images/wsc/wsc-355-2.png", "visible": true, "opacity": 0.7,
+		"description": "Plan of Baggot Street and Fitzwilliam Street, showing avenues thereof No. 2 Date: 1792",
+		"date": 1792
+	},
+	{
+		"name": "wsc-368", "x": -687.5, "y": 277.5, "zoomX": 0.156, "zoomY": 0.15, "rotation": 0.12, 
+		"src": "images/wsc/wsc-368.png", "visible": true, "opacity": 0.7,
+		"description": "Map of King’s Inn Quay and Merchants Quay, showing site of Ormond Bridge - below Charles Street - afterwards removed and re-erected opposite Winetavern Street Date: 1797", 
+		"date": 1797
+	},
+	{
+		"name": "wsc-372", "x": 341.5, "y": 296.5, "zoomX": 0.036, "zoomY": 0.0339, "rotation": 2.955, 
+		"src": "images/wsc/wsc-372.png", "visible": true, "opacity": 0.7,
+		"description": "George's Quay, Whites Lane, and Hawkins Street, showing site of Sweetman's Brewery which ran down to River Liffey Date: 1799", 
+		"date": 1799
+	},
+	{
+		"name": "wsc-390-1", "x": -804.5, "y": 420, "zoomX": 0.204, "zoomY": 0.202, "rotation": -0.07, 
+		"src": "images/wsc/wsc-390-1.png", "visible": true, "opacity": 0.5,
+		"description": "Plan of proposed Market House, adjoining Thomas Street, Vicar Street, Market Street and Francis Street Date: 1801", 
+		"date": 1801
+	},
+	{
+		"name": "wsc-395-3", "x": -588, "y": 578, "zoomX": 0.036, "zoomY": 0.036, "rotation": -3.65, 
+		"src": "images/wsc/wsc-395-3.png", "visible": true, "opacity": 0.5,
+		"description": "New Row and Cutpurse Row Date: 1800",
+		"date": 1800
+	},
+	{
+		"name": "wsc-404", "x": -16, "y": 372, "zoomX": 0.062, "zoomY": 0.06, "rotation": -0.255, 
+		"src": "images/wsc/wsc-404.png", "visible": true, "opacity": 0.5,
+		"description": "Anglesea Street and Parliament House Date: 1802", 
+		"date": 1802
+	},
+	{
+		"name": "wsc-411", "x": 343.5, "y": 657, "zoomX": 0.086, "zoomY": 0.086, "rotation": 0.325,
+		"src": "images/wsc/wsc-411.png", "visible": true, "opacity": 0.5,
+		"description": "Leinster House and part of the estate of Viscount Fitzwilliam (formerly Leinster Lawn), laid out in lots for building - showing Kildare Street, Upper Merrion Street and Leinster Place (Street), Merrion Place, and the Old Boundary between Leinster and Lord Fitzwilliam - taken from a map signed Robert Gibson, May 18, 1754 Date: 1812", 
+		"date": 1812
+	},
+	{
+		"name": "wsc-251", "x": 220, "y": 64, "zoomX": 0.236, "zoomY": 0.236, "rotation": -1.49,
+		"src": "images/wsc/wsc-251.png", "visible": true, "opacity": 0.5,
+		"description": "Map of portion of City, showing Montgomery Street, Mecklinburgh Street, Lower Gloucester Street and portion of Mabbot Street"
+	},
+	{
+		"name": "wsc-413", "x": -373, "y": 806.5, "zoomX": 0.078, "zoomY": 0.076, "rotation": -0.15,
+		"src": "images/wsc/wsc-413.png", "visible": true, "opacity": 0.5,
+		"description": "Peter Street, Peter’s Row, Whitefriar Street, Wood Street and Bride Street - showing site of the Amphitheatre in Bride Street, where the Moleyneux Church now (1900) stands Date: 1812", 
+		"date": 1812
+	},
+	{
+		"name": "wsc-414", "x": -193.5, "y": 363.5, "zoomX": 0.072, "zoomY": 0.074, "rotation": -0.23,
+		"src": "images/wsc/wsc-414.png", "visible": true, "opacity": 0.5,
+		"description": "Temple Bar, Wellington Quay, Old Custom House, Bagnio Slip etc. Date: 1813", 
+		"date": 1813
+	},
+	{
+		"name": "wsc-421", "x": -474.5, "y": 527, "zoomX": 0.062, "zoomY": 0.06, "rotation": -0.185,
+		"src": "images/wsc/wsc-421.png", "visible": true, "opacity": 0.6,
+		"description": "Map of the precincts of Christ Church Dublin, showing Skinners Row, to which is attached a Memorandum denominating the premises, taken by the Commissioners of Wide Streets for the purpose of widening said Skinners Row, now (1900) known as Christ Church Place Date: 1817", 
+		"date": 1817
+	},
+	{ 
+		"name": "wsc-408-2", "x": -397.5, "y": 545.5, "zoomX": 0.044, "zoomY": 0.044, "rotation": -0.12, 
+		"src": "images/wsc/wsc-408-2.png", "visible": true, "opacity": 0.5,
+		"description": "Werburgh Street, Skinners Row, Fishamble Street and Castle Street Date: c. 1810",
+		"date": 1810
+	},
+	{
+		"name": "wsc-425-1", "x": -917.5, "y": 577.5, "zoomX": 0.045, "zoomY": 0.046, "rotation": -1.425, 
+		"src": "images/wsc/wsc-425-1.png", "visible": true, "opacity": 0.5,
+		"description": "Meath Row, Mark’s Alley and Dirty Lane - showing Bridgefoot Street, Mass Lane, Thomas Street and St. Catherine’s Church Date: 1820-24", 
+		"date": 1820
+	},
+	{
+		"name": "wsc-426", "x": -735.5, "y": 578.5, "zoomX": 0.034, "zoomY": 0.034, "rotation": 1.565, 
+		"src": "images/wsc/wsc-426.png", "visible": true, "opacity": 0.5,
+		"description": "Map of several houses and premises on the East side of Meath Row, the property of Mr. John Walsh - showing the situation of Thomas Street, Hanbury Lane and site of Chapel Date: 1821", 
+		"date": 1821
+	},
+	{
+		"name": "wsc-112-1", "x": -290.5, "y": 344.5, "zoomX": 0.18, "zoomY": 0.182, "rotation": -0.26, 
+		"src": "images/wsc/wsc-112-1.png", "visible": true, "opacity": 0.3,
+		"description": "Dame Street, from the corner of Palace Street to the corner of George’s Street - laid out in lots for building North and South and vicinity Date: 1782", 
+		"date": 1782
+	},
+	{
+		"name": "wsc-112", "x": -298, "y": 339.5, "zoomX": 0.185, "zoomY": 0.185, "rotation": -0.255, 
+		"src": "images/wsc/wsc-112.png", "visible": false, "opacity": 0.0,
+		"description": "Dame Street, from the corner of Palace Street to the corner of George’s Street - laid out in lots for building North and South and vicinity Date: 1782", 
+		"date": 1782
+	},
+	{
+		"name": "wsc-455", "x": 635.5, "y": 1258, "zoomX": 0.263, "zoomY": 0.263, "rotation": -0.9, 
+		"src": "images/wsc/wsc-455.png", "visible": true, "opacity": 0.6,
+		"description": "Herbert Place and Avenues adjacent to Upper Mount Street, showing Upper Baggot Street - Herbert Street, Warrington Place and Percy Place, Northumberland Road and Lower Mount Street Date: 1833", 
+		"date": 1833
+	},
+	{
+		"name": "wsc-199", "x": 878.5, "y": 1217.5, "zoomX": 0.241, "zoomY": 0.241, "rotation": 2.115, 
+		"src": "images/wsc/wsc-199-1.png", "visible": true, "opacity": 0.6,
+		"description": "Map of part of the estate of the Hon. Sidney Herbert, called Wilton Parade, showing the proposed appropriation thereof in sites for building. Also showing Baggot Street, Grand Canal and Fitzwilliam Place."
+	},
+	{
+		"name": "wsc-465", "x": 301.5, "y": 711.5, "zoomX": 0.207, "zoomY": 0.207, "rotation": 3.3, 
+		"src": "images/wsc/wsc-465.png", "visible": true, "opacity": 0.6,
+		"description": "Grafton Street, Nassau Street (South side) and Dawson Street Date: 1837", 
+		"date": 1837
+	},
+	{
+		"name": "wsc-480-2", "x": -63, "y": 382, "zoomX": 0.068, "zoomY": 0.068, "rotation": -0.055, 
+		"src": "images/wsc/wsc-480-2.png", "visible": true, "opacity": 0.6,
+		"description": "North side of College Green showing Avenues thereof, and ground plan of Parliament House, Anglesea Street, Blackmoor Yard etc. - with reference giving tenants, names of premises required or purpose of improvement. Date: 1786", 
+		"date": 1786
+	},
+	{
+		"name": "wsc-491", "x": -21.5, "y": 938, "zoomX": 0.164, "zoomY": 0.164, "rotation": -3.08, 
+		"src": "images/wsc/wsc-491.png", "visible": true, "opacity": 0.8,
+		"description": "Aungier Street, Mercer Street, York Street and Avenues thereof, viz: - French Street (Mercer Street), Bow Lane, Digges Lane, Stephen Street, Drury Lane, Great and Little Longford Streets"
+	},
+	{
+		"name": "wsc-496", "x": -278, "y": 456, "zoomX": 0.018, "zoomY": 0.018, "rotation": -3.26, 
+		"src": "images/wsc/wsc-496.png", "visible": true, "opacity": 0.7,
+		"description": "Essex Quay, Change Alley, Smock Alley and ground plan of Smock Alley Theatre"
+	},
+	{
+		"name": "wsc-507", "x": -272.5, "y": 346, "zoomX": 0.087, "zoomY": 0.089, "rotation": -0.2, 
+		"src": "images/wsc/wsc-507.png", "visible": true, "opacity": 0.7,
+		"description": "Essex Street, Parliament Street, showing Old Custom House Quay, Lower Ormond Quay and Dame Street"
+	},
+	{
+		"name": "wsc-206-1", "x": -44.5, "y": -221, "zoomX": 0.05, "zoomY": 0.05, "rotation": -0.65, 
+		"src": "images/wsc/wsc-206-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of angle of Cavendish Row, Rutland Square and Great Britain Street - showing unsigned elevations and ground plan of Rotunda by Frederick Trench. Date: 1787", 
+		"date": 1787
+	},
+	{
+		"name": "wsc-203", "x": -392, "y": 272.5, "zoomX": 0.078, "zoomY": 0.076, "rotation": -0.25, 
+		"src": "images/wsc/wsc-203.png", "visible": true, "opacity": 0.5,
+		"description": "City Survey - showing Ormond Quay, Arran Street, Mary’s Abbey, Little Strand Street, Capel Street and Essex Bridge Date: 1811", 
+		"date": 1811
+	},
+	{
+		"name": "wsc-515", "x": -75, "y": 550, "zoomX": 0.088, "zoomY": 0.088, "rotation": 2.935, 
+		"src": "images/wsc/wsc-515.png", "visible": true, "opacity": 0.5,
+		"description": "showing Dame Street, Essex Street etc. - also site for proposed National Bank, on or about where the 'Empire' (formerly the 'Star') Theatre of Varieties now (1900) stands No.1"
+	},
+	{
+		"name": "wsc-523-1", "x": -297.5, "y": 368.5, "zoomX": 0.088, "zoomY": 0.088, "rotation": -0.185, 
+		"src": "images/wsc/wsc-523-1.png", "visible": true, "opacity": 0.5,
+		"description": "Essex Street, Temple Bar and vicinity to Essex Bridge, showing proposed new quay wall (Wellington Quay)"
+	},
+	{
+		"name": "wsc-423-2", "x": 34.5, "y": 478.5, "zoomX": 0.078, "zoomY": 0.082, "rotation": -3.215, 
+		"src": "images/wsc/wsc-423-2.png", "visible": true, "opacity": 0.5,
+		"description": "Crown Alley, Cope Street, Ardill’s Row, Temple Bar, Aston’s Quay and Wellington Quay No. 2 Date: 1820-5", 
+		"date": 1820
+	},
+	{
+		"name": "wsc-535", "x": -209.5, "y": 325, "zoomX": 0.134, "zoomY": 0.134, "rotation": -0.07, 
+		"src": "images/wsc/wsc-535.png", "visible": true, "opacity": 0.5,
+		"description": "Wellington Quay - continuation of Eustace Street Date"
+	},
+	{
+		"name": "wsc-567-3", "x": 194.5, "y": 450, "zoomX": 0.126, "zoomY": 0.126, "rotation": 1.48, 
+		"src": "images/wsc/wsc-567-3.png", "visible": true, "opacity": 0.5,
+		"description": "Map of a parcel of ground bounded by Grafton Street, College Green, and Chequer Lane - leased to Mr. Pooley (3 copies) No. 3 Date: 1682", 
+		"date": 1682
+	},
+	{
+		"name": "wsc-594-1", "x": -564.5, "y": 572.5, "zoomX": 0.044, "zoomY": 0.044, "rotation": 2.535, 
+		"src": "images/wsc/wsc-594-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of New Hall Market - part of the City Estate Date: 1780", 
+		"date": 1780
+	},
+	{
+		"name": "wsc-625-1", "x": -320.5, "y": 609.5, "zoomX": 0.058, "zoomY": 0.058, "rotation": 2.61, 
+		"src": "images/wsc/wsc-625-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of the Old Tholsell ground, formerly called Souther’s Lane, belonging to the City of Dublin - laid out for building, Nicholas Street, Skinners Row and Werburgh Street By A. R. Neville, C. S. Date: 1812", 
+		"date": 1812
+	},
+	{
+		"name": "wsc-654", "x": -397.5, "y": 409, "zoomX": 0.122, "zoomY": 0.122, "rotation": -0.135, 
+		"src": "images/wsc/wsc-654.png", "visible": true, "opacity": 0.5,
+		"description": "Map of the ground plots of several holdings belonging to the City of Dublin, Madam O’Hara, Colonel Berry and others, on Back Quay - (Essex Quay) Blind Quay - Exchange Street, Essex Bridge, Crane Lane and Dame Street, Sycamore Alley - showing portion of the City Wall, Essex Gate, Dame Gate, Dames Mill and branch of the River Dodder"
+	},
+	{
+		"name": "wsc-705", "x": -187.5, "y": 392, "zoomX": 0.04, "zoomY": 0.042, "rotation": -0.38, 
+		"src": "images/wsc/wsc-705.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Essex Street and vicinity Date: 1806", 
+		"date": 1806
+	},
+	{
+		"name": "wsc-725", "x": -654, "y": 226, "zoomX": 0.094, "zoomY": 0.094, "rotation": 0.07, 
+		"src": "images/wsc/wsc-725.png", "visible": true, "opacity": 0.5,
+		"description": "Church Street, Charles Street, Inn’s Quay - 'White Cross Inn' - rere of Four Courts - Ushers’ Quay, Merchant’s Quay, Wood Quay - with reference Date: 1833", 
+		"date": 1833
+	},
+	{
+		"name": "wsc-198-1", "x": -459.5, "y": 469, "zoomX": 0.026, "zoomY": 0.026, "rotation": -0.305, 
+		"src": "images/wsc/wsc-198-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Whitehorse Yard (Winetavern Street) Surveyor: Arthur Neville Date: 1847", 
+		"date": 1847
+	},
+	{
+		"name": "wsc-055", "x": -1775, "y": -1446, "zoomX": 1.11, "zoomY": 1.162, "rotation": 0.015, 
+		"src": "images/wsc/wsc-055.png", "visible": true, "opacity": 0.5,
+		"description": "Plan of Mail Coach Road, through Blessington Street to Cabra, of New Line Road, being part of the Navan Turnpike Road and connecting an improvement lately made upon that Line with the City of Dublin - showing the most direct line and also a Circuitons line whereby the expense of a Bridge across the Royal Canal may be avoided. Done by His Majesty's Post Masters of Ireland by Mr. Larkin Date: 1818", 
+		"date": 1818
+	},
+	{
+		"name": "wsc-060", "x": -104.5, "y": -1, "zoomX": 0.674, "zoomY": 0.702, "rotation": 3.165, 
+		"src": "images/wsc/wsc-60.png", "visible": true, "opacity": 0.5,
+		"description": "Map showing the alterations proposed in the new line of road, leading from Dublin to Navan, commencing at Blessington Street; passing along the Circular Road to Prussia Street, and hence along the Turnpike Road to Ratoath, and terminating at the Turnpike"
+	},
+	{
+		"name": "wsc-065", "x": -545.5, "y": -275, "zoomX": 0.298, "zoomY": 0.292, "rotation": -1.05, 
+		"src": "images/wsc/wsc-065.png", "visible": true, "opacity": 0.5,
+		"description": "Map showing Mountjoy Street, Dorset Street, Dominick Street and vicinity - plan of Saint Mary’s Chapel of Ease, and proposed opening leading thereunto from Granby Row - Thomas Sherrard 30 Nov 1827", 
+		"date": 1827
+	},
+	{
+		"name": "wsc-012", "x": -125.5, "y": 149.5, "zoomX": 0.044, "zoomY": 0.044, "rotation": -0.22, 
+		"src": "images/wsc/wsc-012.png", "visible": true, "opacity": 0.5,
+		"description": "Map of premises Lower Abbey Street, Lower Sackville Street and Eden Quay"
+	},
+	{
+		"name": "wsc-014", "x": -1555.5, "y": 27, "zoomX": 0.14, "zoomY": 0.14, "rotation": 0.055, 
+		"src": "images/wsc/wsc-014.png", "visible": true, "opacity": 0.5,
+		"description": "A survey of ground contiguous to the Horse Barracks, Dublin - showing Montpelier Hill, Barrack Street, Parkgate Street and environs (Thomas Sherrard) Date: 1790", 
+		"date": 1790
+	},
+	{
+		"name": "wsc-015", "x": -1414.5, "y": 29, "zoomX": 0.116, "zoomY": 0.112, "rotation": 0.075, 
+		"src": "images/wsc/wsc-015.png", "visible": true, "opacity": 0.5,
+		"description": "Arbour Hill, Royal Barracks and vicinity. With reference. Date: 1790",
+		"date": 1790
+	},
+	{
+		"name": "wsc-016", "x": -847, "y": 231.5, "zoomX": 0.038, "zoomY": 0.038, "rotation": 0.095, 
+		"src": "images/wsc/wsc-016.png", "visible": true, "opacity": 0.5,
+		"description": "Map - Arran Quay, Queen Street Date:1790",
+		"date": 1790,
+	},
+	{
+		"name": "wsc-017", "x": -564, "y": 440, "zoomX": 0.068, "zoomY": 0.06, "rotation": 3.39, 
+		"src": "images/wsc/wsc-017.png", "visible": true, "opacity": 0.5,
+		"description": "Arran Quay, Church Street"
+	},
+	{
+		"name": "wsc-018", "x": -194, "y": -395.5, "zoomX": 0.12, "zoomY": 0.12, "rotation": -0.63, 
+		"src": "images/wsc/wsc-018.png", "visible": true, "opacity": 0.5,
+		"description": "Survey of Barley fields etc. (Dorset Street). Plan of opening a street from Rutland Square to Dorset Street - (Palace Row and Gardiners Row) - Thomas Sherrard Date: 1789"
+	},
+	{
+		"name": "wsc-025", "x": -1010, "y": 105, "zoomX": 0.12, "zoomY": 0.12, "rotation": 0.16, 
+		"src": "images/wsc/wsc-025.png", "visible": true, "opacity": 0.5,
+		"description": "Blackhall Place - New Street to the Quay"
+	},
+	{
+		"name": "wsc-057", "x": -224, "y": 330.5, "zoomX": 0.084, "zoomY": 0.084, "rotation": 2.865, 
+		"src": "images/wsc/wsc-057.png", "visible": true, "opacity": 0.5,
+		"description": "Plan of streets about Mary’s Abbey and Boot Lane - (Old Bank) Date: 1811", 
+		"date": 1811
+	},
+	{
+		"name": "wsc-063", "x": -88.5, "y": 26.5, "zoomX": 0.3, "zoomY": 0.3, "rotation": -2.145, 
+		"src": "images/wsc/wsc-063.png", "visible": true, "opacity": 0.5,
+		"description": "Elevation of the west front and plan of Mountjoy Square laid out on the rising ground, near George’s Church - the estate of the Right Hon. Luke Gardiner, and now (1787), to be let for building - Lord Mountjoy’s plan. Date: 1787", 
+		"date": 1787
+	},
+	{
+		"name": "wsc-087-2", "x": -172.5, "y": 1419, "zoomX": 0.086, "zoomY": 0.086, "rotation": -1.695, 
+		"src": "images/wsc/wsc-087-2.png", "visible": true, "opacity": 0.5,
+		"description": "Camden Street Upper and Charlotte Street Date: 1841", 
+		"date": 1841
+	},
+	{
+		"name": "wsc-090", "x": -261, "y": 505, "zoomX": 0.074, "zoomY": 0.066, "rotation": -0.23, 
+		"src": "images/wsc/wsc-090.png", "visible": true, "opacity": 0.5,
+		"description": "Castle Yard, Castle Street, Dame Street, Parliament Street and vicinity Date: 1764", 
+		"date": 1764
+	},
+	{
+		"name": "wsc-100-2", "x": -528, "y": 464, "zoomX": 0.078, "zoomY": 0.078, "rotation": -0.27, 
+		"src": "images/wsc/wsc-100-2.png", "visible": true, "opacity": 0.5,
+		"description": "Map of premises to be valued by Jury; Cock Hill, Michael’s Lane, Winetavern Street, John’s Lane, Christchurch, Patrick Street and Patrick’s Close Date: 1813", 
+		"date": 1813
+	},
+	{
+		"name": "wsc-103", "x": 99.5, "y": 566, "zoomX": 0.062, "zoomY": 0.06, "rotation": -3.155, 
+		"src": "images/wsc/wsc-103.png", "visible": true, "opacity": 0.5,
+		"description": "Map of South Side of College Green and vicinity Date: 1808",
+		"date": 1808
+	},
+	{
+		"name": "wsc-149-1", "x": -1091, "y": 515.5, "zoomX": 0.062, "zoomY": 0.06, "rotation": 0, 
+		"src": "images/wsc/wsc-149-1.png", "visible": true, "opacity": 0.8,
+		"description": "Map - James’s Gate, James Street, Thomas Street and Watling Street. Mr. Guinness’s Place Date: 1845", 
+		"date": 1845
+	},
+	{
+		"name": "wsc-149-2", "x": -1074.5, "y": 488, "zoomX": 0.044, "zoomY": 0.048, "rotation": 0, 
+		"src": "images/wsc/wsc-149-2.png", "visible": true, "opacity": 0.5,
+		"description": "Map - James’s Gate, James Street, Thomas Street and Watling Street. Mr. Guinness’s Place Date: 1845", 
+		"date": 1845
+	},
+	{
+		"name": "wsc-254", "x": -438, "y": -142, "zoomX": 0.118, "zoomY": 0.12, "rotation": -0.415, 
+		"src": "images/wsc/wsc-254.png", "visible": true, "opacity": 0.5,
+		"description": "Map of Mabbot Street, Montgomery Street, Dominick Street, Cherry Lane, Cross Lane and Turn-again-Lane Date: 1801",
+		"date": 1801
+	}
+]

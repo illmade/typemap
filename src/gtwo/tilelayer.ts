@@ -1,6 +1,7 @@
 import { DrawLayer } from "./layer";
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
 import { Dimension } from "../geom/point2d";
+import { ZoomDisplayRange } from "./canvasview";
 
 export class TileStruct {
 	
@@ -22,6 +23,7 @@ export class TileLayer extends DrawLayer {
 		localTransform: Transform, 
 		readonly tileStruct: TileStruct,
 		visbile: boolean,
+		zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange, 
 		public xOffset: number = 0,
 		public yOffset: number = 0,
 		public zoom: number = 1,
@@ -29,78 +31,86 @@ export class TileLayer extends DrawLayer {
 		readonly gridHeight: number = 256,
 		opacity: number = 1){
 
-		super(localTransform, opacity, visbile);
+		super(localTransform, opacity, visbile, zoomDisplayRange);
 
 		this.tileManager = new TileManager();
 	}
 
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean {
 
-		let ctxTransform = combineTransform(this, parentTransform);
+		if (this.getZoomDisplayRange().withinRange(view.zoomX)){
 
-		let zoomWidth: number = this.gridWidth * ctxTransform.zoomX
-		let zoomHeight: number = this.gridHeight * ctxTransform.zoomY;
+			let ctxTransform = combineTransform(this, parentTransform);
 
-		//console.log("ctx zoomWidth: " + zoomWidth);
+			let zoomWidth: number = this.gridWidth * ctxTransform.zoomX
+			let zoomHeight: number = this.gridHeight * ctxTransform.zoomY;
 
-		let viewX = view.x * view.zoomX;
-		let viewY = view.y * view.zoomY;
+			let transformX = view.x + ctxTransform.x;
+			let transformY = view.y + ctxTransform.y;
 
-		let viewWidth = view.width / view.zoomX;
-		let viewHeight = view.height / view.zoomY;
+			//console.log("ctx zoomWidth: " + zoomWidth);
 
-		let gridAcross = viewWidth / zoomWidth; //good
-		let gridHigh = viewHeight / zoomHeight; //good
+			let viewX = view.x * view.zoomX;
+			let viewY = view.y * view.zoomY;
 
-		let xMin = Math.floor(view.x/zoomWidth);
-		let xMax = Math.ceil((view.x + viewWidth) / zoomWidth);
+			let viewWidth = view.width / view.zoomX;
+			let viewHeight = view.height / view.zoomY;
 
-		let yMin = Math.floor(view.y/zoomHeight);
-		let yMax = Math.ceil((view.y + viewHeight) / zoomHeight);
+			let gridAcross = viewWidth / zoomWidth; //good
+			let gridHigh = viewHeight / zoomHeight; //good
 
-		//console.log("x y s " + xMin + ", " + xMax + ": " + yMin + ", " + yMax);
-		//console.log("across high" + gridAcross + ", " + gridHigh);
+			let xMin = Math.floor(transformX / zoomWidth);
+			let xMax = Math.ceil((transformX + viewWidth) / zoomWidth);
 
-		var drawingComplete = true;
+			let yMin = Math.floor(transformY / zoomHeight);
+			let yMax = Math.ceil((transformY + viewHeight) / zoomHeight);
 
-		let fullZoomX = ctxTransform.zoomX * view.zoomX;
-		let fullZoomY = ctxTransform.zoomY * view.zoomY;
+			//console.log("x y s " + xMin + ", " + xMax + ": " + yMin + ", " + yMax);
+			//console.log("across high" + gridAcross + ", " + gridHigh);
 
-		//console.log("fullzooms " + fullZoomX + " " + fullZoomY);
+			var drawingComplete = true;
 
-		ctx.scale(fullZoomX, fullZoomY);
+			let fullZoomX = ctxTransform.zoomX * view.zoomX;
+			let fullZoomY = ctxTransform.zoomY * view.zoomY;
 
-		for (var x = xMin; x<xMax; x++){
-			let xMove = x * this.gridWidth - view.x / ctxTransform.zoomX;
-			for (var y = yMin; y<yMax; y++){
-				let yMove = y * this.gridHeight - view.y/ ctxTransform.zoomY;
-				//console.log("tile x y " + x + " " + y + ": " + xMove + ", " + yMove);
+			//console.log("fullzooms " + fullZoomX + " " + fullZoomY);
 
-				ctx.translate(xMove, yMove);
-				let tileSrc = this.tileStruct.tileDirectory + this.zoom + "/" + 
-					(x + this.xOffset) + "/" + 
-					(y + this.yOffset) + this.tileStruct.suffix;
+			ctx.scale(fullZoomX, fullZoomY);
 
-				if (this.tileManager.has(tileSrc)) {
-					let imageTile = this.tileManager.get(tileSrc);
-					drawingComplete = drawingComplete && imageTile.draw(ctx);
+			for (var x = xMin; x<xMax; x++){
+				let xMove = x * this.gridWidth - transformX / ctxTransform.zoomX;
+				for (var y = yMin; y<yMax; y++){
+					let yMove = y * this.gridHeight - transformY / ctxTransform.zoomY;
+					//console.log("tile x y " + x + " " + y + ": " + xMove + ", " + yMove);
+
+					ctx.translate(xMove, yMove);
+					let tileSrc = this.tileStruct.tileDirectory + this.zoom + "/" + 
+						(x + this.xOffset) + "/" + 
+						(y + this.yOffset) + this.tileStruct.suffix;
+
+					if (this.tileManager.has(tileSrc)) {
+						let imageTile = this.tileManager.get(tileSrc);
+						drawingComplete = drawingComplete && imageTile.draw(ctx);
+					}
+					else {
+						let imageTile = new ImageTile(x, y, tileSrc);
+
+						drawingComplete = drawingComplete && imageTile.draw(ctx);
+
+						this.tileManager.set(tileSrc, imageTile);
+					}
+
+					ctx.translate(-xMove, -yMove);
 				}
-				else {
-					let imageTile = new ImageTile(x, y, tileSrc);
-
-					drawingComplete = drawingComplete && imageTile.draw(ctx);
-
-					this.tileManager.set(tileSrc, imageTile);
-				}
-
-				ctx.translate(-xMove, -yMove);
 			}
+
+			ctx.scale(1 / fullZoomX, 1 / fullZoomY);
+
+			//console.log("drew tiles " + drawingComplete);
+			return drawingComplete;
+		} else { 
+			return true;
 		}
-
-		ctx.scale(1 / fullZoomX, 1 / fullZoomY);
-
-		//console.log("drew tiles " + drawingComplete);
-		return drawingComplete;
 	}
 
 	getDimension(): Dimension {

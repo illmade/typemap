@@ -1,14 +1,24 @@
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
-import { DisplayElement } from "./canvasview";
+import { DisplayElement, ZoomDisplayRange } from "./canvasview";
 import { Dimension } from "../geom/point2d";
 
 export abstract class CanvasLayer extends BasicTransform implements DisplayElement {
 
-	constructor(public localTransform: Transform, public opacity: number, public visible){
-		super(localTransform.x, localTransform.y, localTransform.zoomX, localTransform.zoomY, localTransform.rotation);
+	constructor(
+	  public localTransform: Transform, 
+	  public opacity: number, 
+	  public visible,
+	  private zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange){
+		super(localTransform.x, localTransform.y, localTransform.zoomX, localTransform.zoomY, 
+			localTransform.rotation);
 	}
 
-	abstract draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean;
+	getZoomDisplayRange(): ZoomDisplayRange {
+		return this.zoomDisplayRange;
+	}
+
+	abstract draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, 
+		view: ViewTransform): boolean;
 
 	abstract getDimension(): Dimension;
 

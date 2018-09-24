@@ -46,6 +46,7 @@ export class StaticGrid extends DrawLayer {
 		console.log("yMin " + yMin + " yMax " + yMax);
 
 		ctx.beginPath();
+		ctx.strokeStyle = "black";
 
 		for (var x = xMin; x<=xMax; x++){
 			//console.log("at " + minX);
