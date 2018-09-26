@@ -25,7 +25,7 @@ let imageLayer = new ContainerLayer(layerState);
 
 let imageState = new BasicTransform(-1440,-1440, 0.222, 0.222, 0);
 
-let countyState = new BasicTransform(-3655, -3587.5, 1.716, 1.674, 0);
+let countyState = new BasicTransform(-2631, -2051.5, 1.716, 1.674, 0);
 let countyImage = new StaticImage(countyState, 
     "images/County_of_the_City_of_Dublin_1837_map.png", 0.5, true);
 
@@ -36,7 +36,7 @@ let tmState = new BasicTransform(-1033.5,149, 0.59, 0.59, 0);
 let tmImage = new StaticImage(tmState, "images/thingmot.png", .3, true);
 
 let duState = new BasicTransform(-929,-105.5, 0.464, 0.506, 0);
-let duImage = new StaticImage(duState, "images/dublin1610.jpg", .3, false);
+let duImage = new StaticImage(duState, "images/dublin1610.jpg", .6, false);
 
 let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
 let staticGrid = new StaticGrid(gridTransform, 1, false, 256, 256);
@@ -67,7 +67,7 @@ sentinelContainerLayer.set("zoomOut", sentinelSLayer);
 
 let editContainerLayer = new ContainerLayer(BasicTransform.unitTransform);
 
-//imageLayer.set("county", countyImage);
+imageLayer.set("county", countyImage);
 imageLayer.set("background", bgImage);
 
 let layerManager = new LayerManager();
@@ -84,10 +84,10 @@ wscLateLayer.setVisible(false);
 let wscOtherLayer = layerManager.addLayer(otherDates, "wsc_other");
 wscOtherLayer.setVisible(false);
 
-let edit = wscEarlyLayer.get("wsc-361");
+let edit = wscEarlyLayer.get("wsc-329");
 
 let containerLayerManager = new ContainerLayerManager(wscEarlyLayer, editContainerLayer);
-let outlineLayer = containerLayerManager.setSelected("wsc-361");
+let outlineLayer = containerLayerManager.setSelected("wsc-329");
 
 imageLayer.set("wsc_other", wscOtherLayer);
 imageLayer.set("wsc_early", wscEarlyLayer);
@@ -100,10 +100,12 @@ imageLayer.set("dublin1610", duImage);
 imageLayer.set("thingmot", tmImage);
 imageLayer.set("landmarks", landmarksLayer);
 
-wscEarlyLayer.setTop("wsc-361");
+wscEarlyLayer.setTop("wsc-329");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
+
+    const info = <HTMLElement>document.getElementById("edit_info");
 
     let x = outlineLayer.x;
     let y = outlineLayer.y;
@@ -134,6 +136,8 @@ function showMap(divName: string, name: string) {
     let imageController = new ImageController(canvasView, edit);
 
     imageController.setLayerOutline(outlineLayer);
+
+    imageController.setEditInfoPane(info);
 
     let layerController = new LayerController(canvasView, containerLayerManager);
 

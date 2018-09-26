@@ -27,6 +27,7 @@ export class ImageController {
 
     private canvasLayer: CanvasLayer;
     private layerOutline: RectLayer;
+    private editInfoPane: HTMLElement;
 
     constructor(canvasView: CanvasView, canvasLayer: CanvasLayer) {
     	document.addEventListener("keypress", (e:Event) => 
@@ -36,6 +37,10 @@ export class ImageController {
 
     setCanvasLayer(canvasLayer: CanvasLayer){
         this.canvasLayer = canvasLayer;
+    }
+
+    setEditInfoPane(editInfoPane: HTMLElement){
+        this.editInfoPane = editInfoPane;
     }
 
     setLayerOutline(layerOutline: RectLayer){
@@ -128,11 +133,22 @@ export class ImageController {
     			// code...
     			break;
     	}
-        console.log('"name": "wsc-100-2", "x": ' + this.canvasLayer.x + 
+        if (this.editInfoPane != undefined){
+            this.editInfoPane.innerHTML = '"name": "wsc-100-2", "x": ' + 
+              this.canvasLayer.x + 
+              ', "y": ' + this.canvasLayer.y + 
+              ', "zoomX": '+ this.canvasLayer.zoomX + 
+              ', "zoomY": ' + this.canvasLayer.zoomY + 
+              ', "rotation": '+ this.canvasLayer.rotation;
+        }
+        else {
+            console.log('"name": "wsc-100-2", "x": ' + this.canvasLayer.x + 
             ', "y": ' + this.canvasLayer.y + 
             ', "zoomX": '+ this.canvasLayer.zoomX + 
             ', "zoomY": ' + this.canvasLayer.zoomY + 
             ', "rotation": '+ this.canvasLayer.rotation);
+        }
+        
     	//console.log("image at: " +  this.canvasLayer.x + ", " + this.canvasLayer.y);
     	//console.log("image ro sc: " +  this.canvasLayer.rotation + ", " + this.canvasLayer.zoomX + ", " + this.canvasLayer.zoomY);
     };

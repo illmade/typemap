@@ -1,11 +1,12 @@
 [
 	{
-		"name": "wsc-032", "x": -776, "y": 32.55, "zoomX": 0.29, "zoomY": 0.28, "rotation": -1.47, 
+		"name": "wsc-032", "x": -745, "y": 10.05, "zoomX": 0.25, "zoomY": 0.25, "rotation": -1.43, 
 		"src": "images/wsc/wsc-maps-032-m.png", "visible": true, "opacity": 0.7, 
-		"description": "Constitution Hill - Turnpike, Glasnevin Road; showing proposed road to Botanic Gardens"
+		"description": "Constitution Hill - Turnpike, Glasnevin Road; showing proposed road to Botanic Gardens",
+		"date": 1798
 	},
 	{
-		"name": "wsc-072", "x": -252, "y": -247, "zoomX": 0.318, "zoomY": 0.314, "rotation": 1.585, 
+		"name": "wsc-072",  "x": -260.5, "y": -247.5, "zoomX": 0.31, "zoomY": 0.31, "rotation": 1.585,
 		"src": "images/wsc/wsc-maps-072-m.png", "visible": true, "opacity": 0.7,
 		"description": "Plan of improving the streets between Richmond Bridge (Four Courts) and Constitution Hill (King’s Inns) Date: 1837",
 		"date": 1837
@@ -23,20 +24,14 @@
 		"date": 1792
 	},
 	{
-		"name": "wsc-106-1", "x": -757, "y": 495.5, "zoomX": 0.265, "zoomY": 0.265, "rotation": -0.074, 
-		"src": "images/wsc/wsc-maps-106-1.jpg", "visible": true, "opacity": 1.0, 
-		"description": "Map showing proposed improvements to be made in Cornmarket, Cutpurse Row, Lamb Alley - Francis Street - and an improved entrance from Kevin Street to Saint Patrick’s Cathedral, through Mitre Alley and at James’s Gate. Date: 1845-46 ",
-		"date": 1845
-	},
-	{
 		"name": "wsc-142", "x": 94.995, "y": 2377.5, "zoomX": 0.482, "zoomY": 0.476, "rotation": -2.015, 
 		"src": "images/wsc/wsc-maps-142-l.png", "visible": true, "opacity": 1.0,
 		"description": "Map of the New Streets, and other improvements intended to be immediately executed. Situate on the South Side of the City of Dublin, submitted for the approbation of the Commissioners of Wide Streets, particularly of those parts belonging to Wm. Cope and John Locker, Esq., Harcourt Street, Charlemount Street, Portobello, etc. Date: 1792",
 		"date": 1792
 	},
 	{
-		"name": "wsc-155", "x": -1506, "y": -50.5, "zoomX": 1.01, "zoomY": 0.972, "rotation": -0.025, 
-		"src": "images/wsc/wsc-maps-155-m.png", "visible": true, "opacity": 0.6,
+		"name": "wsc-155", "x": -1506, "y": -50.5, "zoomX": 0.67, "zoomY": 0.644, "rotation": -0.025, 
+		"src": "images/wsc/wsc-maps-155-l.png", "visible": true, "opacity": 0.6,
 		"description": "New approach from Military Road to King’s Bridge, and along the Quays to Aston’s Quay Date: 1841",
 		"date": 1841
 	},
@@ -63,14 +58,15 @@
 		"date": 1790
 	},
 	{
-		"name": "wsc-729", "x": -1088.5, "y": 652, "zoomX": 0.184, "zoomY": 0.184, "rotation": -3.425, 
-		"src": "images/wsc/wsc-maps-729.png", "visible": true, "opacity": 0.5, 
+		"name": "wsc-729", "x": -1096, "y": 669, "zoomX": 0.126, "zoomY": 0.118, "rotation": -3.425, 
+		"src": "images/wsc/wsc-maps-729-l.png", "visible": true, "opacity": 0.8, 
 		"description": "Map - James’s Street, Bason Lane, Echlin’s Lane, Grand Canal Place, City Bason and Grand Canal Harbour"
 	},
 	{
 		"name": "wsc-757", "x": -881, "y": 261.5, "zoomX": 0.355, "zoomY": 0.355, "rotation": -0.025, 
 		"src": "images/wsc/wsc-maps-757-l.png", "visible": true, "opacity": 0.5, 
-		"description": "four courts to st patricks, the castle to thomas street"
+		"description": "Part of the City of Dublin with proposed improvements. Improvements to be made or intended in Thomas Street, High Street, Winetavern Street, Skinner Row, Werburgh Street, Canon Street, Patrick Street, Kevin Street, Bishop Street and The Coombe Thomas Sherrard Date: 1817",
+		"date": 1817
 	},
 	{
 		"name": "wsc-138", "x": 212.5, "y": 147, "zoomX": 0.19, "zoomY": 0.176, "rotation": 0, 
@@ -99,7 +95,7 @@
 		"description": "Saint Patrick’s Cathedral, North Close and vicinity"
 	},
 	{
-		"name": "wsc-329", "x": -678, "y": 345.5, "zoomX": 0.336, "zoomY": 0.336, "rotation": -0.215, 
+		"name": "wsc-329", "x": -670.5, "y": 347, "zoomX": 0.338, "zoomY": 0.332, "rotation": -0.21, 
 		"src": "images/wsc/wsc-329.png", "visible": true, "opacity": 0.3,
 		"description": "Plan for opening and widening a principal Avenue to the Castle, now (1900) Parliament Street - showing Dame Street, Castle Street, and all the Avenues thereof Date: 1757",
 		"date": 1757
@@ -223,7 +219,8 @@
 	{
 		"name": "wsc-334", "x": 90.5, "y": 357, "zoomX": 0.128, "zoomY": 0.128, "rotation": 1.265, 
 		"src": "images/wsc/wsc-334.png", "visible": true, "opacity": 0.1,
-		"description": "Dame Street, College Green, George’s Lane, George’s Street, Chequer Street and avenues thereof"
+		"description": "Dame Street, College Green, George’s Lane, George’s Street, Chequer Street and avenues thereof",
+		"date": 1778
 	},
 	{
 		"name": "wsc-355-2", "x": 185, "y": 1029, "zoomX": 0.302, "zoomY": 0.302, "rotation": -0.45, 
@@ -232,7 +229,7 @@
 		"date": 1792
 	},
 	{
-		"name": "wsc-368", "x": -687.5, "y": 277.5, "zoomX": 0.156, "zoomY": 0.15, "rotation": 0.12, 
+		"name": "wsc-368", "x": -687.5, "y": 273.5, "zoomX": 0.156, "zoomY": 0.15, "rotation": 0.12, 
 		"src": "images/wsc/wsc-368.png", "visible": true, "opacity": 0.7,
 		"description": "Map of King’s Inn Quay and Merchants Quay, showing site of Ormond Bridge - below Charles Street - afterwards removed and re-erected opposite Winetavern Street Date: 1797", 
 		"date": 1797
@@ -418,16 +415,16 @@
 		"name": "wsc-705", "x": -187.5, "y": 392, "zoomX": 0.04, "zoomY": 0.042, "rotation": -0.38, 
 		"src": "images/wsc/wsc-705.png", "visible": true, "opacity": 0.5,
 		"description": "Map of Essex Street and vicinity Date: 1806", 
-		"date": 1806
+		"date": 1826
 	},
 	{
-		"name": "wsc-725", "x": -654, "y": 226, "zoomX": 0.094, "zoomY": 0.094, "rotation": 0.07, 
+		"name": "wsc-725", "x": -653.5, "y": 222.5, "zoomX": 0.094, "zoomY": 0.094, "rotation": 0.07,
 		"src": "images/wsc/wsc-725.png", "visible": true, "opacity": 0.5,
 		"description": "Church Street, Charles Street, Inn’s Quay - 'White Cross Inn' - rere of Four Courts - Ushers’ Quay, Merchant’s Quay, Wood Quay - with reference Date: 1833", 
 		"date": 1833
 	},
 	{
-		"name": "wsc-198-1", "x": -459.5, "y": 469, "zoomX": 0.026, "zoomY": 0.026, "rotation": -0.305, 
+		"name": "wsc-198-1", "x": -462, "y": 476, "zoomX": 0.032, "zoomY": 0.032, "rotation": -0.345, 
 		"src": "images/wsc/wsc-198-1.png", "visible": true, "opacity": 0.5,
 		"description": "Map of Whitehorse Yard (Winetavern Street) Surveyor: Arthur Neville Date: 1847", 
 		"date": 1847
@@ -540,5 +537,40 @@
 		"src": "images/wsc/wsc-254.png", "visible": true, "opacity": 0.5,
 		"description": "Map of Mabbot Street, Montgomery Street, Dominick Street, Cherry Lane, Cross Lane and Turn-again-Lane Date: 1801",
 		"date": 1801
+	},
+	{
+		"name": "wsc-106-1", "x": -757, "y": 495.5, "zoomX": 0.265, "zoomY": 0.265, "rotation": -0.074, 
+		"src": "images/wsc/wsc-maps-106-1.png", "visible": true, "opacity": 0.8, 
+		"description": "Map showing proposed improvements to be made in Cornmarket, Cutpurse Row, Lamb Alley - Francis Street - and an improved entrance from Kevin Street to Saint Patrick’s Cathedral, through Mitre Alley and at James’s Gate. Date: 1845-46 ",
+		"date": 1845
+	},
+	{
+		"name": "wsc-146-1", "x": -683, "y": 471, "zoomX": 0.082, "zoomY": 0.082, "rotation": -0.1,
+		"src": "images/wsc/wsc-146-1.png", "visible": true, "opacity": 0.5,
+		"description": "Map and tracing of premises in Cornmarket, Cutpurse Row and vicinity Date: 1849",
+		"date": 1849
+	},
+	{
+		"name": "wsc-600", "x": 139.5, "y": 758, "zoomX": 0.062, "zoomY": 0.062, "rotation": -0.415,
+		"src": "images/wsc/wsc-600.png", "visible": true, "opacity": 0.9,
+		"description": "Map of the ground etc., of the Mansion House, Dawson Street Date: 1781",
+		"date": 1781
+	},
+	{
+		"name": "wsc-348", "x": -1345.5, "y": 493, "zoomX": 0.4, "zoomY": 0.478, "rotation": -0.075,
+		"src": "images/wsc/wsc-348.png", "visible": true, "opacity": 0.6,
+		"description": "Map of part of the City of Dublin near the Grand Canal - showing improvements and approaches made, and those proposed to be made; and the situation of the following streets viz: - Bason Lane; Canal Place; Portland Street; Rainsford Street; Crane Lane; Bellview; Thomas Court; Hanbury Lane; Meath Row; Meath Street; Earl Street West; Waggon Lane; Crawley`s Yard; Robert Street; Market Street; Bond Street; Canal Bank, Newport Street; Marrowbone Lane, Summer Street; Braithwaite Street; Pimblico, Tripolo (site of Old Court House), near Thomas Court; Cole Alley; Swifts Alley; Crostick Alley; Elbow Lane; Upper Coombe and Tenter's Fields Date: 1787",
+		"date": 1787
+	},
+	{
+		"name": "wsc-433-2", "x": -536.5, "y": 870.5, "zoomX": 0.058, "zoomY": 0.058, "rotation": -0.01,
+		"src": "images/wsc/wsc-433-2.png", "visible": true, "opacity": 0.7,
+		"description": "Map - Coombe, Francis Street, New Row, Cross Poddle (now Dean Street), Three-Stone-Alley (now the lower end of New Street), Patrick Street, Patrick’s Close, Kevin Street and Mitre Alley Date: 1824-28",
+		"date": 1824
+	},
+	{
+		"name": "wsc-059", "x": -527.5, "y": -119.5, "zoomX": 0.07, "zoomY": 0.07, "rotation": -0.08,
+		"src": "images/wsc/wsc-059.png", "visible": true, "opacity": 0.9,
+		"description": "Ground plan of Linen Hall"
 	}
 ]
