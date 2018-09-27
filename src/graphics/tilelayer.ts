@@ -23,6 +23,7 @@ export class TileLayer extends DrawLayer {
 		localTransform: Transform, 
 		readonly tileStruct: TileStruct,
 		visbile: boolean,
+		name: string = "tiles",
 		zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange, 
 		public xOffset: number = 0,
 		public yOffset: number = 0,
@@ -31,7 +32,7 @@ export class TileLayer extends DrawLayer {
 		readonly gridHeight: number = 256,
 		opacity: number = 1){
 
-		super(localTransform, opacity, visbile, zoomDisplayRange);
+		super(localTransform, opacity, visbile, name, zoomDisplayRange);
 
 		this.tileManager = new TileManager();
 	}
@@ -48,16 +49,14 @@ export class TileLayer extends DrawLayer {
 			let transformX = view.x + ctxTransform.x;
 			let transformY = view.y + ctxTransform.y;
 
-			//console.log("ctx zoomWidth: " + zoomWidth);
-
 			let viewX = view.x * view.zoomX;
 			let viewY = view.y * view.zoomY;
 
 			let viewWidth = view.width / view.zoomX;
 			let viewHeight = view.height / view.zoomY;
 
-			let gridAcross = viewWidth / zoomWidth; //good
-			let gridHigh = viewHeight / zoomHeight; //good
+			let gridAcross = viewWidth / zoomWidth;
+			let gridHigh = viewHeight / zoomHeight;
 
 			let xMin = Math.floor(transformX / zoomWidth);
 			let xMax = Math.ceil((transformX + viewWidth) / zoomWidth);

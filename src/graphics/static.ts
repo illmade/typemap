@@ -61,9 +61,6 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 			let maxX = Math.max(0, p1.x, p2.x, p3.x);
 			let maxY = Math.max(0, p1.y, p2.y, p3.y);
 
-			console.log("minx: " + minX);
-			console.log("height: " + (maxY - minY));
-			
 			return new Dimension(this.x + minX, this.y - maxY, maxX-minX, maxY-minY);
 		}
 

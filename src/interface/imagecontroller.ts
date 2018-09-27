@@ -1,7 +1,6 @@
-
-import {CanvasView, DisplayElement} from "./canvasview";
-import {CanvasLayer} from "./layer";
-import {RectLayer} from "./static";
+import {CanvasView, DisplayElement} from "../graphics/canvasview";
+import {CanvasLayer} from "../graphics/layer";
+import {RectLayer} from "../graphics/static";
 
 export class DisplayElementController {
 
@@ -11,8 +10,7 @@ export class DisplayElementController {
     }
 
     pressed(canvasView: CanvasView, event: KeyboardEvent) {
-        //console.log("pressed layer" + event.target + ", " + event.key);
-
+        
         switch (event.key) {
             case this.mod:
                 console.log("toggle visible");
@@ -30,8 +28,8 @@ export class ImageController {
     private editInfoPane: HTMLElement;
 
     constructor(canvasView: CanvasView, canvasLayer: CanvasLayer) {
-    	document.addEventListener("keypress", (e:Event) => 
-    		this.pressed(canvasView, e  as KeyboardEvent));
+        document.addEventListener("keypress", (e:Event) => 
+            this.pressed(canvasView, e  as KeyboardEvent));
         this.canvasLayer = canvasLayer;
     }
 
@@ -48,39 +46,39 @@ export class ImageController {
     }
 
     pressed(canvasView: CanvasView, event: KeyboardEvent) {
-    	console.log("pressed" + event.target + ", " + event.key);
+        console.log("pressed" + event.target + ", " + event.key);
 
         let multiplier = 1;
 
-    	switch (event.key) {
-    		case "a":
-    			this.canvasLayer.x = this.canvasLayer.x - 0.5 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
+        switch (event.key) {
+            case "a":
+                this.canvasLayer.x = this.canvasLayer.x - 0.5 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
             case "A":
                 this.canvasLayer.x = this.canvasLayer.x - 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
-    		case "d":
-    			this.canvasLayer.x = this.canvasLayer.x + 0.5 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
+            case "d":
+                this.canvasLayer.x = this.canvasLayer.x + 0.5 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
             case "D":
                 this.canvasLayer.x = this.canvasLayer.x + 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
-    		case "w":
-    			this.canvasLayer.y = this.canvasLayer.y - 0.5 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
+            case "w":
+                this.canvasLayer.y = this.canvasLayer.y - 0.5 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
             case "W":
                 this.canvasLayer.y = this.canvasLayer.y - 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;    
-    		case "s":
-    			this.canvasLayer.y = this.canvasLayer.y + 0.5 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
+            case "s":
+                this.canvasLayer.y = this.canvasLayer.y + 0.5 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
             case "S":
                 this.canvasLayer.y = this.canvasLayer.y + 5 * multiplier;
                 this.updateCanvas(canvasView);
@@ -101,22 +99,22 @@ export class ImageController {
                 this.canvasLayer.rotation = this.canvasLayer.rotation + 0.05;
                 this.updateCanvas(canvasView);
                 break;
-    		case "x":
-    			this.canvasLayer.zoomX = this.canvasLayer.zoomX - 0.002 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
-    		case "X":
-    			this.canvasLayer.zoomX = this.canvasLayer.zoomX + 0.002 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
-    		case "z":
-    			this.canvasLayer.zoomY = this.canvasLayer.zoomY - 0.002 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
-    		case "Z":
-    			this.canvasLayer.zoomY = this.canvasLayer.zoomY + 0.002 * multiplier;
-    			this.updateCanvas(canvasView);
-    			break;
+            case "x":
+                this.canvasLayer.zoomX = this.canvasLayer.zoomX - 0.002 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
+            case "X":
+                this.canvasLayer.zoomX = this.canvasLayer.zoomX + 0.002 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
+            case "z":
+                this.canvasLayer.zoomY = this.canvasLayer.zoomY - 0.002 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
+            case "Z":
+                this.canvasLayer.zoomY = this.canvasLayer.zoomY + 0.002 * multiplier;
+                this.updateCanvas(canvasView);
+                break;
             case "c":
                 this.canvasLayer.setVisible(!this.canvasLayer.visible);
                 this.updateCanvas(canvasView);
@@ -129,10 +127,10 @@ export class ImageController {
                 this.canvasLayer.opacity = Math.max(0, this.canvasLayer.opacity - 0.1);
                 this.updateCanvas(canvasView);
                 break;
-    		default:
-    			// code...
-    			break;
-    	}
+            default:
+                // code...
+                break;
+        }
         if (this.editInfoPane != undefined){
             this.editInfoPane.innerHTML = '"name": "wsc-100-2", "x": ' + 
               this.canvasLayer.x + 
@@ -149,8 +147,8 @@ export class ImageController {
             ', "rotation": '+ this.canvasLayer.rotation);
         }
         
-    	//console.log("image at: " +  this.canvasLayer.x + ", " + this.canvasLayer.y);
-    	//console.log("image ro sc: " +  this.canvasLayer.rotation + ", " + this.canvasLayer.zoomX + ", " + this.canvasLayer.zoomY);
+        //console.log("image at: " +  this.canvasLayer.x + ", " + this.canvasLayer.y);
+        //console.log("image ro sc: " +  this.canvasLayer.rotation + ", " + this.canvasLayer.zoomX + ", " + this.canvasLayer.zoomY);
     };
 
     updateCanvas(canvasView: CanvasView) {

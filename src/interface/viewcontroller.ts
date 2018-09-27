@@ -1,6 +1,5 @@
-import { ViewTransform } from "./view";
-import { CanvasView } from "./canvasview";
-
+import { ViewTransform } from "../graphics/view";
+import { CanvasView } from "../graphics/canvasview";
 
 export abstract class MouseController {
 
@@ -54,15 +53,15 @@ export class ViewController extends MouseController {
     clicked(event: MouseEvent, viewTransform: ViewTransform, zoomBy: number){
     	switch(event.type){
     		case "dblclick":
-                if  (event.ctrlKey) {
-                    zoomBy = 1 / zoomBy;
-                }
+                // if  (event.ctrlKey) {
+                //     zoomBy = 1 / zoomBy;
+                // }
                 
-                let mXY = this.mousePosition(event, this.dragElement);
+                // let mXY = this.mousePosition(event, this.dragElement);
 
-                this.canvasView.zoomAbout(mXY[0], mXY[1], zoomBy);
+                // this.canvasView.zoomAbout(mXY[0], mXY[1], zoomBy);
 
-                this.canvasView.draw();
+                // this.canvasView.draw();
             default:
         }
     }

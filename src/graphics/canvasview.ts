@@ -1,3 +1,4 @@
+import { Point2D } from "../geom/point2d";
 import { CanvasLayer } from "./layer";
 import { 
 	invertTransform, 
@@ -59,6 +60,12 @@ export class CanvasView extends BasicViewTransform {
         this.x = this.x + worldX;
         this.y = this.y + worldY;
 
+	}
+
+	getBasePoint(coord: Point2D): Point2D {
+		return new Point2D(
+			this.x + coord.x / this.zoomX, 
+			this.y + coord.y / this.zoomY);
 	}
 
 	draw(): boolean {

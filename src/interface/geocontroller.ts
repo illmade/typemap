@@ -1,10 +1,10 @@
-import { CanvasView } from "./canvasview";
-import { CanvasLayer } from "./layer";
-import { OffsetProjection } from "./projection";
-import { Point2D } from "./projection";
+import { CanvasView } from "../graphics/canvasview";
+import { CanvasLayer } from "../graphics/layer";
+import { OffsetProjection } from "../geom/projection";
+import { Point2D } from "../geom/point2d";
 import { MouseController } from "./viewcontroller";
 
-export class ImageController extends MouseController {
+export class GeoController extends MouseController {
 
 	private projection: OffsetProjection;
 

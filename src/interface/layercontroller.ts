@@ -1,6 +1,6 @@
-import { ContainerLayer } from "./layer";
-import { ContainerLayerManager } from "./layermanager";
-import { CanvasView } from "./canvasview";
+import { ContainerLayer } from "../graphics/layer";
+import { ContainerLayerManager } from "../graphics/layermanager";
+import { CanvasView } from "../graphics/canvasview";
 
 export class LayerController {
 

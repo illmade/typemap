@@ -8,6 +8,7 @@ export abstract class CanvasLayer extends BasicTransform implements DisplayEleme
 	  public localTransform: Transform, 
 	  public opacity: number, 
 	  public visible,
+	  public name = "",
 	  private zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange){
 		super(localTransform.x, localTransform.y, localTransform.zoomX, localTransform.zoomY, 
 			localTransform.rotation);
@@ -75,6 +76,10 @@ export class ContainerLayer extends CanvasLayer {
 
 	get(name: string): CanvasLayer {
 		return this.layerMap.get(name);
+	}
+
+	layers(): Array<CanvasLayer> {
+		return this.displayLayers;
 	}
 
 	setTop(name: string) {

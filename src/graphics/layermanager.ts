@@ -61,7 +61,8 @@ export class LayerManager {
 		let imageLayer = new ContainerLayer(layerTransform, 1, true);	
 
 		for (var image of imageDetails){
-			let staticImage = new StaticImage(image, image.src, image.opacity, image.visible);
+			let staticImage = new StaticImage(image, image.src, 
+				image.opacity, image.visible, image.name);
 			imageLayer.set(image.name, staticImage);
 		}
 
@@ -101,7 +102,7 @@ export class ContainerLayerManager {
 
 		let layerRect = new RectLayer(layer.getDimension(), 1, true);
 
-		let layerName = "outline";//name + "_o"
+		let layerName = "outline";
 
 		this.displayLayer.set(layerName, layerRect);
 

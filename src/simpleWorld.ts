@@ -1,16 +1,20 @@
-import { CanvasView } from "./gtwo/canvasview";
-import { StaticImage } from "./gtwo/static";
-import { ContainerLayer } from "./gtwo/layer";
-import { BasicTransform } from "./gtwo/view";
-import { StaticGrid } from "./gtwo/grid";
-import { ViewController } from "./gtwo/viewcontroller";
-import { ZoomDisplayRange } from "./gtwo/canvasview";
-import { GridIndex } from "./index/gridindex";
-import { ImageController, DisplayElementController } from "./gtwo/imagecontroller";
-import { TileLayer, TileStruct, zoomByLevel} from "./gtwo/tilelayer";
+import { CanvasView } from "./graphics/canvasview";
+import { StaticImage } from "./graphics/static";
+import { ContainerLayer } from "./graphics/layer";
+import { BasicTransform } from "./graphics/view";
+import { StaticGrid } from "./graphics/grid";
+import { ZoomDisplayRange } from "./graphics/canvasview";
+import { TileLayer, TileStruct, zoomByLevel} from "./graphics/tilelayer";
 import { LayerManager, ContainerLayerManager, dateFilter, datelessFilter } from 
-  "./gtwo/layermanager";
-import { LayerController } from "./gtwo/layercontroller";
+  "./graphics/layermanager";
+
+import { IndexController } from "./interface/indexcontroller";
+import { ViewController } from "./interface/viewcontroller";
+import { ImageController, DisplayElementController } from "./interface/imagecontroller";
+import { LayerController } from "./interface/layercontroller";
+
+import { ContainerIndex } from "./index/containerindex";
+import { ElementLogger } from "./logging/logger";
 
 import * as firemaps from "./imagegroups/firemaps.json";
 import * as landmarks from "./imagegroups/landmarks.json";
@@ -41,24 +45,27 @@ let duImage = new StaticImage(duState, "images/dublin1610.jpg", .6, false);
 
 let gridTransform = BasicTransform.unitTransform;
 // new BasicTransform(0, 0, 1, 1, 0);
-let staticGrid = new StaticGrid(gridTransform, 1, false, 256, 256);
+let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
 
 let sentinelStruct = new TileStruct("qtile/dublin/", ".png", "images/qtile/dublin/");
 
 let sentinelTransform = new BasicTransform(0, 0, 2, 2, 0);
 let zoomDisplay = new ZoomDisplayRange(0.8, 4);
 
-let sentinelLayer = new TileLayer(sentinelTransform, sentinelStruct, true, zoomDisplay, 
+let sentinelLayer = new TileLayer(sentinelTransform, sentinelStruct, true, 
+    "sentinel", zoomDisplay, 
    15816, 10624, 15);
 
 let sentinelBTransform = new BasicTransform(0, 0, 4, 4, 0);
 let zoomBDisplay = new ZoomDisplayRange(.2, 0.8);
-let sentinelBLayer = new TileLayer(sentinelBTransform, sentinelStruct, true, zoomBDisplay, 
+let sentinelBLayer = new TileLayer(sentinelBTransform, sentinelStruct, true, 
+    "sentinelB", zoomBDisplay, 
    7908, 5312, 14);
 
 let sentinelCTransform = new BasicTransform(0, 0, 8, 8, 0);
 let zoomCDisplay = new ZoomDisplayRange(.04, .2);
-let sentinelSLayer = new TileLayer(sentinelCTransform, sentinelStruct, true, zoomCDisplay, 
+let sentinelSLayer = new TileLayer(sentinelCTransform, sentinelStruct, true, 
+    "sentinelC", zoomCDisplay, 
     3954, 2656, 13);
 
 let recentre = new BasicTransform(-1024, -1536, 1, 1, 0);
@@ -84,14 +91,15 @@ wscLateLayer.setVisible(false);
 let wscOtherLayer = layerManager.addLayer(otherDates, "wsc_other");
 wscOtherLayer.setVisible(false);
 
-let edit = wscEarlyLayer.get("wsc-334");
+let edit = wscEarlyLayer.get("wsc-355-2");
 
-let indexer = new GridIndex(256);
-
-indexer.addLayer(edit);
+let earlyIndex = new ContainerIndex(wscEarlyLayer);
+let midIndex = new ContainerIndex(wscMidLayer);
+let lateIndex = new ContainerIndex(wscLateLayer);
+let otherIndex = new ContainerIndex(wscOtherLayer);
 
 let containerLayerManager = new ContainerLayerManager(wscEarlyLayer, editContainerLayer);
-let outlineLayer = containerLayerManager.setSelected("wsc-334");
+let outlineLayer = containerLayerManager.setSelected("wsc-355-2");
 
 imageLayer.set("wsc_other", wscOtherLayer);
 imageLayer.set("wsc_early", wscEarlyLayer);
@@ -110,6 +118,8 @@ function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
 
     const info = <HTMLElement>document.getElementById("edit_info");
+
+    const layers = <HTMLElement>document.getElementById("layers");
 
     let x = outlineLayer.x;
     let y = outlineLayer.y;
@@ -146,6 +156,17 @@ function showMap(divName: string, name: string) {
     let layerController = new LayerController(canvasView, containerLayerManager);
 
     drawMap(canvasView);
+
+    let logger = new ElementLogger(info);
+
+    let indexController = new IndexController(canvasView);
+    indexController.addIndexer(earlyIndex);
+    indexController.addIndexer(midIndex);
+    indexController.addIndexer(lateIndex);
+    indexController.addIndexer(otherIndex);
+
+    indexController.setMenu(layers);
+    //indexController.setLogging(logger);
 
 }
 
