@@ -218,7 +218,7 @@
 	},
 	{
 		"name": "wsc-334", "x": 90.5, "y": 357, "zoomX": 0.128, "zoomY": 0.128, "rotation": 1.265, 
-		"src": "images/wsc/wsc-334.png", "visible": true, "opacity": 0.1,
+		"src": "images/wsc/wsc-334.png", "visible": true, "opacity": 0.5,
 		"description": "Dame Street, College Green, George’s Lane, George’s Street, Chequer Street and avenues thereof",
 		"date": 1778
 	},

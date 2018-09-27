@@ -5,6 +5,7 @@ import { BasicTransform } from "./gtwo/view";
 import { StaticGrid } from "./gtwo/grid";
 import { ViewController } from "./gtwo/viewcontroller";
 import { ZoomDisplayRange } from "./gtwo/canvasview";
+import { GridIndex } from "./index/gridindex";
 import { ImageController, DisplayElementController } from "./gtwo/imagecontroller";
 import { TileLayer, TileStruct, zoomByLevel} from "./gtwo/tilelayer";
 import { LayerManager, ContainerLayerManager, dateFilter, datelessFilter } from 
@@ -38,7 +39,8 @@ let tmImage = new StaticImage(tmState, "images/thingmot.png", .3, true);
 let duState = new BasicTransform(-929,-105.5, 0.464, 0.506, 0);
 let duImage = new StaticImage(duState, "images/dublin1610.jpg", .6, false);
 
-let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
+let gridTransform = BasicTransform.unitTransform;
+// new BasicTransform(0, 0, 1, 1, 0);
 let staticGrid = new StaticGrid(gridTransform, 1, false, 256, 256);
 
 let sentinelStruct = new TileStruct("qtile/dublin/", ".png", "images/qtile/dublin/");
@@ -72,8 +74,6 @@ imageLayer.set("background", bgImage);
 
 let layerManager = new LayerManager();
 
-//let recentreLayers = new BasicTransform(-1024, -1536, 1, 1, 0);
-
 let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscEarlyLayer = layerManager.addLayer(earlyDates, "wsc_early");
@@ -84,10 +84,14 @@ wscLateLayer.setVisible(false);
 let wscOtherLayer = layerManager.addLayer(otherDates, "wsc_other");
 wscOtherLayer.setVisible(false);
 
-let edit = wscEarlyLayer.get("wsc-329");
+let edit = wscEarlyLayer.get("wsc-334");
+
+let indexer = new GridIndex(256);
+
+indexer.addLayer(edit);
 
 let containerLayerManager = new ContainerLayerManager(wscEarlyLayer, editContainerLayer);
-let outlineLayer = containerLayerManager.setSelected("wsc-329");
+let outlineLayer = containerLayerManager.setSelected("wsc-334");
 
 imageLayer.set("wsc_other", wscOtherLayer);
 imageLayer.set("wsc_early", wscEarlyLayer);
@@ -100,7 +104,7 @@ imageLayer.set("dublin1610", duImage);
 imageLayer.set("thingmot", tmImage);
 imageLayer.set("landmarks", landmarksLayer);
 
-wscEarlyLayer.setTop("wsc-329");
+wscEarlyLayer.setTop("wsc-334");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
