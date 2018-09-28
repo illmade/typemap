@@ -510,78 +510,9 @@ exports.BasicViewTransform = BasicViewTransform;
 },{}],8:[function(require,module,exports){
 module.exports=[
     {
-    "name": "2-2", "x": -364, "y": -12.5, "zoomX": 0.213, "zoomY": 0.205, "rotation": -0.31, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f002r_2[SVC2].png", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "3", "x": -216, "y": -0.705, "zoomX": 0.2, "zoomY": 0.21, "rotation": -0.51, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f003r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "4", "x": -74.29, "y": -99.78, "zoomX": 0.222, "zoomY": 0.208, "rotation": -0.285, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f004r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "5", "x": -366.5, "y": 180.019, "zoomX": 0.215, "zoomY": 0.207, "rotation": -0.21, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f005r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "6", "x": -206.16, "y": 146, "zoomX": 0.21, "zoomY": 0.208, "rotation": -0.215, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f006r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "7", "x": -63.3, "y": 100.3776, "zoomX": 0.2125, "zoomY": 0.213, "rotation": -0.23, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f007r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "8", "x": 78.1, "y": 58.535, "zoomX": 0.207, "zoomY": 0.217, "rotation": -0.25, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f008r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "9", "x": 219.5, "y": 24, "zoomX": 0.215, "zoomY": 0.2145, "rotation": -0.26,
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f009r[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "10", "x": 454.21, "y": -1.5, "zoomX": 0.218, "zoomY": 0.214, "rotation": 0.015, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f010r_2[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "11", "x": 621.86, "y": 25.525, "zoomX": 0.213, "zoomY": 0.2115, "rotation": 0.11, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f011r[SVC2].jpg", "visible": true, "opacity": 0.7
-    }, 
-    {
-    "name": "12-1", "x": 769.645, "y": 50.265, "zoomX": 0.424, "zoomY": 0.422, "rotation": 0.12, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f012r_1[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "14", "x": -915.6, "y": 557.865, "zoomX": 0.208, "zoomY": 0.208, "rotation": -1.215, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f014R[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "15-2", "x": -717.3, "y": 572, "zoomX": 0.21, "zoomY": 0.206, "rotation": -1.47, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f015r_2[SVC2].png", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "16-2", "x": -92, "y": 336.5, "zoomX": 0.217, "zoomY": 0.21, "rotation": -0.1, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f016r_2[SVC2].png", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "17", "x": 77, "y": 278.5, "zoomX": 0.206, "zoomY": 0.206, "rotation": -0.055, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f017R[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "18", "x": 229, "y": 239.5, "zoomX": 0.208, "zoomY": 0.208, "rotation": 0.07, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f018R[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "19", "x": 71.5, "y": 474, "zoomX": 0.203, "zoomY": 0.208, "rotation": 0.17, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f019R[SVC2].jpg", "visible": true, "opacity": 0.7
-    },
-    {
-    "name": "20", "x": 43.5, "y": 640, "zoomX": 0.1, "zoomY": 0.104, "rotation": 0.205, 
-    "src": "https://github.com/illmade/typemap/tree/master/dist/images/firemap/maps_145_b_4_(2)_f020R[SVC2].jpg", "visible": true, "opacity": 0.7
+    "name": "3", "x": -364, "y": -12.5, "zoomX": 0.213, "zoomY": 0.205, "rotation": -0.31, 
+    "src": "demo.jpg", "visible": true, "opacity": 0.7
     }
-
 ]
 },{}],9:[function(require,module,exports){
 "use strict";
