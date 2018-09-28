@@ -1,69 +1,112 @@
-import { CanvasView } from "./gtwo/canvasview";
-import { StaticImage } from "./gtwo/static";
-import { ContainerLayer } from "./gtwo/layer";
-import { BasicTransform } from "./gtwo/view";
-import { StaticGrid } from "./gtwo/grid";
-import { TileLayer, TileStruct, zoomByLevel} from "./gtwo/tilelayer";
+import { CanvasView } from "./graphics/canvasview";
+import { StaticImage } from "./graphics/static";
+import { ContainerLayer } from "./graphics/layer";
+import { BasicTransform } from "./graphics/view";
+import { StaticGrid } from "./graphics/grid";
+import { ZoomDisplayRange } from "./graphics/canvasview";
+import { TileLayer, TileStruct, zoomByLevel} from "./graphics/tilelayer";
+import { LayerManager, ContainerLayerManager, dateFilter, datelessFilter } from 
+  "./graphics/layermanager";
 
+import { IndexController } from "./interface/indexcontroller";
+import { ViewController } from "./interface/viewcontroller";
+import { ImageController, DisplayElementController } from "./interface/imagecontroller";
+import { LayerController } from "./interface/layercontroller";
+
+import { GridIndexer } from "./index/gridindexer";
+import { ContainerIndex } from "./index/containerindex";
+import { ElementLogger } from "./logging/logger";
+
+import * as firemaps from "./imagegroups/firemapsab.json";
+
+let layerState = new BasicTransform(0, 0, 1, 1, 0);
+let imageLayer = new ContainerLayer(layerState);
+
+let imageState = new BasicTransform(-1440,-1440, 0.222, 0.222, 0);
+
+let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
+let bgImage = new StaticImage(bgState, "https://github.com/illmade/typemap/tree/master/dist/images/fmss.jpeg", .6, true);
+
+let gridTransform = BasicTransform.unitTransform;
+// new BasicTransform(0, 0, 1, 1, 0);
+let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
+
+let editContainerLayer = new ContainerLayer(BasicTransform.unitTransform);
+
+imageLayer.set("background", bgImage);
+
+let layerManager = new LayerManager();
+
+let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
+
+let edit = firemapLayer.get("3");
+
+let fireIndex = new ContainerIndex(firemapLayer, "firemaps");
+
+let containerLayerManager = new ContainerLayerManager(firemapLayer, editContainerLayer);
+let outlineLayer = containerLayerManager.setSelected("3");
+
+imageLayer.set("firemaps", firemapLayer);
+
+firemapLayer.setTop("3");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
-    let canvasTransform = new BasicTransform(288, 288, 1.4, 1.4, 0);
+
+    const info = <HTMLElement>document.getElementById("edit_info");
+
+    const layers = <HTMLElement>document.getElementById("layers");
+
+    let x = outlineLayer.x;
+    let y = outlineLayer.y;
+
+    let canvasTransform = new BasicTransform(x - 200, y - 200, 0.5, 0.5, 0);
     let canvasView = new CanvasView(canvasTransform, canvas.clientWidth, canvas.clientHeight, canvas);
 
-    let layerState = new BasicTransform(384, 384, 2, 2, 0);
-    let imageLayer = new ContainerLayer(layerState, 1);
-
-    let imageState = new BasicTransform(0,0, 0.222, 0.222, 0);
-    let helloImage = new StaticImage(imageState, "images/bluecoat.png", .5);
-
-    //let zoomState = new BasicTransform(128, 128, 1, 1, 0);
-    //let zoomLayer = new ContainerLayer(zoomState, 1);
-
-    //let rotateState = new BasicTransform(25, 25, 0.10, 0.10, Math.PI/4);
-    //let nextImage = new StaticImage(rotateState, "images/bluecoat.png", 0.8);
-
-    let gridTransform = new BasicTransform(0, 0, 1, 1, 0);
-    let staticGrid = new StaticGrid(gridTransform, 0, true);
-
-    let tileStruct = new TileStruct("test/", ".png", "images/test/");
-    let zoom = zoomByLevel(0);
-    let tileTransform = new BasicTransform(0, 0, zoom, zoom, 0);
-    let tileLayer = new TileLayer(tileTransform, tileStruct);
-    //let staticGridb = new StaticGrid(gridTransform, 3);
-
-    imageLayer.layers.push(helloImage);
-    //zoomLayer.layers.push(nextImage);
-
-    canvasView.layers.push(tileLayer);
     canvasView.layers.push(imageLayer);
-    //canvasView.layers.push(zoomLayer);
     canvasView.layers.push(staticGrid);
-    //canvasView.layers.push(staticGridb);
+    canvasView.layers.push(editContainerLayer);
 
-    if (!canvasView.draw() ){
-        console.log("waiting for complete");
-        setTimeout(1500, canvasView.draw());
+    let firemapController = new DisplayElementController(canvasView, firemapLayer, "b");
+    let gridController = new DisplayElementController(canvasView, staticGrid, "g");
+
+    let controller = new ViewController(canvasView, canvas, canvasView);
+
+    let imageController = new ImageController(canvasView, edit);
+
+    imageController.setLayerOutline(outlineLayer);
+
+    imageController.setEditInfoPane(info);
+
+    let layerController = new LayerController(canvasView, containerLayerManager);
+
+    drawMap(canvasView);
+
+    let logger = new ElementLogger(info);
+
+    let indexController = new IndexController(canvasView, imageController);
+    indexController.addIndexer(fireIndex);
+
+    indexController.setMenu(layers);
+
+}
+
+function drawMap(canvasView: CanvasView){
+    if (!canvasView.draw() ) {
+        console.log("In timeout");
+        setTimeout(function(){ drawMap(canvasView)}, 500);
     }
-
-    let lctx = canvas.getContext("2d");
-    lctx.fillStyle = "white";
-    lctx.fillRect(0, 0, 128, 128);
-    lctx.fillStyle = "red";
-    lctx.fillRect(0, 0, 64, 64);
-
-    //setTimeout(() =>  canvasView.draw(), 2500);
 }
 
 function show(){
-	showMap("canvas", "TypeScript");
+    showMap("canvas", "TypeScript");
 }
 
 if (
     document.readyState === "complete" ||
     (document.readyState !== "loading" && !document.documentElement.doScroll)
 ) {
-	show();
+    show();
 } else {
-	document.addEventListener("DOMContentLoaded", show);
+    document.addEventListener("DOMContentLoaded", show);
 }

@@ -44,20 +44,22 @@ export class GridIndexer implements Indexer {
 		this.logger = new ConsoleLogger();
 	}
 
-	setLogger(logger: Logger){
+	setLogger(logger: Logger): void {
 		this.logger = logger;
 	}
 
-	getLayers(x, y): Array<CanvasLayer> {
+	getLayers(x: number, y: number): Array<CanvasLayer> {
 		let gridX = Math.floor(x / this.gridWidth);
 		let gridY = Math.floor(y / this.gridHeight);
+
+		this.logger.log("grid xy " + gridX + ", " + gridY);
+
 		if (this.canvasMap.has(gridX, gridY)){
 			return this.canvasMap.get(gridX, gridY);
 		}
 		else {
 			return [];
 		}
-		
 	}
 
 	add(canvasLayer: CanvasLayer){
@@ -70,10 +72,33 @@ export class GridIndexer implements Indexer {
 		let yMin = Math.floor(dimension.y / this.gridHeight);
 		let yMax = Math.floor((dimension.y + dimension.h) / this.gridHeight);
 
-		for (var x = xMin; x<xMax; x++){
-			for (var y = yMin; y<yMax; y++){
+		for (var x = xMin; x<=xMax; x++){
+			for (var y = yMin; y<=yMax; y++){
 				this.canvasMap.add(x, y, canvasLayer);
 			}
 		}
+	}
+
+	showIndices(canvasLayer: CanvasLayer): void {
+
+		let dimension = canvasLayer.getDimension();
+
+		let xMin = Math.floor(dimension.x / this.gridWidth);
+		let xMax = Math.floor((dimension.x + dimension.w) / this.gridWidth);
+
+		let yMin = Math.floor(dimension.y / this.gridHeight);
+		let yMax = Math.floor((dimension.y + dimension.h) / this.gridHeight);
+
+		var message = "grid: ["
+
+		for (var x = xMin; x<=xMax; x++){
+			for (var y = yMin; y<=yMax; y++){
+				message = message + "[" + x + ", " + y + "]";
+			}
+		}
+
+		message = message + "]";
+
+		this.logger.log(message);
 	}
 }

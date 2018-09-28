@@ -6,8 +6,11 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <canvas id="canvas" class="map"></canvas>
-        <canvas id="offscreen" class="map offscreen"></canvas>
+        <span class="map_holder">
+            <canvas id="canvas" class="map"></canvas>
+            <canvas id="offscreen" class="map offscreen"></canvas>
+        </span>
+        <span id="layers"></span>
         <div><p id="edit_info"></p></div>
         <script src="bundle.js"></script>
     </body>

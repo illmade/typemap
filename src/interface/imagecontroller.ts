@@ -1,6 +1,8 @@
 import {CanvasView, DisplayElement} from "../graphics/canvasview";
 import {CanvasLayer} from "../graphics/layer";
 import {RectLayer} from "../graphics/static";
+import {GridIndexer} from "../index/gridindexer";
+import {ElementLogger} from "../logging/logger";
 
 export class DisplayElementController {
 
@@ -27,7 +29,9 @@ export class ImageController {
     private layerOutline: RectLayer;
     private editInfoPane: HTMLElement;
 
-    constructor(canvasView: CanvasView, canvasLayer: CanvasLayer) {
+    private indexer: GridIndexer = new GridIndexer(256);
+
+    constructor(private canvasView: CanvasView, canvasLayer: CanvasLayer) {
         document.addEventListener("keypress", (e:Event) => 
             this.pressed(canvasView, e  as KeyboardEvent));
         this.canvasLayer = canvasLayer;
@@ -35,6 +39,10 @@ export class ImageController {
 
     setCanvasLayer(canvasLayer: CanvasLayer){
         this.canvasLayer = canvasLayer;
+
+        this.indexer.showIndices(canvasLayer);
+        
+        this.updateCanvas(this.canvasView);
     }
 
     setEditInfoPane(editInfoPane: HTMLElement){
@@ -131,24 +139,20 @@ export class ImageController {
                 // code...
                 break;
         }
-        if (this.editInfoPane != undefined){
-            this.editInfoPane.innerHTML = '"name": "wsc-100-2", "x": ' + 
-              this.canvasLayer.x + 
-              ', "y": ' + this.canvasLayer.y + 
+
+        let info: string = '"name": ' + this.canvasLayer.name +
+              ' "x": ' + this.canvasLayer.x +
+              ', "y": ' + this.canvasLayer.y +
               ', "zoomX": '+ this.canvasLayer.zoomX + 
               ', "zoomY": ' + this.canvasLayer.zoomY + 
               ', "rotation": '+ this.canvasLayer.rotation;
+
+        if (this.editInfoPane != undefined){
+            this.editInfoPane.innerHTML = info;
         }
         else {
-            console.log('"name": "wsc-100-2", "x": ' + this.canvasLayer.x + 
-            ', "y": ' + this.canvasLayer.y + 
-            ', "zoomX": '+ this.canvasLayer.zoomX + 
-            ', "zoomY": ' + this.canvasLayer.zoomY + 
-            ', "rotation": '+ this.canvasLayer.rotation);
+            console.log(info);
         }
-        
-        //console.log("image at: " +  this.canvasLayer.x + ", " + this.canvasLayer.y);
-        //console.log("image ro sc: " +  this.canvasLayer.rotation + ", " + this.canvasLayer.zoomX + ", " + this.canvasLayer.zoomY);
     };
 
     updateCanvas(canvasView: CanvasView) {

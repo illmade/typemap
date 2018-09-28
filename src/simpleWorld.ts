@@ -13,6 +13,7 @@ import { ViewController } from "./interface/viewcontroller";
 import { ImageController, DisplayElementController } from "./interface/imagecontroller";
 import { LayerController } from "./interface/layercontroller";
 
+import { GridIndexer } from "./index/gridindexer";
 import { ContainerIndex } from "./index/containerindex";
 import { ElementLogger } from "./logging/logger";
 
@@ -93,10 +94,10 @@ wscOtherLayer.setVisible(false);
 
 let edit = wscEarlyLayer.get("wsc-355-2");
 
-let earlyIndex = new ContainerIndex(wscEarlyLayer);
-let midIndex = new ContainerIndex(wscMidLayer);
-let lateIndex = new ContainerIndex(wscLateLayer);
-let otherIndex = new ContainerIndex(wscOtherLayer);
+let earlyIndex = new ContainerIndex(wscEarlyLayer, "early");
+let midIndex = new ContainerIndex(wscMidLayer, "mid");
+let lateIndex = new ContainerIndex(wscLateLayer, "late");
+let otherIndex = new ContainerIndex(wscOtherLayer, "other");
 
 let containerLayerManager = new ContainerLayerManager(wscEarlyLayer, editContainerLayer);
 let outlineLayer = containerLayerManager.setSelected("wsc-355-2");
@@ -159,14 +160,13 @@ function showMap(divName: string, name: string) {
 
     let logger = new ElementLogger(info);
 
-    let indexController = new IndexController(canvasView);
+    let indexController = new IndexController(canvasView, imageController);
     indexController.addIndexer(earlyIndex);
     indexController.addIndexer(midIndex);
     indexController.addIndexer(lateIndex);
     indexController.addIndexer(otherIndex);
 
     indexController.setMenu(layers);
-    //indexController.setLogging(logger);
 
 }
 

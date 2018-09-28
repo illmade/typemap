@@ -4,6 +4,6 @@ export interface Indexer {
 
 	getLayers(x: number, y: number): Array<CanvasLayer>;
 
-	add(canvasLayer: CanvasLayer);
+	add(canvasLayer: CanvasLayer): void;
 
 }

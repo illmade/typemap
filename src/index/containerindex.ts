@@ -6,6 +6,7 @@ export class ContainerIndex implements Indexer {
 
 	constructor(
 	  readonly container: ContainerLayer, 
+	  readonly name: string,
 	  readonly indexer: Indexer = new GridIndexer(256)){
 		for (let layer of container.layers()){
 			this.add(layer);
@@ -14,6 +15,7 @@ export class ContainerIndex implements Indexer {
 
 	getLayers(x: number, y: number): Array<CanvasLayer>{
 		if (this.container.isVisible()){
+			console.log(this.name + " is visible ");
 			return this.indexer.getLayers(x, y);
 		}
 		else {
@@ -21,7 +23,7 @@ export class ContainerIndex implements Indexer {
 		}
 	}
 
-	add(canvasLayer: CanvasLayer){
+	add(canvasLayer: CanvasLayer): void {
 		this.indexer.add(canvasLayer);
 	}
 

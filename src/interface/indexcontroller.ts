@@ -1,13 +1,13 @@
 import { CanvasView } from "../graphics/canvasview";
 import { CanvasLayer, ContainerLayer } from "../graphics/layer";
-import { OffsetProjection } from "../geom/projection";
 import { Point2D } from "../geom/point2d";
 import { MouseController } from "./viewcontroller";
 import { Indexer } from "../index/indexer";
 import { Logger, ConsoleLogger } from "../logging/logger";
 
+import { ImageController } from "./imagecontroller";
 import { IndexView } from "./indexview";
-import { CanvasLayerView } from "./layerview";
+import { CanvasLayerView } from "./canvaslayerview";
 
 export class IndexController extends MouseController {
 
@@ -15,11 +15,15 @@ export class IndexController extends MouseController {
 	private indexers: Array<Indexer>;
 	private menu: HTMLElement;
 
-    constructor(canvasView: CanvasView) {
+    constructor(
+      readonly canvasView: CanvasView,
+      readonly imageController: ImageController
+    ) {
+
     	super();
 
     	document.addEventListener("dblclick", (e:Event) => 
-    		this.clicked(canvasView, e  as MouseEvent));
+    		this.clicked(e  as MouseEvent));
 
     	this.indexers = [];
     	this.logger = new ConsoleLogger();
@@ -37,10 +41,10 @@ export class IndexController extends MouseController {
     	this.indexers.push(indexer);
     }
 
-    clicked(canvasView: CanvasView, e: MouseEvent){
-    	let point  = this.mousePosition(e, canvasView.canvasElement);
+    clicked(e: MouseEvent){
+    	let point  = this.mousePosition(e, this.canvasView.canvasElement);
 
-    	let worldPoint = canvasView.getBasePoint(
+    	let worldPoint = this.canvasView.getBasePoint(
     		new Point2D(point[0], point[1]));
 
     	var layers: Array<CanvasLayer> = [];
@@ -51,12 +55,9 @@ export class IndexController extends MouseController {
     		layers = layers.concat(newLayers);
     	}
 
-    	for (let layer of layers){
-    		this.logger.log("layer " + layer.name);
-    	}
-
     	if (this.menu != undefined){
-    		let layerView = new IndexView(this.menu);
+    		let layerView = new IndexView(this.menu, this.canvasView, 
+    			this.imageController);
     		layerView.setElements(layers);
     	}
     }
@@ -64,7 +65,7 @@ export class IndexController extends MouseController {
 	private filterVisible(layers: Array<CanvasLayer>){
 		return layers.filter(function(layer) { 
 			return layer.isVisible();
-		})
+		});
 	}
 
 }

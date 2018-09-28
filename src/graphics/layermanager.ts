@@ -62,7 +62,7 @@ export class LayerManager {
 
 		for (var image of imageDetails){
 			let staticImage = new StaticImage(image, image.src, 
-				image.opacity, image.visible, image.name);
+				image.opacity, image.visible);
 			imageLayer.set(image.name, staticImage);
 		}
 

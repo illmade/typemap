@@ -3,7 +3,13 @@ import { DrawLayer, CanvasLayer } from "./layer";
 import { DisplayElement, ZoomDisplayRange } from "./canvasview";
 import { Dimension, rotate, Point2D } from "../geom/point2d";
 
-export class StaticImage extends DrawLayer implements DisplayElement {
+export interface Thumb extends DisplayElement {
+
+	drawThumb(ctx: CanvasRenderingContext2D, w: number, h: number): boolean;
+
+}
+
+export class StaticImage extends DrawLayer implements Thumb {
 
 	private img: HTMLImageElement;
 
@@ -13,7 +19,7 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 	  visible: boolean,
 	  zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange) {
 
-		super(localTransform, opacity, visible, zoomDisplayRange);
+		super(localTransform, opacity, visible, imageSrc, zoomDisplayRange);
 		
 		this.img = new Image();
 		this.img.src = imageSrc;
@@ -23,8 +29,6 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 
 		if (this.isVisible() && this.getZoomDisplayRange().withinRange(view.zoomX)){
 			let ctxTransform = combineTransform(this, parentTransform);
-
-			//console.log("ctx x " + ctxTransform.x);
 
 			this.prepareCtx(ctx, ctxTransform, view);
 			
@@ -37,10 +41,27 @@ export class StaticImage extends DrawLayer implements DisplayElement {
 		
 	}
 
-	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform): boolean {
+	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, 
+	  view: Transform): boolean {
+
 		if (this.visible && this.img.complete) {
 			this.drawImage(ctx, parentTransform, view);
-		//	console.log("drew image " + this.img.src);
+			return true;
+		}
+		return false;
+	}
+
+	drawThumb(ctx: CanvasRenderingContext2D, w: number, h: number): boolean {
+		if (this.visible && this.img.complete) {
+			let scaleX = w / this.img.width;
+			let scaleY = h / this.img.height;
+			let scale = Math.min(scaleX, scaleY);
+			ctx.scale(scale, scale);
+			//console.log("scalex " + (this.img.width * scale));
+			//console.log("scaley " + (this.img.height * scale));
+			//console.log("xy " + this.img.x + ", " + this.img.y);
+			ctx.drawImage(this.img, 0, 0);
+			ctx.scale(1/scale, 1/scale);
 			return true;
 		}
 		return false;
@@ -76,22 +97,19 @@ export class RectLayer extends DrawLayer implements DisplayElement {
 		zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange) {
 
 		super(new BasicTransform(dimension.x, dimension.y, 1, 1, 0), 
-			opacity, visible, zoomDisplayRange);
+			opacity, visible, "rect", zoomDisplayRange);
 	}
 
-	updateDimension(dimension: Dimension){
+	updateDimension(dimension: Dimension): void {
 		this.dimension = dimension;
 	}
 
-	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform): boolean {
+	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, 
+		view: Transform): boolean {
 
 		let x = (this.dimension.x + parentTransform.x - view.x) * view.zoomX;
 		let y = (this.dimension.y + parentTransform.y - view.y) * view.zoomY;
 
-		//console.log("dimension " + this.dimension.x);
-
-		//console.log("outline: " + x + " view: " + view.x + 
-		//	" parent " + parentTransform.x + " w " + this.dimension.w);
 		ctx.strokeStyle = "red";
 		ctx.strokeRect(x, y, this.dimension.w * view.zoomX, this.dimension.h * view.zoomY);
 

@@ -1,8 +1,34 @@
 .map {
-	width: 700px;
+	width: 1000px;
 	height: 600px;
+}
+
+.map_holder {
+	float: left;
 }
 
 .offscreen {
 	display: none;
+}
+
+.thumbnail {
+	display: grid;
+	margin-top: 0.5em;
+}
+
+#layers {
+	float: right;
+	display: grid;
+	padding-left: 1em;
+	height: 600px;
+	width: 240px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.layer {
+	padding: 0.5em;
+	width: 200px;
+	border-style: double;
+	margin-bottom: 1em;
 }
