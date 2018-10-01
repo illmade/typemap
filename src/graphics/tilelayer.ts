@@ -1,7 +1,7 @@
 import { DrawLayer } from "./layer";
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
 import { Dimension } from "../geom/point2d";
-import { ZoomDisplayRange } from "./canvasview";
+import { ZoomDisplayRange } from "./multireslayer";
 
 export class TileStruct {
 	
@@ -24,7 +24,6 @@ export class TileLayer extends DrawLayer {
 		readonly tileStruct: TileStruct,
 		visbile: boolean,
 		name: string = "tiles",
-		zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange, 
 		public xOffset: number = 0,
 		public yOffset: number = 0,
 		public zoom: number = 1,
@@ -32,14 +31,14 @@ export class TileLayer extends DrawLayer {
 		readonly gridHeight: number = 256,
 		opacity: number = 1){
 
-		super(localTransform, opacity, visbile, name, zoomDisplayRange);
+		super(localTransform, opacity, visbile, name);
 
 		this.tileManager = new TileManager();
 	}
 
 	draw(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: ViewTransform): boolean {
 
-		if (this.getZoomDisplayRange().withinRange(view.zoomX)){
+		if (this.isVisible()){
 
 			let ctxTransform = combineTransform(this, parentTransform);
 
@@ -64,15 +63,10 @@ export class TileLayer extends DrawLayer {
 			let yMin = Math.floor(transformY / zoomHeight);
 			let yMax = Math.ceil((transformY + viewHeight) / zoomHeight);
 
-			//console.log("x y s " + xMin + ", " + xMax + ": " + yMin + ", " + yMax);
-			//console.log("across high" + gridAcross + ", " + gridHigh);
-
 			var drawingComplete = true;
 
 			let fullZoomX = ctxTransform.zoomX * view.zoomX;
 			let fullZoomY = ctxTransform.zoomY * view.zoomY;
-
-			//console.log("fullzooms " + fullZoomX + " " + fullZoomY);
 
 			ctx.scale(fullZoomX, fullZoomY);
 

@@ -1,6 +1,7 @@
 import { Indexer } from "./indexer";
 import { GridIndexer } from "./gridindexer";
-import { ContainerLayer, CanvasLayer } from "../graphics/layer";
+import { CanvasLayer } from "../graphics/layer";
+import { ContainerLayer } from "../graphics/containerlayer";
 
 export class ContainerIndex implements Indexer {
 

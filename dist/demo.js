@@ -1038,13 +1038,11 @@ const firemaps = require("./imagegroups/firemapsab.json");
 let layerState = new view_1.BasicTransform(0, 0, 1, 1, 0);
 let imageLayer = new layer_1.ContainerLayer(layerState);
 let imageState = new view_1.BasicTransform(-1440, -1440, 0.222, 0.222, 0);
-let bgState = new view_1.BasicTransform(-1126, -1086, 1.58, 1.55, 0);
-let bgImage = new static_1.StaticImage(bgState, "https://github.com/illmade/typemap/tree/master/dist/images/fmss.jpeg", .6, true);
 let gridTransform = view_1.BasicTransform.unitTransform;
 // new BasicTransform(0, 0, 1, 1, 0);
 let staticGrid = new grid_1.StaticGrid(gridTransform, 0, false, 256, 256);
 let editContainerLayer = new layer_1.ContainerLayer(view_1.BasicTransform.unitTransform);
-imageLayer.set("background", bgImage);
+
 let layerManager = new layermanager_1.LayerManager();
 let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let edit = firemapLayer.get("3");

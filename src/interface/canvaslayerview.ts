@@ -54,6 +54,7 @@ export class CanvasLayerView {
 		let thumbnail: HTMLImageElement = new Image();
 		thumbnail.src = canvasImage.toDataURL();
 		thumbnail.className = "thumbnail";
+		thumbnail.title = layer.description;
 
 		editdiv.appendChild(label);
 		editdiv.appendChild(visibility);

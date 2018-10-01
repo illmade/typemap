@@ -1,9 +1,10 @@
 import { CanvasView } from "./graphics/canvasview";
 import { StaticImage } from "./graphics/static";
-import { ContainerLayer } from "./graphics/layer";
+import { ContainerLayer } from "./graphics/containerlayer";
+import { MultiResLayer } from "./graphics/multireslayer";
 import { BasicTransform } from "./graphics/view";
 import { StaticGrid } from "./graphics/grid";
-import { ZoomDisplayRange } from "./graphics/canvasview";
+import { DisplayRange } from "./graphics/multireslayer";
 import { TileLayer, TileStruct, zoomByLevel} from "./graphics/tilelayer";
 import { LayerManager, ContainerLayerManager, dateFilter, datelessFilter } from 
   "./graphics/layermanager";
@@ -51,29 +52,29 @@ let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
 let sentinelStruct = new TileStruct("qtile/dublin/", ".png", "images/qtile/dublin/");
 
 let sentinelTransform = new BasicTransform(0, 0, 2, 2, 0);
-let zoomDisplay = new ZoomDisplayRange(0.8, 4);
+let displayClose = new DisplayRange(0.8, 4);
 
 let sentinelLayer = new TileLayer(sentinelTransform, sentinelStruct, true, 
-    "sentinel", zoomDisplay, 
+    "sentinel", 
    15816, 10624, 15);
 
 let sentinelBTransform = new BasicTransform(0, 0, 4, 4, 0);
-let zoomBDisplay = new ZoomDisplayRange(.2, 0.8);
+let displayMid = new DisplayRange(.2, 0.8);
 let sentinelBLayer = new TileLayer(sentinelBTransform, sentinelStruct, true, 
-    "sentinelB", zoomBDisplay, 
+    "sentinelB", 
    7908, 5312, 14);
 
 let sentinelCTransform = new BasicTransform(0, 0, 8, 8, 0);
-let zoomCDisplay = new ZoomDisplayRange(.04, .2);
+let displayFar = new DisplayRange(.04, .2);
 let sentinelSLayer = new TileLayer(sentinelCTransform, sentinelStruct, true, 
-    "sentinelC", zoomCDisplay, 
+    "sentinelC", 
     3954, 2656, 13);
 
 let recentre = new BasicTransform(-1024, -1536, 1, 1, 0);
-let sentinelContainerLayer = new ContainerLayer(recentre);
-sentinelContainerLayer.set("zoomIn", sentinelLayer);
-sentinelContainerLayer.set("zoomMid", sentinelBLayer);
-sentinelContainerLayer.set("zoomOut", sentinelSLayer);
+let sentinelContainerLayer = new MultiResLayer(recentre, 1, true);
+sentinelContainerLayer.set(displayClose, sentinelLayer);
+sentinelContainerLayer.set(displayMid, sentinelBLayer);
+sentinelContainerLayer.set(displayFar, sentinelSLayer);
 
 let editContainerLayer = new ContainerLayer(BasicTransform.unitTransform);
 
@@ -85,6 +86,7 @@ let layerManager = new LayerManager();
 let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
 let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
 let wscEarlyLayer = layerManager.addLayer(earlyDates, "wsc_early");
+
 let wscMidLayer = layerManager.addLayer(midDates, "wsc_mid");
 wscMidLayer.setVisible(false);
 let wscLateLayer = layerManager.addLayer(lateDates, "wsc_late");

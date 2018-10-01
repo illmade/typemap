@@ -1,4 +1,3 @@
-import { ContainerLayer } from "../graphics/layer";
 import { ContainerLayerManager } from "../graphics/layermanager";
 import { CanvasView } from "../graphics/canvasview";
 

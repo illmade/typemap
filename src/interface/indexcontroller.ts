@@ -1,5 +1,5 @@
 import { CanvasView } from "../graphics/canvasview";
-import { CanvasLayer, ContainerLayer } from "../graphics/layer";
+import { CanvasLayer } from "../graphics/layer";
 import { Point2D } from "../geom/point2d";
 import { MouseController } from "./viewcontroller";
 import { Indexer } from "../index/indexer";

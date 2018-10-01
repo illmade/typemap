@@ -1,6 +1,6 @@
 import { Transform, BasicTransform, combineTransform } from "./view";
 import { DrawLayer, CanvasLayer } from "./layer";
-import { DisplayElement, ZoomDisplayRange } from "./canvasview";
+import { DisplayElement } from "./canvasview";
 import { Dimension, rotate, Point2D } from "../geom/point2d";
 
 export interface Thumb extends DisplayElement {
@@ -13,13 +13,15 @@ export class StaticImage extends DrawLayer implements Thumb {
 
 	private img: HTMLImageElement;
 
-	constructor(localTransform: Transform, 
+	constructor(
+	  localTransform: Transform, 
 	  imageSrc: string, 
 	  opacity: number,
 	  visible: boolean,
-	  zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange) {
+	  description: string,
+	) {
 
-		super(localTransform, opacity, visible, imageSrc, zoomDisplayRange);
+		super(localTransform, opacity, visible, imageSrc, description);
 		
 		this.img = new Image();
 		this.img.src = imageSrc;
@@ -27,7 +29,7 @@ export class StaticImage extends DrawLayer implements Thumb {
 
 	private drawImage(ctx: CanvasRenderingContext2D, parentTransform: Transform, view: Transform){
 
-		if (this.isVisible() && this.getZoomDisplayRange().withinRange(view.zoomX)){
+		if (this.isVisible()){
 			let ctxTransform = combineTransform(this, parentTransform);
 
 			this.prepareCtx(ctx, ctxTransform, view);
@@ -52,6 +54,7 @@ export class StaticImage extends DrawLayer implements Thumb {
 	}
 
 	drawThumb(ctx: CanvasRenderingContext2D, w: number, h: number): boolean {
+		
 		if (this.visible && this.img.complete) {
 			let scaleX = w / this.img.width;
 			let scaleY = h / this.img.height;
@@ -93,11 +96,10 @@ export class RectLayer extends DrawLayer implements DisplayElement {
 
 	constructor(private dimension: Dimension, 
 		opacity: number,
-		visible: boolean,
-		zoomDisplayRange: ZoomDisplayRange = ZoomDisplayRange.AllZoomRange) {
+		visible: boolean) {
 
 		super(new BasicTransform(dimension.x, dimension.y, 1, 1, 0), 
-			opacity, visible, "rect", zoomDisplayRange);
+			opacity, visible, "rect");
 	}
 
 	updateDimension(dimension: Dimension): void {

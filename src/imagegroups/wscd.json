@@ -113,7 +113,7 @@
 		"date": 1813
 	},
 	{
-		"name": "wsc-360", "x": -144, "y": 421.5, "zoomX": 0.121, "zoomY": 0.107, "rotation": -0.05, 
+		"name": "wsc-360",  "x": -143, "y": 426.5, "zoomX": 0.117, "zoomY": 0.103, "rotation": -0.05, 
 		"src": "images/wsc/wsc-360.png", "visible": true, "opacity": 0.5,
 		"description": "Map - Dame Street and avenues thereof - Eustace Street, Cecilia Street, and site of Old Theatre, Fownes Street, Crown Alley and Cope Street Date: 1792", 
 		"date": 1792

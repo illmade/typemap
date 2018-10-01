@@ -42,9 +42,6 @@ export class StaticGrid extends DrawLayer {
 		let yMax = Math.ceil((view.y + viewHeight) / this.zoomHeight);
 		let yBottom = yMax * this.zoomHeight * view.zoomX ;
 
-		//console.log("xMin " + xMin + " xMax " + xMax);
-		//console.log("yMin " + yMin + " yMax " + yMax);
-
 		ctx.beginPath();
 		ctx.strokeStyle = "black";
 

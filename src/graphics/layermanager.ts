@@ -1,13 +1,15 @@
-import { CanvasLayer, ContainerLayer } from "./layer";
+import { CanvasLayer } from "./layer";
+import { ContainerLayer } from "./containerlayer";
 import { StaticImage, RectLayer } from "./static";
 import { Transform , BasicTransform } from "./view";
-import {CanvasView, DisplayElement} from "./canvasview";
+import { CanvasView, DisplayElement} from "./canvasview";
 
 export interface ImageStruct extends Transform {
 	opacity: number;
 	visible: boolean;
 	src: string;
 	name: string;
+	description: string;
 	date: number;
 }
 
@@ -44,7 +46,7 @@ export class LayerManager {
 	constructor(){
 		this.layerMap = new Map<string, ContainerLayer>();
 
-		let imageLayer = new ContainerLayer(BasicTransform.unitTransform, 1, true);	
+		let imageLayer = new ContainerLayer(BasicTransform.unitTransform);	
 
 		this.layerMap.set(this.defaultLayer, imageLayer);
 	}
@@ -56,13 +58,14 @@ export class LayerManager {
 	addLayer(
 	  imageDetails: Array<ImageStruct>, 
 	  layerName: string, 
-	  layerTransform: Transform = BasicTransform.unitTransform): ContainerLayer {
+	  layerTransform: Transform = BasicTransform.unitTransform
+	): ContainerLayer {
 
 		let imageLayer = new ContainerLayer(layerTransform, 1, true);	
 
 		for (var image of imageDetails){
 			let staticImage = new StaticImage(image, image.src, 
-				image.opacity, image.visible);
+				image.opacity, image.visible, image.description);
 			imageLayer.set(image.name, staticImage);
 		}
 

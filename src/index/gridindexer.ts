@@ -1,4 +1,4 @@
-import { CanvasLayer, ContainerLayer } from "../graphics/layer";
+import { CanvasLayer } from "../graphics/layer";
 import { ConsoleLogger, Logger } from "../logging/logger";
 import { Indexer } from "./indexer";
 
