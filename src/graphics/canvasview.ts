@@ -1,5 +1,5 @@
 import { Point2D } from "../geom/point2d";
-import { CanvasLayer } from "./layer";
+import { CanvasElement } from "./layer";
 import { 
 	invertTransform, 
 	ViewTransform, 
@@ -16,7 +16,7 @@ export interface DisplayElement extends Transform {
 
 export class CanvasView extends BasicViewTransform {
 
-	layers: Array<CanvasLayer> = [];
+	layers: Array<CanvasElement> = [];
 	ctx: CanvasRenderingContext2D;
 
 	constructor(

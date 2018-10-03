@@ -1,4 +1,4 @@
-import { CanvasLayer } from "../graphics/layer";
+import { CanvasElement } from "../graphics/layer";
 import { CanvasView } from "../graphics/canvasview";
 import { CanvasLayerView } from "./canvaslayerview";
 import { ImageController } from "./imagecontroller";
@@ -11,7 +11,7 @@ export class IndexView {
 	  readonly imageController: ImageController
 	){}
 	
-	setElements(canvasElements: Array<CanvasLayer>): void {
+	setElements(canvasElements: Array<CanvasElement>): void {
 		this.clear();
 		
 		for (let canvasLayer of canvasElements){

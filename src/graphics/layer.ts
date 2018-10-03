@@ -4,7 +4,7 @@ import { Transform, BasicTransform,
 import { DisplayElement } from "./canvasview";
 import { Dimension } from "../geom/point2d";
 
-export abstract class CanvasLayer extends BasicTransform implements 
+export abstract class CanvasElement extends BasicTransform implements 
   DisplayElement {
 
 	constructor(
@@ -42,7 +42,7 @@ export abstract class CanvasLayer extends BasicTransform implements
 
 }
 
-export abstract class DrawLayer extends CanvasLayer {
+export abstract class DrawLayer extends CanvasElement {
 
     protected prepareCtx(ctx: CanvasRenderingContext2D, transform: Transform, view: Transform): void {
 		ctx.translate((transform.x - view.x) * view.zoomX, (transform.y - view.y) * view.zoomY);

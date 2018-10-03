@@ -1,5 +1,5 @@
 import {CanvasView, DisplayElement} from "../graphics/canvasview";
-import {CanvasLayer} from "../graphics/layer";
+import {CanvasElement} from "../graphics/layer";
 import {RectLayer} from "../graphics/static";
 import {GridIndexer} from "../index/gridindexer";
 import {ElementLogger} from "../logging/logger";
@@ -25,22 +25,22 @@ export class DisplayElementController {
 
 export class ImageController {
 
-    private canvasLayer: CanvasLayer;
+    private canvasElement: CanvasElement;
     private layerOutline: RectLayer;
     private editInfoPane: HTMLElement;
 
     private indexer: GridIndexer = new GridIndexer(256);
 
-    constructor(private canvasView: CanvasView, canvasLayer: CanvasLayer) {
+    constructor(private canvasView: CanvasView, canvasElement: CanvasElement) {
         document.addEventListener("keypress", (e:Event) => 
             this.pressed(canvasView, e  as KeyboardEvent));
-        this.canvasLayer = canvasLayer;
+        this.canvasElement = canvasElement;
     }
 
-    setCanvasLayer(canvasLayer: CanvasLayer){
-        this.canvasLayer = canvasLayer;
+    setCanvasElement(CanvasElement: CanvasElement){
+        this.canvasElement = CanvasElement;
 
-        this.indexer.showIndices(canvasLayer);
+        this.indexer.showIndices(CanvasElement);
         
         this.updateCanvas(this.canvasView);
     }
@@ -60,79 +60,79 @@ export class ImageController {
 
         switch (event.key) {
             case "a":
-                this.canvasLayer.x = this.canvasLayer.x - 0.5 * multiplier;
+                this.canvasElement.x = this.canvasElement.x - 0.5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "A":
-                this.canvasLayer.x = this.canvasLayer.x - 5 * multiplier;
+                this.canvasElement.x = this.canvasElement.x - 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "d":
-                this.canvasLayer.x = this.canvasLayer.x + 0.5 * multiplier;
+                this.canvasElement.x = this.canvasElement.x + 0.5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "D":
-                this.canvasLayer.x = this.canvasLayer.x + 5 * multiplier;
+                this.canvasElement.x = this.canvasElement.x + 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "w":
-                this.canvasLayer.y = this.canvasLayer.y - 0.5 * multiplier;
+                this.canvasElement.y = this.canvasElement.y - 0.5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "W":
-                this.canvasLayer.y = this.canvasLayer.y - 5 * multiplier;
+                this.canvasElement.y = this.canvasElement.y - 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;    
             case "s":
-                this.canvasLayer.y = this.canvasLayer.y + 0.5 * multiplier;
+                this.canvasElement.y = this.canvasElement.y + 0.5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "S":
-                this.canvasLayer.y = this.canvasLayer.y + 5 * multiplier;
+                this.canvasElement.y = this.canvasElement.y + 5 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "e":
-                this.canvasLayer.rotation = this.canvasLayer.rotation - 0.005;
+                this.canvasElement.rotation = this.canvasElement.rotation - 0.005;
                 this.updateCanvas(canvasView);
                 break;
             case "E":
-                this.canvasLayer.rotation = this.canvasLayer.rotation - 0.05;
+                this.canvasElement.rotation = this.canvasElement.rotation - 0.05;
                 this.updateCanvas(canvasView);
                 break;
             case "q":
-                this.canvasLayer.rotation = this.canvasLayer.rotation + 0.005;
+                this.canvasElement.rotation = this.canvasElement.rotation + 0.005;
                 this.updateCanvas(canvasView);
                 break;
             case "Q":
-                this.canvasLayer.rotation = this.canvasLayer.rotation + 0.05;
+                this.canvasElement.rotation = this.canvasElement.rotation + 0.05;
                 this.updateCanvas(canvasView);
                 break;
             case "x":
-                this.canvasLayer.zoomX = this.canvasLayer.zoomX - 0.002 * multiplier;
+                this.canvasElement.zoomX = this.canvasElement.zoomX - 0.002 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "X":
-                this.canvasLayer.zoomX = this.canvasLayer.zoomX + 0.002 * multiplier;
+                this.canvasElement.zoomX = this.canvasElement.zoomX + 0.002 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "z":
-                this.canvasLayer.zoomY = this.canvasLayer.zoomY - 0.002 * multiplier;
+                this.canvasElement.zoomY = this.canvasElement.zoomY - 0.002 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "Z":
-                this.canvasLayer.zoomY = this.canvasLayer.zoomY + 0.002 * multiplier;
+                this.canvasElement.zoomY = this.canvasElement.zoomY + 0.002 * multiplier;
                 this.updateCanvas(canvasView);
                 break;
             case "c":
-                this.canvasLayer.setVisible(!this.canvasLayer.visible);
+                this.canvasElement.setVisible(!this.canvasElement.visible);
                 this.updateCanvas(canvasView);
                 break;
             case "T":
-                this.canvasLayer.opacity = Math.min(1.0, this.canvasLayer.opacity + 0.1);
+                this.canvasElement.opacity = Math.min(1.0, this.canvasElement.opacity + 0.1);
                 this.updateCanvas(canvasView);
                 break;
             case "t":
-                this.canvasLayer.opacity = Math.max(0, this.canvasLayer.opacity - 0.1);
+                this.canvasElement.opacity = Math.max(0, this.canvasElement.opacity - 0.1);
                 this.updateCanvas(canvasView);
                 break;
             default:
@@ -140,12 +140,12 @@ export class ImageController {
                 break;
         }
 
-        let info: string = '"name": ' + this.canvasLayer.name +
-              ' "x": ' + this.canvasLayer.x +
-              ', "y": ' + this.canvasLayer.y +
-              ', "zoomX": '+ this.canvasLayer.zoomX + 
-              ', "zoomY": ' + this.canvasLayer.zoomY + 
-              ', "rotation": '+ this.canvasLayer.rotation;
+        let info: string = '"name": ' + this.canvasElement.name +
+              ' "x": ' + this.canvasElement.x +
+              ', "y": ' + this.canvasElement.y +
+              ', "zoomX": '+ this.canvasElement.zoomX + 
+              ', "zoomY": ' + this.canvasElement.zoomY + 
+              ', "rotation": '+ this.canvasElement.rotation;
 
         if (this.editInfoPane != undefined){
             this.editInfoPane.innerHTML = info;
@@ -158,7 +158,7 @@ export class ImageController {
     updateCanvas(canvasView: CanvasView) {
 
         if (this.layerOutline != undefined){
-            let newDimension = this.canvasLayer.getDimension();
+            let newDimension = this.canvasElement.getDimension();
             //console.log("image outline " + newDimension);
             this.layerOutline.updateDimension(newDimension);
         }

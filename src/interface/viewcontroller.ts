@@ -1,28 +1,6 @@
 import { ViewTransform } from "../graphics/view";
 import { CanvasView } from "../graphics/canvasview";
-
-export abstract class MouseController {
-
-    mousePosition(event: MouseEvent, within: HTMLElement): Array<number> {
-        let m_posx = event.clientX + document.body.scrollLeft
-                 + document.documentElement.scrollLeft;
-        let m_posy = event.clientY + document.body.scrollTop
-                 + document.documentElement.scrollTop;
-
-        var e_posx = 0;
-        var e_posy = 0;
-
-        if (within.offsetParent){
-            do { 
-                e_posx += within.offsetLeft;
-                e_posy += within.offsetTop;
-            } while (within = <HTMLElement>within.offsetParent);
-        }
-
-        return [m_posx - e_posx, m_posy - e_posy];
-    }
-
-}
+import { MouseController } from "./mousecontroller";
 
 export class ViewController extends MouseController {
 
@@ -68,27 +46,27 @@ export class ViewController extends MouseController {
 
     dragged(event: MouseEvent, viewTransform: ViewTransform) {
 
-    	switch(event.type){
-    		case "mousedown":
-    			this.record = true;
-    			break;
-    		case "mouseup":
-    			this.record = false;
-    			break;
-    		default:
-    			if (this.record){
-                    let xDelta = (event.clientX - this.xPrevious) / this.move / viewTransform.zoomX;
-                    let yDelta = (event.clientY - this.yPrevious) / this.move / viewTransform.zoomY;
+   //  	switch(event.type){
+   //  		case "mousedown":
+   //  			this.record = true;
+   //  			break;
+   //  		case "mouseup":
+   //  			this.record = false;
+   //  			break;
+   //  		default:
+   //  			if (this.record){
+   //                  let xDelta = (event.clientX - this.xPrevious) / this.move / viewTransform.zoomX;
+   //                  let yDelta = (event.clientY - this.yPrevious) / this.move / viewTransform.zoomY;
 
-                    viewTransform.x = viewTransform.x - xDelta;
-                    viewTransform.y = viewTransform.y - yDelta;
+   //                  viewTransform.x = viewTransform.x - xDelta;
+   //                  viewTransform.y = viewTransform.y - yDelta;
 
-                    this.canvasView.draw();
-    			}
+   //                  this.canvasView.draw();
+   //  			}
 
-			this.xPrevious = event.clientX;
-			this.yPrevious = event.clientY;
-    	}
+			// this.xPrevious = event.clientX;
+			// this.yPrevious = event.clientY;
+   //  	}
     }
 
     wheel(event: WheelEvent, viewTransform: ViewTransform) {

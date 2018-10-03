@@ -1,4 +1,3 @@
-import { CanvasLayer } from "./layer";
 import { ContainerLayer } from "./containerlayer";
 import { StaticImage, RectLayer } from "./static";
 import { Transform , BasicTransform } from "./view";

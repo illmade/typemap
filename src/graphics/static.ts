@@ -1,5 +1,5 @@
 import { Transform, BasicTransform, combineTransform } from "./view";
-import { DrawLayer, CanvasLayer } from "./layer";
+import { DrawLayer, CanvasElement } from "./layer";
 import { DisplayElement } from "./canvasview";
 import { Dimension, rotate, Point2D } from "../geom/point2d";
 
@@ -50,7 +50,10 @@ export class StaticImage extends DrawLayer implements Thumb {
 			this.drawImage(ctx, parentTransform, view);
 			return true;
 		}
-		return false;
+		else if (!this.img.complete){
+			return false;
+		}
+		return true;
 	}
 
 	drawThumb(ctx: CanvasRenderingContext2D, w: number, h: number): boolean {
@@ -67,7 +70,10 @@ export class StaticImage extends DrawLayer implements Thumb {
 			ctx.scale(1/scale, 1/scale);
 			return true;
 		}
-		return false;
+		else if (!this.img.complete){
+			return false;
+		}
+		return true;
 	}
 
 	getDimension(): Dimension {

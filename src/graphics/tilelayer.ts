@@ -1,7 +1,6 @@
 import { DrawLayer } from "./layer";
 import { Transform, BasicTransform, ViewTransform, combineTransform } from "./view";
 import { Dimension } from "../geom/point2d";
-import { ZoomDisplayRange } from "./multireslayer";
 
 export class TileStruct {
 	

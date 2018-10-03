@@ -18,9 +18,23 @@ import { GridIndexer } from "./index/gridindexer";
 import { ContainerIndex } from "./index/containerindex";
 import { ElementLogger } from "./logging/logger";
 
+import { Point, Shape, arrayToPoints } from "./graphics/shape";
+import { EditManager } from "./graphics/editmanager";
+
+import { EditController } from "./interface/editcontroller";
+
 import * as firemaps from "./imagegroups/firemaps.json";
 import * as landmarks from "./imagegroups/landmarks.json";
 import * as wsc from "./imagegroups/wscd.json";
+
+let testPoints = [[0,0], [400, 0], [400, 400], [0, 400]];
+
+let testShape = new Shape(BasicTransform.unitTransform, 1, true, "", "");
+let testPoint = new Point(800, 800, 20, 1, true);
+testShape.points = arrayToPoints(testPoints);
+
+let editManager = new EditManager(testShape, 12);
+//testShape.fill = true;
 
 let earlyDates = dateFilter(wsc, 1680, 1792);
 let midDates = dateFilter(wsc, 1793, 1820);
@@ -34,16 +48,16 @@ let imageState = new BasicTransform(-1440,-1440, 0.222, 0.222, 0);
 
 let countyState = new BasicTransform(-2631, -2051.5, 1.716, 1.674, 0);
 let countyImage = new StaticImage(countyState, 
-    "images/County_of_the_City_of_Dublin_1837_map.png", 0.5, true);
+    "images/County_of_the_City_of_Dublin_1837_map.png", 0.5, true, "county");
 
 let bgState = new BasicTransform(-1126,-1086, 1.58, 1.55, 0);
-let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .6, true);
+let bgImage = new StaticImage(bgState, "images/fmss.jpeg", .6, true, "firemap");
 
 let tmState = new BasicTransform(-1033.5,149, 0.59, 0.59, 0);
-let tmImage = new StaticImage(tmState, "images/thingmot.png", .3, true);
+let tmImage = new StaticImage(tmState, "images/thingmot.png", .3, true, "thingmot");
 
 let duState = new BasicTransform(-929,-105.5, 0.464, 0.506, 0);
-let duImage = new StaticImage(duState, "images/dublin1610.jpg", .6, false);
+let duImage = new StaticImage(duState, "images/dublin1610.jpg", .6, false, "1610");
 
 let gridTransform = BasicTransform.unitTransform;
 // new BasicTransform(0, 0, 1, 1, 0);
@@ -94,7 +108,7 @@ wscLateLayer.setVisible(false);
 let wscOtherLayer = layerManager.addLayer(otherDates, "wsc_other");
 wscOtherLayer.setVisible(false);
 
-let edit = wscEarlyLayer.get("wsc-355-2");
+let edit = wscEarlyLayer.get("wsc-122-1");
 
 let earlyIndex = new ContainerIndex(wscEarlyLayer, "early");
 let midIndex = new ContainerIndex(wscMidLayer, "mid");
@@ -102,20 +116,23 @@ let lateIndex = new ContainerIndex(wscLateLayer, "late");
 let otherIndex = new ContainerIndex(wscOtherLayer, "other");
 
 let containerLayerManager = new ContainerLayerManager(wscEarlyLayer, editContainerLayer);
-let outlineLayer = containerLayerManager.setSelected("wsc-355-2");
+let outlineLayer = containerLayerManager.setSelected("wsc-122-1");
 
 imageLayer.set("wsc_other", wscOtherLayer);
 imageLayer.set("wsc_early", wscEarlyLayer);
 imageLayer.set("wsc_mid", wscMidLayer);
 imageLayer.set("wsc_late", wscLateLayer);
 
-imageLayer.set("firemaps", firemapLayer);
+// imageLayer.set("firemaps", firemapLayer);
 
-imageLayer.set("dublin1610", duImage);
-imageLayer.set("thingmot", tmImage);
-imageLayer.set("landmarks", landmarksLayer);
+// imageLayer.set("dublin1610", duImage);
+// imageLayer.set("thingmot", tmImage);
+// imageLayer.set("landmarks", landmarksLayer);
 
-wscEarlyLayer.setTop("wsc-334");
+imageLayer.set("shape", testShape);
+imageLayer.set("editor", editManager);
+
+//wscEarlyLayer.setTop("wsc-334");
 
 function showMap(divName: string, name: string) {
     const canvas = <HTMLCanvasElement>document.getElementById(divName);
@@ -169,6 +186,9 @@ function showMap(divName: string, name: string) {
     indexController.addIndexer(otherIndex);
 
     indexController.setMenu(layers);
+
+    let editController = new EditController(canvasView, editManager);
+    editController.setLogging(logger);
 
 }
 

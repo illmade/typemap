@@ -2,36 +2,36 @@ import { Transform, BasicTransform,
 	ViewTransform, 
 	combineTransform } from "./view";
 import { Dimension } from "../geom/point2d";
-import { CanvasLayer } from "./layer";
+import { CanvasElement } from "./layer";
 
-export class ContainerLayer extends CanvasLayer {
+export class ContainerLayer extends CanvasElement {
 
-	layerMap: Map<string, CanvasLayer>;
-	displayLayers: Array<CanvasLayer>;
+	layerMap: Map<string, CanvasElement>;
+	displayLayers: Array<CanvasElement>;
 
 	constructor(localTransform: Transform, opacity: number = 1, visible: boolean = true) {
 		super(localTransform, opacity, visible);
-		this.layerMap = new Map<string, CanvasLayer>();
+		this.layerMap = new Map<string, CanvasElement>();
 		this.displayLayers = [];
 	}
 
-	set(name: string, layer: CanvasLayer): void {
+	set(name: string, layer: CanvasElement): void {
 		this.layerMap.set(name, layer);
 		this.displayLayers.push(layer);
 	}
 
-	get(name: string): CanvasLayer {
+	get(name: string): CanvasElement {
 		return this.layerMap.get(name);
 	}
 
-	layers(): Array<CanvasLayer> {
+	layers(): Array<CanvasElement> {
 		return this.displayLayers;
 	}
 
 	setTop(name: string) {
 		let topLayer = this.get(name);
 		if (topLayer != undefined){
-			this.displayLayers = this.displayLayers.filter(function(element: CanvasLayer){ 
+			this.displayLayers = this.displayLayers.filter(function(element: CanvasElement){ 
 				if (element == topLayer){
 					return false;
 				} else {

@@ -1,4 +1,4 @@
-import { CanvasLayer } from "../graphics/layer";
+import { CanvasElement } from "../graphics/layer";
 import { CanvasView } from "../graphics/canvasview";
 import { Thumb } from "../graphics/static";
 import { ImageController } from "./imagecontroller";
@@ -8,7 +8,7 @@ export class CanvasLayerView {
 	readonly container: HTMLSpanElement;
 
 	constructor(
-	  layer: CanvasLayer, 
+	  layer: CanvasElement, 
 	  canvasView: CanvasView, 
 	  imageController: ImageController
 	){
@@ -40,7 +40,7 @@ export class CanvasLayerView {
 
 		edit.addEventListener('change', function(event){
 			if (this.checked){
-				imageController.setCanvasLayer(layer);
+				imageController.setCanvasElement(layer);
 			} 
 			canvasView.draw();
 		});

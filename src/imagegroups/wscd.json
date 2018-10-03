@@ -80,7 +80,7 @@
 	},
 	{
 		"name": "wsc-098", "x": -475, "y": 524, "zoomX": 0.063, "zoomY": 0.063, "rotation": -0.16, 
-		"src": "images/wsc/wsc-maps-098.png", "visible": true, "opacity": 0.7,
+		"src": "images/wsc/wsc-098.png", "visible": true, "opacity": 0.7,
 		"description": "Map of Christchurch, Skinners Row etc. Thomas Sherrard, 5 January 1821 Date: 1821",
 		"date": 1821
 	},
@@ -572,5 +572,45 @@
 		"name": "wsc-059", "x": -527.5, "y": -119.5, "zoomX": 0.07, "zoomY": 0.07, "rotation": -0.08,
 		"src": "images/wsc/wsc-059.png", "visible": true, "opacity": 0.9,
 		"description": "Ground plan of Linen Hall"
+	},
+	{
+		"name": "wsc-274-1", "x": -944.5, "y": 295, "zoomX": 0.164, "zoomY": 0.164, "rotation": -1.61,
+		"src": "images/wsc/wsc-274-1.png", "visible": true, "opacity": 0.9,
+		"description": "Map of Oxmantown Green, Bowling Green, Queen Street, King Street, New Church Street, Channel Row - with lot numbers"
+	},
+	{
+		"name": "wsc-323-1", "x": -280, "y": 36, "zoomX": 0.072, "zoomY": 0.072, "rotation": -0.44,
+		"src": "images/wsc/wsc-323-1.png", "visible": true, "opacity": 0.9,
+		"description": "Widow Alms House in Great Britain Street - corner of Jervis Street and Great Britain Street Note: Notice of houses and grounds to be set, 1822",
+		"date": 1822
+	},
+	{
+		"name": "wsc-525", "x": 1091.5, "y": 252.5, "zoomX": 0.354, "zoomY": 0.354, "rotation": 0.11,
+		"src": "images/wsc/wsc-525.png", "visible": true, "opacity": 0.9,
+		"description": "Map of Ringsend, and vicinity"
+	},
+	{
+		"name": "wsc-094-4", "x": -152.5, "y": 564, "zoomX": 0.058, "zoomY": 0.058, "rotation": -3.305,
+		"src": "images/wsc/wsc-094-4.png", "visible": true, "opacity": 0.9,
+		"description": "Castle Alley, Castle Lane, Dame Street and Cork Hill, to be sold by the Commissioners of Wide Streets, 17 April 1766. Showing lot to be reserved on which Royal Exchange, now (1899) the City Hall, was subsequently built - Jonathan Barker",
+		"date": 1766
+	},
+	{
+		"name": "wsc-219-1", "x": 253.5, "y": 60, "zoomX": 0.034, "zoomY": 0.034, "rotation": -0.325,
+		"src": "images/wsc/wsc-219-1.png", "visible": true, "opacity": 0.9,
+		"description": "Survey of a holding in Lower Abbey Street or on the North Strand - belonging to the Reps. of Griffith Lloyd - showing Lloyd’s Rope Walk, Glass House; late Sir Annesley Stewart’s Bart. holding Date: 1797",
+		"date": 1747
+	},
+	{
+		"name": "wsc-118", "x": 39,  "y": 562.5, "zoomX": 0.072, "zoomY": 0.072, "rotation": 3.089,
+		"src": "images/wsc/wsc-118.png", "visible": true, "opacity": 0.9,
+		"description": "Map of Dame Street, Dame Court, South Great George’s Street and vicinity",
+		"date": 1785
+	},
+	{
+		"name": "wsc-122-1", "x": 364, "y": 1270.5, "zoomX": 0.154, "zoomY": 0.154, "rotation": 3.144,
+		"src": "images/wsc/wsc-122-1.png", "visible": true, "opacity": 0.9,
+		"description": "Map and plan of part of Stephen’s Green, showing position of intended new street (Earlsfort Terrace)",
+		"date": 1785
 	}
 ]

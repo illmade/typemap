@@ -1,7 +1,7 @@
 import { CanvasView } from "../graphics/canvasview";
-import { CanvasLayer } from "../graphics/layer";
+import { CanvasElement } from "../graphics/layer";
 import { Point2D } from "../geom/point2d";
-import { MouseController } from "./viewcontroller";
+import { MouseController } from "./mousecontroller";
 import { Indexer } from "../index/indexer";
 import { Logger, ConsoleLogger } from "../logging/logger";
 
@@ -47,7 +47,7 @@ export class IndexController extends MouseController {
     	let worldPoint = this.canvasView.getBasePoint(
     		new Point2D(point[0], point[1]));
 
-    	var layers: Array<CanvasLayer> = [];
+    	var layers: Array<CanvasElement> = [];
 
     	for (let indexer of this.indexers) {
     		let newLayers = this.filterVisible(
@@ -62,7 +62,7 @@ export class IndexController extends MouseController {
     	}
     }
 
-	private filterVisible(layers: Array<CanvasLayer>){
+	private filterVisible(layers: Array<CanvasElement>){
 		return layers.filter(function(layer) { 
 			return layer.isVisible();
 		});

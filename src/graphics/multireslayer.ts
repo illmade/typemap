@@ -4,7 +4,7 @@ import { Transform,
 	ViewTransform, 
 	combineTransform } from "./view";
 import { Dimension } from "../geom/point2d";
-import { CanvasLayer } from "./layer";
+import { CanvasElement } from "./layer";
 
 export class DisplayRange {
 
@@ -18,11 +18,11 @@ export class DisplayRange {
 	}
 }
 
-export class MultiResLayer extends CanvasLayer {
+export class MultiResLayer extends CanvasElement {
 
-	layerMap = new Map<DisplayRange, CanvasLayer>();
+	layerMap = new Map<DisplayRange, CanvasElement>();
 
-	set(displayRange: DisplayRange, layer: CanvasLayer){
+	set(displayRange: DisplayRange, layer: CanvasElement){
 		this.layerMap.set(displayRange, layer);
 	}
 	
