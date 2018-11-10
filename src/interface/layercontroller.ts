@@ -14,11 +14,11 @@ export class LayerController {
 
         switch (event.key) {
             case this.mod:
-                console.log("toggle visible");
                 this.containerLayerManager.toggleVisibility(false);
                 canvasView.draw();
                 break;
         }
+
     }
 
 }

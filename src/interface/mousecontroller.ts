@@ -1,6 +1,8 @@
+import { Point2D } from "../geom/point2d";
+
 export abstract class MouseController {
 
-    mousePosition(event: MouseEvent, within: HTMLElement): Array<number> {
+    mousePosition(event: MouseEvent, within: HTMLElement): Point2D {
         let m_posx = event.clientX + document.body.scrollLeft
                  + document.documentElement.scrollLeft;
         let m_posy = event.clientY + document.body.scrollTop
@@ -16,7 +18,7 @@ export abstract class MouseController {
             } while (within = <HTMLElement>within.offsetParent);
         }
 
-        return [m_posx - e_posx, m_posy - e_posy];
+        return new Point2D(m_posx - e_posx, m_posy - e_posy);
     }
 
 }

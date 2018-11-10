@@ -39,9 +39,7 @@ export class EditController extends MouseController {
     }
 
     clicked(e: MouseEvent): void {
-    	let point  = this.mousePosition(e, this.canvasView.canvasElement);
-
-        this.dragPosition = new Point2D(point[0], point[1]);
+    	this.dragPosition = this.mousePosition(e, this.canvasView.canvasElement);
 
     	let worldPoint = this.canvasView.getBasePoint(
     		this.dragPosition);
@@ -63,15 +61,15 @@ export class EditController extends MouseController {
         if (this.dragPoint != undefined){
             let point  = this.mousePosition(event, this.canvasView.canvasElement);
 
-            let xDelta = (point[0] - this.dragPosition.x) / this.canvasView.zoomX;
-            let yDelta = (point[1] - this.dragPosition.y) / this.canvasView.zoomY;
+            let xDelta = (point.x - this.dragPosition.x) / this.canvasView.zoomX;
+            let yDelta = (point.y - this.dragPosition.y) / this.canvasView.zoomY;
 
             this.dragPoint.x = this.dragPoint.x + xDelta;
             this.dragPoint.y = this.dragPoint.y + yDelta;
 
             this.editManager.updatePoint(this.dragPoint);
 
-            this.dragPosition = new Point2D(point[0], point[1]);
+            this.dragPosition = point;
 
             this.canvasView.draw();
         }

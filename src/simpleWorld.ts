@@ -32,8 +32,8 @@ let testPoints = [[0,0], [400, 0], [400, 400], [0, 400]];
 let testShape = new Shape(BasicTransform.unitTransform, 1, true, "", "");
 let testPoint = new Point(800, 800, 20, 1, true);
 testShape.points = arrayToPoints(testPoints);
-
-let editManager = new EditManager(testShape, 12);
+//
+//let editManager = new EditManager(testShape, 12);
 //testShape.fill = true;
 
 let earlyDates = dateFilter(wsc, 1680, 1792);
@@ -60,7 +60,7 @@ let duState = new BasicTransform(-929,-105.5, 0.464, 0.506, 0);
 let duImage = new StaticImage(duState, "images/dublin1610.jpg", .6, false, "1610");
 
 let gridTransform = BasicTransform.unitTransform;
-// new BasicTransform(0, 0, 1, 1, 0);
+
 let staticGrid = new StaticGrid(gridTransform, 0, false, 256, 256);
 
 let sentinelStruct = new TileStruct("qtile/dublin/", ".png", "images/qtile/dublin/");
@@ -97,15 +97,15 @@ imageLayer.set("background", bgImage);
 
 let layerManager = new LayerManager();
 
-let firemapLayer = layerManager.addLayer(firemaps, "firemaps");
-let landmarksLayer = layerManager.addLayer(landmarks, "landmarks");
-let wscEarlyLayer = layerManager.addLayer(earlyDates, "wsc_early");
+let firemapLayer = layerManager.addImages(firemaps, "firemaps");
+let landmarksLayer = layerManager.addImages(landmarks, "landmarks");
+let wscEarlyLayer = layerManager.addImages(earlyDates, "wsc_early");
 
-let wscMidLayer = layerManager.addLayer(midDates, "wsc_mid");
+let wscMidLayer = layerManager.addImages(midDates, "wsc_mid");
 wscMidLayer.setVisible(false);
-let wscLateLayer = layerManager.addLayer(lateDates, "wsc_late");
+let wscLateLayer = layerManager.addImages(lateDates, "wsc_late");
 wscLateLayer.setVisible(false);
-let wscOtherLayer = layerManager.addLayer(otherDates, "wsc_other");
+let wscOtherLayer = layerManager.addImages(otherDates, "wsc_other");
 wscOtherLayer.setVisible(false);
 
 let edit = wscEarlyLayer.get("wsc-122-1");
@@ -123,14 +123,14 @@ imageLayer.set("wsc_early", wscEarlyLayer);
 imageLayer.set("wsc_mid", wscMidLayer);
 imageLayer.set("wsc_late", wscLateLayer);
 
-// imageLayer.set("firemaps", firemapLayer);
+imageLayer.set("firemaps", firemapLayer);
 
-// imageLayer.set("dublin1610", duImage);
-// imageLayer.set("thingmot", tmImage);
-// imageLayer.set("landmarks", landmarksLayer);
+imageLayer.set("dublin1610", duImage);
+imageLayer.set("thingmot", tmImage);
+imageLayer.set("landmarks", landmarksLayer);
 
-imageLayer.set("shape", testShape);
-imageLayer.set("editor", editManager);
+//imageLayer.set("shape", testShape);
+//imageLayer.set("editor", editManager);
 
 //wscEarlyLayer.setTop("wsc-334");
 
@@ -144,7 +144,12 @@ function showMap(divName: string, name: string) {
     let x = outlineLayer.x;
     let y = outlineLayer.y;
 
-    let canvasTransform = new BasicTransform(x - 200, y - 200, 0.5, 0.5, 0);
+    let dimension = outlineLayer.getDimension();
+    console.log("outline dimension: " + dimension);
+    let canvasZoom = 0.5;
+    let w = dimension.w * canvasZoom;
+
+    let canvasTransform = new BasicTransform(x - 200, y - 200, canvasZoom, canvasZoom, 0);
     let canvasView = new CanvasView(canvasTransform, canvas.clientWidth, canvas.clientHeight, canvas);
 
     canvasView.layers.push(sentinelContainerLayer);

@@ -19,7 +19,6 @@ export class IndexController extends MouseController {
       readonly canvasView: CanvasView,
       readonly imageController: ImageController
     ) {
-
     	super();
 
     	document.addEventListener("dblclick", (e:Event) => 
@@ -42,10 +41,10 @@ export class IndexController extends MouseController {
     }
 
     clicked(e: MouseEvent){
-    	let point  = this.mousePosition(e, this.canvasView.canvasElement);
+    	let point = this.mousePosition(e, this.canvasView.canvasElement);
 
     	let worldPoint = this.canvasView.getBasePoint(
-    		new Point2D(point[0], point[1]));
+    		new Point2D(point.x, point.y));
 
     	var layers: Array<CanvasElement> = [];
 

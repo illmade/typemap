@@ -1,5 +1,7 @@
 import { ViewTransform } from "../graphics/view";
 import { CanvasView } from "../graphics/canvasview";
+import { Point2D } from "../geom/point2d";
+
 import { MouseController } from "./mousecontroller";
 
 export class ViewController extends MouseController {
@@ -77,14 +79,14 @@ export class ViewController extends MouseController {
         let yDelta = event.deltaY / this.move / viewTransform.zoomY;
 
         if  (event.ctrlKey) {
-            let mXY = this.mousePosition(event, this.dragElement);
+            let mXY: Point2D = this.mousePosition(event, this.dragElement);
                 
             var by = 1.05;
             if (yDelta < 0){
                 by = 0.95;
             }
             
-            this.canvasView.zoomAbout(mXY[0], mXY[1], by);
+            this.canvasView.zoomAbout(mXY.x, mXY.y, by);
         }
         else {
             this.canvasView.x =  this.canvasView.x + xDelta;

@@ -1,0 +1,293 @@
+import os
+import cv2
+import pandas as pd
+import numpy as np
+import collections
+import torch
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+from torch import nn
+from torch.utils.data import DataLoader
+from scipy.misc import imread, imresize
+
+root_dir = "./"
+file_list = ['train.csv']
+image_source_dir = os.path.join(root_dir, 'data/images/')
+data_root = os.path.join(root_dir, 'data/')
+
+****************
+
+images = []
+labels = collections.defaultdict(list)
+bboxes = collections.defaultdict(list)
+        
+image_target_dir = os.path.join(data_root, 'train')
+print("target_dir", image_target_dir)
+    
+# read list of image files to process from file
+image_list = pd.read_csv(os.path.join(data_root, 'train.csv'), header=None)
+
+****************
+
+img_file = "first"
+    
+for index, row in image_list.iterrows():
+    # read image information from index file
+    
+    new_file = os.path.join(image_source_dir, row[0])
+    
+    if (img_file != new_file):
+        img_file = new_file
+        images.append(img_file)
+        
+    label = 0
+    if row[5] == 'table':
+        label = 1
+        
+    x  = row[1] 
+    y  = row[2]
+    box_width = row[3]
+    box_height = row[4]
+        
+    labels[img_file].append(label)
+    bboxes[img_file].append(torch.Tensor([x,y, box_width, box_height]))
+
+****************
+
+C=2
+S=7
+
+****************
+
+# dict to store preprocessed targets for images
+targets = {}
+
+# iterate over all images in train data
+for img_path in images[0:2]:  
+    
+    if not os.path.exists(img_path):
+        print("no image at ", img_path)
+
+    img = cv2.imread(img_path)
+    height, width, channels = img.shape
+    print("img " , img_path, width, height)
+    cell_width = width / S
+    cell_height = height / S
+    
+    # retrieve stored bboxes and labels
+    img_bboxes = bboxes[img_path].copy()
+    img_labels = labels[img_path].copy()
+    
+    # create output Tensor for training target
+    target = torch.zeros([S, S, 5 + C])
+    # track number of bounding boxes per grid
+    bbobj = np.zeros([S, S], dtype=int)
+    
+    # iterate over all boxes & labels for image
+    for i, label in enumerate(img_labels):
+        bb = img_bboxes[i]
+        # 1. Determine cell center of object falls into ----------------------------------------------------------
+        # a. Get center of object in x and y direction
+        x  = bb[0] 
+        y  = bb[1]
+        # b. Determine cell for object
+        x_cell = int(np.floor(x / cell_width))
+        y_cell = int(np.floor(y / cell_height))
+        # c. Stop if more than B boxes for grid location have been found
+        if bbobj[x_cell, y_cell] == 1:
+            break
+        bbobj[x_cell, y_cell] = 1
+        # 2. Convert x, y to the center of the box relative to grid location -------------------------------------
+        x_centre = (x_cell + 0.5) / S
+        y_centre = (y_cell + 0.5) / S
+        # 3. Normalize w, h relative to total image size ---------------------------------------------------------
+        # -> already in correct format thanks to voc_label.py script
+        # 4. Determine confidence score -> Cell contains object = 1 else 0 ---------------------------------------
+        # a. store all
+        target[x_cell, y_cell, 0] = x_centre
+        target[x_cell, y_cell, 1] = y_centre
+        target[x_cell, y_cell, 2] = bb[2]
+        target[x_cell, y_cell, 3] = bb[3]
+        target[x_cell, y_cell, 4] = 1.
+        # 5. Determine class probabilities as P(Class_i | Object) ------------------------------------------------
+        # -> probablity that Object is of Class_i IF Object exists in grid
+        target[x_cell, y_cell, 5 + int(label)] = 1.
+
+    # store 
+    print("adding target: ", img_path, target)
+    targets[img_path] = target
+
+**************
+
+class YoloVOCDataset(torch.utils.data.Dataset):
+    def __init__(self, images, targets, img_size):
+        self.images   = images
+        self.targets  = targets
+        self.img_size = img_size
+
+    def __getitem__(self, index):
+        # retrieve data for index
+        img_path = self.images[index]
+        target = self.targets[img_path]
+        # load image
+        image = imread(img_path) 
+        # format image
+        image = imresize(image, (self.img_size, self.img_size))
+        image = image / 255.
+        image = torch.Tensor(image)
+        # return tuple containing image and target Tensor
+        return image, target
+
+    def __len__(self):
+        return len(images)
+
+ ****************
+
+ IMG_SIZE      = 224
+voc = YoloVOCDataset(images, targets, IMG_SIZE)
+train_data = DataLoader(voc, batch_size=4, shuffle=True, num_workers=0)
+train_iter = iter(train_data)
+
+*****************
+
+def plot(img, target):
+    # convert numpy array back to image
+    im = (img.numpy()*255.).astype('uint8')
+    # setup plot
+    fig,ax = plt.subplots(1)
+    ax.imshow(im)
+    # go through each cell cx, cy in grid
+    for cx in range(0, S):
+        for cy in range(0, S):
+            # and plot if confidence is above threshold
+            cell = target[cx, cy, :].numpy()
+            if cell[4] >= C_THRESHOLD:
+                # some magic to take yolo data format and convert it to matplotlib expected format
+                label_txt = LABELS_VOC[np.argmax(cell[5:])]
+                x = (cx/S + cell[0]*(1/S) - cell[2]/2) * IMG_SIZE
+                y = (cy/S + cell[1]*(1/S) - cell[3]/2) * IMG_SIZE
+                w = cell[2] * IMG_SIZE
+                h = cell[3] * IMG_SIZE
+                rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='red', facecolor='None')
+                ax.add_patch(rect)
+                plt.text(x + 2, y + 12, label_txt, color='red')
+
+    plt.show()
+
+    ****************
+
+img, target = next(train_iter)
+plot(img[0], target[0])
+
+*****************************
+
+import os
+import cv2
+import pandas as pd
+import numpy as np
+import collections
+import torch
+
+from torch import nn
+from torch.utils.data import DataLoader
+from scipy.misc import imread, imresize
+
+root_dir = "./"
+file_list = ['train.csv']
+image_source_dir = os.path.join(root_dir, 'data/images/')
+data_root = os.path.join(root_dir, 'data/')
+
+images = []
+labels = collections.defaultdict(list)
+bboxes = collections.defaultdict(list)
+        
+image_target_dir = os.path.join(data_root, 'train')
+print("target_dir", image_target_dir)
+    
+# read list of image files to process from file
+image_list = pd.read_csv(os.path.join(data_root, 'train.csv'), header=None)
+
+img_file = "first"
+    
+for index, row in image_list.iterrows():
+    # read image information from index file
+    
+    new_file = os.path.join(image_source_dir, row[0])
+    
+    if (img_file != new_file):
+        img_file = new_file
+        images.append(img_file)
+        
+    label = 0
+    if row[5] == 'table':
+        label = 1
+        
+    x  = row[1] 
+    y  = row[2]
+    box_width = row[3]
+    box_height = row[4]
+        
+    labels[img_file].append(label)
+    bboxes[img_file].append(torch.Tensor([x,y, box_width, box_height]))
+
+C=2
+S=7
+
+# dict to store preprocessed targets for images
+targets = {}
+
+# iterate over all images in VOC train data
+for img_path in images[3:8]:  
+    
+    if not os.path.exists(img_path):
+        print("no image at ", img_path)
+
+    img = cv2.imread(img_path)
+    height, width, channels = img.shape
+    print("img " , img_path, width, height)
+    cell_width = width / S
+    cell_height = height / S
+    
+    # retrieve stored bboxes and labels
+    img_bboxes = bboxes[img_path].copy()
+    img_labels = labels[img_path].copy()
+    
+    # create output Tensor for training target
+    target = torch.zeros([S, S, 5 + C])
+    # track number of bounding boxes per grid
+    bbobj = np.zeros([S, S], dtype=int)
+    
+    # iterate over all boxes & labels for image
+    for i, label in enumerate(img_labels):
+        bb = img_bboxes[i]
+        # 1. Determine cell center of object falls into ----------------------------------------------------------
+        # a. Get center of object in x and y direction
+        x  = bb[0] 
+        y  = bb[1]
+        # b. Determine cell for object
+        x_cell = int(np.floor(x / cell_width))
+        y_cell = int(np.floor(y / cell_height))
+        # c. Stop if more than B boxes for grid location have been found
+        if bbobj[x_cell, y_cell] == 1:
+            break
+        bbobj[x_cell, y_cell] = 1
+        # 2. Convert x, y to the center of the box relative to grid location -------------------------------------
+        x_centre = (x_cell + 0.5) / S
+        y_centre = (y_cell + 0.5) / S
+        # 3. Normalize w, h relative to total image size ---------------------------------------------------------
+        # -> already in correct format thanks to voc_label.py script
+        # 4. Determine confidence score -> Cell contains object = 1 else 0 ---------------------------------------
+        # a. store all
+        target[x_cell, y_cell, 0] = x_centre
+        target[x_cell, y_cell, 1] = y_centre
+        target[x_cell, y_cell, 2] = bb[2]
+        target[x_cell, y_cell, 3] = bb[3]
+        target[x_cell, y_cell, 4] = 1.
+        # 5. Determine class probabilities as P(Class_i | Object) ------------------------------------------------
+        # -> probablity that Object is of Class_i IF Object exists in grid
+        target[x_cell, y_cell, 5 + int(label)] = 1.
+
+    # store 
+    targets[img_path] = target

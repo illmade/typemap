@@ -1,7 +1,7 @@
 import { ContainerLayer } from "./containerlayer";
 import { StaticImage, RectLayer } from "./static";
 import { Transform , BasicTransform } from "./view";
-import { CanvasView, DisplayElement} from "./canvasview";
+import { CanvasView, DisplayElement } from "./canvasview";
 
 export interface ImageStruct extends Transform {
 	opacity: number;
@@ -14,7 +14,7 @@ export interface ImageStruct extends Transform {
 
 export function dateFilter(
   imageStruct: Array<ImageStruct>, 
-  from: number, 
+  from: number,
   to: number): Array<ImageStruct>{
 	return imageStruct.filter(function(imageStruct){ 
 		if (imageStruct.date == undefined)
@@ -54,7 +54,7 @@ export class LayerManager {
 		this.layerMap.get(this.defaultLayer).set(name, image);
 	}
 
-	addLayer(
+	addImages(
 	  imageDetails: Array<ImageStruct>, 
 	  layerName: string, 
 	  layerTransform: Transform = BasicTransform.unitTransform
